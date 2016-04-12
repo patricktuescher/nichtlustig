@@ -15,6 +15,7 @@ public class Server extends Application{
 		ServerModel model = new ServerModel();
 		ServerView view = new ServerView(primaryStage, model);
 		ServerController controller = new ServerController(view, model);
+	
 		
 		view.start();
 		
