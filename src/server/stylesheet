@@ -1,0 +1,5 @@
+.topPane {
+	-fx-background-image: url(Server_Background.jpg);
+	-fx-background-color: #2f4f4f;
+
+}

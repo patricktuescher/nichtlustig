@@ -16,15 +16,15 @@ public class ServerView {
 		this.primaryStage = primaryStage;
 		this.model = model;
 		
-
 		
 		BorderPane topPane = new BorderPane();
-		Image image = new Image("/images/NichtLustig_Logo.jpg");
-		ImageView logo = new ImageView(image);
-		topPane.setCenter(new Label("Hello World"));
-		topPane.setTop(logo);
+		topPane.setPrefHeight(800);
+		topPane.setPrefWidth(1200);		
+		topPane.setId("topPane");
 		
 		Scene scene = new Scene(topPane);
+		//topPane.setStyle("-fx-background-image: url(/images/Server_Background.jpg)");
+		scene.getStylesheets().add("server/style.css");
 		primaryStage.setScene(scene);
 	}
 	
