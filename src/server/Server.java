@@ -12,7 +12,11 @@ public class Server extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
+		ServerModel model = new ServerModel();
+		ServerView view = new ServerView(primaryStage, model);
+		SeverController controller = new ServerController(view, model);
+		
+		view.start();
 		
 	}
 
