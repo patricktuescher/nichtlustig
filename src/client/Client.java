@@ -8,18 +8,20 @@
 
 package client;
 
-public class Client {
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class Client extends Application {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		// Test1
-		// Test2
+		
+		launch(args);
+		
+	}
 
-		//Öii Müetere
-		
-		//Patrick
-		
-		//PT
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
 		
 	}
 
