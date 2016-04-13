@@ -24,7 +24,7 @@ public class ServerView {
 		
 		Scene scene = new Scene(topPane);
 		//topPane.setStyle("-fx-background-image: url(/images/Server_Background.jpg)");
-		scene.getStylesheets().add("server/style.css");
+		scene.getStylesheets().add("style1.css");
 		primaryStage.setScene(scene);
 	}
 	
