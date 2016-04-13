@@ -18,7 +18,7 @@ public class ClientView {
 	public ClientView(Stage primaryStage, ClientModel model){
 		this.primaryStage = primaryStage;
 		this.model = model;
-		
+		///////////////// LOGIN FENSTER //////////////////////////
 		//TopPane 
 		BorderPane topPane = new BorderPane();
 		
@@ -43,20 +43,48 @@ public class ClientView {
 		TextField tf_username = new TextField();
 		innerPane.add(tf_username, 3, 45);
 		tf_username.setId("tf-username");
+		tf_username.setText("Benutzername");
 		
 		//Textbox Password
 		TextField tf_password = new TextField();
 		innerPane.add(tf_password, 3, 48);
 		tf_password.setId("tf-password");
+		tf_password.setText("Passwort");
 		
 		//Button Login
 		Button b_login = new Button("Login");
 		innerPane.add(b_login, 3, 51);
 		b_login.setId("b-login");
+		//b_login.setOnAction(handleButtonAction(e));
 		
-		//Scene
+		//Scene Login
 		Scene scene = new Scene(topPane, 1200, 800);
 		scene.getStylesheets().add("ClientStylesheet");
+		
+		
+		///////////////// LOBBY FENSTER //////////////////////////
+		
+		//TopPane Lobby
+		BorderPane topPane1 = new BorderPane();
+		
+		//GridPane Lobby
+		GridPane innerPane1 = new GridPane();
+		innerPane1.setAlignment(Pos.TOP_CENTER);
+		innerPane1.setHgap(10);
+		innerPane1.setVgap(10);
+		topPane1.setCenter(innerPane1);
+		
+		
+		//Button Zurück
+		Button b_back = new Button("Zurück");
+		innerPane1.add(b_back, 3, 51);
+		b_back.setId("b-back");
+		
+		//Scene Lobby
+		Scene scene1 = new Scene(topPane1, 1200, 800);
+		scene1.getStylesheets().add("ClientStylesheet");
+		
+		
 		primaryStage.setTitle("Client-Applikation");
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);

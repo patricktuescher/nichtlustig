@@ -2,6 +2,7 @@ package client;
 
 import client.ClientModel;
 import client.ClientView;
+import javafx.event.ActionEvent;
 
 public class ClientController {
 
@@ -15,4 +16,8 @@ public class ClientController {
 		this.model = model;
 	}
 
+	private void handleButtonAction(ActionEvent event){
+		
+		
+	}
 }
