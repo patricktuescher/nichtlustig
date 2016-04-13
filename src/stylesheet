@@ -38,3 +38,8 @@
         radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
         
      }
+     
+#monitor{
+	-fx-font: 50px Helvetica;
+	-fx-fill: white;
+	}
