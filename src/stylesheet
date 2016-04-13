@@ -1,5 +1,10 @@
-.topPane {
-	-fx-background-image: url(Server_Background.jpg);
-	-fx-background-color: #2f4f4f;
 
+.root{
+	-fx-spacing: 30;
+
+	}
+	
+#topPane{
+	-fx-background-image: url(images/Server_Background.jpg);
 }
+	
