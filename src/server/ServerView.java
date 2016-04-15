@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -20,6 +21,7 @@ public class ServerView {
 	protected Stage primaryStage;
 	protected ServerModel model;
 	protected Button ConnectServer, DisconnectServer;
+	protected Circle status;
 	
 	public ServerView(Stage primaryStage, ServerModel model){
 		this.primaryStage = primaryStage;
@@ -31,11 +33,17 @@ public class ServerView {
 		topPane.setPrefHeight(800);
 		topPane.setPrefWidth(1200);
 		
+		//Offline-Online Status monitor
+		status = new Circle();
+		status.setRadius(22);
+		status.setId("redCircle");
+		
+		
 		//Connect- and Disconnect Buttons
 		ConnectServer = new Button("Connect to Server");
 		ConnectServer.setId("ServerButtons");
 		ConnectServer.setPrefWidth(500);
-		DisconnectServer = new Button("Disconnect  to Server");
+		DisconnectServer = new Button("Disconnect to Server");
 		DisconnectServer.setId("ServerButtons");
 		DisconnectServer.setPrefWidth(500);
 		
@@ -43,13 +51,14 @@ public class ServerView {
 		//innerPane
 		GridPane innerPane = new GridPane();
 		innerPane.setAlignment(Pos.TOP_CENTER);
-		innerPane.setVgap(100);
-		innerPane.add(ConnectServer, 0, 5);
-		innerPane.add(DisconnectServer, 0, 6);
+		innerPane.setVgap(20);
+		innerPane.add(status, 0, 10);
+		innerPane.add(ConnectServer, 0, 25);
+		innerPane.add(DisconnectServer, 0, 26);
 		topPane.setCenter(innerPane);
 		
 		Scene scene = new Scene(topPane);
-		scene.getStylesheets().add("stylesheet");
+		scene.getStylesheets().add("ServerStylesheet");
 		primaryStage.setTitle("Server-Applikation");
 		primaryStage.setResizable(false);
 		primaryStage.setScene(scene);

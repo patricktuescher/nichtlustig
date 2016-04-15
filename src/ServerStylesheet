@@ -32,10 +32,10 @@
 #ServerButtons:hover{
 
 	-fx-background-color: 
-        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
-        #9d4024,
-        #d86e3a,
-        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+        linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
+        linear-gradient(#020b02, #3a3a3a),
+        linear-gradient(#969696 0%, #969696 20%, #969696 80%, #969696 100%),
+        linear-gradient(#969696 0%, #969696 50%, #969696 51%, #969696 100%);
         
      }
      
@@ -43,3 +43,14 @@
 	-fx-font: 50px Helvetica;
 	-fx-fill: white;
 	}
+
+#redCircle{
+	-fx-fill:
+		linear-gradient(from 50% 0% to 50% 100%,
+		rgb(207, 0, 58) 0%,
+		rgb(129, 0, 33) 100%);
+		
+	-fx-stroke: white;
+
+
+}	
