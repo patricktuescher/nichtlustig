@@ -1,6 +1,6 @@
 .root {
 				-fx-background: rgb(225, 0, 0);
-				-fx-background-image: url(images/Client_Login_Background.jpg);
+				-fx-background-image: url(images/loginHintergrund.png);
 				
 }
 
