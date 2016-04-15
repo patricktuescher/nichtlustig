@@ -42,13 +42,13 @@ public class ClientView {
 		//Textbox Username
 		TextField tf_username = new TextField();
 		innerPane.add(tf_username, 3, 45);
-		tf_username.setId("tf-username");
+		tf_username.setId("tf-login");
 		tf_username.setText("Benutzername");
 		
 		//Textbox Password
 		TextField tf_password = new TextField();
 		innerPane.add(tf_password, 3, 48);
-		tf_password.setId("tf-password");
+		tf_password.setId("tf-login");
 		tf_password.setText("Passwort");
 		
 		//Button Login
@@ -75,8 +75,8 @@ public class ClientView {
 		topPane1.setCenter(innerPane1);
 		
 		
-		//Button Zurück
-		Button b_back = new Button("Zurück");
+		//Button Zurueck
+		Button b_back = new Button("Zurï¿½ck");
 		innerPane1.add(b_back, 3, 51);
 		b_back.setId("b-back");
 		

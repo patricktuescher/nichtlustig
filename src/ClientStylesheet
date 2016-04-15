@@ -21,21 +21,16 @@
     			-fx-text-fill: white;
 }
 
-#tf-username{
-				-fx-font-weight: bold;
-				-fx-font-family: "Helvetica";
-				-fx-background-color:transparent;
-				-fx-border-color: white;
-				
-}
-
-#tf-password{
+#tf-login{
 				-fx-font-weight: bold;
 				-fx-font-family: "Helvetica";
 				-fx-background-color:transparent;
 				-fx-border-color: white;
 				-fx-font-color:white;
+				-fx-text-fill: white;
+				
 }
+
 
 #lb-username{
 				-fx-font-family: "Helvetica";
