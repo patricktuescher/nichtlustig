@@ -20,7 +20,6 @@ public class ServerView {
 	protected Stage primaryStage;
 	protected ServerModel model;
 	protected Button ConnectServer, DisconnectServer;
-	protected Text monitor;
 	
 	public ServerView(Stage primaryStage, ServerModel model){
 		this.primaryStage = primaryStage;
@@ -40,18 +39,13 @@ public class ServerView {
 		DisconnectServer.setId("ServerButtons");
 		DisconnectServer.setPrefWidth(500);
 		
-		//TextField
-		monitor = new Text("Server Status ");
-		monitor.setId("monitor");
-		monitor.setTextAlignment(TextAlignment.CENTER);
 		
 		//innerPane
 		GridPane innerPane = new GridPane();
 		innerPane.setAlignment(Pos.TOP_CENTER);
 		innerPane.setVgap(100);
-		innerPane.add(monitor, 0, 0);
-		innerPane.add(ConnectServer, 0, 4);
-		innerPane.add(DisconnectServer, 0, 5);
+		innerPane.add(ConnectServer, 0, 5);
+		innerPane.add(DisconnectServer, 0, 6);
 		topPane.setCenter(innerPane);
 		
 		Scene scene = new Scene(topPane);
