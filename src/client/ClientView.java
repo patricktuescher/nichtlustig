@@ -67,6 +67,7 @@ public class ClientView {
 		
 		//TopPane Lobby
 		BorderPane topPane1 = new BorderPane();
+		topPane1.setId("topPane1"); //ID for CSS
 		
 		//GridPane Lobby
 		GridPane innerPane1 = new GridPane();
@@ -105,7 +106,7 @@ public class ClientView {
 		
 		
 		primaryStage.setTitle("Client-Applikation");
-		primaryStage.setScene(scene1);
+		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
 	}
 	

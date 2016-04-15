@@ -4,8 +4,8 @@
 				
 }
 
-#scene{
-				-fx-background-image: url(images/Client_Login_Background.jpg);
+#topPane1{
+	-fx-background-image: url(images/lobbyHintergrund.png);
 }
 
 // http://fxexperience.com/2011/12/styling-fx-buttons-with-css/
