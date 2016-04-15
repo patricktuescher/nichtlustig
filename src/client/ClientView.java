@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -42,14 +43,14 @@ public class ClientView {
 		//Textbox Username
 		TextField tf_username = new TextField();
 		innerPane.add(tf_username, 3, 45);
-		tf_username.setId("tf-login");
+		tf_username.setId("pf-login");
 		tf_username.setText("Benutzername");
 		
-		//Textbox Password
-		TextField tf_password = new TextField();
-		innerPane.add(tf_password, 3, 48);
-		tf_password.setId("tf-login");
-		tf_password.setText("Passwort");
+		//Passwortbox Password
+		PasswordField pf_password = new PasswordField();
+		innerPane.add(pf_password, 3, 48);
+		pf_password.setId("pf-login");
+		pf_password.setText("Passwort");
 		
 		//Button Login
 		Button b_login = new Button("Login");
