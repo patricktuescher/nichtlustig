@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -42,14 +43,14 @@ public class ClientView {
 		//Textbox Username
 		TextField tf_username = new TextField();
 		innerPane.add(tf_username, 3, 45);
-		tf_username.setId("tf-login");
+		tf_username.setId("pf-login");
 		tf_username.setText("Benutzername");
 		
-		//Textbox Password
-		TextField tf_password = new TextField();
-		innerPane.add(tf_password, 3, 48);
-		tf_password.setId("tf-login");
-		tf_password.setText("Passwort");
+		//Passwortbox Password
+		PasswordField pf_password = new PasswordField();
+		innerPane.add(pf_password, 3, 48);
+		pf_password.setId("pf-login");
+		pf_password.setText("Passwort");
 		
 		//Button Login
 		Button b_login = new Button("Login");
@@ -69,16 +70,34 @@ public class ClientView {
 		
 		//GridPane Lobby
 		GridPane innerPane1 = new GridPane();
-		innerPane1.setAlignment(Pos.TOP_CENTER);
 		innerPane1.setHgap(10);
 		innerPane1.setVgap(10);
 		topPane1.setCenter(innerPane1);
 		
 		
-		//Button Zurueck
-		Button b_back = new Button("Zur�ck");
-		innerPane1.add(b_back, 3, 51);
+		//Button Zurück
+		Button b_back = new Button("Zurück");
+		innerPane1.add(b_back, 80, 60);
 		b_back.setId("b-back");
+		
+		//Button Statistik -  ID to be defined
+		Button b_statistic = new Button("Statistik");
+		innerPane1.add(b_statistic, 40, 30);
+		
+		
+		//Button Regeln -  ID to be defined
+		Button b_rules = new Button("Regeln");
+		innerPane1.add(b_rules, 60, 30);
+		
+		//Button Spiel erstellen - ID to be defined
+		Button b_spielErstellen = new Button("Spiel erstellen");
+		innerPane1.add(b_spielErstellen, 20, 30);
+		
+		//Button Spiel beitreten - ID to be defined
+		Button b_spielBeitreten = new Button("Spiel beitreten");
+		innerPane1.add(b_spielBeitreten, 40, 50);
+		
+		
 		
 		//Scene Lobby
 		Scene scene1 = new Scene(topPane1, 1200, 800);
@@ -86,7 +105,7 @@ public class ClientView {
 		
 		
 		primaryStage.setTitle("Client-Applikation");
-		primaryStage.setScene(scene);
+		primaryStage.setScene(scene1);
 		primaryStage.setResizable(false);
 	}
 	
