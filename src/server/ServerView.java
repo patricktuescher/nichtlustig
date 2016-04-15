@@ -43,7 +43,7 @@ public class ServerView {
 		ConnectServer = new Button("Connect to Server");
 		ConnectServer.setId("ServerButtons");
 		ConnectServer.setPrefWidth(500);
-		DisconnectServer = new Button("Disconnect to Server");
+		DisconnectServer = new Button("Disconnect from Server");
 		DisconnectServer.setId("ServerButtons");
 		DisconnectServer.setPrefWidth(500);
 		
