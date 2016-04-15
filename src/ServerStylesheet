@@ -5,7 +5,7 @@
 	}
 	
 #topPane{
-	-fx-background-image: url(images/serverHintergrund2.png);
+	-fx-background-image: url(images/serverHintergrund.png);
 }
 	
 	
