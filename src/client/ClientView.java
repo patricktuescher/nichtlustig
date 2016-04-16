@@ -20,6 +20,16 @@ public class ClientView {
 	protected Button b_login, b_register, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln, b_backGame ;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
 	
+	//Height and Width of the cards
+	final int cardheight = 90;
+	final int cardwidth = 90;
+	
+	//Image Array
+	protected final int colIndex = 22;
+	protected final int rowIndex = 10;	
+	protected ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino, cardTod;
+			
+	
 	public ClientView(Stage primaryStage, ClientModel model){
 		this.primaryStage = primaryStage;
 		this.model = model;
@@ -199,64 +209,70 @@ public class ClientView {
 		
 		///////////////// CARDS //////////////////////////
 		
-		//Height and Width of the cards
-		int cardheight = 100;
-		int cardwidth = 100;
-		
-		//Image Array
-		int colIndex = 1;
-		int rowIndex = 20;
-				
-		Image[] cardRieb = new Image[5];
+		cardRieb = new ImageView[5];
 		for (int i = 1; i < 6; i++){
-				cardRieb[i-1] = new Image("images/Karte_Rieb_"+i+".png");
-				ImageView viewtestcard = new ImageView();
-				viewtestcard.setImage(cardRieb[i-1]);
-				viewtestcard.setFitHeight(cardheight);
-				viewtestcard.setFitWidth(cardwidth);
-				innerPaneGame.add(viewtestcard, colIndex+i, rowIndex+1);
+				Image imageRieb = new Image("images/Karte_Rieb_"+i+".png");
+				cardRieb[i-1] = new ImageView();
+				cardRieb[i-1].setImage(imageRieb);
+				cardRieb[i-1].setFitHeight(cardheight);
+				cardRieb[i-1].setFitWidth(cardwidth);
+				innerPaneGame.add(cardRieb[i-1], colIndex+i, rowIndex+1);
 			}
 				
-		Image[] cardYeti = new Image[5];
+		cardYeti = new ImageView[5];
 		for (int i = 1; i < 6; i++){
-				cardYeti[i-1] = new Image("images/Karte_Yeti_"+i+".png");
-				ImageView viewtestcard1 = new ImageView();
-				viewtestcard1.setImage(cardYeti[i-1]);
-				viewtestcard1.setFitHeight(cardheight);
-				viewtestcard1.setFitWidth(cardwidth);
-					innerPaneGame.add(viewtestcard1, colIndex+i, rowIndex+2);
-				}
-				
-		Image[] cardLemming = new Image[5];
-		for (int i = 1; i < 6; i++){
-				cardLemming[i-1] = new Image("images/Karte_Lemming_"+i+".png");
-				ImageView viewtestcard = new ImageView();
-				viewtestcard.setImage(cardLemming[i-1]);
-				viewtestcard.setFitHeight(cardheight);
-				viewtestcard.setFitWidth(cardwidth);
-				innerPaneGame.add(viewtestcard, colIndex+i, rowIndex+3);
-				}
-				
-		Image[] cardProf = new Image[5];
-		for (int i = 1; i < 6; i++){
-				cardProf[i-1] = new Image("images/Karte_Prof_"+i+".png");
-				ImageView viewtestcard = new ImageView();
-				viewtestcard.setImage(cardProf[i-1]);
-				viewtestcard.setFitHeight(cardheight);
-				viewtestcard.setFitWidth(cardwidth);
-				innerPaneGame.add(viewtestcard, colIndex+i, rowIndex+4);
-				}
-				
-		Image[] cardDino = new Image[5];
-		for (int i = 1; i < 6; i++){
-				cardDino[i-1] = new Image("images/Karte_Dino_"+i+".png");
-				ImageView viewtestcard = new ImageView();
-				viewtestcard.setImage(cardDino[i-1]);
-				viewtestcard.setFitHeight(cardheight);
-				viewtestcard.setFitWidth(cardwidth);
-				innerPaneGame.add(viewtestcard, colIndex+i, rowIndex+5);
+				Image imageYeti = new Image("images/Karte_Yeti_"+i+".png");
+				cardYeti[i-1] = new ImageView();
+				cardYeti[i-1].setImage(imageYeti);
+				cardYeti[i-1].setFitHeight(cardheight);
+				cardYeti[i-1].setFitWidth(cardwidth);
+				innerPaneGame.add(cardYeti[i-1], colIndex+i, rowIndex+2);
 				}
 		
+		cardLemming = new ImageView[5];
+		for (int i = 1; i < 6; i++){
+				Image imageLemming = new Image("images/Karte_Lemming_"+i+".png");
+				cardLemming[i-1] = new ImageView();
+				cardLemming[i-1].setImage(imageLemming);
+				cardLemming[i-1].setFitHeight(cardheight);
+				cardLemming[i-1].setFitWidth(cardwidth);
+				innerPaneGame.add(cardLemming[i-1], colIndex+i, rowIndex+3);
+				}
+
+		cardProf = new ImageView[5];
+		for (int i = 1; i < 6; i++){
+				Image imageYeti = new Image("images/Karte_Prof_"+i+".png");
+				cardProf[i-1] = new ImageView();
+				cardProf[i-1].setImage(imageYeti);
+				cardProf[i-1].setFitHeight(cardheight);
+				cardProf[i-1].setFitWidth(cardwidth);
+				innerPaneGame.add(cardProf[i-1], colIndex+i, rowIndex+4);
+				}
+		
+		cardDino = new ImageView[5];
+		for (int i = 1; i < 6; i++){
+				Image imageDino = new Image("images/Karte_Dino_"+i+".png");
+				cardDino[i-1] = new ImageView();
+				cardDino[i-1].setImage(imageDino);
+				cardDino[i-1].setFitHeight(cardheight);
+				cardDino[i-1].setFitWidth(cardwidth);
+				innerPaneGame.add(cardDino[i-1], colIndex+i, rowIndex+5);
+				}		
+		
+		cardTod = new ImageView[6];
+		for (int i = 1; i < 7; i++){
+				Image imageTod = new Image("images/Karte_Tod_"+i+".png");
+				cardTod[i-1] = new ImageView();
+				cardTod[i-1].setImage(imageTod);
+				cardTod[i-1].setFitHeight(cardheight);
+				cardTod[i-1].setFitWidth(cardwidth);
+				if(i<4){
+					innerPaneGame.add(cardTod[i-1], colIndex-2, rowIndex+i);
+				}
+				else{
+					innerPaneGame.add(cardTod[i-1], colIndex-1, rowIndex+i-3);
+				}
+				}		
 		
 	
 		primaryStage.setTitle("Client-Applikation");
