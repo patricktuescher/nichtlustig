@@ -43,26 +43,26 @@ public class ClientView {
 		topPaneLogin.setCenter(innerPaneLogin);
 		
 		//Label Username
-		Label lb_username = new Label("Username: ");
-		innerPaneLogin.add(lb_username, 0, 45);
+		Label lb_username = new Label("User name: ");
+		innerPaneLogin.add(lb_username, 2, 22);
 		lb_username.setId("lb-username");
 		
 		//Label Password
-		Label lb_password = new Label("Passwort: ");
-		innerPaneLogin.add(lb_password, 0, 48);
+		Label lb_password = new Label("Password: ");
+		innerPaneLogin.add(lb_password, 2, 25);
 		lb_password.setId("lb-password");
 		
 		//Textbox Username
 		TextField tf_username = new TextField();
-		innerPaneLogin.add(tf_username, 3, 45);
+		innerPaneLogin.add(tf_username, 4, 22);
 		tf_username.setId("pf-login");
-		tf_username.setText("Benutzername");
+		tf_username.setPromptText("user name");
 		
 		//Passwortbox Password
 		PasswordField pf_password = new PasswordField();
-		innerPaneLogin.add(pf_password, 3, 48);
+		innerPaneLogin.add(pf_password, 4, 25);
 		pf_password.setId("pf-login");
-		pf_password.setText("Passwort");
+		pf_password.setPromptText("password");
 		
 		//Button Login
 		b_login = new Button("Login");
@@ -182,7 +182,7 @@ public class ClientView {
 
 		//Button Zurück
 		b_backGame = new Button("Zurück");
-		innerPaneGame.add(b_backGame, 100, 60);
+		innerPaneGame.add(b_backGame, 0, 0);
 		b_backGame.setId("b-login");
 				
 		//Scene Regeln
