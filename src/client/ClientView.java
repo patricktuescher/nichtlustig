@@ -17,10 +17,13 @@ public class ClientView {
 	
 	Stage primaryStage;
 	ClientModel model;
+	protected Button b_login;
+	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
 	
 	public ClientView(Stage primaryStage, ClientModel model){
 		this.primaryStage = primaryStage;
 		this.model = model;
+		
 		
 		
 		
@@ -62,7 +65,7 @@ public class ClientView {
 		pf_password.setText("Passwort");
 		
 		//Button Login
-		Button b_login = new Button("Login");
+		b_login = new Button("Login");
 		innerPaneLogin.add(b_login, 3, 51);
 		b_login.setId("b-login");
 		//b_login.setOnAction(handleButtonAction(e));
@@ -73,7 +76,7 @@ public class ClientView {
 		b_register.setId("b-login");
 		
 		//Scene Login
-		Scene sceneLogin = new Scene(topPaneLogin, 1200, 800);
+		sceneLogin = new Scene(topPaneLogin, 1200, 800);
 		sceneLogin.getStylesheets().add("ClientStylesheet");
 		
 		
@@ -119,7 +122,7 @@ public class ClientView {
 		
 		
 		//Scene Lobby
-		Scene sceneLobby = new Scene(topPaneLobby, 1200, 800);
+		sceneLobby = new Scene(topPaneLobby, 1200, 800);
 		sceneLobby.getStylesheets().add("ClientStylesheet");
 		
 		///////////////// STATISTIK FENSTER //////////////////////////
@@ -140,7 +143,7 @@ public class ClientView {
 		b_backStatistik.setId("b-login");
 				
 		//Scene Lobby
-		Scene sceneStatistik = new Scene(topPaneStatistik, 1200, 800);
+		sceneStatistik = new Scene(topPaneStatistik, 1200, 800);
 		sceneStatistik.getStylesheets().add("ClientStylesheet");
 		
 		
@@ -162,7 +165,7 @@ public class ClientView {
 		b_backRegeln.setId("b-login");
 				
 		//Scene Regeln
-		Scene sceneRegeln = new Scene(topPaneRules, 1200, 800);
+		sceneRegeln = new Scene(topPaneRules, 1200, 800);
 		sceneRegeln.getStylesheets().add("ClientStylesheet");
 		
 		///////////////// GAME FENSTER //////////////////////////
@@ -183,7 +186,7 @@ public class ClientView {
 		b_backGame.setId("b-login");
 				
 		//Scene Regeln
-		Scene sceneGame = new Scene(topPaneGame, 1200, 800);
+		sceneGame = new Scene(topPaneGame, 1200, 800);
 		sceneGame.getStylesheets().add("ClientStylesheet");
 				
 				
@@ -253,7 +256,7 @@ public class ClientView {
 		
 	
 		primaryStage.setTitle("Client-Applikation");
-		primaryStage.setScene(sceneGame);
+		primaryStage.setScene(sceneLogin);
 		primaryStage.setResizable(false);
 		primaryStage.getIcons().add(new Image("images/ClientIcon.png"));
 		
