@@ -20,6 +20,7 @@ public class ClientController {
 		
 		///////////////// LOGIN FENSTER //////////////////////////
 		
+		
 		// EventHandler LoginButton - LoginScene
 		view.b_login.setOnAction(new EventHandler<ActionEvent>(){
 
@@ -30,75 +31,76 @@ public class ClientController {
 			
 		});
 		
+		
 		// EventHandler RegisterButton - LoginScene
-				view.b_register.setOnAction(new EventHandler<ActionEvent>(){
+		view.b_register.setOnAction(new EventHandler<ActionEvent>(){
 
-					@Override
-					public void handle(ActionEvent arg0) {
-						view.primaryStage.setScene(view.sceneLobby);	
-					}
+			@Override
+			public void handle(ActionEvent arg0) {
+			view.primaryStage.setScene(view.sceneLobby);	
+			}
 					
-				});
+		});
 				
 				
-				
-				
+		
 		///////////////// LOBBY FENSTER //////////////////////////
 				
+		
 		// EventHandler ZurückButton - LobbyScene
 		view.b_backLobby.setOnAction(new EventHandler<ActionEvent>(){
 
-					@Override
-					public void handle(ActionEvent arg0) {
-						view.primaryStage.setScene(view.sceneLogin);	
-					}
+			@Override
+			public void handle(ActionEvent arg0) {
+			view.primaryStage.setScene(view.sceneLogin);	
+			}
 					
-				});	
-		
+		});	
 		
 		
 		// EventHandler StatistikButton - LobbyScene
-				view.b_statistic.setOnAction(new EventHandler<ActionEvent>(){
+		view.b_statistic.setOnAction(new EventHandler<ActionEvent>(){
 
-					@Override
-					public void handle(ActionEvent arg0) {
-						view.primaryStage.setScene(view.sceneStatistik);	
-					}
+			@Override
+			public void handle(ActionEvent arg0) {
+			view.primaryStage.setScene(view.sceneStatistik);	
+			}
 					
-				});
-				
-				
+		});
+			
+		
 		// EventHandler RegelnButton - LobbyScene
-				view.b_rules.setOnAction(new EventHandler<ActionEvent>(){
+		view.b_rules.setOnAction(new EventHandler<ActionEvent>(){
 
-					@Override
-					public void handle(ActionEvent arg0) {
-						view.primaryStage.setScene(view.sceneRegeln);	
-					}
+			@Override
+			public void handle(ActionEvent arg0) {
+			view.primaryStage.setScene(view.sceneRegeln);	
+			}
 					
-				});
-				
-		// EventHandler SpielErstellenButton - LobbyScene !!!!! to be difined
-				view.b_spielErstellen.setOnAction(new EventHandler<ActionEvent>(){
-
-					@Override
-					public void handle(ActionEvent arg0) {
-						view.primaryStage.setScene(view.sceneGame);	
-					}
-					
-				});
-				
-		// EventHandler SpielBeitretenButton - LobbyScene !!!!! to be difined
-				view.b_spielBeitreten.setOnAction(new EventHandler<ActionEvent>(){
-
-					@Override
-					public void handle(ActionEvent arg0) {
-						view.primaryStage.setScene(view.sceneGame);	
-					}
-					
-				});
+		});
 				
 		
+		// EventHandler SpielErstellenButton - LobbyScene !!!!! to be difined
+		view.b_spielErstellen.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent arg0) {
+			view.primaryStage.setScene(view.sceneGame);	
+			}
+					
+		});
+				
+		
+		// EventHandler SpielBeitretenButton - LobbyScene !!!!! to be difined
+		view.b_spielBeitreten.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent arg0) {
+			view.primaryStage.setScene(view.sceneGame);	
+			}
+					
+		});
+			
 			
 		
 		///////////////// STATISTIK FENSTER //////////////////////////
@@ -127,8 +129,10 @@ public class ClientController {
 		});
 		
 	
+		
 	///////////////// GAME FENSTER //////////////////////////
-				
+			
+		
 		// EventHandler ZurückButton - GameScene
 		view.b_backGame.setOnAction(new EventHandler<ActionEvent>(){
 		

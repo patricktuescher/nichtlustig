@@ -111,8 +111,8 @@ public class ClientView {
 		
 		//Button Statistik
 		b_statistic = new Button("Statistik");
-		b_statistic.setPrefWidth(300);
-		innerPaneLobby.add(b_statistic, 20, 30);
+		b_statistic.setPrefSize(500, 200);
+		innerPaneLobby.add(b_statistic, 10, 30);
 		b_statistic.setId("b-login");
 	
 		
