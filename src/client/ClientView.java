@@ -181,7 +181,7 @@ public class ClientView {
 		
 	
 		primaryStage.setTitle("Client-Applikation");
-		primaryStage.setScene(sceneLobby);
+		primaryStage.setScene(sceneGame);
 		primaryStage.setResizable(false);
 		
 		

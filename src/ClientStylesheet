@@ -3,10 +3,6 @@
 				-fx-background-image: url(images/loginHintergrund.png);		
 }
 
-#topPaneGame{
-	-fx-background-image: url(images/loginHintergrund.png);
-}
-
 
 #topPaneLogin{
 	-fx-background-image: url(images/loginHintergrund.png);
@@ -25,7 +21,7 @@
 }
 
 #topPaneGame{
-	-fx-background-image: url(images/loginHintergrund.png);
+	-fx-background-image: url(images/gameHintergrund.png);
 }
 
 
