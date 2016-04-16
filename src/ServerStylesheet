@@ -45,12 +45,13 @@
 	}
 
 #redCircle{
-	-fx-fill:
-		linear-gradient(from 50% 0% to 50% 100%,
-		rgb(207, 0, 58) 0%,
-		rgb(129, 0, 33) 100%);
-		
-	-fx-stroke: white;
+	-fx-fill: white;
+}
+#statusText{
+-fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: red;
+    -fx-opacity: 1;
 
 
-}	
+}

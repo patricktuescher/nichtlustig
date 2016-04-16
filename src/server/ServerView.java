@@ -22,6 +22,7 @@ public class ServerView {
 	protected ServerModel model;
 	protected Button ConnectServer, DisconnectServer;
 	protected Circle status;
+	protected Label statusText;
 	
 	public ServerView(Stage primaryStage, ServerModel model){
 		this.primaryStage = primaryStage;
@@ -38,6 +39,16 @@ public class ServerView {
 		status.setRadius(22);
 		status.setId("redCircle");
 		
+		//Offline-Online status label
+		statusText = new Label("Offline");
+		statusText.setId("statusText");
+		
+		//Center-pane
+		VBox centerPane = new VBox(20);
+		centerPane.getChildren().add(status);
+		centerPane.getChildren().add(statusText);
+		centerPane.setPrefSize(400, 600);
+		
 		
 		//Connect- and Disconnect Buttons
 		ConnectServer = new Button("Connect to Server");
@@ -50,12 +61,14 @@ public class ServerView {
 		
 		//innerPane
 		GridPane innerPane = new GridPane();
-		innerPane.setAlignment(Pos.TOP_CENTER);
-		innerPane.setVgap(20);
-		innerPane.add(status, 0, 10);
-		innerPane.add(ConnectServer, 0, 25);
-		innerPane.add(DisconnectServer, 0, 26);
-		topPane.setCenter(innerPane);
+		innerPane.setAlignment(Pos.TOP_LEFT);
+		innerPane.setVgap(10);
+		innerPane.setHgap(10);
+		innerPane.add(status, 26, 27);
+		innerPane.add(statusText, 27, 27);
+		innerPane.add(ConnectServer, 26, 50);
+		innerPane.add(DisconnectServer, 26, 51);
+		topPane.setCenter(centerPane);
 		
 		Scene scene = new Scene(topPane);
 		scene.getStylesheets().add("ServerStylesheet");
