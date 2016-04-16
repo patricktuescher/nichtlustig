@@ -19,7 +19,11 @@ public class ClientView {
 	public ClientView(Stage primaryStage, ClientModel model){
 		this.primaryStage = primaryStage;
 		this.model = model;
+		
+		
+		
 		///////////////// LOGIN FENSTER //////////////////////////
+		
 		//TopPane  Login
 		BorderPane topPaneLogin = new BorderPane();
 		topPaneLogin.setId("topPaneLogin"); //ID for CSS
@@ -60,6 +64,11 @@ public class ClientView {
 		innerPaneLogin.add(b_login, 3, 51);
 		b_login.setId("b-login");
 		//b_login.setOnAction(handleButtonAction(e));
+		
+		//Button Register
+		Button b_register = new Button("Register");
+		innerPaneLogin.add(b_register, 6, 51);
+		b_register.setId("b-login");
 		
 		//Scene Login
 		Scene sceneLogin = new Scene(topPaneLogin, 1200, 800);
@@ -176,6 +185,8 @@ public class ClientView {
 		sceneGame.getStylesheets().add("ClientStylesheet");
 				
 				
+		//Textfield Punkte Player 1
+		TextField scorePlayer1 = new TextField("12");
 		
 		
 		
