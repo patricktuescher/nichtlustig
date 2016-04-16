@@ -27,7 +27,7 @@ public class ClientView {
 	//Image Array
 	protected final int colIndex = 22;
 	protected final int rowIndex = 10;	
-	final ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino;
+	protected ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino;
 			
 	
 	public ClientView(Stage primaryStage, ClientModel model){
