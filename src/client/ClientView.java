@@ -255,6 +255,7 @@ public class ClientView {
 		primaryStage.setTitle("Client-Applikation");
 		primaryStage.setScene(sceneGame);
 		primaryStage.setResizable(false);
+		primaryStage.getIcons().add(new Image("images/ClientIcon.png"));
 		
 		
 		
