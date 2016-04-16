@@ -105,23 +105,27 @@ public class ClientView {
 		
 		//Button Zurück
 		b_backLobby = new Button("Zurück");
-		innerPaneLobby.add(b_backLobby, 80, 60);
+		b_backLobby.setPrefWidth(300);
+		innerPaneLobby.add(b_backLobby, 55, 63);
 		b_backLobby.setId("b-login");
 		
 		//Button Statistik
 		b_statistic = new Button("Statistik");
-		innerPaneLobby.add(b_statistic, 40, 30);
+		b_statistic.setPrefWidth(300);
+		innerPaneLobby.add(b_statistic, 20, 30);
 		b_statistic.setId("b-login");
 	
 		
 		//Button Regeln 
 		b_rules = new Button("Regeln");
-		innerPaneLobby.add(b_rules, 60, 30);
+		b_rules.setPrefWidth(300);
+		innerPaneLobby.add(b_rules, 30, 30);
 		b_rules.setId("b-login");
 		
 		//Button Spiel erstellen 
 		b_spielErstellen = new Button("Spiel erstellen");
-		innerPaneLobby.add(b_spielErstellen, 20, 30);
+		b_spielErstellen.setPrefWidth(300);
+		innerPaneLobby.add(b_spielErstellen, 10, 30);
 		b_spielErstellen.setId("b-login");
 		
 		
