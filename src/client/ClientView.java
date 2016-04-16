@@ -25,8 +25,8 @@ public class ClientView {
 	final int cardwidth = 90;
 	
 	//Image Array
-	protected final int colIndex = 30;
-	protected final int rowIndex = 15;	
+	protected final int colIndex = 22;
+	protected final int rowIndex = 10;	
 	final ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino;
 			
 	
