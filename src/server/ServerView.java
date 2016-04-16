@@ -34,9 +34,6 @@ public class ServerView {
 		this.primaryStage = primaryStage;
 		this.model = model;
 		
-
-		
-		
 		//Setting up BorderPane
 		BorderPane topPane = new BorderPane();
 		topPane.setId("topPane"); //ID for CSS
