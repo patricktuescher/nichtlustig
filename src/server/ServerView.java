@@ -4,6 +4,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,16 +26,37 @@ public class ServerView {
 	protected Button ConnectServer, DisconnectServer;
 	protected Circle status;
 	protected Label onlineOffline;
+	protected MenuItem MIclose, MIdeutsch, MIenglisch;
 	
 	public ServerView(Stage primaryStage, ServerModel model){
 		this.primaryStage = primaryStage;
 		this.model = model;
+		
+
+		
 		
 		//Setting up BorderPane
 		BorderPane topPane = new BorderPane();
 		topPane.setId("topPane"); //ID for CSS
 		topPane.setPrefHeight(800);
 		topPane.setPrefWidth(1200);
+	
+		
+		//Menu-Bar
+		MenuBar bar = new MenuBar();
+		Menu file = new Menu("Datei");
+		Menu language = new Menu("Sprache");
+		MIdeutsch = new MenuItem("deutsch");
+		MIenglisch = new MenuItem("englisch");
+		language.getItems().addAll(MIdeutsch,MIenglisch);
+		MIclose = new MenuItem("schliessen");
+		file.getItems().add(MIclose);
+		bar.getMenus().addAll(file, language);
+		
+		//Vertical-Box
+		HBox boxForBar = new HBox();
+		boxForBar.getChildren().add(bar);
+		topPane.setTop(boxForBar);
 		
 		//Offline-Online Status monitor
 		status = new Circle();
@@ -58,8 +82,8 @@ public class ServerView {
 		upperPane.setAlignment(Pos.TOP_LEFT);
 		upperPane.setVgap(10);
 		upperPane.setHgap(10);
-		upperPane.add(status, 35, 26);
-		upperPane.add(onlineOffline, 36, 26);
+		upperPane.add(status, 35, 23);
+		upperPane.add(onlineOffline, 36, 23);
 		
 		//bottomPane
 		GridPane bottomPane = new GridPane();
@@ -78,6 +102,7 @@ public class ServerView {
 		scene.getStylesheets().add("ServerStylesheet");
 		primaryStage.setTitle("Server-Applikation");
 		primaryStage.setResizable(false);
+		primaryStage.getIcons().add(new Image("images/ServerIcon.png"));
 		primaryStage.setScene(scene);
 	}
 	

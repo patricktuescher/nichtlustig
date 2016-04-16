@@ -31,8 +31,17 @@ public class ServerController {
 			public void handle(ActionEvent event) {
 				view.status.setId("redCircle");
 				view.onlineOffline.setText("Offline");
-				view.onlineOffline.setId("offline");
-				
+				view.onlineOffline.setId("offline");	
+			}
+			
+			
+		});
+		
+		view.MIclose.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				view.primaryStage.close();	
 			}
 			
 			
