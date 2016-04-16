@@ -190,12 +190,13 @@ public class ClientView {
 		//Textfield Punkte Player 1
 		TextField scorePlayer1 = new TextField("12");
 		
+		///////////////// CARDS //////////////////////////
+		
 		//Height and Width of the cards
-				int cardheight = 100;
-				int cardwidth = 100;
+		int cardheight = 100;
+		int cardwidth = 100;
 		
 		//Image Array
-		
 		int colIndex = 1;
 		int rowIndex = 20;
 				
