@@ -17,7 +17,7 @@ public class ClientView {
 	
 	Stage primaryStage;
 	ClientModel model;
-	protected Button b_login;
+	protected Button b_login, b_register, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln, b_backGame ;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
 	
 	public ClientView(Stage primaryStage, ClientModel model){
@@ -71,7 +71,7 @@ public class ClientView {
 		//b_login.setOnAction(handleButtonAction(e));
 		
 		//Button Register
-		Button b_register = new Button("Register");
+		b_register = new Button("Register");
 		innerPaneLogin.add(b_register, 6, 51);
 		b_register.setId("b-login");
 		
@@ -94,29 +94,29 @@ public class ClientView {
 		
 		
 		//Button Zurück
-		Button b_back = new Button("Zurück");
-		innerPaneLobby.add(b_back, 80, 60);
-		b_back.setId("b-login");
+		b_backLobby = new Button("Zurück");
+		innerPaneLobby.add(b_backLobby, 80, 60);
+		b_backLobby.setId("b-login");
 		
 		//Button Statistik
-		Button b_statistic = new Button("Statistik");
+		b_statistic = new Button("Statistik");
 		innerPaneLobby.add(b_statistic, 40, 30);
 		b_statistic.setId("b-login");
 		
 		
 		//Button Regeln 
-		Button b_rules = new Button("Regeln");
+		b_rules = new Button("Regeln");
 		innerPaneLobby.add(b_rules, 60, 30);
 		b_rules.setId("b-login");
 		
 		//Button Spiel erstellen 
-		Button b_spielErstellen = new Button("Spiel erstellen");
+		b_spielErstellen = new Button("Spiel erstellen");
 		innerPaneLobby.add(b_spielErstellen, 20, 30);
 		b_spielErstellen.setId("b-login");
 		
 		
 		//Button Spiel beitreten 
-		Button b_spielBeitreten = new Button("Spiel beitreten");
+		b_spielBeitreten = new Button("Spiel beitreten");
 		innerPaneLobby.add(b_spielBeitreten, 40, 50);
 		b_spielBeitreten.setId("b-login");
 		
@@ -138,7 +138,7 @@ public class ClientView {
 		topPaneStatistik.setCenter(innerPaneStatistik);
 		
 		//Button Zurück
-		Button b_backStatistik = new Button("Zurück");
+		b_backStatistik = new Button("Zurück");
 		innerPaneStatistik.add(b_backStatistik, 80, 60);
 		b_backStatistik.setId("b-login");
 				
@@ -160,7 +160,7 @@ public class ClientView {
 		topPaneRules.setCenter(innerPaneRegeln);
 
 		//Button Zurück
-		Button b_backRegeln = new Button("Zurück");
+		b_backRegeln = new Button("Zurück");
 		innerPaneRegeln.add(b_backRegeln, 80, 60);
 		b_backRegeln.setId("b-login");
 				
@@ -181,8 +181,8 @@ public class ClientView {
 		topPaneGame.setCenter(innerPaneGame);
 
 		//Button Zurück
-		Button b_backGame = new Button("Zurück");
-		innerPaneGame.add(b_backGame, 80, 60);
+		b_backGame = new Button("Zurück");
+		innerPaneGame.add(b_backGame, 100, 60);
 		b_backGame.setId("b-login");
 				
 		//Scene Regeln
