@@ -27,7 +27,7 @@ public class ClientView {
 	//Image Array
 	protected final int colIndex = 22;
 	protected final int rowIndex = 10;	
-	protected ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino;
+	protected ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino, cardTod;
 			
 	
 	public ClientView(Stage primaryStage, ClientModel model){
@@ -254,6 +254,20 @@ public class ClientView {
 				innerPaneGame.add(cardDino[i-1], colIndex+i, rowIndex+5);
 				}		
 		
+		cardTod = new ImageView[6];
+		for (int i = 1; i < 7; i++){
+				Image imageTod = new Image("images/Karte_Tod_"+i+".png");
+				cardTod[i-1] = new ImageView();
+				cardTod[i-1].setImage(imageTod);
+				cardTod[i-1].setFitHeight(cardheight);
+				cardTod[i-1].setFitWidth(cardwidth);
+				if(i<4){
+					innerPaneGame.add(cardTod[i-1], colIndex-2, rowIndex+i);
+				}
+				else{
+					innerPaneGame.add(cardTod[i-1], colIndex-1, rowIndex+i-3);
+				}
+				}		
 		
 	
 		primaryStage.setTitle("Client-Applikation");
