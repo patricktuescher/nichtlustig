@@ -20,93 +20,96 @@ public class ClientView {
 		this.primaryStage = primaryStage;
 		this.model = model;
 		///////////////// LOGIN FENSTER //////////////////////////
-		//TopPane 
-		BorderPane topPane = new BorderPane();
+		//TopPane  Login
+		BorderPane topPaneLogin = new BorderPane();
+		topPaneLogin.setId("topPaneLogin"); //ID for CSS
 		
-		//InnerPane
-		GridPane innerPane = new GridPane();
-		innerPane.setAlignment(Pos.TOP_CENTER);
-		innerPane.setHgap(10);
-		innerPane.setVgap(10);
-		topPane.setCenter(innerPane);
+		
+		
+		//InnerPane Login
+		GridPane innerPaneLogin = new GridPane();
+		innerPaneLogin.setAlignment(Pos.TOP_CENTER);
+		innerPaneLogin.setHgap(10);
+		innerPaneLogin.setVgap(10);
+		topPaneLogin.setCenter(innerPaneLogin);
 		
 		//Label Username
 		Label lb_username = new Label("Username: ");
-		innerPane.add(lb_username, 0, 45);
+		innerPaneLogin.add(lb_username, 0, 45);
 		lb_username.setId("lb-username");
 		
 		//Label Password
 		Label lb_password = new Label("Passwort: ");
-		innerPane.add(lb_password, 0, 48);
+		innerPaneLogin.add(lb_password, 0, 48);
 		lb_password.setId("lb-password");
 		
 		//Textbox Username
 		TextField tf_username = new TextField();
-		innerPane.add(tf_username, 3, 45);
+		innerPaneLogin.add(tf_username, 3, 45);
 		tf_username.setId("pf-login");
 		tf_username.setText("Benutzername");
 		
 		//Passwortbox Password
 		PasswordField pf_password = new PasswordField();
-		innerPane.add(pf_password, 3, 48);
+		innerPaneLogin.add(pf_password, 3, 48);
 		pf_password.setId("pf-login");
 		pf_password.setText("Passwort");
 		
 		//Button Login
 		Button b_login = new Button("Login");
-		innerPane.add(b_login, 3, 51);
+		innerPaneLogin.add(b_login, 3, 51);
 		b_login.setId("b-login");
 		//b_login.setOnAction(handleButtonAction(e));
 		
 		//Scene Login
-		Scene scene = new Scene(topPane, 1200, 800);
-		scene.getStylesheets().add("ClientStylesheet");
+		Scene sceneLogin = new Scene(topPaneLogin, 1200, 800);
+		sceneLogin.getStylesheets().add("ClientStylesheet");
 		
 		
 		///////////////// LOBBY FENSTER //////////////////////////
 		
 		//TopPane Lobby
-		BorderPane topPane1 = new BorderPane();
-		topPane1.setId("topPane1"); //ID for CSS
+		BorderPane topPaneLobby = new BorderPane();
+		topPaneLobby.setId("topPaneLobby"); //ID for CSS
 		
 		//GridPane Lobby
-		GridPane innerPane1 = new GridPane();
-		innerPane1.setHgap(10);
-		innerPane1.setVgap(10);
-		topPane1.setCenter(innerPane1);
+		GridPane innerPaneLobby = new GridPane();
+		innerPaneLobby.setHgap(10);
+		innerPaneLobby.setVgap(10);
+		topPaneLobby.setCenter(innerPaneLobby);
 		
 		
 		//Button Zurück
 		Button b_back = new Button("Zurück");
-		innerPane1.add(b_back, 80, 60);
+		innerPaneLobby.add(b_back, 80, 60);
 		b_back.setId("b-login");
 		
 		//Button Statistik
 		Button b_statistic = new Button("Statistik");
-		innerPane1.add(b_statistic, 40, 30);
+		innerPaneLobby.add(b_statistic, 40, 30);
 		b_statistic.setId("b-login");
 		
 		
 		//Button Regeln 
 		Button b_rules = new Button("Regeln");
-		innerPane1.add(b_rules, 60, 30);
+		innerPaneLobby.add(b_rules, 60, 30);
 		b_rules.setId("b-login");
 		
 		//Button Spiel erstellen 
 		Button b_spielErstellen = new Button("Spiel erstellen");
-		innerPane1.add(b_spielErstellen, 20, 30);
+		innerPaneLobby.add(b_spielErstellen, 20, 30);
 		b_spielErstellen.setId("b-login");
 		
 		
 		//Button Spiel beitreten 
 		Button b_spielBeitreten = new Button("Spiel beitreten");
-		innerPane1.add(b_spielBeitreten, 40, 50);
+		innerPaneLobby.add(b_spielBeitreten, 40, 50);
 		b_spielBeitreten.setId("b-login");
 		
 		
 		//Scene Lobby
-		Scene scene1 = new Scene(topPane1, 1200, 800);
-		scene1.getStylesheets().add("ClientStylesheet");
+		Scene sceneLobby = new Scene(topPaneLobby, 1200, 800);
+		sceneLobby.getStylesheets().add("ClientStylesheet");
 		
 		///////////////// STATISTIK FENSTER //////////////////////////
 		
@@ -150,12 +153,35 @@ public class ClientView {
 		//Scene Regeln
 		Scene sceneRegeln = new Scene(topPaneRules, 1200, 800);
 		sceneRegeln.getStylesheets().add("ClientStylesheet");
+		
+		///////////////// GAME FENSTER //////////////////////////
+		
+		//TopPane Regeln
+		BorderPane topPaneGame = new BorderPane();
+		topPaneGame.setId("topPaneGame"); //ID for CSS
+
+		//GridPane Regeln
+		GridPane innerPaneGame= new GridPane();
+		innerPaneGame.setHgap(10);
+		innerPaneGame.setVgap(10);
+		topPaneGame.setCenter(innerPaneGame);
+
+		//Button Zurück
+		Button b_backGame = new Button("Zurück");
+		innerPaneGame.add(b_backGame, 80, 60);
+		b_backGame.setId("b-login");
+				
+		//Scene Regeln
+		Scene sceneGame = new Scene(topPaneGame, 1200, 800);
+		sceneGame.getStylesheets().add("ClientStylesheet");
 				
 				
 		
+		
+		
 	
 		primaryStage.setTitle("Client-Applikation");
-		primaryStage.setScene(sceneRegeln);
+		primaryStage.setScene(sceneLobby);
 		primaryStage.setResizable(false);
 		
 		

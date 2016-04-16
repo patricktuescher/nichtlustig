@@ -3,7 +3,16 @@
 				-fx-background-image: url(images/loginHintergrund.png);		
 }
 
-#topPane1{
+#topPaneGame{
+	-fx-background-image: url(images/loginHintergrund.png);
+}
+
+
+#topPaneLogin{
+	-fx-background-image: url(images/loginHintergrund.png);
+}
+
+#topPaneLobby{
 	-fx-background-image: url(images/lobbyHintergrund.png);
 }
 
@@ -14,6 +23,11 @@
 #topPaneRules{
 	-fx-background-image: url(images/DE_RegelnHintergrund.png);
 }
+
+#topPaneGame{
+	-fx-background-image: url(images/loginHintergrund.png);
+}
+
 
 // http://fxexperience.com/2011/12/styling-fx-buttons-with-css/
 
