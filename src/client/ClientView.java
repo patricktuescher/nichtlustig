@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -188,6 +190,64 @@ public class ClientView {
 		//Textfield Punkte Player 1
 		TextField scorePlayer1 = new TextField("12");
 		
+		//Height and Width of the cards
+				int cardheight = 100;
+				int cardwidth = 100;
+		
+		//Image Array
+		
+		int colIndex = 1;
+		int rowIndex = 20;
+				
+		Image[] cardRieb = new Image[5];
+		for (int i = 1; i < 6; i++){
+				cardRieb[i-1] = new Image("images/Karte_Rieb_"+i+".png");
+				ImageView viewtestcard = new ImageView();
+				viewtestcard.setImage(cardRieb[i-1]);
+				viewtestcard.setFitHeight(cardheight);
+				viewtestcard.setFitWidth(cardwidth);
+				innerPaneGame.add(viewtestcard, colIndex+i, rowIndex+1);
+			}
+				
+		Image[] cardYeti = new Image[5];
+		for (int i = 1; i < 6; i++){
+				cardYeti[i-1] = new Image("images/Karte_Yeti_"+i+".png");
+				ImageView viewtestcard1 = new ImageView();
+				viewtestcard1.setImage(cardYeti[i-1]);
+				viewtestcard1.setFitHeight(cardheight);
+				viewtestcard1.setFitWidth(cardwidth);
+					innerPaneGame.add(viewtestcard1, colIndex+i, rowIndex+2);
+				}
+				
+		Image[] cardLemming = new Image[5];
+		for (int i = 1; i < 6; i++){
+				cardLemming[i-1] = new Image("images/Karte_Lemming_"+i+".png");
+				ImageView viewtestcard = new ImageView();
+				viewtestcard.setImage(cardLemming[i-1]);
+				viewtestcard.setFitHeight(cardheight);
+				viewtestcard.setFitWidth(cardwidth);
+				innerPaneGame.add(viewtestcard, colIndex+i, rowIndex+3);
+				}
+				
+		Image[] cardProf = new Image[5];
+		for (int i = 1; i < 6; i++){
+				cardProf[i-1] = new Image("images/Karte_Prof_"+i+".png");
+				ImageView viewtestcard = new ImageView();
+				viewtestcard.setImage(cardProf[i-1]);
+				viewtestcard.setFitHeight(cardheight);
+				viewtestcard.setFitWidth(cardwidth);
+				innerPaneGame.add(viewtestcard, colIndex+i, rowIndex+4);
+				}
+				
+		Image[] cardDino = new Image[5];
+		for (int i = 1; i < 6; i++){
+				cardDino[i-1] = new Image("images/Karte_Dino_"+i+".png");
+				ImageView viewtestcard = new ImageView();
+				viewtestcard.setImage(cardDino[i-1]);
+				viewtestcard.setFitHeight(cardheight);
+				viewtestcard.setFitWidth(cardwidth);
+				innerPaneGame.add(viewtestcard, colIndex+i, rowIndex+5);
+				}
 		
 		
 	
