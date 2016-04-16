@@ -22,6 +22,7 @@ public class ServerView {
 	protected ServerModel model;
 	protected Button ConnectServer, DisconnectServer;
 	protected Circle status;
+	protected Label onlineOffline;
 	
 	public ServerView(Stage primaryStage, ServerModel model){
 		this.primaryStage = primaryStage;
@@ -38,6 +39,10 @@ public class ServerView {
 		status.setRadius(30);
 		status.setId("redCircle");
 		
+		//Online-Offline-Label
+		onlineOffline = new Label("Offline");
+		onlineOffline.setId("offline");
+		
 		
 		//Connect- and Disconnect Buttons
 		ConnectServer = new Button("Connect to Server");
@@ -47,15 +52,27 @@ public class ServerView {
 		DisconnectServer.setId("ServerButtons");
 		DisconnectServer.setPrefWidth(500);
 		
+		//upperPane
+		GridPane upperPane = new GridPane();
+		upperPane.setPrefHeight(500);
+		upperPane.setAlignment(Pos.TOP_LEFT);
+		upperPane.setVgap(10);
+		upperPane.setHgap(10);
+		upperPane.add(status, 35, 26);
+		upperPane.add(onlineOffline, 36, 26);
 		
-		//innerPane
-		GridPane innerPane = new GridPane();
-		innerPane.setAlignment(Pos.TOP_CENTER);
-		innerPane.setVgap(10);
-		innerPane.add(status, 0, 27);
-		innerPane.add(ConnectServer, 0, 50);
-		innerPane.add(DisconnectServer, 0, 52);
-		topPane.setCenter(innerPane);
+		//bottomPane
+		GridPane bottomPane = new GridPane();
+		bottomPane.setAlignment(Pos.TOP_CENTER);
+		bottomPane.setVgap(10);
+		bottomPane.add(ConnectServer, 0, 0);
+		bottomPane.add(DisconnectServer, 0, 1);
+		
+		//Vertical-Box
+		VBox centerBox = new VBox();
+		centerBox.getChildren().add(upperPane);
+		centerBox.getChildren().add(bottomPane);
+		topPane.setCenter(centerBox);
 		
 		Scene scene = new Scene(topPane);
 		scene.getStylesheets().add("ServerStylesheet");
