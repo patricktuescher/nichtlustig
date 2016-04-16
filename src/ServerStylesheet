@@ -45,13 +45,8 @@
 	}
 
 #redCircle{
-	-fx-fill: white;
+	-fx-fill: red;
 }
-#statusText{
--fx-font-size: 11pt;
-    -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: red;
-    -fx-opacity: 1;
-
-
-}
+#greenCircle{
+	-fx-fill: green;
+}		

@@ -39,9 +39,10 @@ public class ServerView {
 		status.setRadius(22);
 		status.setId("redCircle");
 		
-		//Offline-Online status label
-		statusText = new Label("Offline");
-		statusText.setId("statusText");
+		//Online-Offline-Label
+		onlineOffline = new Label("Offline");
+		onlineOffline.setId("offline");
+		
 		
 		//Center-pane
 		VBox centerPane = new VBox(20);
@@ -59,16 +60,18 @@ public class ServerView {
 		DisconnectServer.setPrefWidth(500);
 		
 		
-		//innerPane
-		GridPane innerPane = new GridPane();
-		innerPane.setAlignment(Pos.TOP_LEFT);
-		innerPane.setVgap(10);
-		innerPane.setHgap(10);
-		innerPane.add(status, 26, 27);
-		innerPane.add(statusText, 27, 27);
-		innerPane.add(ConnectServer, 26, 50);
-		innerPane.add(DisconnectServer, 26, 51);
-		topPane.setCenter(centerPane);
+		//bottomPane
+		GridPane bottomPane = new GridPane();
+		bottomPane.setAlignment(Pos.TOP_CENTER);
+		bottomPane.setVgap(10);
+		bottomPane.add(ConnectServer, 0, 0);
+		bottomPane.add(DisconnectServer, 0, 1);
+		
+		//Vertical-Box
+		VBox centerBox = new VBox();
+		centerBox.getChildren().add(upperPane);
+		centerBox.getChildren().add(bottomPane);
+		topPane.setCenter(centerBox);
 		
 		Scene scene = new Scene(topPane);
 		scene.getStylesheets().add("ServerStylesheet");
