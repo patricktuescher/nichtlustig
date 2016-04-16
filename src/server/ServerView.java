@@ -27,6 +27,8 @@ public class ServerView {
 	protected Circle status;
 	protected Label onlineOffline;
 	protected MenuItem MIclose, MIdeutsch, MIenglisch;
+	private final int windowHeight = 800;
+	private final int windowWidth = 1200;
 	
 	public ServerView(Stage primaryStage, ServerModel model){
 		this.primaryStage = primaryStage;
@@ -38,8 +40,8 @@ public class ServerView {
 		//Setting up BorderPane
 		BorderPane topPane = new BorderPane();
 		topPane.setId("topPane"); //ID for CSS
-		topPane.setPrefHeight(800);
-		topPane.setPrefWidth(1200);
+		topPane.setPrefHeight(windowHeight);
+		topPane.setPrefWidth(windowWidth);
 	
 		
 		//Menu-Bar
