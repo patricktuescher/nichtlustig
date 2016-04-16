@@ -102,7 +102,7 @@ public class ClientView {
 		b_statistic = new Button("Statistik");
 		innerPaneLobby.add(b_statistic, 40, 30);
 		b_statistic.setId("b-login");
-		
+	
 		
 		//Button Regeln 
 		b_rules = new Button("Regeln");
@@ -119,7 +119,6 @@ public class ClientView {
 		b_spielBeitreten = new Button("Spiel beitreten");
 		innerPaneLobby.add(b_spielBeitreten, 40, 50);
 		b_spielBeitreten.setId("b-login");
-		
 		
 		//Scene Lobby
 		sceneLobby = new Scene(topPaneLobby, 1200, 800);
