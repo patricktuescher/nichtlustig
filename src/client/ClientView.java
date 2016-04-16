@@ -104,15 +104,62 @@ public class ClientView {
 		b_spielBeitreten.setId("b-login");
 		
 		
-		
 		//Scene Lobby
 		Scene scene1 = new Scene(topPane1, 1200, 800);
 		scene1.getStylesheets().add("ClientStylesheet");
 		
+		///////////////// STATISTIK FENSTER //////////////////////////
 		
+		//TopPane Statistik
+		BorderPane topPaneStatistik = new BorderPane();
+		topPaneStatistik.setId("topPaneStatistik"); //ID for CSS
+		
+		//GridPane Statistik
+		GridPane innerPaneStatistik = new GridPane();
+		innerPaneStatistik.setHgap(10);
+		innerPaneStatistik.setVgap(10);
+		topPaneStatistik.setCenter(innerPaneStatistik);
+		
+		//Button Zurück
+		Button b_backStatistik = new Button("Zurück");
+		innerPaneStatistik.add(b_backStatistik, 80, 60);
+		b_backStatistik.setId("b-login");
+				
+		//Scene Lobby
+		Scene sceneStatistik = new Scene(topPaneStatistik, 1200, 800);
+		sceneStatistik.getStylesheets().add("ClientStylesheet");
+		
+		
+		///////////////// REGELN FENSTER //////////////////////////
+		
+		//TopPane Regeln
+		BorderPane topPaneRules = new BorderPane();
+		topPaneRules.setId("topPaneRules"); //ID for CSS
+
+		//GridPane Regeln
+		GridPane innerPaneRegeln= new GridPane();
+		innerPaneRegeln.setHgap(10);
+		innerPaneRegeln.setVgap(10);
+		topPaneRules.setCenter(innerPaneRegeln);
+
+		//Button Zurück
+		Button b_backRegeln = new Button("Zurück");
+		innerPaneRegeln.add(b_backRegeln, 80, 60);
+		b_backRegeln.setId("b-login");
+				
+		//Scene Regeln
+		Scene sceneRegeln = new Scene(topPaneRules, 1200, 800);
+		sceneRegeln.getStylesheets().add("ClientStylesheet");
+				
+				
+		
+	
 		primaryStage.setTitle("Client-Applikation");
-		primaryStage.setScene(scene1);
+		primaryStage.setScene(sceneRegeln);
 		primaryStage.setResizable(false);
+		
+		
+		
 	}
 	
 	public void start(){

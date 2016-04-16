@@ -7,6 +7,14 @@
 	-fx-background-image: url(images/lobbyHintergrund.png);
 }
 
+#topPaneStatistik{
+	-fx-background-image: url(images/DE_StatistikHintergrund.png);
+}
+
+#topPaneRules{
+	-fx-background-image: url(images/DE_RegelnHintergrund.png);
+}
+
 // http://fxexperience.com/2011/12/styling-fx-buttons-with-css/
 
 #b-login{
