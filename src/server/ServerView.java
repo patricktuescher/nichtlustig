@@ -35,7 +35,7 @@ public class ServerView {
 		
 		//Offline-Online Status monitor
 		status = new Circle();
-		status.setRadius(22);
+		status.setRadius(30);
 		status.setId("redCircle");
 		
 		
@@ -51,10 +51,10 @@ public class ServerView {
 		//innerPane
 		GridPane innerPane = new GridPane();
 		innerPane.setAlignment(Pos.TOP_CENTER);
-		innerPane.setVgap(20);
-		innerPane.add(status, 0, 10);
-		innerPane.add(ConnectServer, 0, 25);
-		innerPane.add(DisconnectServer, 0, 26);
+		innerPane.setVgap(10);
+		innerPane.add(status, 0, 27);
+		innerPane.add(ConnectServer, 0, 50);
+		innerPane.add(DisconnectServer, 0, 52);
 		topPane.setCenter(innerPane);
 		
 		Scene scene = new Scene(topPane);
