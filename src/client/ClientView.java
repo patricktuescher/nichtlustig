@@ -18,6 +18,7 @@ public class ClientView {
 	Stage primaryStage;
 	ClientModel model;
 	protected Button b_login, b_register, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln, b_backGame ;
+	protected Label scorePlayer1, scorePlayer2;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
 	
 	//Height and Width of the cards
@@ -105,33 +106,33 @@ public class ClientView {
 		
 		//Button Zurück
 		b_backLobby = new Button("Zurück");
-		b_backLobby.setPrefSize(600, 200);
+		b_backLobby.setPrefSize(500, 200);
 		innerPaneLobby.add(b_backLobby, 80, 60);
 		b_backLobby.setId("b-login");
 		
 		//Button Statistik
 		b_statistic = new Button("Statistik");
-		b_statistic.setPrefSize(500, 500);
-		innerPaneLobby.add(b_statistic, 40, 30);
+		b_statistic.setPrefSize(500, 200);
+		innerPaneLobby.add(b_statistic, 10, 30);
 		b_statistic.setId("b-login");
 		
 		//Button Regeln 
 		b_rules = new Button("Regeln");
-		b_rules.setPrefSize(500, 500);
+		b_rules.setPrefSize(500, 200);
 		innerPaneLobby.add(b_rules, 60, 30);
 		b_rules.setId("b-login");
 		
 		
 		//Button Spiel erstellen 
 		b_spielErstellen = new Button("Spiel erstellen");
-		b_spielErstellen.setPrefSize(500, 500);
+		b_spielErstellen.setPrefSize(500, 200);
 		innerPaneLobby.add(b_spielErstellen, 20, 30);
 		b_spielErstellen.setId("b-login");
 		
 		
 		//Button Spiel beitreten 
 		b_spielBeitreten = new Button("Spiel beitreten");
-		b_spielBeitreten.setPrefSize(500, 500);
+		b_spielBeitreten.setPrefSize(500, 200);
 		innerPaneLobby.add(b_spielBeitreten, 40, 50);
 		b_spielBeitreten.setId("b-login");
 		
@@ -198,14 +199,28 @@ public class ClientView {
 		b_backGame = new Button("Zurück");
 		innerPaneGame.add(b_backGame, 0, 0);
 		b_backGame.setId("b-login");
+		
+		//Label Punkte Player 1
+		scorePlayer1 = new Label(null);
+		innerPaneGame.add(scorePlayer1, 2, 2);
+		
+		//Label Punkte Player 2
+		scorePlayer2 = new Label(null);
+		innerPaneGame.add(scorePlayer2, 1, 5);
+		
+
+		
+		
 				
 		//Scene Regeln
 		sceneGame = new Scene(topPaneGame, 1200, 800);
 		sceneGame.getStylesheets().add("ClientStylesheet");
 				
 				
-		//Textfield Punkte Player 1
-		TextField scorePlayer1 = new TextField("12");
+		
+		
+		
+		
 		
 		///////////////// CARDS //////////////////////////
 		
