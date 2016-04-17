@@ -4,6 +4,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,7 +25,11 @@ public class ServerView {
 	protected ServerModel model;
 	protected Button ConnectServer, DisconnectServer;
 	protected Circle status;
-	protected Label statusText;
+	protected Label onlineOffline;
+	protected MenuItem MIclose, MIdeutsch, MIenglisch;
+	private final int windowHeight = 800;
+	private final int windowWidth = 1200;
+
 	
 	public ServerView(Stage primaryStage, ServerModel model){
 		this.primaryStage = primaryStage;
@@ -31,24 +38,34 @@ public class ServerView {
 		//Setting up BorderPane
 		BorderPane topPane = new BorderPane();
 		topPane.setId("topPane"); //ID for CSS
-		topPane.setPrefHeight(800);
-		topPane.setPrefWidth(1200);
+		
+		topPane.setPrefHeight(windowHeight);
+		topPane.setPrefWidth(windowWidth);
+				
+		//Menu-Bar
+		MenuBar bar = new MenuBar();
+		Menu file = new Menu("Datei");
+		Menu language = new Menu("Sprache");
+		MIdeutsch = new MenuItem("deutsch");
+		MIenglisch = new MenuItem("englisch");
+		language.getItems().addAll(MIdeutsch,MIenglisch);
+		MIclose = new MenuItem("schliessen");
+		file.getItems().add(MIclose);
+		bar.getMenus().addAll(file, language);
+				
+		//Vertical-Box
+		HBox boxForBar = new HBox();
+		boxForBar.getChildren().add(bar);
+		topPane.setTop(boxForBar);
 		
 		//Offline-Online Status monitor
 		status = new Circle();
-		status.setRadius(22);
+		status.setRadius(30);
 		status.setId("redCircle");
 		
 		//Online-Offline-Label
 		onlineOffline = new Label("Offline");
 		onlineOffline.setId("offline");
-		
-		
-		//Center-pane
-		VBox centerPane = new VBox(20);
-		centerPane.getChildren().add(status);
-		centerPane.getChildren().add(statusText);
-		centerPane.setPrefSize(400, 600);
 		
 		
 		//Connect- and Disconnect Buttons
@@ -58,6 +75,16 @@ public class ServerView {
 		DisconnectServer = new Button("Disconnect from Server");
 		DisconnectServer.setId("ServerButtons");
 		DisconnectServer.setPrefWidth(500);
+		
+		//upperPane
+		GridPane upperPane = new GridPane();
+		upperPane.setPrefHeight(500);
+		upperPane.setAlignment(Pos.TOP_LEFT);
+		upperPane.setVgap(10);
+		upperPane.setHgap(10);
+		upperPane.add(status, 35, 23);
+		upperPane.add(onlineOffline, 36, 23);
+		
 		
 		
 		//bottomPane
@@ -77,6 +104,7 @@ public class ServerView {
 		scene.getStylesheets().add("ServerStylesheet");
 		primaryStage.setTitle("Server-Applikation");
 		primaryStage.setResizable(false);
+		primaryStage.getIcons().add(new Image("images/ServerIcon.png"));
 		primaryStage.setScene(scene);
 	}
 	

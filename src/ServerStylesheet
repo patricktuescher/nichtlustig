@@ -39,9 +39,14 @@
         
      }
      
-#monitor{
+#offline{
 	-fx-font: 50px Helvetica;
-	-fx-fill: white;
+	-fx-text-fill: red;
+}
+
+#online{
+	-fx-font: 50px Helvetica;
+	-fx-text-fill: green;
 	}
 
 #redCircle{
