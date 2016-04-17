@@ -119,19 +119,20 @@ public class ClientView {
 		
 		//Button Regeln 
 		b_rules = new Button("Regeln");
-		b_rules.setPrefWidth(300);
-		innerPaneLobby.add(b_rules, 30, 30);
+		b_rules.setPrefSize(500, 200);
+		innerPaneLobby.add(b_rules, 60, 30);
 		b_rules.setId("b-login");
 		
 		//Button Spiel erstellen 
 		b_spielErstellen = new Button("Spiel erstellen");
-		b_spielErstellen.setPrefWidth(300);
-		innerPaneLobby.add(b_spielErstellen, 10, 30);
+		b_spielErstellen.setPrefSize(500, 200);
+		innerPaneLobby.add(b_spielErstellen, 20, 30);
 		b_spielErstellen.setId("b-login");
 		
 		
 		//Button Spiel beitreten 
 		b_spielBeitreten = new Button("Spiel beitreten");
+		b_spielBeitreten.setPrefSize(500, 200);
 		innerPaneLobby.add(b_spielBeitreten, 40, 50);
 		b_spielBeitreten.setId("b-login");
 		
@@ -199,13 +200,24 @@ public class ClientView {
 		innerPaneGame.add(b_backGame, 0, 0);
 		b_backGame.setId("b-login");
 				
+		
+		//Label Punkte Player 1		
+		scorePlayer1 = new Label(null);		
+		innerPaneGame.add(scorePlayer1, 2, 2);		
+		
+		//Label Punkte Player 2		
+		scorePlayer2 = new Label(null);		
+		innerPaneGame.add(scorePlayer2, 1, 5);		
+				
+		
+		
+		
 		//Scene Regeln
 		sceneGame = new Scene(topPaneGame, 1200, 800);
 		sceneGame.getStylesheets().add("ClientStylesheet");
 				
 				
-		//Textfield Punkte Player 1
-		TextField scorePlayer1 = new TextField("12");
+
 		
 		///////////////// CARDS //////////////////////////
 		
