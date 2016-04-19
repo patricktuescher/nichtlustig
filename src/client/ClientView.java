@@ -293,7 +293,6 @@ public class ClientView {
 		primaryStage.getIcons().add(new Image("images/ClientIcon.png"));
 		
 		
-		
 	}
 	
 	public void start(){
