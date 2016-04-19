@@ -200,7 +200,7 @@ public class ClientView {
 
 		//Button Zurück
 		b_backGame = new Button("Zurück");
-		innerPaneGame.add(b_backGame, 0, 0);
+		innerPaneGame.add(b_backGame, colIndex+18, rowIndex+10);
 		b_backGame.setId("b-login");
 				
 		
