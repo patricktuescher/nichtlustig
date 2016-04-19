@@ -1,5 +1,7 @@
 package client;
 
+import java.awt.Color;
+
 import client.ClientModel;
 import client.ClientView;
 import javafx.event.ActionEvent;
@@ -340,6 +342,7 @@ public class ClientController {
 
 		///////////////// EventHandler chosen cards //////////////////////////
 		
+		
 		//EventHandler Choose cardRieb
 		for(int i = 1; i<6; i++){
 			final int d = i;
@@ -347,7 +350,8 @@ public class ClientController {
 			
 			@Override
 			public void handle(MouseEvent arg0){
-				view.cardRieb[d-1].setRotate(180);
+//				view.cardRieb[d-1].setRotate(180);
+				view.cardRieb[d-1].setOpacity(0.5);
 			}
 			
 		});
