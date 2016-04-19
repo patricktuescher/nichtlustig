@@ -158,6 +158,9 @@ public class ClientController {
 			
 		});
 		
+
+		///////////////// EventHandler zoom cards //////////////////////////		
+		
 		//EventHandler Zoom cardRieb
 
 		for(int i = 0; i<5; i++){
@@ -305,10 +308,6 @@ public class ClientController {
 			});		
 		}			
 
-
-		
-
-
 		
 		//EventHandler Zoom cardTod
 
@@ -338,20 +337,72 @@ public class ClientController {
 		
 			});		
 		}	
+
+		///////////////// EventHandler chosen cards //////////////////////////
+		
+		//EventHandler Choose cardRieb
+		for(int i = 1; i<6; i++){
+			final int d = i;
+		view.cardRieb[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
+			
+			@Override
+			public void handle(MouseEvent arg0){
+				view.cardRieb[d-1].setRotate(180);
+			}
+			
+		});
+		}		
+		
+		//EventHandler Choose cardYeti
+		for(int i = 1; i<6; i++){
+			final int d = i;
+		view.cardYeti[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
+			
+			@Override
+			public void handle(MouseEvent arg0){
+				view.cardYeti[d-1].setRotate(180);
+			}
+			
+		});
+		}
+		
+		//EventHandler Choose cardLemming
+		for(int i = 1; i<6; i++){
+			final int d = i;
+		view.cardLemming[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
+			
+			@Override
+			public void handle(MouseEvent arg0){
+				view.cardLemming[d-1].setRotate(180);
+			}
+			
+		});
+		}		
+		
+		//EventHandler Choose cardProf
+		for(int i = 1; i<6; i++){
+			final int d = i;
+		view.cardProf[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
+			
+			@Override
+			public void handle(MouseEvent arg0){
+				view.cardProf[d-1].setRotate(180);
+			}
+			
+		});
+		}		
 		
 		
-		
-		
-		
-		//EventHandler Choose DinoCards
+		//EventHandler Choose cardDino
 		for(int i = 1; i<6; i++){
 			final int d = i;
 		view.cardDino[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
 			
 			@Override
 			public void handle(MouseEvent arg0){
-				Image dinoP1 = new Image("images/Karte_Yeti_"+d+".png");
-				view.cardDino[d-1].setImage(dinoP1);
+//				Image dinoP1 = new Image("images/Karte_Yeti_"+d+".png");
+//				view.cardDino[d-1].setImage(dinoP1);
+				view.cardDino[d-1].setRotate(180);
 			}
 			
 		});
