@@ -17,7 +17,7 @@ public class ClientView {
 	
 	Stage primaryStage;
 	ClientModel model;
-	protected Button b_login, b_register, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln, b_backGame ;
+	protected Button b_login, b_register, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln, b_backGame, b_würfeln ;
 	protected Label scorePlayer1, scorePlayer2;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
 	
@@ -26,10 +26,13 @@ public class ClientView {
 	final int cardwidth = 90;
 	
 	//Image Array
-	protected final int colIndex = 22;
-	protected final int rowIndex = 10;	
+	protected final int colIndex = 13;
+	protected final int rowIndex = 6;	
 	protected ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino, cardTod;
-			
+
+	//Cube
+	ImageView cubeView;
+	protected Image[] cube;	
 	
 	public ClientView(Stage primaryStage, ClientModel model){
 		this.primaryStage = primaryStage;
@@ -285,6 +288,25 @@ public class ClientView {
 					innerPaneGame.add(cardTod[i-1], colIndex-1, rowIndex+i-3);
 				}
 		}
+		
+		
+		//Cubes
+		
+		cube = new Image[6];
+		for(int i = 1; i<7; i++){
+			cube[i-1] = new Image("images/würfel_"+i+".png");
+			}
+		int c = (int) (Math.random()*6);
+		cubeView = new ImageView();
+		cubeView.setImage(cube[c]);
+		innerPaneGame.add(cubeView, colIndex, rowIndex+8);
+		
+		
+		
+		//Button würfeln
+		b_würfeln = new Button("Würfeln");
+		innerPaneGame.add(b_würfeln, colIndex-2, rowIndex+8);
+		b_würfeln.setId("b-login");
 		
 	
 		primaryStage.setTitle("Client-Applikation");
