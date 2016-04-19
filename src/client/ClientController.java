@@ -914,6 +914,30 @@ public class ClientController {
 			
 		});
 		
+		view.cardTod[5].setOnMouseEntered(new EventHandler<MouseEvent>(){
+			
+			@Override
+			public void handle(MouseEvent arg0){
+				view.cardTod[5].toFront();
+				view.cardTod[5].setScaleX(2);
+				view.cardTod[5].setScaleY(2);
+			}
+			
+			
+		});
+
+		view.cardTod[5].setOnMouseExited(new EventHandler<MouseEvent>(){
+			
+			@Override
+			public void handle(MouseEvent arg0){
+				view.cardTod[5].toBack();
+				view.cardTod[5].setScaleX(1);
+				view.cardTod[5].setScaleY(1);
+			}
+			
+			
+		});		
+		
 		
 		//EventHandler Choose DinoCards
 		
