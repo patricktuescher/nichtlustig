@@ -147,18 +147,17 @@ public class ClientController {
 			
 		});
 
-		//EventHandler Würfel - GameScrene
-		
-		
+		//EventHandler Würfel Pink - GameScrene
 		view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
 		
 			@Override
 			public void handle(ActionEvent arg0) {
 				int c = (int) (Math.random()*6);
-				view.cubeView.setImage(view.cube[c]);
+				view.cubeViewPink.setImage(view.cubePink[c]);
 			}
 			
 		});
+	
 		
 
 		///////////////// EventHandler zoom cards //////////////////////////		
@@ -411,6 +410,15 @@ public class ClientController {
 			
 		});
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 
