@@ -319,7 +319,7 @@ public class ClientView {
 		innerPaneGame.add(cubeViewWhite1, colIndex-1, rowIndex+8);
 		
 		// Cubes white2
-		/*cubeWhite2 = new Image[5];
+		cubeWhite2 = new Image[5];
 		for(int i = 1; i<6; i++){
 			cubeWhite2[i-1] = new Image("images/Weiss_Würfel_"+i+".png");
 			}
@@ -328,7 +328,7 @@ public class ClientView {
 		cubeViewWhite2.setImage(cubeWhite2[cWhite2]);
 		cubeViewWhite2.setScaleX(0.2);
 		cubeViewWhite2.setScaleY(0.2);
-		innerPaneGame.add(cubeViewWhite2, colIndex-1, rowIndex+8);*/
+		innerPaneGame.add(cubeViewWhite2, colIndex-2, rowIndex+8);
 		
 		// Cubes black1
 		/*cubeBlack1 = new Image[5];

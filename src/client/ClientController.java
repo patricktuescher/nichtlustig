@@ -147,13 +147,21 @@ public class ClientController {
 			
 		});
 
-		//EventHandler Würfel Pink - GameScrene
+		//EventHandler Würfel  - GameScrene
 		view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
 		
 			@Override
 			public void handle(ActionEvent arg0) {
-				int c = (int) (Math.random()*6);
-				view.cubeViewPink.setImage(view.cubePink[c]);
+				// Würfel Pink
+				int a = (int) (Math.random()*6);
+				view.cubeViewPink.setImage(view.cubePink[a]);
+				//Würfel white 1
+				int b = (int) (Math.random()*5);
+				view.cubeViewWhite1.setImage(view.cubeWhite1[b]);
+				//Würfel white 2
+				int c = (int) (Math.random()*5);
+				view.cubeViewWhite2.setImage(view.cubeWhite2[c]);
+				
 			}
 			
 		});
