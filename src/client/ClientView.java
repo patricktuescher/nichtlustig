@@ -188,11 +188,12 @@ public class ClientView {
 		
 		///////////////// GAME FENSTER //////////////////////////
 		
-		//TopPane Regeln
+		//TopPane Game
 		BorderPane topPaneGame = new BorderPane();
 		topPaneGame.setId("topPaneGame"); //ID for CSS
+		
 
-		//GridPane Regeln
+		//GridPane Game Center
 		GridPane innerPaneGame= new GridPane();
 		innerPaneGame.setHgap(10);
 		innerPaneGame.setVgap(10);
