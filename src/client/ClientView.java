@@ -305,6 +305,7 @@ public class ClientView {
 		cubeViewPink.setScaleY(0.2);
 		innerPaneGame.add(cubeViewPink, colIndex, rowIndex+8);
 		
+		
 		// Cubes white1
 		cubeWhite1 = new Image[5];
 		for(int i = 1; i<6; i++){
