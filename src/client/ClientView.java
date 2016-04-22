@@ -1,6 +1,7 @@
 package client;
 
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -46,7 +47,6 @@ public class ClientView {
 		//TopPane  Login
 		BorderPane topPaneLogin = new BorderPane();
 		topPaneLogin.setId("topPaneLogin"); //ID for CSS
-		
 		
 		
 		//InnerPane Login
@@ -162,7 +162,7 @@ public class ClientView {
 		
 		//Button Zurück
 		b_backStatistik = new Button("Zurück");
-		innerPaneStatistik.add(b_backStatistik, 80, 60);
+		innerPaneStatistik.add(b_backStatistik, colIndex+0, rowIndex+0);
 		b_backStatistik.setId("b-login");
 				
 		//Scene Lobby
