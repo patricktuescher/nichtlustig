@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class ClientView {
@@ -34,6 +35,11 @@ public class ClientView {
 	//Cube
 	ImageView cubeViewPink, cubeViewWhite1, cubeViewWhite2, cubeViewBlack1, cubeViewBlack2, cubeViewRed1, cubeViewRed2;
 	protected Image[] cubePink, cubeWhite1, cubeWhite2, cubeBlack1, cubeBlack2, cubeRed1, cubeRed2;	
+	
+	//Height and Width of cubes
+	final int cubeheight = 60;
+	final int cubewidth = 60;
+	
 	
 	public ClientView(Stage primaryStage, ClientModel model){
 		this.primaryStage = primaryStage;
@@ -198,26 +204,41 @@ public class ClientView {
 		topPaneGame.setId("topPaneGame"); //ID for CSS
 		
 
+		//HBox Game Top
+		HBox innertopPaneGame = new HBox();
+		innertopPaneGame.setMinHeight(150);
+		topPaneGame.setTop(innertopPaneGame);
+		
+		//HBox Game Bottom
+		HBox bottomPaneGame = new HBox();
+		bottomPaneGame.setMinHeight(120);
+		topPaneGame.setBottom(bottomPaneGame);
+
+		
+		
 		//GridPane Game Center
 		GridPane innerPaneGame= new GridPane();
-		innerPaneGame.setHgap(10);
-		innerPaneGame.setVgap(10);
+		innerPaneGame.setHgap(5);
+		innerPaneGame.setVgap(5);
+		innerPaneGame.setPadding(new Insets(0, 0, 0, 200));
+		innerPaneGame.setGridLinesVisible(true);
 		topPaneGame.setCenter(innerPaneGame);		
 		
 
 		//Button Zurück
 		b_backGame = new Button("Zurück");
-		innerPaneGame.add(b_backGame, colIndex+18, rowIndex+15);
 		b_backGame.setId("b-login");
+		bottomPaneGame.getChildren().add(b_backGame);
+		
 				
 		
-		//Label Punkte Player 1		
-		scorePlayer1 = new Label(null);		
-		innerPaneGame.add(scorePlayer1, 2, 2);		
-		
-		//Label Punkte Player 2		
-		scorePlayer2 = new Label(null);		
-		innerPaneGame.add(scorePlayer2, 1, 5);		
+//		//Label Punkte Player 1		
+//		scorePlayer1 = new Label(null);		
+//		innerPaneGame.add(scorePlayer1, 2, 2);		
+//		
+//		//Label Punkte Player 2		
+//		scorePlayer2 = new Label(null);		
+//		innerPaneGame.add(scorePlayer2, 1, 5);		
 				
 		
 		
@@ -238,7 +259,7 @@ public class ClientView {
 				cardRieb[i-1].setImage(imageRieb);
 				cardRieb[i-1].setFitHeight(cardheight);
 				cardRieb[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardRieb[i-1], colIndex+i, rowIndex+1);
+				innerPaneGame.add(cardRieb[i-1], 5+i, 2);
 			}
 				
 		cardYeti = new ImageView[5];
@@ -248,7 +269,7 @@ public class ClientView {
 				cardYeti[i-1].setImage(imageYeti);
 				cardYeti[i-1].setFitHeight(cardheight);
 				cardYeti[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardYeti[i-1], colIndex+i, rowIndex+2);
+				innerPaneGame.add(cardYeti[i-1], 5+i, 4);
 				}
 		
 		cardLemming = new ImageView[5];
@@ -258,7 +279,7 @@ public class ClientView {
 				cardLemming[i-1].setImage(imageLemming);
 				cardLemming[i-1].setFitHeight(cardheight);
 				cardLemming[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardLemming[i-1], colIndex+i, rowIndex+3);
+				innerPaneGame.add(cardLemming[i-1], 5+i, 6);
 				}
 
 		cardProf = new ImageView[5];
@@ -268,7 +289,7 @@ public class ClientView {
 				cardProf[i-1].setImage(imageYeti);
 				cardProf[i-1].setFitHeight(cardheight);
 				cardProf[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardProf[i-1], colIndex+i, rowIndex+4);
+				innerPaneGame.add(cardProf[i-1], 5+i, 8);
 				}
 		
 		cardDino = new ImageView[5];
@@ -278,7 +299,7 @@ public class ClientView {
 				cardDino[i-1].setImage(imageDino);
 				cardDino[i-1].setFitHeight(cardheight);
 				cardDino[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardDino[i-1], colIndex+i, rowIndex+5);
+				innerPaneGame.add(cardDino[i-1], 5+i, 10);
 				}		
 		
 		cardTod = new ImageView[6];		
@@ -289,10 +310,10 @@ public class ClientView {
 				cardTod[i-1].setFitHeight(cardheight);		
 				cardTod[i-1].setFitWidth(cardwidth);		
 				if(i<4){		
-					innerPaneGame.add(cardTod[i-1], colIndex-2, rowIndex+i);		
+					innerPaneGame.add(cardTod[i-1], 2, 2*i);		
 				}		
 				else{		
-					innerPaneGame.add(cardTod[i-1], colIndex-1, rowIndex+i-3);
+					innerPaneGame.add(cardTod[i-1], 4, 2*(i-3)); 
 				}
 		}
 		
@@ -308,10 +329,9 @@ public class ClientView {
 		int cPink = (int) (Math.random()*6);
 		cubeViewPink = new ImageView();
 		cubeViewPink.setImage(cubePink[cPink]);
-		cubeViewPink.setScaleX(0.2);
-		cubeViewPink.setScaleY(0.2);
-		innerPaneGame.add(cubeViewPink, colIndex, rowIndex+8);
-		
+		cubeViewPink.setFitHeight(cubeheight);
+		cubeViewPink.setFitWidth(cubewidth);
+		bottomPaneGame.getChildren().add(cubeViewPink);
 		
 		// Cubes white1
 		cubeWhite1 = new Image[5];
@@ -321,9 +341,9 @@ public class ClientView {
 		int cWhite1 = (int) (Math.random()*5);
 		cubeViewWhite1 = new ImageView();
 		cubeViewWhite1.setImage(cubeWhite1[cWhite1]);
-		cubeViewWhite1.setScaleX(0.2);
-		cubeViewWhite1.setScaleY(0.2);
-		innerPaneGame.add(cubeViewWhite1, colIndex-1, rowIndex+8);
+		cubeViewWhite1.setFitHeight(cubeheight);
+		cubeViewWhite1.setFitWidth(cubewidth);
+		bottomPaneGame.getChildren().add(cubeViewWhite1);
 		
 		// Cubes white2
 		cubeWhite2 = new Image[5];
@@ -333,9 +353,9 @@ public class ClientView {
 		int cWhite2 = (int) (Math.random()*5);
 		cubeViewWhite2 = new ImageView();
 		cubeViewWhite2.setImage(cubeWhite2[cWhite2]);
-		cubeViewWhite2.setScaleX(0.2);
-		cubeViewWhite2.setScaleY(0.2);
-		innerPaneGame.add(cubeViewWhite2, colIndex-2, rowIndex+8);
+		cubeViewWhite2.setFitHeight(cubeheight);
+		cubeViewWhite2.setFitWidth(cubewidth);
+		bottomPaneGame.getChildren().add(cubeViewWhite2);
 		
 		// Cubes black1
 		/*cubeBlack1 = new Image[5];
@@ -345,8 +365,8 @@ public class ClientView {
 		int cBlack1 = (int) (Math.random()*5);
 		cubeViewBlack1 = new ImageView();
 		cubeViewBlack1.setImage(cubeBlack1[cBlack1]);
-		cubeViewBlack1.setScaleX(0.2);
-		cubeViewBlack1.setScaleY(0.2);
+		cubeViewPink.setFitHeight(cubeheight);
+		cubeViewPink.setFitWidth(cubewidth);
 		innerPaneGame.add(cubeViewBlack1, colIndex-1, rowIndex+8);*/
 		
 		// Cubes black2
@@ -357,8 +377,8 @@ public class ClientView {
 		int cBlack2 = (int) (Math.random()*5);
 		cubeViewBlack2 = new ImageView();
 		cubeViewBlack2.setImage(cubeBlack2[cBlack2]);
-		cubeViewBlack2.setScaleX(0.2);
-		cubeViewBlack2.setScaleY(0.2);
+		cubeViewPink.setFitHeight(cubeheight);
+		cubeViewPink.setFitWidth(cubewidth);
 		innerPaneGame.add(cubeViewBlack2, colIndex-1, rowIndex+8);*/
 		
 		
@@ -370,8 +390,8 @@ public class ClientView {
 		int cRed1 = (int) (Math.random()*5);
 		cubeViewRed1 = new ImageView();
 		cubeViewRed1.setImage(cubeRed1[cRed1]);
-		cubeViewRed1.setScaleX(0.2);
-		cubeViewRed1.setScaleY(0.2);
+		cubeViewPink.setFitHeight(cubeheight);
+		cubeViewPink.setFitWidth(cubewidth);
 		innerPaneGame.add(cubeViewRed1, colIndex-1, rowIndex+8);*/
 		
 		
@@ -383,8 +403,8 @@ public class ClientView {
 		int cRed2 = (int) (Math.random()*5);
 		cubeViewRed2 = new ImageView();
 		cubeViewRed2.setImage(cubeRed2[cRed2]);
-		cubeViewRed2.setScaleX(0.2);
-		cubeViewRed2.setScaleY(0.2);
+		cubeViewPink.setFitHeight(cubeheight);
+		cubeViewPink.setFitWidth(cubewidth);
 		innerPaneGame.add(cubeViewRed2, colIndex-1, rowIndex+8);*/
 	
 		
@@ -392,7 +412,7 @@ public class ClientView {
 		
 		//Button würfeln
 		b_würfeln = new Button("Würfeln");
-		innerPaneGame.add(b_würfeln, colIndex-2, rowIndex+8);
+		bottomPaneGame.getChildren().add(b_würfeln);
 		b_würfeln.setId("b-login");
 		
 		
