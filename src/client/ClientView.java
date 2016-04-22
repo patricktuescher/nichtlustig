@@ -355,7 +355,7 @@ public class ClientView {
 		cubeViewWhite2.setImage(cubeWhite2[cWhite2]);
 		cubeViewWhite2.setFitHeight(cubeheight);
 		cubeViewWhite2.setFitWidth(cubewidth);
-//		bottomPaneGame.getChildren().add(cubeViewWhite2);
+
 
 		
 		// Cubes black1
