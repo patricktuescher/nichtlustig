@@ -161,7 +161,18 @@ public class ClientController {
 				//Würfel white 2
 				int c = (int) (Math.random()*5);
 				view.cubeViewWhite2.setImage(view.cubeWhite2[c]);
-				
+				//Würfel red 1
+				int d= (int) (Math.random()*5);
+				view.cubeViewRed1.setImage(view.cubeRed1[d]);
+				//Würfel red 2
+				int e = (int) (Math.random()*5);
+				view.cubeViewRed2.setImage(view.cubeRed2[e]);
+				//Würfel black 1
+				int f = (int) (Math.random()*5);
+				view.cubeViewBlack1.setImage(view.cubeBlack1[f]);
+				//Würfel black 2
+				int g = (int) (Math.random()*5);
+				view.cubeViewBlack2.setImage(view.cubeBlack2[g]);
 			}
 			
 		});
