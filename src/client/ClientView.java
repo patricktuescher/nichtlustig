@@ -100,45 +100,50 @@ public class ClientView {
 		BorderPane topPaneLobby = new BorderPane();
 		topPaneLobby.setId("topPaneLobby"); //ID for CSS
 		
+		
 		//GridPane Lobby
 		GridPane innerPaneLobby = new GridPane();
 		innerPaneLobby.setHgap(10);
 		innerPaneLobby.setVgap(10);
+		innerPaneLobby.setGridLinesVisible(true);
 		topPaneLobby.setCenter(innerPaneLobby);
 		
 		
-		//Button Zurück
-		b_backLobby = new Button("Zurück");
-		b_backLobby.setPrefWidth(300);
-		innerPaneLobby.add(b_backLobby, 55, 63);
-		b_backLobby.setId("b-login");
+		//Button Spiel erstellen 
+		b_spielErstellen = new Button("Spiel erstellen");
+		b_spielErstellen.setPrefSize(300, 200);
+		innerPaneLobby.add(b_spielErstellen, colIndex+1, rowIndex+1);
+		b_spielErstellen.setId("b-login");
+		
 		
 		//Button Statistik
 		b_statistic = new Button("Statistik");
-		b_statistic.setPrefSize(500, 200);
-		innerPaneLobby.add(b_statistic, 10, 30);
+		b_statistic.setPrefSize(300, 200);
+		innerPaneLobby.add(b_statistic, colIndex+2, rowIndex+1);
 		b_statistic.setId("b-login");
 	
 		
 		//Button Regeln 
 		b_rules = new Button("Regeln");
-		b_rules.setPrefSize(500, 200);
-		innerPaneLobby.add(b_rules, 60, 30);
+		b_rules.setPrefSize(300, 200);
+		innerPaneLobby.add(b_rules, colIndex+3, rowIndex+1);
 		b_rules.setId("b-login");
-		
-		//Button Spiel erstellen 
-		b_spielErstellen = new Button("Spiel erstellen");
-		b_spielErstellen.setPrefSize(500, 200);
-		innerPaneLobby.add(b_spielErstellen, 20, 30);
-		b_spielErstellen.setId("b-login");
 		
 		
 		//Button Spiel beitreten 
 		b_spielBeitreten = new Button("Spiel beitreten");
-		b_spielBeitreten.setPrefSize(500, 200);
-		innerPaneLobby.add(b_spielBeitreten, 40, 50);
+		b_spielBeitreten.setPrefSize(300, 200);
+		innerPaneLobby.add(b_spielBeitreten, colIndex+2, rowIndex+2);
 		b_spielBeitreten.setId("b-login");
 		
+		
+		//Button Zurück
+		b_backLobby = new Button("Zurück");
+		b_backLobby.setPrefSize(300,200);
+		innerPaneLobby.add(b_backLobby, colIndex+3, rowIndex+3);
+		b_backLobby.setId("b-login");
+				
+				
 		//Scene Lobby
 		sceneLobby = new Scene(topPaneLobby, 1200, 800);
 		sceneLobby.getStylesheets().add("ClientStylesheet");
@@ -197,7 +202,8 @@ public class ClientView {
 		GridPane innerPaneGame= new GridPane();
 		innerPaneGame.setHgap(10);
 		innerPaneGame.setVgap(10);
-		topPaneGame.setCenter(innerPaneGame);
+		topPaneGame.setCenter(innerPaneGame);		
+		
 
 		//Button Zurück
 		b_backGame = new Button("Zurück");
