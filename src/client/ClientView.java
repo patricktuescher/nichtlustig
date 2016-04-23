@@ -1,11 +1,14 @@
 package client;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -149,15 +152,29 @@ public class ClientView {
 		//Button Spiel beitreten 
 		b_spielBeitreten = new Button("Spiel beitreten");
 		b_spielBeitreten.setPrefSize(200,70);
-		innerPaneLobby.add(b_spielBeitreten, 2, 19);
+		innerPaneLobby.add(b_spielBeitreten, 2, 10);
 		b_spielBeitreten.setId("b-login");
 		
 		
 		//Button Zurück
 		b_backLobby = new Button("Zurück");
 		b_backLobby.setPrefSize(200,70);
-		innerPaneLobby.add(b_backLobby, 6, 19);
+		innerPaneLobby.add(b_backLobby, 6, 10);
 		b_backLobby.setId("b-login");
+		
+		
+		//ListView availabe games
+		ListView<String> list = new ListView<String>();
+		ObservableList<String> items =FXCollections.observableArrayList (
+		 "bisch", "druffe", "?", "?");
+		list.setItems(items);
+		list.setMinSize(100, 200);
+		list.setMaxSize(200, 200);
+		list.setId("gamelist");
+		innerPaneLobby.add(list, 2, 8);
+		
+		
+		
 				
 				
 		//Scene Lobby
@@ -177,9 +194,16 @@ public class ClientView {
 		innerPaneStatistik.setGridLinesVisible(true);
 		topPaneStatistik.setCenter(innerPaneStatistik);
 		
+		//HBox Statistik Bottom
+		HBox bottomPaneStatistik = new HBox();
+		bottomPaneStatistik.setPadding(new Insets(0,0,20,0));
+		bottomPaneStatistik.setAlignment(Pos.CENTER);
+		topPaneStatistik.setBottom(bottomPaneStatistik);
+		
 		//Button Zurück
 		b_backStatistik = new Button("Zurück");
-		innerPaneStatistik.add(b_backStatistik, colIndex+0, rowIndex+0);
+		bottomPaneStatistik.getChildren().add(b_backStatistik);
+		b_backStatistik.setPrefSize(200, 70);
 		b_backStatistik.setId("b-login");
 				
 		//Scene Lobby
@@ -189,23 +213,33 @@ public class ClientView {
 		
 		///////////////// REGELN FENSTER //////////////////////////
 		
-		//TopPane Regeln
-		BorderPane topPaneRules = new BorderPane();
-		topPaneRules.setId("topPaneRules"); //ID for CSS
+		//BorderPane Regeln
+		BorderPane topPaneRegeln = new BorderPane();
+		topPaneRegeln.setId("topPaneRules"); //ID for CS
 
 		//GridPane Regeln
 		GridPane innerPaneRegeln= new GridPane();
-		innerPaneRegeln.setHgap(10);
-		innerPaneRegeln.setVgap(10);
-		topPaneRules.setCenter(innerPaneRegeln);
+		innerPaneRegeln.setHgap(20);
+		innerPaneRegeln.setVgap(20);
+		innerPaneRegeln.setGridLinesVisible(true);
+		topPaneRegeln.setCenter(innerPaneRegeln);
+		
+		//HBox Regeln Bottom
+		HBox bottomPaneRegeln = new HBox();
+		bottomPaneRegeln.setPadding(new Insets(0,0,20,0));
+		bottomPaneRegeln.setAlignment(Pos.CENTER);
+		topPaneRegeln.setBottom(bottomPaneRegeln);
+		
+		
 
 		//Button Zurück
 		b_backRegeln = new Button("Zurück");
-		innerPaneRegeln.add(b_backRegeln, 80, 60);
+		b_backRegeln.setPrefSize(200, 70);
+		bottomPaneRegeln.getChildren().add(b_backRegeln);
 		b_backRegeln.setId("b-login");
 				
 		//Scene Regeln
-		sceneRegeln = new Scene(topPaneRules, 1200, 800);
+		sceneRegeln = new Scene(topPaneRegeln, 1200, 800);
 		sceneRegeln.getStylesheets().add("ClientStylesheet");
 		
 		///////////////// GAME FENSTER //////////////////////////
@@ -217,24 +251,26 @@ public class ClientView {
 
 		//HBox Game Top
 		HBox innertopPaneGame = new HBox();
-		innertopPaneGame.setMinHeight(150);
-		innertopPaneGame.setPadding(new Insets(0,0,0,300));
+		innertopPaneGame.setPadding(new Insets(20,0,0,350));
+		innertopPaneGame.setMinHeight(100);
+		innertopPaneGame.setMaxHeight(100);
+		innertopPaneGame.setSpacing(15);
 		topPaneGame.setTop(innertopPaneGame);
 		
-		//HBox Game Bottom
+		
+		//HBox Game Bottom 
 		HBox bottomPaneGame = new HBox();
-		bottomPaneGame.setMinHeight(120);	
 		bottomPaneGame.setPadding(new Insets(0,0,0,200));
+		bottomPaneGame.setSpacing(15);
 		topPaneGame.setBottom(bottomPaneGame);
 		
-
 		
 		
 		//GridPane Game Center
 		GridPane innerPaneGame= new GridPane();
 		innerPaneGame.setHgap(5);
 		innerPaneGame.setVgap(5);
-		innerPaneGame.setPadding(new Insets(0, 0, 0, 200));
+		innerPaneGame.setPadding(new Insets(0, 0, 100, 250));
 		innerPaneGame.setGridLinesVisible(true);
 		topPaneGame.setCenter(innerPaneGame);		
 		

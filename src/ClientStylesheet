@@ -21,7 +21,7 @@
 }
 
 #topPaneGame{
-	-fx-background-image: url(images/gameHintergrund.png);
+	-fx-background-image: url(images/gameHintergrundChat.png);
 }
 
 
@@ -87,3 +87,23 @@
  				-fx-text-fill: white;
  				
  		}		
+ 		
+ #gamelist{
+ 				-fx-font-family: "Helvetica";
+ 				-fx-font-color: black;
+ 				-fx-border-color: black;
+ 			
+ 		
+ 		}
+ 				
+ 	
+ 				
+ 				
+ 				
+ 				
+ 				
+ 				
+ 				
+ 				
+ 				
+ 	
