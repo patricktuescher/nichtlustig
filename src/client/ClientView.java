@@ -32,9 +32,13 @@ public class ClientView {
 	protected final int rowIndex = 6;	
 	protected ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino, cardTod;
 
-	//Cube
+	//Cubes 
 	ImageView cubeViewPink, cubeViewWhite1, cubeViewWhite2, cubeViewBlack1, cubeViewBlack2, cubeViewRed1, cubeViewRed2;
 	protected Image[] cubePink, cubeWhite1, cubeWhite2, cubeBlack1, cubeBlack2, cubeRed1, cubeRed2;	
+	
+	//Cubes PL2
+	ImageView cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2;
+	protected Image[] cubePinkPL2, cubeWhite1PL2, cubeWhite2PL2, cubeBlack1PL2, cubeBlack2PL2, cubeRed1PL2, cubeRed2PL2;	
 	
 	//Height and Width of cubes
 	final int cubeheight = 60;
@@ -109,44 +113,45 @@ public class ClientView {
 		
 		//GridPane Lobby
 		GridPane innerPaneLobby = new GridPane();
-		innerPaneLobby.setHgap(10);
-		innerPaneLobby.setVgap(10);
-		innerPaneLobby.setGridLinesVisible(true);
+		innerPaneLobby.setHgap(20);
+		innerPaneLobby.setVgap(20);
+		innerPaneLobby.setGridLinesVisible(false);
 		topPaneLobby.setCenter(innerPaneLobby);
 		
 		
 		//Button Spiel erstellen 
 		b_spielErstellen = new Button("Spiel erstellen");
-		b_spielErstellen.setPrefSize(300, 200);
-		innerPaneLobby.add(b_spielErstellen, colIndex+1, rowIndex+1);
+		b_spielErstellen.setPrefSize(200, 70);
+		innerPaneLobby.add(b_spielErstellen, 1, 2);
+		innerPaneLobby.setPadding(new Insets(250,0,0,250));
 		b_spielErstellen.setId("b-login");
 		
 		
 		//Button Statistik
 		b_statistic = new Button("Statistik");
-		b_statistic.setPrefSize(300, 200);
-		innerPaneLobby.add(b_statistic, colIndex+2, rowIndex+1);
+		b_statistic.setPrefSize(200,70);
+		innerPaneLobby.add(b_statistic, 2, 2);
 		b_statistic.setId("b-login");
 	
 		
 		//Button Regeln 
 		b_rules = new Button("Regeln");
-		b_rules.setPrefSize(300, 200);
-		innerPaneLobby.add(b_rules, colIndex+3, rowIndex+1);
+		b_rules.setPrefSize(200,70);
+		innerPaneLobby.add(b_rules, 3, 2);
 		b_rules.setId("b-login");
 		
 		
 		//Button Spiel beitreten 
 		b_spielBeitreten = new Button("Spiel beitreten");
-		b_spielBeitreten.setPrefSize(300, 200);
-		innerPaneLobby.add(b_spielBeitreten, colIndex+2, rowIndex+2);
+		b_spielBeitreten.setPrefSize(200,70);
+		innerPaneLobby.add(b_spielBeitreten, 2, 19);
 		b_spielBeitreten.setId("b-login");
 		
 		
 		//Button Zurück
 		b_backLobby = new Button("Zurück");
-		b_backLobby.setPrefSize(300,200);
-		innerPaneLobby.add(b_backLobby, colIndex+3, rowIndex+3);
+		b_backLobby.setPrefSize(200,70);
+		innerPaneLobby.add(b_backLobby, 7, 19);
 		b_backLobby.setId("b-login");
 				
 				
@@ -164,6 +169,7 @@ public class ClientView {
 		GridPane innerPaneStatistik = new GridPane();
 		innerPaneStatistik.setHgap(10);
 		innerPaneStatistik.setVgap(10);
+		innerPaneStatistik.setGridLinesVisible(true);
 		topPaneStatistik.setCenter(innerPaneStatistik);
 		
 		//Button Zurück
@@ -207,11 +213,13 @@ public class ClientView {
 		//HBox Game Top
 		HBox innertopPaneGame = new HBox();
 		innertopPaneGame.setMinHeight(150);
+		innertopPaneGame.setPadding(new Insets(0,0,0,300));
 		topPaneGame.setTop(innertopPaneGame);
 		
 		//HBox Game Bottom
 		HBox bottomPaneGame = new HBox();
-		bottomPaneGame.setMinHeight(120);		
+		bottomPaneGame.setMinHeight(120);	
+		bottomPaneGame.setPadding(new Insets(0,0,0,200));
 		topPaneGame.setBottom(bottomPaneGame);
 		
 
@@ -229,20 +237,7 @@ public class ClientView {
 		//Button Zurück
 		b_backGame = new Button("Zurück");
 		b_backGame.setId("b-login");
-		
-		
-				
-		
-//		//Label Punkte Player 1		
-//		scorePlayer1 = new Label(null);		
-//		innerPaneGame.add(scorePlayer1, 2, 2);		
-//		
-//		//Label Punkte Player 2		
-//		scorePlayer2 = new Label(null);		
-//		innerPaneGame.add(scorePlayer2, 1, 5);		
-				
-		
-		
+			
 		
 		//Scene Regeln
 		sceneGame = new Scene(topPaneGame, 1200, 800);
@@ -411,7 +406,93 @@ public class ClientView {
 		
 		//added nodes to BottomPane
 		bottomPaneGame.getChildren().addAll(b_würfeln,cubeViewPink,cubeViewWhite1,cubeViewWhite2,cubeViewBlack1,cubeViewBlack2,cubeViewRed1,cubeViewRed2,b_backGame);
+		
+		
+		//////////////////CUBES PL2 (SecondPlayer) //////////////////////////
+		
+		
+		// Cubes pink PL2
+		cubePinkPL2 = new Image[6];
+		for(int i = 1; i<7; i++){
+			cubePinkPL2[i-1] = new Image("images/Pink_Würfel_"+i+".png");
+			}
+		int cPinkPL2 = (int) (Math.random()*6);
+		cubeViewPinkPL2 = new ImageView();
+		cubeViewPinkPL2.setImage(cubePink[cPinkPL2]);
+		cubeViewPinkPL2.setFitHeight(cubeheight);
+		cubeViewPinkPL2.setFitWidth(cubewidth);
+		
+		// Cubes white1PL2
+		cubeWhite1PL2 = new Image[5];
+		for(int i = 1; i<6; i++){
+			cubeWhite1PL2[i-1] = new Image("images/Weiss_Würfel_"+i+".png");
+			}
+		int cWhite1PL2 = (int) (Math.random()*5);
+		cubeViewWhite1PL2 = new ImageView();
+		cubeViewWhite1PL2.setImage(cubeWhite1[cWhite1PL2]);
+		cubeViewWhite1PL2.setFitHeight(cubeheight);
+		cubeViewWhite1PL2.setFitWidth(cubewidth);
+		
+		// Cubes white2 PL2
+		cubeWhite2PL2 = new Image[5];
+		for(int i = 1; i<6; i++){
+			cubeWhite2PL2[i-1] = new Image("images/Weiss_Würfel_"+i+".png");
+			}
+		int cWhite2PL2 = (int) (Math.random()*5);
+		cubeViewWhite2PL2 = new ImageView();
+		cubeViewWhite2PL2.setImage(cubeWhite2[cWhite2PL2]);
+		cubeViewWhite2PL2.setFitHeight(cubeheight);
+		cubeViewWhite2PL2.setFitWidth(cubewidth);
+		
+		// Cubes black1 PL2
+		cubeBlack1PL2 = new Image[5];
+		for(int i = 1; i<6; i++){
+			cubeBlack1PL2[i-1] = new Image("images/Schwarz_Würfel_"+i+".png");
+			}
+		int cBlack1PL2 = (int) (Math.random()*5);
+		cubeViewBlack1PL2 = new ImageView();
+		cubeViewBlack1PL2.setImage(cubeBlack1[cBlack1PL2]);
+		cubeViewBlack1PL2.setFitHeight(cubeheight);
+		cubeViewBlack1PL2.setFitWidth(cubewidth);
+		
+		// Cubes black2 PL2
+		cubeBlack2PL2 = new Image[5];
+		for(int i = 1; i<6; i++){
+			cubeBlack2PL2[i-1] = new Image("images/Schwarz_Würfel_"+i+".png");
+			}
+		int cBlack2PL2 = (int) (Math.random()*5);
+		cubeViewBlack2PL2 = new ImageView();
+		cubeViewBlack2PL2.setImage(cubeBlack2[cBlack2PL2]);
+		cubeViewBlack2PL2.setFitHeight(cubeheight);
+		cubeViewBlack2PL2.setFitWidth(cubewidth);
+		
+		
+		//Cubes red1 PL2
+		cubeRed1PL2 = new Image[5];
+		for(int i = 1; i<6; i++){
+			cubeRed1PL2[i-1] = new Image("images/Rot_Würfel_"+i+".png");
+			}
+		int cRed1PL2 = (int) (Math.random()*5);
+		cubeViewRed1PL2 = new ImageView();
+		cubeViewRed1PL2.setImage(cubeRed1[cRed1PL2]);
+		cubeViewRed1PL2.setFitHeight(cubeheight);
+		cubeViewRed1PL2.setFitWidth(cubewidth);
 
+		// Cubes red2
+		cubeRed2PL2 = new Image[5];
+		for(int i = 1; i<6; i++){
+			cubeRed2PL2[i-1] = new Image("images/Rot_Würfel_"+i+".png");
+			}
+		int cRed2PL2 = (int) (Math.random()*5);
+		cubeViewRed2PL2 = new ImageView();
+		cubeViewRed2PL2.setImage(cubeRed2[cRed2PL2]);
+		cubeViewRed2PL2.setFitHeight(cubeheight);
+		cubeViewRed2PL2.setFitWidth(cubewidth);
+		
+		//added nodes to innertopPaneGame
+		innertopPaneGame.getChildren().addAll(cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2);
+				
+		
 		
 		
 		
