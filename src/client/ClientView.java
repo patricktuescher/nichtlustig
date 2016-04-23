@@ -19,8 +19,8 @@ public class ClientView {
 	
 	Stage primaryStage;
 	ClientModel model;
-	protected Button b_login, b_register, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln, b_backGame, b_würfeln ;
-	protected Label scorePlayer1, scorePlayer2;
+	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln, b_backGame, b_würfeln ;
+	protected Label labelPL1, labelPL2;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
 	
 	//Height and Width of the cards
@@ -54,53 +54,58 @@ public class ClientView {
 		
 		///////////////// LOGIN FENSTER //////////////////////////
 		
-		//TopPane  Login
-		BorderPane topPaneLogin = new BorderPane();
-		topPaneLogin.setId("topPaneLogin"); //ID for CSS
+		
 		
 		
 		//InnerPane Login
 		GridPane innerPaneLogin = new GridPane();
-		innerPaneLogin.setAlignment(Pos.TOP_CENTER);
+		innerPaneLogin.setGridLinesVisible(false);
 		innerPaneLogin.setHgap(10);
 		innerPaneLogin.setVgap(10);
-		topPaneLogin.setCenter(innerPaneLogin);
+		innerPaneLogin.setPadding(new Insets(200,200,0,280));
 		
 		//Label Username
 		Label lb_username = new Label("User name: ");
-		innerPaneLogin.add(lb_username, 2, 22);
+		innerPaneLogin.add(lb_username, 2, 1);
 		lb_username.setId("lb-username");
 		
 		//Label Password
 		Label lb_password = new Label("Password: ");
-		innerPaneLogin.add(lb_password, 2, 25);
+		innerPaneLogin.add(lb_password, 2, 4);
 		lb_password.setId("lb-password");
 		
 		//Textbox Username
 		TextField tf_username = new TextField();
-		innerPaneLogin.add(tf_username, 4, 22);
+		innerPaneLogin.add(tf_username, 2, 2);
 		tf_username.setId("pf-login");
 		tf_username.setPromptText("user name");
 		
 		//Passwortbox Password
 		PasswordField pf_password = new PasswordField();
-		innerPaneLogin.add(pf_password, 4, 25);
+		innerPaneLogin.add(pf_password, 2, 5);
 		pf_password.setId("pf-login");
 		pf_password.setPromptText("password");
 		
 		//Button Login
 		b_login = new Button("Login");
-		innerPaneLogin.add(b_login, 3, 51);
+		innerPaneLogin.add(b_login, 1, 25);
+		b_login.setPrefSize(200, 70);
 		b_login.setId("b-login");
-		//b_login.setOnAction(handleButtonAction(e));
 		
 		//Button Register
 		b_register = new Button("Register");
-		innerPaneLogin.add(b_register, 6, 51);
+		innerPaneLogin.add(b_register, 2, 25);
+		b_register.setPrefSize(200, 70);
 		b_register.setId("b-login");
 		
+		//Button Quit game
+		b_quitGame = new Button("Quit Game");
+		innerPaneLogin.add(b_quitGame, 3, 25);
+		b_quitGame.setPrefSize(200,70);
+		b_quitGame.setId("b-login");
+		
 		//Scene Login
-		sceneLogin = new Scene(topPaneLogin, 1200, 800);
+		sceneLogin = new Scene(innerPaneLogin, 1200, 800);
 		sceneLogin.getStylesheets().add("ClientStylesheet");
 		
 		
@@ -116,6 +121,7 @@ public class ClientView {
 		innerPaneLobby.setHgap(20);
 		innerPaneLobby.setVgap(20);
 		innerPaneLobby.setGridLinesVisible(false);
+		innerPaneLobby.setPadding(new Insets(250,0,0,270));
 		topPaneLobby.setCenter(innerPaneLobby);
 		
 		
@@ -123,7 +129,6 @@ public class ClientView {
 		b_spielErstellen = new Button("Spiel erstellen");
 		b_spielErstellen.setPrefSize(200, 70);
 		innerPaneLobby.add(b_spielErstellen, 1, 2);
-		innerPaneLobby.setPadding(new Insets(250,0,0,250));
 		b_spielErstellen.setId("b-login");
 		
 		
@@ -151,7 +156,7 @@ public class ClientView {
 		//Button Zurück
 		b_backLobby = new Button("Zurück");
 		b_backLobby.setPrefSize(200,70);
-		innerPaneLobby.add(b_backLobby, 7, 19);
+		innerPaneLobby.add(b_backLobby, 6, 19);
 		b_backLobby.setId("b-login");
 				
 				
@@ -237,11 +242,22 @@ public class ClientView {
 		//Button Zurück
 		b_backGame = new Button("Zurück");
 		b_backGame.setId("b-login");
+		
+		
+		// Label Score PL1 - to be difined
+		labelPL1 = new Label("");
+				
+		// Label Score PL2 - to be difined
+		labelPL2 = new Label("");
 			
+	
 		
 		//Scene Regeln
 		sceneGame = new Scene(topPaneGame, 1200, 800);
 		sceneGame.getStylesheets().add("ClientStylesheet");
+		
+		
+		
 				
 				
 
