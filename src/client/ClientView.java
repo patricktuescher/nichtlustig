@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -42,6 +43,9 @@ public class ClientView {
 	//Cubes PL2
 	ImageView cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2;
 	protected Image[] cubePinkPL2, cubeWhite1PL2, cubeWhite2PL2, cubeBlack1PL2, cubeBlack2PL2, cubeRed1PL2, cubeRed2PL2;	
+	
+	//Rules
+	ImageView rulesImages;
 	
 	//Height and Width of cubes
 	final int cubeheight = 60;
@@ -217,11 +221,9 @@ public class ClientView {
 		BorderPane topPaneRegeln = new BorderPane();
 		topPaneRegeln.setId("topPaneRules"); //ID for CS
 
-		//GridPane Regeln
-		GridPane innerPaneRegeln= new GridPane();
-		innerPaneRegeln.setHgap(20);
-		innerPaneRegeln.setVgap(20);
-		innerPaneRegeln.setGridLinesVisible(true);
+		//HBox Regeln Center
+		HBox innerPaneRegeln= new HBox();
+		innerPaneRegeln.setPadding(new Insets(100,0,0,0));
 		topPaneRegeln.setCenter(innerPaneRegeln);
 		
 		//HBox Regeln Bottom
@@ -237,6 +239,19 @@ public class ClientView {
 		b_backRegeln.setPrefSize(200, 70);
 		bottomPaneRegeln.getChildren().add(b_backRegeln);
 		b_backRegeln.setId("b-login");
+		
+		
+		// Regeln images
+		rulesImages = new ImageView();
+		Image regeln = new Image("images/nicht_lustig_Regeln_1.jpg");
+		rulesImages.setImage(regeln);
+		innerPaneRegeln.getChildren().add(rulesImages);
+		innerPaneRegeln.setAlignment(Pos.CENTER);
+		rulesImages.setFitHeight(500);
+		rulesImages.setFitWidth(400);
+						
+		
+		
 				
 		//Scene Regeln
 		sceneRegeln = new Scene(topPaneRegeln, 1200, 800);
@@ -288,7 +303,7 @@ public class ClientView {
 			
 	
 		
-		//Scene Regeln
+		//Scene Game
 		sceneGame = new Scene(topPaneGame, 1200, 800);
 		sceneGame.getStylesheets().add("ClientStylesheet");
 		
