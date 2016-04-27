@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,7 +25,7 @@ public class ClientView {
 	
 	Stage primaryStage;
 	ClientModel model;
-	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln, b_backGame, b_würfeln ;
+	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln ;
 	protected Label labelPL1, labelPL2;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
 	
@@ -44,8 +46,11 @@ public class ClientView {
 	ImageView cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2;
 	protected Image[] cubePinkPL2, cubeWhite1PL2, cubeWhite2PL2, cubeBlack1PL2, cubeBlack2PL2, cubeRed1PL2, cubeRed2PL2;	
 	
+	
 	//Rules
-	ImageView rulesImages;
+	ImageView regelnView;
+	protected Image[] regeln;
+
 	
 	//Height and Width of cubes
 	final int cubeheight = 60;
@@ -168,14 +173,14 @@ public class ClientView {
 		
 		
 		//ListView availabe games
-		ListView<String> list = new ListView<String>();
-		ObservableList<String> items =FXCollections.observableArrayList (
+		ListView<String> listLobby = new ListView<String>();
+		ObservableList<String> itemsLobby =FXCollections.observableArrayList (
 		 "bisch", "druffe", "?", "?");
-		list.setItems(items);
-		list.setMinSize(100, 200);
-		list.setMaxSize(200, 200);
-		list.setId("gamelist");
-		innerPaneLobby.add(list, 2, 8);
+		listLobby.setItems(itemsLobby);
+		listLobby.setMinSize(100, 200);
+		listLobby.setMaxSize(200, 200);
+		listLobby.setId("gamelist");
+		innerPaneLobby.add(listLobby, 2, 8);
 		
 		
 		
@@ -191,18 +196,28 @@ public class ClientView {
 		BorderPane topPaneStatistik = new BorderPane();
 		topPaneStatistik.setId("topPaneStatistik"); //ID for CSS
 		
-		//GridPane Statistik
-		GridPane innerPaneStatistik = new GridPane();
-		innerPaneStatistik.setHgap(10);
-		innerPaneStatistik.setVgap(10);
-		innerPaneStatistik.setGridLinesVisible(true);
-		topPaneStatistik.setCenter(innerPaneStatistik);
+		//HBox Statistik
+		HBox centerPaneStatistik = new HBox();
+		centerPaneStatistik.setAlignment(Pos.CENTER);
+		centerPaneStatistik.setPadding(new Insets(50,0,0,0));
+		topPaneStatistik.setCenter(centerPaneStatistik);
 		
 		//HBox Statistik Bottom
 		HBox bottomPaneStatistik = new HBox();
 		bottomPaneStatistik.setPadding(new Insets(0,0,20,0));
 		bottomPaneStatistik.setAlignment(Pos.CENTER);
 		topPaneStatistik.setBottom(bottomPaneStatistik);
+		
+		//TableView Statistik
+		TableView table = new TableView();
+	    table.setEditable(true);
+	    TableColumn userNameCol = new TableColumn("user name");
+	    TableColumn scoreCol = new TableColumn("score");
+	    TableColumn dateCol = new TableColumn("date");
+	    table.getColumns().addAll(userNameCol, scoreCol, dateCol);
+	    table.setMaxSize(600, 400);
+	    table.setMinSize(600, 400);
+	    centerPaneStatistik.getChildren().add(table);
 		
 		//Button Zurück
 		b_backStatistik = new Button("Zurück");
@@ -241,16 +256,33 @@ public class ClientView {
 		b_backRegeln.setId("b-login");
 		
 		
-		// Regeln images
-		rulesImages = new ImageView();
-		Image regeln = new Image("images/nicht_lustig_Regeln_1.jpg");
-		rulesImages.setImage(regeln);
-		innerPaneRegeln.getChildren().add(rulesImages);
+		//Regeln image[] 
+		regeln = new Image[6];
+		for(int i = 1; i<7; i++)
+		{
+		regeln[i-1] = new Image("images/nicht_lustig_Regeln_"+i+".jpg");
+		}
+		regelnView = new ImageView();
+		regelnView.setImage(regeln[0]);
 		innerPaneRegeln.setAlignment(Pos.CENTER);
-		rulesImages.setFitHeight(500);
-		rulesImages.setFitWidth(400);
-						
+		regelnView.setFitHeight(500);
+		regelnView.setFitWidth(400);
+
+					
+		// Button next
+		b_nextImage = new Button(">");
+		b_nextImage.setPrefSize(20,20);
+		b_nextImage.setId("b-login");
+	
 		
+		// Button previous
+		b_previousImage = new Button("<");
+		b_previousImage.setPrefSize(20,20);
+		b_previousImage.setId("b-login");
+		
+		// added nodes to inner pane regeln
+		innerPaneRegeln.getChildren().addAll(b_previousImage, regelnView,b_nextImage);
+		innerPaneRegeln.setSpacing(10);
 		
 				
 		//Scene Regeln
