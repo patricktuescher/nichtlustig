@@ -256,7 +256,7 @@ public class ClientView {
 		b_backRegeln.setId("b-login");
 		
 		
-		//Regeln image[] 
+		//Regeln image[] //// image position in reglen array to be defined; currently set to 0 for testing
 		regeln = new Image[6];
 		for(int i = 1; i<7; i++)
 		{

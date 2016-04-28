@@ -141,6 +141,17 @@ public class ClientController {
 			
 		});
 		
+		// EventHandler nextImage Button - image position in reglen array to be defined; currently set to 1 for testing
+				view.b_nextImage.setOnAction(new EventHandler<ActionEvent>(){
+
+					@Override
+					public void handle(ActionEvent arg0) 
+					{
+					view.regelnView.setImage(view.regeln[1]);
+						
+					}
+					
+				});
 	
 		
 	///////////////// GAME FENSTER //////////////////////////
