@@ -7,6 +7,8 @@ import client.ClientView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 public class ClientController {
@@ -55,7 +57,8 @@ public class ClientController {
 			}
 					
 		});
-				
+		
+		
 		
 		///////////////// LOBBY FENSTER //////////////////////////
 				
@@ -147,8 +150,25 @@ public class ClientController {
 					@Override
 					public void handle(ActionEvent arg0) 
 					{
-					view.regelnView.setImage(view.regeln[1]);
-						
+					if (ClientView.currentRuleImage <view.regeln.length-1){
+					view.regelnView.setImage(view.regeln[ClientView.currentRuleImage+1]);
+					ClientView.currentRuleImage++;
+					}
+					}
+					
+				});
+	
+				
+		// EventHandler nextImage Button - image position in reglen array to be defined; currently set to 1 for testing
+				view.b_previousImage.setOnAction(new EventHandler<ActionEvent>(){
+
+					@Override
+					public void handle(ActionEvent arg0) 
+					{
+					if (ClientView.currentRuleImage >0){
+					view.regelnView.setImage(view.regeln[ClientView.currentRuleImage-1]);
+					ClientView.currentRuleImage--;
+					}
 					}
 					
 				});

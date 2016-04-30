@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
@@ -27,7 +28,9 @@ public class ClientView {
 	ClientModel model;
 	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln ;
 	protected Label labelPL1, labelPL2;
+	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
+	protected CheckBox passwordCheck;
 	
 	//Height and Width of the cards
 	final int cardheight = 90;
@@ -50,6 +53,7 @@ public class ClientView {
 	//Rules
 	ImageView regelnView;
 	protected Image[] regeln;
+	protected static  int currentRuleImage = 0;
 
 	
 	//Height and Width of cubes
@@ -97,6 +101,11 @@ public class ClientView {
 		innerPaneLogin.add(pf_password, 2, 5);
 		pf_password.setId("pf-login");
 		pf_password.setPromptText("password");
+		
+		// checkbox password visibility
+		passwordCheck = new CheckBox("password visible"); 	
+		innerPaneLogin.add(passwordCheck, 2, 6);
+
 		
 		//Button Login
 		b_login = new Button("Login");
@@ -171,6 +180,7 @@ public class ClientView {
 		innerPaneLobby.add(b_backLobby, 6, 10);
 		b_backLobby.setId("b-login");
 		
+	
 		
 		//ListView availabe games
 		ListView<String> listLobby = new ListView<String>();
@@ -263,7 +273,7 @@ public class ClientView {
 		regeln[i-1] = new Image("images/nicht_lustig_Regeln_"+i+".jpg");
 		}
 		regelnView = new ImageView();
-		regelnView.setImage(regeln[0]);
+		regelnView.setImage(regeln[currentRuleImage]);
 		innerPaneRegeln.setAlignment(Pos.CENTER);
 		regelnView.setFitHeight(500);
 		regelnView.setFitWidth(400);
