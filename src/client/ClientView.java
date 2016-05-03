@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class ClientView {
@@ -142,7 +143,7 @@ public class ClientView {
 		innerPaneLobby.setHgap(20);
 		innerPaneLobby.setVgap(20);
 		innerPaneLobby.setGridLinesVisible(false);
-		innerPaneLobby.setPadding(new Insets(250,0,0,270));
+		innerPaneLobby.setPadding(new Insets(250,0,10,270));
 		topPaneLobby.setCenter(innerPaneLobby);
 		
 		
@@ -170,15 +171,24 @@ public class ClientView {
 		//Button Spiel beitreten 
 		b_spielBeitreten = new Button("Spiel beitreten");
 		b_spielBeitreten.setPrefSize(200,70);
-		innerPaneLobby.add(b_spielBeitreten, 2, 10);
+		innerPaneLobby.add(b_spielBeitreten, 2, 9);
 		b_spielBeitreten.setId("b-login");
 		
 		
 		//Button Zurück
 		b_backLobby = new Button("Zurück");
 		b_backLobby.setPrefSize(200,70);
-		innerPaneLobby.add(b_backLobby, 6, 10);
+		innerPaneLobby.add(b_backLobby, 6, 9);
 		b_backLobby.setId("b-login");
+		
+		//Label select game
+		Label select_label = new Label("Spiel auswählen");
+		select_label.setId("label");
+		select_label.setPrefSize(200, 20);
+		select_label.setAlignment(Pos.CENTER);
+		innerPaneLobby.add(select_label, 2, 7);
+		
+		
 		
 	
 		
