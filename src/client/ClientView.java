@@ -344,6 +344,7 @@ public class ClientView {
 		Label scorePlayer1Label = new Label("Punktzahl 1");
 		topPaneGame.setLeft(scorePlayer1Label);
 		
+		
 		// label score player 2
 		Label scorePlayer2Label = new Label("Punktzahl 2");
 		topPaneGame.setRight(scorePlayer2Label);
@@ -355,11 +356,7 @@ public class ClientView {
 		b_backGame.setId("b-login");
 		
 		
-		// Label Score PL1 - to be difined
-		labelPL1 = new Label("");
-				
-		// Label Score PL2 - to be difined
-		labelPL2 = new Label("");
+	
 			
 	
 		
