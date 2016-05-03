@@ -189,9 +189,7 @@ public class ClientView {
 		innerPaneLobby.add(select_label, 2, 7);
 		
 		
-		
 	
-		
 		//ListView availabe games
 		ListView<String> listLobby = new ListView<String>();
 		ObservableList<String> itemsLobby =FXCollections.observableArrayList (
@@ -340,6 +338,16 @@ public class ClientView {
 		innerPaneGame.setPadding(new Insets(0, 0, 100, 250));
 		innerPaneGame.setGridLinesVisible(true);
 		topPaneGame.setCenter(innerPaneGame);		
+		
+		
+		// label score player 1
+		Label scorePlayer1Label = new Label("Punktzahl 1");
+		topPaneGame.setLeft(scorePlayer1Label);
+		
+		// label score player 2
+		Label scorePlayer2Label = new Label("Punktzahl 2");
+		topPaneGame.setRight(scorePlayer2Label);
+		
 		
 
 		//Button Zurück
