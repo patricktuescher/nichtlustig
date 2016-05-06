@@ -103,8 +103,14 @@
  				-fx-font-color: black;
  				-fx-border-color: black;
  			
- 		
  		}
+ 		
+#shadow{
+				-webkit-box-shadow: inset 0px 0px 100px 41px rgba(255,0,0,1);
+				-moz-box-shadow: inset 0px 0px 100px 41px rgba(255,0,0,1);
+				box-shadow: inset 0px 0px 100px 41px rgba(255,0,0,1);
+
+}
  				
  	
  				

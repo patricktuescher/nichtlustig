@@ -20,7 +20,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
@@ -71,7 +70,6 @@ public class ClientView {
 		
 		
 		///////////////// LOGIN FENSTER //////////////////////////
-		
 		
 		
 		
@@ -190,7 +188,9 @@ public class ClientView {
 		innerPaneLobby.add(select_label, 2, 7);
 		
 		
+		
 	
+		
 		//ListView availabe games
 		ListView<String> listLobby = new ListView<String>();
 		ObservableList<String> itemsLobby =FXCollections.observableArrayList (
@@ -314,16 +314,6 @@ public class ClientView {
 		BorderPane topPaneGame = new BorderPane();
 		topPaneGame.setId("topPaneGame"); //ID for CSS
 		
-		// VBox left
-		VBox leftPane = new VBox();
-		topPaneGame.setLeft(leftPane);
-	
-		
-		// VBox right
-		VBox rightPane = new VBox();
-		topPaneGame.setRight(rightPane);
-		
-		
 
 		//HBox Game Top
 		HBox innertopPaneGame = new HBox();
@@ -350,26 +340,17 @@ public class ClientView {
 		innerPaneGame.setGridLinesVisible(true);
 		topPaneGame.setCenter(innerPaneGame);		
 		
-		
-		// label score player 1
-		Label scorePlayer1Label = new Label("Punktzahl 1");
-		rightPane.getChildren().add(scorePlayer1Label);
-		rightPane.setAlignment(Pos.TOP_CENTER);
-		
-		
-		// label score player 2
-		Label scorePlayer2Label = new Label("Punktzahl 2");
-		leftPane.getChildren().add(scorePlayer2Label);
-		leftPane.setAlignment(Pos.CENTER);
-		
-		
 
 		//Button Zurück
 		b_backGame = new Button("Zurück");
 		b_backGame.setId("b-login");
 		
 		
-	
+		// Label Score PL1 - to be difined
+		labelPL1 = new Label("");
+				
+		// Label Score PL2 - to be difined
+		labelPL2 = new Label("");
 			
 	
 		
