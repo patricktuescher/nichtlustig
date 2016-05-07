@@ -645,6 +645,7 @@ public class ClientView {
 		HBox ChatInput = new HBox();
 		
 		TextField chatInputWindow = new TextField();
+		chatInputWindow.setText("Schreibe hier deine Nachricht...");
 		chatInputWindow.setMaxSize(700, 30);
 		chatInputWindow.setMinSize(700, 30);
 		

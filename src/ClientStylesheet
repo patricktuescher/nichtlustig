@@ -128,7 +128,19 @@
 } 				
   	
  				
- 				
+#b-sendchat:pressed {
+    			-fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+    
+#b-sendchat:hover{
+
+				-fx-background-color: 
+			        linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
+			        linear-gradient(#020b02, #3a3a3a),
+			        linear-gradient(#969696 0%, #969696 20%, #969696 80%, #969696 100%),
+			        linear-gradient(#969696 0%, #969696 50%, #969696 51%, #969696 100%);
+        
+} 				
  				
  				
  				
