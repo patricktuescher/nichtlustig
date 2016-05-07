@@ -21,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
@@ -332,14 +333,14 @@ public class ClientView {
 		
 		//HBox Game Bottom Cube
 		HBox bottomPaneGameCube = new HBox();
-		bottomPaneGameCube.setPadding(new Insets(20,0,25,200));
+		bottomPaneGameCube.setPadding(new Insets(20,0,20,200));
 		bottomPaneGameCube.setSpacing(15);
 		bottomPaneGame.setTop(bottomPaneGameCube);
 
 		
 		//HBox Game Bottom Chat
-		HBox bottomPaneGameChat = new HBox();
-		bottomPaneGameChat.setPadding(new Insets(0,0,5,200));
+		VBox bottomPaneGameChat = new VBox();
+		bottomPaneGameChat.setPadding(new Insets(0,0,10,200));
 		bottomPaneGameChat.setMinHeight(100);
 		bottomPaneGame.setBottom(bottomPaneGameChat);
 		
@@ -634,10 +635,29 @@ public class ClientView {
 		//Chat
 		
 		TextArea chatWindow = new TextArea();
-		chatWindow.setMinSize(800, 50);
-		chatWindow.setMaxHeight(70);
+		chatWindow.setMinSize(200, 50);
+		chatWindow.setMaxSize(800, 50);
 		chatWindow.setText("Hier könnte Ihre Chat-Nachricht stehen");
-		bottomPaneGameChat.getChildren().add(chatWindow);
+		
+		
+		//VBox Chat Input and Send
+		
+		HBox ChatInput = new HBox();
+		
+		TextField chatInputWindow = new TextField();
+		chatInputWindow.setMaxSize(700, 30);
+		chatInputWindow.setMinSize(700, 30);
+		
+		Button sendButton = new Button();
+		sendButton.setText("senden");
+		sendButton.setMinSize(100, 30);
+		sendButton.setMaxSize(100, 30);
+		sendButton.setId("b-sendchat");
+		
+		ChatInput.getChildren().addAll(chatInputWindow, sendButton);
+		
+		
+		bottomPaneGameChat.getChildren().addAll(chatWindow, ChatInput);
 		
 		
 		//////////////// Primary Stage ////////////////////////
