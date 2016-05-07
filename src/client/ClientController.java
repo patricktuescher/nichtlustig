@@ -479,10 +479,18 @@ public class ClientController {
 		});
 		}
 		
+
 		
-		
-		
-		
+		// EventHandler Chat send-Button
+//		view.b_sendchat.setOnAction(new EventHandler<ActionEvent>(){
+//
+//			@Override
+//			public void handle(ActionEvent arg0) {
+//			view.chatWindow.setText("Fehler, deine Nachricht konnte nicht gesendet werden!");
+//			view.chatWindow.insertText(2, "Fehler");
+//			}
+//					
+//		});
 		
 		
 		

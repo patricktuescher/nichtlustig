@@ -29,7 +29,7 @@ public class ClientView {
 	
 	Stage primaryStage;
 	ClientModel model;
-	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln ;
+	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat ;
 	protected Label labelPL1, labelPL2;
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
@@ -51,6 +51,9 @@ public class ClientView {
 	//Cubes PL2
 	ImageView cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2;
 	protected Image[] cubePinkPL2, cubeWhite1PL2, cubeWhite2PL2, cubeBlack1PL2, cubeBlack2PL2, cubeRed1PL2, cubeRed2PL2;	
+	
+	//Chat
+	protected TextArea chatWindow;
 	
 	
 	//Rules
@@ -634,7 +637,7 @@ public class ClientView {
 				
 		//Chat
 		
-		TextArea chatWindow = new TextArea();
+		chatWindow = new TextArea();
 		chatWindow.setMinSize(200, 50);
 		chatWindow.setMaxSize(800, 50);
 		chatWindow.setText("Hier könnte Ihre Chat-Nachricht stehen");
@@ -649,13 +652,13 @@ public class ClientView {
 		chatInputWindow.setMaxSize(700, 30);
 		chatInputWindow.setMinSize(700, 30);
 		
-		Button sendButton = new Button();
-		sendButton.setText("senden");
-		sendButton.setMinSize(100, 30);
-		sendButton.setMaxSize(100, 30);
-		sendButton.setId("b-sendchat");
+		Button b_sendchat = new Button();
+		b_sendchat.setText("senden");
+		b_sendchat.setMinSize(100, 30);
+		b_sendchat.setMaxSize(100, 30);
+		b_sendchat.setId("b-sendchat");
 		
-		ChatInput.getChildren().addAll(chatInputWindow, sendButton);
+		ChatInput.getChildren().addAll(chatInputWindow, b_sendchat);
 		
 		
 		bottomPaneGameChat.getChildren().addAll(chatWindow, ChatInput);
