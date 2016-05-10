@@ -14,6 +14,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,7 +29,7 @@ public class ClientView {
 	
 	Stage primaryStage;
 	ClientModel model;
-	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln ;
+	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat ;
 	protected Label labelPL1, labelPL2;
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
@@ -51,6 +52,9 @@ public class ClientView {
 	ImageView cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2;
 	protected Image[] cubePinkPL2, cubeWhite1PL2, cubeWhite2PL2, cubeBlack1PL2, cubeBlack2PL2, cubeRed1PL2, cubeRed2PL2;	
 	
+	//Chat
+	protected TextArea chatWindow;
+	
 	
 	//Rules
 	ImageView regelnView;
@@ -71,7 +75,6 @@ public class ClientView {
 		
 		
 		///////////////// LOGIN FENSTER //////////////////////////
-		
 		
 		
 		
@@ -190,7 +193,9 @@ public class ClientView {
 		innerPaneLobby.add(select_label, 2, 7);
 		
 		
+		
 	
+		
 		//ListView availabe games
 		ListView<String> listLobby = new ListView<String>();
 		ObservableList<String> itemsLobby =FXCollections.observableArrayList (
@@ -314,16 +319,6 @@ public class ClientView {
 		BorderPane topPaneGame = new BorderPane();
 		topPaneGame.setId("topPaneGame"); //ID for CSS
 		
-		// VBox left
-		VBox leftPane = new VBox();
-		topPaneGame.setLeft(leftPane);
-	
-		
-		// VBox right
-		VBox rightPane = new VBox();
-		topPaneGame.setRight(rightPane);
-		
-		
 
 		//HBox Game Top
 		HBox innertopPaneGame = new HBox();
@@ -333,12 +328,24 @@ public class ClientView {
 		innertopPaneGame.setSpacing(15);
 		topPaneGame.setTop(innertopPaneGame);
 		
-		
-		//HBox Game Bottom 
-		HBox bottomPaneGame = new HBox();
-		bottomPaneGame.setPadding(new Insets(0,0,0,200));
-		bottomPaneGame.setSpacing(15);
+		//BorderPane Game Bottom
+		BorderPane bottomPaneGame = new BorderPane();
 		topPaneGame.setBottom(bottomPaneGame);
+		
+		
+		
+		//HBox Game Bottom Cube
+		HBox bottomPaneGameCube = new HBox();
+		bottomPaneGameCube.setPadding(new Insets(20,0,20,200));
+		bottomPaneGameCube.setSpacing(15);
+		bottomPaneGame.setTop(bottomPaneGameCube);
+
+		
+		//HBox Game Bottom Chat
+		VBox bottomPaneGameChat = new VBox();
+		bottomPaneGameChat.setPadding(new Insets(0,0,10,200));
+		bottomPaneGameChat.setMinHeight(100);
+		bottomPaneGame.setBottom(bottomPaneGameChat);
 		
 		
 		
@@ -346,22 +353,17 @@ public class ClientView {
 		GridPane innerPaneGame= new GridPane();
 		innerPaneGame.setHgap(5);
 		innerPaneGame.setVgap(5);
-		innerPaneGame.setPadding(new Insets(0, 0, 100, 250));
-		innerPaneGame.setGridLinesVisible(true);
-		topPaneGame.setCenter(innerPaneGame);		
+		innerPaneGame.setPadding(new Insets(0, 0, 15, 120));
+		innerPaneGame.setGridLinesVisible(false);
+		topPaneGame.setCenter(innerPaneGame);	
 		
-		
-		// label score player 1
-		Label scorePlayer1Label = new Label("Punktzahl 1");
-		rightPane.getChildren().add(scorePlayer1Label);
-		rightPane.setAlignment(Pos.TOP_CENTER);
-		
-		
-		// label score player 2
-		Label scorePlayer2Label = new Label("Punktzahl 2");
-		leftPane.getChildren().add(scorePlayer2Label);
-		leftPane.setAlignment(Pos.CENTER);
-		
+		//GridPane Game Left
+		GridPane leftPaneGame = new GridPane();
+		leftPaneGame.setHgap(5);
+		leftPaneGame.setVgap(5);
+		leftPaneGame.setPadding(new Insets(105, 0, 15, 100));
+		leftPaneGame.setGridLinesVisible(false);
+		topPaneGame.setLeft(leftPaneGame);
 		
 
 		//Button Zurück
@@ -369,7 +371,11 @@ public class ClientView {
 		b_backGame.setId("b-login");
 		
 		
-	
+		// Label Score PL1 - to be difined
+		labelPL1 = new Label("");
+				
+		// Label Score PL2 - to be difined
+		labelPL2 = new Label("");
 			
 	
 		
@@ -392,7 +398,7 @@ public class ClientView {
 				cardRieb[i-1].setImage(imageRieb);
 				cardRieb[i-1].setFitHeight(cardheight);
 				cardRieb[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardRieb[i-1], 5+i, 2);
+				innerPaneGame.add(cardRieb[i-1], i, 2);
 			}
 				
 		cardYeti = new ImageView[5];
@@ -402,7 +408,7 @@ public class ClientView {
 				cardYeti[i-1].setImage(imageYeti);
 				cardYeti[i-1].setFitHeight(cardheight);
 				cardYeti[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardYeti[i-1], 5+i, 4);
+				innerPaneGame.add(cardYeti[i-1], i, 4);
 				}
 		
 		cardLemming = new ImageView[5];
@@ -412,7 +418,7 @@ public class ClientView {
 				cardLemming[i-1].setImage(imageLemming);
 				cardLemming[i-1].setFitHeight(cardheight);
 				cardLemming[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardLemming[i-1], 5+i, 6);
+				innerPaneGame.add(cardLemming[i-1], i, 6);
 				}
 
 		cardProf = new ImageView[5];
@@ -422,7 +428,7 @@ public class ClientView {
 				cardProf[i-1].setImage(imageYeti);
 				cardProf[i-1].setFitHeight(cardheight);
 				cardProf[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardProf[i-1], 5+i, 8);
+				innerPaneGame.add(cardProf[i-1], i, 8);
 				}
 		
 		cardDino = new ImageView[5];
@@ -432,7 +438,7 @@ public class ClientView {
 				cardDino[i-1].setImage(imageDino);
 				cardDino[i-1].setFitHeight(cardheight);
 				cardDino[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardDino[i-1], 5+i, 10);
+				innerPaneGame.add(cardDino[i-1], i, 10);
 				}		
 		
 		cardTod = new ImageView[6];		
@@ -443,10 +449,10 @@ public class ClientView {
 				cardTod[i-1].setFitHeight(cardheight);		
 				cardTod[i-1].setFitWidth(cardwidth);		
 				if(i<4){		
-					innerPaneGame.add(cardTod[i-1], 2, 2*i);		
+					leftPaneGame.add(cardTod[i-1], 2, 2*i);		
 				}		
 				else{		
-					innerPaneGame.add(cardTod[i-1], 4, 2*(i-3)); 
+					leftPaneGame.add(cardTod[i-1], 4, 2*(i-3)); 
 				}
 		}
 		
@@ -542,7 +548,7 @@ public class ClientView {
 		b_würfeln.setId("b-login");
 		
 		//added nodes to BottomPane
-		bottomPaneGame.getChildren().addAll(b_würfeln,cubeViewPink,cubeViewWhite1,cubeViewWhite2,cubeViewBlack1,cubeViewBlack2,cubeViewRed1,cubeViewRed2,b_backGame);
+		bottomPaneGameCube.getChildren().addAll(b_würfeln,cubeViewPink,cubeViewWhite1,cubeViewWhite2,cubeViewBlack1,cubeViewBlack2,cubeViewRed1,cubeViewRed2,b_backGame);
 		
 		
 		//////////////////CUBES PL2 (SecondPlayer) //////////////////////////
@@ -629,8 +635,33 @@ public class ClientView {
 		//added nodes to innertopPaneGame
 		innertopPaneGame.getChildren().addAll(cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2);
 				
+		//Chat
+		
+		chatWindow = new TextArea();
+		chatWindow.setMinSize(200, 50);
+		chatWindow.setMaxSize(800, 50);
+		chatWindow.setText("Hier könnte Ihre Chat-Nachricht stehen");
 		
 		
+		//VBox Chat Input and Send
+		
+		HBox ChatInput = new HBox();
+		
+		TextField chatInputWindow = new TextField();
+		chatInputWindow.setText("Schreibe hier deine Nachricht...");
+		chatInputWindow.setMaxSize(700, 30);
+		chatInputWindow.setMinSize(700, 30);
+		
+		Button b_sendchat = new Button();
+		b_sendchat.setText("senden");
+		b_sendchat.setMinSize(100, 30);
+		b_sendchat.setMaxSize(100, 30);
+		b_sendchat.setId("b-sendchat");
+		
+		ChatInput.getChildren().addAll(chatInputWindow, b_sendchat);
+		
+		
+		bottomPaneGameChat.getChildren().addAll(chatWindow, ChatInput);
 		
 		
 		//////////////// Primary Stage ////////////////////////

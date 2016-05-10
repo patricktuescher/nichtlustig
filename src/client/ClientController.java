@@ -6,10 +6,12 @@ import client.ClientModel;
 import client.ClientView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+
 
 public class ClientController {
 
@@ -409,7 +411,14 @@ public class ClientController {
 			@Override
 			public void handle(MouseEvent arg0){
 //				view.cardRieb[d-1].setRotate(180);
-				view.cardRieb[d-1].setOpacity(0.5);
+//				view.cardRieb[d-1].setOpacity(0.5);
+		
+				InnerShadow innerShadow = new InnerShadow();
+				innerShadow.setOffsetX(2);
+				innerShadow.setOffsetY(2);
+				innerShadow.setChoke(0.5);				
+				view.cardRieb[d-1].setEffect(innerShadow);
+//				view.cardRieb[d-1].setId("shadow");
 			}
 			
 		});
@@ -470,10 +479,18 @@ public class ClientController {
 		});
 		}
 		
+
 		
-		
-		
-		
+		// EventHandler Chat send-Button
+//		view.b_sendchat.setOnAction(new EventHandler<ActionEvent>(){
+//
+//			@Override
+//			public void handle(ActionEvent arg0) {
+//			view.chatWindow.setText("Fehler, deine Nachricht konnte nicht gesendet werden!");
+//			view.chatWindow.insertText(2, "Fehler");
+//			}
+//					
+//		});
 		
 		
 		
