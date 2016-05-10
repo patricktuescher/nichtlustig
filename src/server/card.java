@@ -6,7 +6,6 @@ public class card {
 	
 	private String name;
 	private int points;
-	private Cube cubes;
 	private Image image;
 	private Status status;
 	
