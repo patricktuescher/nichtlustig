@@ -1,5 +1,5 @@
 package server;
 
-class Status {
-	
+public enum Status {
+	frei, gewählt, gewertet
 }
