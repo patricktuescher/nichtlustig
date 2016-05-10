@@ -16,8 +16,7 @@ public class Card {
 	public Card(String name, int point, Image image, Status status){
 		this.name = name;
 		this.point = point;
-		this.image = new ImageView();
-		this.image.setImage(image);
+		this.image = new ImageView(image);
 		this.status = status;
 	}
 
