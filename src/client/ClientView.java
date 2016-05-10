@@ -183,7 +183,7 @@ public class ClientView {
 		b_backLobby.setId("b-login");
 		
 		//Label select game
-		Label select_label = new Label("Spiel auswählen");
+		Label select_label = new Label("Wähle ein Spiel:");
 		select_label.setId("label");
 		select_label.setPrefSize(200, 20);
 		select_label.setAlignment(Pos.CENTER);
