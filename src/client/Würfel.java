@@ -11,7 +11,7 @@ public class Würfel {
 	
 	public Würfel(Farbe farbe, Image image){
 		this.farbe = farbe;
-		//this.image.setImage(image);
+		this.image.setImage(image);
 		if(this.farbe.equals(Farbe.pink))
 			maxAugenzahl = 6;
 		else
