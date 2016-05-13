@@ -6,19 +6,26 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Würfel {
-	private Farbe farbe;
+	//Height and Width of cubes
+	final int cubeheight = 60;
+	final int cubewidth = 60;
+	
+	private Farbe farbe = Farbe.Pink;
 	private int maxAugenzahl;
 	private int aktAugenzahl = 1;
-	private ImageView image;
+	private ImageView image = new ImageView(new Image("images/" + this.farbe.name()+ "_Würfel_"+aktAugenzahl+".png"));
 	
-	public Würfel(Farbe farbe, Image image){
+	public Würfel(Farbe farbe){
 		this.farbe = farbe;
-		this.image = new ImageView(image);
-		if(this.farbe.equals(Farbe.pink))
+		if(this.farbe.equals(Farbe.Pink)){
 			maxAugenzahl = 6;
+		}
 		else
 			maxAugenzahl = 5;
 		
+		image.setFitHeight(cubeheight);
+		image.setFitWidth(cubewidth);
+		this.roll();
 	}
 	
 	public Farbe getFarbe(){
@@ -26,6 +33,7 @@ public class Würfel {
 	}
 	
 	public ImageView getImageView(){
+		
 		return this.image;
 	}
 	public int getAktAugenzahl(){
@@ -35,6 +43,8 @@ public class Würfel {
 	public void roll(){
 		Random rand = new Random();
 		this.aktAugenzahl = rand.nextInt(maxAugenzahl)+1;
+		image.setImage(new Image("images/" + this.farbe.name()+"_Würfel_"+aktAugenzahl+".png"));
 	}
+
 
 }
