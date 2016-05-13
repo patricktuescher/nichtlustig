@@ -1,13 +1,16 @@
 package client;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -24,7 +27,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class ClientView {
@@ -55,7 +57,10 @@ public class ClientView {
 	Würfel cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2;
 	
 	//Chat
+	protected int port = 1201;
+	protected BufferedReader streamIn;
 	protected TextArea chatWindow;
+	protected PrintStream streamOut;
 	
 	
 	//Rules
@@ -542,11 +547,15 @@ public class ClientView {
 		chatInputWindow.setMaxSize(700, 30);
 		chatInputWindow.setMinSize(700, 30);
 		
+		
 		Button b_sendchat = new Button();
 		b_sendchat.setText("senden");
 		b_sendchat.setMinSize(100, 30);
 		b_sendchat.setMaxSize(100, 30);
 		b_sendchat.setId("b-sendchat");
+		
+		
+		
 		
 		ChatInput.getChildren().addAll(chatInputWindow, b_sendchat);
 		
