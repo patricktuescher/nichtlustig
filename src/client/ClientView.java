@@ -61,6 +61,7 @@ public class ClientView {
 	protected BufferedReader streamIn;
 	protected TextArea chatWindow;
 	protected PrintStream streamOut;
+	protected TextField chatInputWindow;
 	
 	
 	//Rules
@@ -542,7 +543,7 @@ public class ClientView {
 		
 		HBox ChatInput = new HBox();
 		
-		TextField chatInputWindow = new TextField();
+		chatInputWindow = new TextField();
 		chatInputWindow.setText("Schreibe hier deine Nachricht...");
 		chatInputWindow.setMaxSize(700, 30);
 		chatInputWindow.setMinSize(700, 30);
