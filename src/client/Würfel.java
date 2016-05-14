@@ -46,10 +46,12 @@ public class Würfel {
 		Random rand = new Random();
 		this.aktAugenzahl = rand.nextInt(maxAugenzahl)+1;
 		image.setImage(new Image("images/" + this.farbe.name()+"_Würfel_"+aktAugenzahl+".png"));
+		this.image.setStyle("");
 	}
 	
 	public void click(){
-		String css = "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);";
+		String css = "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 20, 0, 0, 0);";
+		this.image.setStyle(css);
 		
 	}
 
