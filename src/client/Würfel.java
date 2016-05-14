@@ -45,6 +45,15 @@ public class Würfel {
 		this.aktAugenzahl = rand.nextInt(maxAugenzahl)+1;
 		image.setImage(new Image("images/" + this.farbe.name()+"_Würfel_"+aktAugenzahl+".png"));
 	}
+	
+	public void click(){
+		String css = "-fx-border-color:darkblue ; \n" //#090a0c
+            + "-fx-border-insets:3;\n"
+            + "-fx-border-radius:7;\n"
+            + "-fx-border-width:5.0";
+		this.image.setStyle(css);
+		
+	}
 
 
 }
