@@ -194,27 +194,9 @@ public class ClientController {
 		
 			@Override
 			public void handle(ActionEvent arg0) {
-				// Würfel Pink
-				int a = (int) (Math.random()*6);
-				view.cubeViewPink.setImage(view.cubePink[a]);
-				//Würfel white 1
-				int b = (int) (Math.random()*5);
-				view.cubeViewWhite1.setImage(view.cubeWhite1[b]);
-				//Würfel white 2
-				int c = (int) (Math.random()*5);
-				view.cubeViewWhite2.setImage(view.cubeWhite2[c]);
-				//Würfel red 1
-				int d= (int) (Math.random()*5);
-				view.cubeViewRed1.setImage(view.cubeRed1[d]);
-				//Würfel red 2
-				int e = (int) (Math.random()*5);
-				view.cubeViewRed2.setImage(view.cubeRed2[e]);
-				//Würfel black 1
-				int f = (int) (Math.random()*5);
-				view.cubeViewBlack1.setImage(view.cubeBlack1[f]);
-				//Würfel black 2
-				int g = (int) (Math.random()*5);
-				view.cubeViewBlack2.setImage(view.cubeBlack2[g]);
+				for(int x = 0; x < view.WürfelPL1.size(); x++){
+					view.WürfelPL1.get(x).roll();
+				}
 			}
 			
 		});
@@ -399,6 +381,22 @@ public class ClientController {
 		
 			});		
 		}	
+		
+		///////////////// EventHandler chosen cubes //////////////////////////
+		
+		for(int i = 0; i < view.WürfelPL1.size();i++){
+			final int d = i;
+			view.WürfelPL1.get(i).getImageView().setOnMouseClicked(new EventHandler<MouseEvent>(){
+
+				@Override
+				public void handle(MouseEvent event) {
+					view.WürfelPL1.get(d).click();
+					
+				}
+				
+			}
+					);
+		}
 
 		///////////////// EventHandler chosen cards //////////////////////////
 		
@@ -482,15 +480,25 @@ public class ClientController {
 
 		
 		// EventHandler Chat send-Button
-//		view.b_sendchat.setOnAction(new EventHandler<ActionEvent>(){
-//
-//			@Override
-//			public void handle(ActionEvent arg0) {
-//			view.chatWindow.setText("Fehler, deine Nachricht konnte nicht gesendet werden!");
-//			view.chatWindow.insertText(2, "Fehler");
-//			}
-//					
-//		});
+	//	view.b_sendchat.setOnAction(new EventHandler<ActionEvent>(){
+
+	//	@Override
+	//	public void handle(ActionEvent arg0) {
+	//		view.streamOut.println(view.chatInputWindow.getText());
+    //        view.chatInputWindow.setText("");	
+	//		}		
+	//	});	
+		
+		// EventHandler Chat send-Button
+	//			view.chatInputWindow.setOnAction(new EventHandler<ActionEvent>(){
+
+	//			@Override
+	//			public void handle(ActionEvent arg0) {
+	//				view.streamOut.println(view.chatInputWindow.getText());
+	//	            view.chatInputWindow.setText("");	
+	//				}		
+	//	});
+		
 		
 		
 		

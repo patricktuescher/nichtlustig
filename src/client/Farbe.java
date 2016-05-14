@@ -3,5 +3,10 @@ package client;
 //gehört zu Würfel
 
 public enum Farbe {
-	rot, pink, schwarz, weiss;
+	Rot, Pink, Schwarz, Weiss;
+	
+	public String toString(){
+		return "Pink";
+		
+	}
 }

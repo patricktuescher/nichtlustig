@@ -1,11 +1,16 @@
 package client;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.PrintStream;
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -22,7 +27,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class ClientView {
@@ -44,16 +48,20 @@ public class ClientView {
 	protected final int rowIndex = 6;	
 	protected ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino, cardTod;
 
-	//Cubes 
-	ImageView cubeViewPink, cubeViewWhite1, cubeViewWhite2, cubeViewBlack1, cubeViewBlack2, cubeViewRed1, cubeViewRed2;
-	protected Image[] cubePink, cubeWhite1, cubeWhite2, cubeBlack1, cubeBlack2, cubeRed1, cubeRed2;	
+	//Cubes PL1
+	ArrayList <Würfel> WürfelPL1;
+	Würfel cubeViewPink,cubeViewWhite1, cubeViewWhite2, cubeViewBlack1, cubeViewBlack2, cubeViewRed1, cubeViewRed2;
 	
 	//Cubes PL2
-	ImageView cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2;
-	protected Image[] cubePinkPL2, cubeWhite1PL2, cubeWhite2PL2, cubeBlack1PL2, cubeBlack2PL2, cubeRed1PL2, cubeRed2PL2;	
+	ArrayList <Würfel> WürfelPL2;
+	Würfel cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2;
 	
 	//Chat
+	protected int port = 1201;
+	protected BufferedReader streamIn;
 	protected TextArea chatWindow;
+	protected PrintStream streamOut;
+	protected TextField chatInputWindow;
 	
 	
 	//Rules
@@ -61,7 +69,6 @@ public class ClientView {
 	protected Image[] regeln;
 	protected static  int currentRuleImage = 0;
 
-	
 	//Height and Width of cubes
 	final int cubeheight = 60;
 	final int cubewidth = 60;
@@ -457,90 +464,33 @@ public class ClientView {
 		}
 		
 		
-		////////////////// CUBES //////////////////////////
+		////////////////// CUBES PL1//////////////////////////
 		
+		WürfelPL1  = new ArrayList<Würfel>();
 		
 		// Cubes pink
-		cubePink = new Image[6];
-		for(int i = 1; i<7; i++){
-			cubePink[i-1] = new Image("images/Pink_Würfel_"+i+".png");
-			}
-		int cPink = (int) (Math.random()*6);
-		cubeViewPink = new ImageView();
-		cubeViewPink.setImage(cubePink[cPink]);
-		cubeViewPink.setFitHeight(cubeheight);
-		cubeViewPink.setFitWidth(cubewidth);
+		cubeViewPink = new Würfel(Farbe.Pink);
+		WürfelPL1.add(cubeViewPink);
+		cubeViewPink.getImageView().setId("cubeViewPink");
+	
+		// Cubes white
+		cubeViewWhite1 = new Würfel(Farbe.Weiss);
+		cubeViewWhite2 = new Würfel(Farbe.Weiss);
+		WürfelPL1.add(cubeViewWhite1);
+		WürfelPL1.add(cubeViewWhite2);
 		
-		// Cubes white1
-		cubeWhite1 = new Image[5];
-		for(int i = 1; i<6; i++){
-			cubeWhite1[i-1] = new Image("images/Weiss_Würfel_"+i+".png");
-			}
-		int cWhite1 = (int) (Math.random()*5);
-		cubeViewWhite1 = new ImageView();
-		cubeViewWhite1.setImage(cubeWhite1[cWhite1]);
-		cubeViewWhite1.setFitHeight(cubeheight);
-		cubeViewWhite1.setFitWidth(cubewidth);
-		
-		// Cubes white2
-		cubeWhite2 = new Image[5];
-		for(int i = 1; i<6; i++){
-			cubeWhite2[i-1] = new Image("images/Weiss_Würfel_"+i+".png");
-			}
-		int cWhite2 = (int) (Math.random()*5);
-		cubeViewWhite2 = new ImageView();
-		cubeViewWhite2.setImage(cubeWhite2[cWhite2]);
-		cubeViewWhite2.setFitHeight(cubeheight);
-		cubeViewWhite2.setFitWidth(cubewidth);
-		
+
 		// Cubes black1
-		cubeBlack1 = new Image[5];
-		for(int i = 1; i<6; i++){
-			cubeBlack1[i-1] = new Image("images/Schwarz_Würfel_"+i+".png");
-			}
-		int cBlack1 = (int) (Math.random()*5);
-		cubeViewBlack1 = new ImageView();
-		cubeViewBlack1.setImage(cubeBlack1[cBlack1]);
-		cubeViewBlack1.setFitHeight(cubeheight);
-		cubeViewBlack1.setFitWidth(cubewidth);
-		
-		// Cubes black2
-		cubeBlack2 = new Image[5];
-		for(int i = 1; i<6; i++){
-			cubeBlack2[i-1] = new Image("images/Schwarz_Würfel_"+i+".png");
-			}
-		int cBlack2 = (int) (Math.random()*5);
-		cubeViewBlack2 = new ImageView();
-		cubeViewBlack2.setImage(cubeBlack2[cBlack2]);
-		cubeViewBlack2.setFitHeight(cubeheight);
-		cubeViewBlack2.setFitWidth(cubewidth);
-		
+		cubeViewBlack1 = new Würfel(Farbe.Schwarz);
+		cubeViewBlack2 = new Würfel(Farbe.Schwarz);
+		WürfelPL1.add(cubeViewBlack1);
+		WürfelPL1.add(cubeViewBlack2);
 		
 		//Cubes red1
-		cubeRed1 = new Image[5];
-		for(int i = 1; i<6; i++){
-			cubeRed1[i-1] = new Image("images/Rot_Würfel_"+i+".png");
-			}
-		int cRed1 = (int) (Math.random()*5);
-		cubeViewRed1 = new ImageView();
-		cubeViewRed1.setImage(cubeRed1[cRed1]);
-		cubeViewRed1.setFitHeight(cubeheight);
-		cubeViewRed1.setFitWidth(cubewidth);
-		
-		
-		
-		// Cubes red2
-		cubeRed2 = new Image[5];
-		for(int i = 1; i<6; i++){
-			cubeRed2[i-1] = new Image("images/Rot_Würfel_"+i+".png");
-			}
-		int cRed2 = (int) (Math.random()*5);
-		cubeViewRed2 = new ImageView();
-		cubeViewRed2.setImage(cubeRed2[cRed2]);
-		cubeViewRed2.setFitHeight(cubeheight);
-		cubeViewRed2.setFitWidth(cubewidth);
-	
-		
+		cubeViewRed1 = new Würfel(Farbe.Rot);
+		cubeViewRed2 = new Würfel(Farbe.Rot);
+		WürfelPL1.add(cubeViewRed1);
+		WürfelPL1.add(cubeViewRed2);
 		
 		
 		//Button würfeln
@@ -548,92 +498,38 @@ public class ClientView {
 		b_würfeln.setId("b-login");
 		
 		//added nodes to BottomPane
-		bottomPaneGameCube.getChildren().addAll(b_würfeln,cubeViewPink,cubeViewWhite1,cubeViewWhite2,cubeViewBlack1,cubeViewBlack2,cubeViewRed1,cubeViewRed2,b_backGame);
+		bottomPaneGameCube.getChildren().addAll(b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_backGame);
 		
 		
 		//////////////////CUBES PL2 (SecondPlayer) //////////////////////////
 		
+		WürfelPL2  = new ArrayList<Würfel>();
 		
 		// Cubes pink PL2
-		cubePinkPL2 = new Image[6];
-		for(int i = 1; i<7; i++){
-			cubePinkPL2[i-1] = new Image("images/Pink_Würfel_"+i+".png");
-			}
-		int cPinkPL2 = (int) (Math.random()*6);
-		cubeViewPinkPL2 = new ImageView();
-		cubeViewPinkPL2.setImage(cubePink[cPinkPL2]);
-		cubeViewPinkPL2.setFitHeight(cubeheight);
-		cubeViewPinkPL2.setFitWidth(cubewidth);
+		cubeViewPinkPL2 = new Würfel(Farbe.Pink);
+		WürfelPL2.add(cubeViewPinkPL2);
 		
-		// Cubes white1PL2
-		cubeWhite1PL2 = new Image[5];
-		for(int i = 1; i<6; i++){
-			cubeWhite1PL2[i-1] = new Image("images/Weiss_Würfel_"+i+".png");
-			}
-		int cWhite1PL2 = (int) (Math.random()*5);
-		cubeViewWhite1PL2 = new ImageView();
-		cubeViewWhite1PL2.setImage(cubeWhite1[cWhite1PL2]);
-		cubeViewWhite1PL2.setFitHeight(cubeheight);
-		cubeViewWhite1PL2.setFitWidth(cubewidth);
+		// Cubes white PL2
+		cubeViewWhite1PL2 = new Würfel(Farbe.Weiss);
+		cubeViewWhite2PL2 = new Würfel(Farbe.Weiss);
+		WürfelPL2.add(cubeViewWhite1PL2);
+		WürfelPL2.add(cubeViewWhite2PL2);
+	
 		
-		// Cubes white2 PL2
-		cubeWhite2PL2 = new Image[5];
-		for(int i = 1; i<6; i++){
-			cubeWhite2PL2[i-1] = new Image("images/Weiss_Würfel_"+i+".png");
-			}
-		int cWhite2PL2 = (int) (Math.random()*5);
-		cubeViewWhite2PL2 = new ImageView();
-		cubeViewWhite2PL2.setImage(cubeWhite2[cWhite2PL2]);
-		cubeViewWhite2PL2.setFitHeight(cubeheight);
-		cubeViewWhite2PL2.setFitWidth(cubewidth);
+		// Cubes black PL2
+		cubeViewBlack1PL2 = new Würfel(Farbe.Schwarz);
+		cubeViewBlack2PL2 = new Würfel(Farbe.Schwarz);
+		WürfelPL2.add(cubeViewBlack1PL2);
+		WürfelPL2.add(cubeViewBlack2PL2);
 		
-		// Cubes black1 PL2
-		cubeBlack1PL2 = new Image[5];
-		for(int i = 1; i<6; i++){
-			cubeBlack1PL2[i-1] = new Image("images/Schwarz_Würfel_"+i+".png");
-			}
-		int cBlack1PL2 = (int) (Math.random()*5);
-		cubeViewBlack1PL2 = new ImageView();
-		cubeViewBlack1PL2.setImage(cubeBlack1[cBlack1PL2]);
-		cubeViewBlack1PL2.setFitHeight(cubeheight);
-		cubeViewBlack1PL2.setFitWidth(cubewidth);
-		
-		// Cubes black2 PL2
-		cubeBlack2PL2 = new Image[5];
-		for(int i = 1; i<6; i++){
-			cubeBlack2PL2[i-1] = new Image("images/Schwarz_Würfel_"+i+".png");
-			}
-		int cBlack2PL2 = (int) (Math.random()*5);
-		cubeViewBlack2PL2 = new ImageView();
-		cubeViewBlack2PL2.setImage(cubeBlack2[cBlack2PL2]);
-		cubeViewBlack2PL2.setFitHeight(cubeheight);
-		cubeViewBlack2PL2.setFitWidth(cubewidth);
-		
-		
-		//Cubes red1 PL2
-		cubeRed1PL2 = new Image[5];
-		for(int i = 1; i<6; i++){
-			cubeRed1PL2[i-1] = new Image("images/Rot_Würfel_"+i+".png");
-			}
-		int cRed1PL2 = (int) (Math.random()*5);
-		cubeViewRed1PL2 = new ImageView();
-		cubeViewRed1PL2.setImage(cubeRed1[cRed1PL2]);
-		cubeViewRed1PL2.setFitHeight(cubeheight);
-		cubeViewRed1PL2.setFitWidth(cubewidth);
-
-		// Cubes red2
-		cubeRed2PL2 = new Image[5];
-		for(int i = 1; i<6; i++){
-			cubeRed2PL2[i-1] = new Image("images/Rot_Würfel_"+i+".png");
-			}
-		int cRed2PL2 = (int) (Math.random()*5);
-		cubeViewRed2PL2 = new ImageView();
-		cubeViewRed2PL2.setImage(cubeRed2[cRed2PL2]);
-		cubeViewRed2PL2.setFitHeight(cubeheight);
-		cubeViewRed2PL2.setFitWidth(cubewidth);
+		//Cubes red PL2
+		cubeViewRed1PL2 = new Würfel(Farbe.Rot);
+		cubeViewRed2PL2 = new Würfel(Farbe.Rot);
+		WürfelPL2.add(cubeViewRed1PL2);
+		WürfelPL2.add(cubeViewRed2PL2);
 		
 		//added nodes to innertopPaneGame
-		innertopPaneGame.getChildren().addAll(cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2);
+		innertopPaneGame.getChildren().addAll(cubeViewPinkPL2.getImageView(), cubeViewWhite1PL2.getImageView(), cubeViewWhite2PL2.getImageView(), cubeViewBlack1PL2.getImageView(), cubeViewBlack2PL2.getImageView(), cubeViewRed1PL2.getImageView(), cubeViewRed2PL2.getImageView());
 				
 		//Chat
 		
@@ -647,16 +543,20 @@ public class ClientView {
 		
 		HBox ChatInput = new HBox();
 		
-		TextField chatInputWindow = new TextField();
+		chatInputWindow = new TextField();
 		chatInputWindow.setText("Schreibe hier deine Nachricht...");
 		chatInputWindow.setMaxSize(700, 30);
 		chatInputWindow.setMinSize(700, 30);
+		
 		
 		Button b_sendchat = new Button();
 		b_sendchat.setText("senden");
 		b_sendchat.setMinSize(100, 30);
 		b_sendchat.setMaxSize(100, 30);
 		b_sendchat.setId("b-sendchat");
+		
+		
+		
 		
 		ChatInput.getChildren().addAll(chatInputWindow, b_sendchat);
 		

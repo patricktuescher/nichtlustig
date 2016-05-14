@@ -1,6 +1,7 @@
 package server;
 
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Server extends Application{
