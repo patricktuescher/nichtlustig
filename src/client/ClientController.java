@@ -381,6 +381,22 @@ public class ClientController {
 		
 			});		
 		}	
+		
+		///////////////// EventHandler chosen cubes //////////////////////////
+		
+		for(int i = 0; i < view.WürfelPL1.size();i++){
+			final int d = i;
+			view.WürfelPL1.get(i).getImageView().setOnMouseClicked(new EventHandler<MouseEvent>(){
+
+				@Override
+				public void handle(MouseEvent event) {
+					view.WürfelPL1.get(d).click();
+					
+				}
+				
+			}
+					);
+		}
 
 		///////////////// EventHandler chosen cards //////////////////////////
 		

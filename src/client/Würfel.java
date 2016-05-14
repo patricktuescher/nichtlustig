@@ -25,7 +25,9 @@ public class Würfel {
 		
 		image.setFitHeight(cubeheight);
 		image.setFitWidth(cubewidth);
+		image.setId("Wuerfel");
 		this.roll();
+
 	}
 	
 	public Farbe getFarbe(){
@@ -44,6 +46,11 @@ public class Würfel {
 		Random rand = new Random();
 		this.aktAugenzahl = rand.nextInt(maxAugenzahl)+1;
 		image.setImage(new Image("images/" + this.farbe.name()+"_Würfel_"+aktAugenzahl+".png"));
+	}
+	
+	public void click(){
+		String css = "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);";
+		
 	}
 
 

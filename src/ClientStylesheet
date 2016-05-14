@@ -140,7 +140,20 @@
 			        linear-gradient(#969696 0%, #969696 20%, #969696 80%, #969696 100%),
 			        linear-gradient(#969696 0%, #969696 50%, #969696 51%, #969696 100%);
         
-} 				
+}
+.Würfel.image:pressed {
+				 -fx-border-color: gray;
+    -fx-border-radius: 5.0 5.0 5.0 5.0;
+    -fx-background-radius: 5.0 5.0 5.0 5.0;
+    -fx-background-color:  white;
+    -fx-text-fill: black;
+    -fx-wrap-text: true;
+
+}
+#Wuerfel:hover{
+		-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+
+}
  				
  				
  				

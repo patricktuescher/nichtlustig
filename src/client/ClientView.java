@@ -464,14 +464,13 @@ public class ClientView {
 		}
 		
 		
-		////////////////// CUBES //////////////////////////
+		////////////////// CUBES PL1//////////////////////////
 		
 		WürfelPL1  = new ArrayList<Würfel>();
 		
 		// Cubes pink
 		cubeViewPink = new Würfel(Farbe.Pink);
 		WürfelPL1.add(cubeViewPink);
-		
 	
 		// Cubes white
 		cubeViewWhite1 = new Würfel(Farbe.Weiss);
