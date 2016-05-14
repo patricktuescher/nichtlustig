@@ -536,7 +536,7 @@ public class ClientView {
 		chatWindow = new TextArea();
 		chatWindow.setMinSize(200, 50);
 		chatWindow.setMaxSize(800, 50);
-		chatWindow.setText("Hier könnte Ihre Chat-Nachricht stehen");
+		chatWindow.setText("Willkommen");
 		
 		
 		//VBox Chat Input and Send
@@ -544,7 +544,7 @@ public class ClientView {
 		HBox ChatInput = new HBox();
 		
 		chatInputWindow = new TextField();
-		chatInputWindow.setText("Schreibe hier deine Nachricht...");
+		chatInputWindow.setText("Hier klicken ...");
 		chatInputWindow.setMaxSize(700, 30);
 		chatInputWindow.setMinSize(700, 30);
 		
