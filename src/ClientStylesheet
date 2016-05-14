@@ -150,13 +150,8 @@
     -fx-wrap-text: true;
 
 }
-#cubeViewPink:pressed{
-				 -fx-border-color: gray;
-    -fx-border-radius: 5.0 5.0 5.0 5.0;
-    -fx-background-radius: 5.0 5.0 5.0 5.0;
-    -fx-background-color:  white;
-    -fx-text-fill: black;
-    -fx-wrap-text: true;
+#Wuerfel:hover{
+		-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 
 }
  				

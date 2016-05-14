@@ -25,7 +25,9 @@ public class Würfel {
 		
 		image.setFitHeight(cubeheight);
 		image.setFitWidth(cubewidth);
+		image.setId("Wuerfel");
 		this.roll();
+
 	}
 	
 	public Farbe getFarbe(){
@@ -47,11 +49,7 @@ public class Würfel {
 	}
 	
 	public void click(){
-		String css = "-fx-border-color:darkblue ; \n" //#090a0c
-            + "-fx-border-insets:3;\n"
-            + "-fx-border-radius:7;\n"
-            + "-fx-border-width:5.0";
-		this.image.setStyle(css);
+		String css = "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);";
 		
 	}
 
