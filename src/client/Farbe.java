@@ -6,4 +6,3 @@ public enum Farbe {
 	Rot, Pink, Schwarz, Weiss;
 		
 	}
-}
