@@ -6,28 +6,23 @@ import javafx.scene.image.ImageView;
 
 public class Card {
 	
-	private String name;
-	private int point;
+	private cardType type = cardType.Dino;
+	private int points;
 	private ImageView image;
 	private Status status;
 	private Würfel würfel;
 	
 	
-	public Card(String name, int point, Image image, Status status){
-		this.name = name;
-		this.point = point;
+	public Card(cardType type, int point, Image image, Status status){
+		this.type = type;
+		this.points = point;
 		this.image = new ImageView(image);
 		this.status = status;
 	}
 
 
-	protected String getName() {
-		return name;
-	}
-
-
-	protected int getPoint() {
-		return point;
+	protected int getPoints() {
+		return points;
 	}
 
 

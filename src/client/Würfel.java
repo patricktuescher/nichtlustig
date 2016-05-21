@@ -35,7 +35,6 @@ public class Würfel {
 	}
 	
 	public ImageView getImageView(){
-		
 		return this.image;
 	}
 	public int getAktAugenzahl(){
@@ -50,8 +49,12 @@ public class Würfel {
 	}
 	
 	public void click(){
-		String css = "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 20, 0, 0, 0);";
-		this.image.setStyle(css);
+		String css = "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);";
+		if(this.image.getStyle() == (css))
+			this.image.setStyle(css);
+		else
+				
+			this.image.setStyle(css);
 		
 	}
 
