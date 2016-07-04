@@ -55,13 +55,12 @@ public class Würfel {
 		String css = "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);";
 		if(this.image.getStyle() == (css)){
 			this.image.setStyle(css);
-			selected = true;
 		}
 			
 		else{
 			this.image.setStyle(css);
-			selected = true;
 		}
+		selected = true;
 	}
 	public boolean isSelected(){
 		return this.selected;
