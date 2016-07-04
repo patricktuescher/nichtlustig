@@ -80,12 +80,13 @@ public class ClientView {
 	public ClientView(Stage primaryStage, ClientModel model){
 		this.primaryStage = primaryStage;
 		this.model = model;
+		sl = ServiceLocator.getServiceLocator();
+		t = sl.getTranslator();
 		
 		
 		
 		
 		///////////////// LOGIN FENSTER //////////////////////////
-		sl = ServiceLocator.getServiceLocator();
 		
 		//InnerPane Login
 		GridPane innerPaneLogin = new GridPane();
@@ -95,12 +96,12 @@ public class ClientView {
 		innerPaneLogin.setPadding(new Insets(200,200,0,280));
 		
 		//Label Username
-		Label lb_username = new Label("User name: ");
+		Label lb_username = new Label(t.getString("UserName")+ ": ");
 		innerPaneLogin.add(lb_username, 2, 1);
 		lb_username.setId("lb-username");
 		
 		//Label Password
-		Label lb_password = new Label("Password: ");
+		Label lb_password = new Label(t.getString("Password")+": ");
 		innerPaneLogin.add(lb_password, 2, 4);
 		lb_password.setId("lb-password");
 		
@@ -122,19 +123,19 @@ public class ClientView {
 
 		
 		//Button Login
-		b_login = new Button("Login");
+		b_login = new Button(t.getString("Login"));
 		innerPaneLogin.add(b_login, 1, 25);
 		b_login.setPrefSize(200, 70);
 		b_login.setId("b-login");
 		
 		//Button Register
-		b_register = new Button(sl.getTranslator().getString("Register"));
+		b_register = new Button(t.getString("Register"));
 		innerPaneLogin.add(b_register, 2, 25);
 		b_register.setPrefSize(200, 70);
 		b_register.setId("b-login");
 		
 		//Button Quit game
-		b_quitGame = new Button("Quit Game");
+		b_quitGame = new Button(t.getString("QuitGame"));
 		innerPaneLogin.add(b_quitGame, 3, 25);
 		b_quitGame.setPrefSize(200,70);
 		b_quitGame.setId("b-login");
