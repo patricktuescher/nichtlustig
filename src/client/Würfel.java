@@ -11,6 +11,7 @@ public class Würfel {
 	final int cubewidth = 60;
 	
 	private Farbe farbe = Farbe.Pink;
+	private boolean selected = false;
 	private int maxAugenzahl;
 	private int aktAugenzahl = 1;
 	private ImageView image = new ImageView(new Image("images/" + this.farbe.name()+ "_Würfel_"+aktAugenzahl+".png"));
@@ -42,20 +43,28 @@ public class Würfel {
 	}
 	
 	public void roll(){
+		if(!this.isSelected()){
 		Random rand = new Random();
 		this.aktAugenzahl = rand.nextInt(maxAugenzahl)+1;
 		image.setImage(new Image("images/" + this.farbe.name()+"_Würfel_"+aktAugenzahl+".png"));
 		this.image.setStyle("");
+		}
 	}
 	
 	public void click(){
 		String css = "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);";
-		if(this.image.getStyle() == (css))
+		if(this.image.getStyle() == (css)){
 			this.image.setStyle(css);
-		else
-				
+			selected = true;
+		}
+			
+		else{
 			this.image.setStyle(css);
-		
+			selected = true;
+		}
+	}
+	public boolean isSelected(){
+		return this.selected;
 	}
 
 
