@@ -1,9 +1,10 @@
-package CommonClasses;
+package client;
 
 import java.util.Locale;
 import java.util.logging.Logger;
 
-import client.Client;
+import CommonClasses.Configuration;
+import CommonClasses.Translator;
 
 
 /**
@@ -21,8 +22,8 @@ public class ServiceLocator {
     private static ServiceLocator serviceLocator; // singleton
 
     // Application-global constants
-    final private Class<?> APP_CLASS = Client.class;
-    final private String APP_NAME = "nichtLustig_Client";
+    final private Class<?> APP_CLASS = ClientView.class;
+    final private String APP_NAME = "ClientView";
     
     // Supported locales (for translations)
     final private Locale[] locales = new Locale[] { new Locale("en"), new Locale("de") };
@@ -38,6 +39,7 @@ public class ServiceLocator {
      * @return The singleton resource locator
      */
     public static ServiceLocator getServiceLocator() {
+    	
         if (serviceLocator == null)
             serviceLocator = new ServiceLocator();
         return serviceLocator;
@@ -48,8 +50,7 @@ public class ServiceLocator {
      * @param appName Name of the main class of this program
      */
     private ServiceLocator() {
-        // Currently nothing to do here. We must define this constructor anyway,
-        // because the default constructor is public
+    
     }
 
     public Class<?> getAPP_CLASS() {
@@ -61,7 +62,11 @@ public class ServiceLocator {
     }
 
     public Logger getLogger() {
-        return logger;
+        if(this.logger == null){
+        	this.logger = Logger.getLogger(getAPP_NAME());
+        	return this.logger;
+        }
+        else return this.logger;
     }
 
     public void setLogger(Logger logger) {
@@ -81,7 +86,11 @@ public class ServiceLocator {
     }
 
     public Translator getTranslator() {
-        return translator;
+        if(this.translator == null){
+        	this.translator = new Translator("de");
+        	return this.translator;
+        }
+        else return this.translator;
     }
     
     public void setTranslator(Translator translator) {

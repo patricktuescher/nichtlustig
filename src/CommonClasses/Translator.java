@@ -5,6 +5,8 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+import client.ServiceLocator;
+
 
 public class Translator {
     private ServiceLocator sl = ServiceLocator.getServiceLocator();

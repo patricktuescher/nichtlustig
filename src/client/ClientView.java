@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import CommonClasses.Translator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -38,6 +39,8 @@ public class ClientView {
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
 	protected CheckBox passwordCheck;
+	protected ServiceLocator sl;
+	protected Translator t;
 	
 	//Height and Width of the cards
 	final int cardheight = 90;
@@ -82,8 +85,7 @@ public class ClientView {
 		
 		
 		///////////////// LOGIN FENSTER //////////////////////////
-		
-		
+		sl = ServiceLocator.getServiceLocator();
 		
 		//InnerPane Login
 		GridPane innerPaneLogin = new GridPane();
@@ -126,7 +128,7 @@ public class ClientView {
 		b_login.setId("b-login");
 		
 		//Button Register
-		b_register = new Button("Register");
+		b_register = new Button(sl.getTranslator().getString("Register"));
 		innerPaneLogin.add(b_register, 2, 25);
 		b_register.setPrefSize(200, 70);
 		b_register.setId("b-login");
@@ -575,4 +577,9 @@ public class ClientView {
 	
 	public void start(){
 		primaryStage.show();
-	}}
+	}
+	
+	public String getName(){
+		return "ClientView";
+	}	
+}
