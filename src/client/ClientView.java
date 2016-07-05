@@ -31,7 +31,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ClientView {
 	
@@ -80,6 +82,8 @@ public class ClientView {
 	final int cubewidth = 60;
 	
 	
+	
+	
 	public ClientView(Stage primaryStage, ClientModel model){
 		this.primaryStage = primaryStage;
 		this.model = model;
@@ -90,14 +94,6 @@ public class ClientView {
 		
 		
 		///////////////// LOGIN FENSTER //////////////////////////
-		
-		Alert sprache = new Alert(AlertType.NONE);
-		sprache.setTitle("Wähle deine Sprache");
-		sprache.setHeaderText("Wähle deine Sprache");
-		ButtonType DE = new ButtonType("Deutsch");
-		ButtonType EN = new ButtonType("English");
-		sprache.getButtonTypes().setAll(DE, EN);
-		sprache.showAndWait();
 		
 		//InnerPane Login
 		GridPane innerPaneLogin = new GridPane();

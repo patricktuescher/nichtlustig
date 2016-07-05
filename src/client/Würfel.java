@@ -5,6 +5,9 @@ import java.util.Random;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * This class represents a dice which can be used in the nichtLustig application
+ */
 public class Würfel {
 	//Height and Width of cubes
 	final int cubeheight = 60;
@@ -30,18 +33,30 @@ public class Würfel {
 		this.roll();
 
 	}
-	
+	/**
+	 * @return color of dice
+	 */
 	public Farbe getFarbe(){
 		return this.farbe;
 	}
 	
+	/**
+	 * @return ImageView of dice
+	 */
 	public ImageView getImageView(){
 		return this.image;
 	}
+	
+	/**
+	 * @return current number of dice (1-6)
+	 */
 	public int getAktAugenzahl(){
 		return this.aktAugenzahl;
 	}
 	
+	/**
+	 * rolls die which have not been selected
+	 */
 	public void roll(){
 		if(!this.isSelected()){
 		Random rand = new Random();
@@ -51,6 +66,9 @@ public class Würfel {
 		}
 	}
 	
+	/**
+	 * activates css effect on selected die
+	 */
 	public void click(){
 		String css = "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);";
 		if(this.image.getStyle() == (css)){
@@ -62,6 +80,10 @@ public class Würfel {
 		}
 		selected = true;
 	}
+	
+	/**
+	 * @return boolean if dice is selected or not (true or false)
+	 */
 	public boolean isSelected(){
 		return this.selected;
 	}
