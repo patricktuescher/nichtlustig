@@ -87,7 +87,7 @@ public class ServiceLocator {
 
     public Translator getTranslator() {
         if(this.translator == null){
-        	this.translator = new Translator("de");
+        	this.translator = new Translator("en");
         	return this.translator;
         }
         else return this.translator;
