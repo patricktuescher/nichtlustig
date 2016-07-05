@@ -536,6 +536,7 @@ public class ClientView {
 		chatWindow.setMinSize(200, 50);
 		chatWindow.setMaxSize(800, 50);
 		chatWindow.setText("Willkommen");
+		chatWindow.setEditable(false);
 		
 		
 		//VBox Chat Input and Send
