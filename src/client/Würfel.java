@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- * This class represents a dice which can be implemented into the nichtLustig application
+ * This class represents a die which can be implemented into the nichtLustig application
  * @author Manipake Kontroburtüs
  */
 public class Würfel {
@@ -40,28 +40,28 @@ public class Würfel {
 
 	}
 	/**
-	 * @return color of dice
+	 * @return color of the die
 	 */
 	public Farbe getFarbe(){
 		return this.farbe;
 	}
 	
 	/**
-	 * @return ImageView of dice
+	 * @return ImageView of die
 	 */
 	public ImageView getImageView(){
 		return this.image;
 	}
 	
 	/**
-	 * @return current number of dice (1-6)
+	 * @return current number of die (1-6)
 	 */
 	public int getAktAugenzahl(){
 		return this.aktAugenzahl;
 	}
 	
 	/**
-	 * rolls die which have not been selected
+	 * rolls the dice which have not been selected
 	 */
 	public void roll(){
 		if(!this.isSelected()){
@@ -90,7 +90,7 @@ public class Würfel {
 	}
 	
 	/**
-	 * @return boolean if dice is selected or not (true or false)
+	 * @return boolean if die is selected or not (true or false)
 	 */
 	public boolean isSelected(){
 		return this.selected;
