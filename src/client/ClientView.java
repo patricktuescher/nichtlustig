@@ -7,12 +7,16 @@ import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import CommonClasses.Translator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -26,8 +30,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ClientView {
 	
@@ -38,6 +45,8 @@ public class ClientView {
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
 	protected CheckBox passwordCheck;
+	protected ServiceLocator sl;
+	protected Translator t;
 	
 	//Height and Width of the cards
 	final int cardheight = 90;
@@ -74,16 +83,17 @@ public class ClientView {
 	final int cubewidth = 60;
 	
 	
+	
+	
 	public ClientView(Stage primaryStage, ClientModel model){
 		this.primaryStage = primaryStage;
 		this.model = model;
-		
+		sl = ServiceLocator.getServiceLocator();
+		t = sl.getTranslator();
 		
 		
 		
 		///////////////// LOGIN FENSTER //////////////////////////
-		
-		
 		
 		//InnerPane Login
 		GridPane innerPaneLogin = new GridPane();
@@ -93,12 +103,12 @@ public class ClientView {
 		innerPaneLogin.setPadding(new Insets(200,200,0,280));
 		
 		//Label Username
-		Label lb_username = new Label("User name: ");
+		Label lb_username = new Label(t.getString("Label.UserName")+ ": ");
 		innerPaneLogin.add(lb_username, 2, 1);
 		lb_username.setId("lb-username");
 		
 		//Label Password
-		Label lb_password = new Label("Password: ");
+		Label lb_password = new Label(t.getString("Label.Password")+": ");
 		innerPaneLogin.add(lb_password, 2, 4);
 		lb_password.setId("lb-password");
 		
@@ -106,33 +116,33 @@ public class ClientView {
 		TextField tf_username = new TextField();
 		innerPaneLogin.add(tf_username, 2, 2);
 		tf_username.setId("pf-login");
-		tf_username.setPromptText("user name");
+		tf_username.setPromptText(t.getString("Label.UserName"));
 		
 		//Passwortbox Password
 		PasswordField pf_password = new PasswordField();
 		innerPaneLogin.add(pf_password, 2, 5);
 		pf_password.setId("pf-login");
-		pf_password.setPromptText("password");
+		pf_password.setPromptText(t.getString("Label.Password"));
 		
 		// checkbox password visibility
-		passwordCheck = new CheckBox("password visible"); 	
+		passwordCheck = new CheckBox(t.getString("CheckBox.passwordCheck")); 	
 		innerPaneLogin.add(passwordCheck, 2, 6);
 
 		
 		//Button Login
-		b_login = new Button("Login");
+		b_login = new Button(t.getString("Button.Login"));
 		innerPaneLogin.add(b_login, 1, 25);
 		b_login.setPrefSize(200, 70);
 		b_login.setId("b-login");
 		
 		//Button Register
-		b_register = new Button("Register");
+		b_register = new Button(t.getString("Button.Register"));
 		innerPaneLogin.add(b_register, 2, 25);
 		b_register.setPrefSize(200, 70);
 		b_register.setId("b-login");
 		
 		//Button Quit game
-		b_quitGame = new Button("Quit Game");
+		b_quitGame = new Button(t.getString("Button.QuitGame"));
 		innerPaneLogin.add(b_quitGame, 3, 25);
 		b_quitGame.setPrefSize(200,70);
 		b_quitGame.setId("b-login");
@@ -159,41 +169,41 @@ public class ClientView {
 		
 		
 		//Button Spiel erstellen 
-		b_spielErstellen = new Button("Spiel erstellen");
+		b_spielErstellen = new Button(t.getString("Button.newGame"));
 		b_spielErstellen.setPrefSize(200, 70);
 		innerPaneLobby.add(b_spielErstellen, 1, 2);
 		b_spielErstellen.setId("b-login");
 		
 		
 		//Button Statistik
-		b_statistic = new Button("Statistik");
+		b_statistic = new Button(t.getString("Button.Stats"));
 		b_statistic.setPrefSize(200,70);
 		innerPaneLobby.add(b_statistic, 2, 2);
 		b_statistic.setId("b-login");
 	
 		
 		//Button Regeln 
-		b_rules = new Button("Regeln");
+		b_rules = new Button(t.getString("Button.Rules"));
 		b_rules.setPrefSize(200,70);
 		innerPaneLobby.add(b_rules, 3, 2);
 		b_rules.setId("b-login");
 		
 		
 		//Button Spiel beitreten 
-		b_spielBeitreten = new Button("Spiel beitreten");
+		b_spielBeitreten = new Button(t.getString("Button.JoinGame"));
 		b_spielBeitreten.setPrefSize(200,70);
 		innerPaneLobby.add(b_spielBeitreten, 2, 9);
 		b_spielBeitreten.setId("b-login");
 		
 		
 		//Button Zurück
-		b_backLobby = new Button("Zurück");
+		b_backLobby = new Button(t.getString("Button.Back"));
 		b_backLobby.setPrefSize(200,70);
 		innerPaneLobby.add(b_backLobby, 6, 9);
 		b_backLobby.setId("b-login");
 		
 		//Label select game
-		Label select_label = new Label("Wähle ein Spiel:");
+		Label select_label = new Label(t.getString("Label.selectGame")+": ");
 		select_label.setId("label");
 		select_label.setPrefSize(200, 20);
 		select_label.setAlignment(Pos.CENTER);
@@ -242,16 +252,16 @@ public class ClientView {
 		//TableView Statistik
 		TableView table = new TableView();
 	    table.setEditable(true);
-	    TableColumn userNameCol = new TableColumn("user name");
-	    TableColumn scoreCol = new TableColumn("score");
-	    TableColumn dateCol = new TableColumn("date");
+	    TableColumn userNameCol = new TableColumn(t.getString("TableColumn.UserNameCol"));
+	    TableColumn scoreCol = new TableColumn(t.getString("TableColumn.Score"));
+	    TableColumn dateCol = new TableColumn(t.getString("TableColumn.date"));
 	    table.getColumns().addAll(userNameCol, scoreCol, dateCol);
 	    table.setMaxSize(600, 400);
 	    table.setMinSize(600, 400);
 	    centerPaneStatistik.getChildren().add(table);
 		
 		//Button Zurück
-		b_backStatistik = new Button("Zurück");
+		b_backStatistik = new Button(t.getString("Button.Back"));
 		bottomPaneStatistik.getChildren().add(b_backStatistik);
 		b_backStatistik.setPrefSize(200, 70);
 		b_backStatistik.setId("b-login");
@@ -281,7 +291,7 @@ public class ClientView {
 		
 
 		//Button Zurück
-		b_backRegeln = new Button("Zurück");
+		b_backRegeln = new Button(t.getString("Button.Back"));
 		b_backRegeln.setPrefSize(200, 70);
 		bottomPaneRegeln.getChildren().add(b_backRegeln);
 		b_backRegeln.setId("b-login");
@@ -576,4 +586,9 @@ public class ClientView {
 	
 	public void start(){
 		primaryStage.show();
-	}}
+	}
+	
+	public String getName(){
+		return "ClientView";
+	}	
+}

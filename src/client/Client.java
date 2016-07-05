@@ -29,4 +29,9 @@ public class Client extends Application{
 		
 		view.start();
 		
-	}}
+	}
+	public String getName(){
+		return "Client";
+	}
+}
+
