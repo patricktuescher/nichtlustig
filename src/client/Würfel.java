@@ -7,7 +7,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- * This class represents a die which can be implemented into the nichtLustig application
+ * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kontroburtüs.
+ * All rights reserved.
+ * 
+ * This class represents a die which can be implemented into the nichtLustig application.
  * @author Manipake Kontroburtüs
  */
 public class Würfel {
