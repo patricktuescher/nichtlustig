@@ -1,12 +1,14 @@
 package client;
 
 import java.util.Random;
+import java.util.logging.Logger;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- * This class represents a dice which can be used in the nichtLustig application
+ * This class represents a dice which can be implemented into the nichtLustig application
+ * @author Manipake Kontroburtüs
  */
 public class Würfel {
 	//Height and Width of cubes
@@ -19,6 +21,9 @@ public class Würfel {
 	private int aktAugenzahl = 1;
 	private ImageView image = new ImageView(new Image("images/" + this.farbe.name()+ "_Würfel_"+aktAugenzahl+".png"));
 	
+	private ServiceLocator sl = ServiceLocator.getServiceLocator();
+	private Logger logger = sl.getLogger();
+	
 	public Würfel(Farbe farbe){
 		this.farbe = farbe;
 		if(this.farbe.equals(Farbe.Pink)){
@@ -30,6 +35,7 @@ public class Würfel {
 		image.setFitHeight(cubeheight);
 		image.setFitWidth(cubewidth);
 		image.setId("Wuerfel");
+		logger.info("Dice has been created");
 		this.roll();
 
 	}
@@ -63,6 +69,7 @@ public class Würfel {
 		this.aktAugenzahl = rand.nextInt(maxAugenzahl)+1;
 		image.setImage(new Image("images/" + this.farbe.name()+"_Würfel_"+aktAugenzahl+".png"));
 		this.image.setStyle("");
+		logger.info("Dice has been rolled. Number of dice: " + this.aktAugenzahl);
 		}
 	}
 	
@@ -79,6 +86,7 @@ public class Würfel {
 			this.image.setStyle(css);
 		}
 		selected = true;
+		logger.fine("Dice has been clicked");
 	}
 	
 	/**
