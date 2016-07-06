@@ -36,7 +36,7 @@ public class ClientModel {
             //ObjectInputStream erlaubt das Einlesen von binär serialisierten Objekten:
             ObjectInputStream in = new ObjectInputStream(s.getInputStream());
           
-            //Hier wird ein String-Objekt erwartet:  
+            //Hier wird ein Integer-Objekt erwartet:  
             Integer f = (Integer) in.readObject();
             
             return f.toString();

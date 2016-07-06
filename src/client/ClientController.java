@@ -196,6 +196,11 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 				for(int x = 0; x < view.WürfelPL1.size(); x++){
 					view.WürfelPL1.get(x).roll();
+					for(int y = 0;y<view.WürfelPL1.size();y++){
+						if(view.WürfelPL1.get(y).isSelected())
+						System.out.println(model.browse("127.0.0.1", 8080, view.WürfelPL1.get(y).getAktAugenzahl()));
+					}
+					
 				}
 			}
 			

@@ -4,6 +4,7 @@ import javafx.scene.shape.Circle;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -29,13 +30,17 @@ public class ServerModel {
 		  {
 		    private final Socket so;
 		    private final ByteArrayOutputStream baos;
+		    private ObjectOutputStream os;
+		    private ObjectInputStream is;
 		    private final byte b[];
 		    private volatile int running;
 		    private int Zahl;
 
-		    private Servant(Socket so) {
+		    private Servant(Socket so) throws IOException {
 		      this.so = so;
 		      b = new byte[1024*1024];
+		      os = new ObjectOutputStream(this.so.getOutputStream());
+		      is = new ObjectInputStream(this.so.getInputStream());
 		      baos = new ByteArrayOutputStream(b.length);
 		    }
 		   
@@ -44,7 +49,6 @@ public class ServerModel {
 		      try {
 		        for(running = 2; running == 2; ) {
 		          try {
-		        	System.out.println("hier");
 		            Integer msg = readMessage();
 		            if(msg ==  null) {
 		              throw new IOException("socket closed by peer");
@@ -59,7 +63,7 @@ public class ServerModel {
 		                }
 		              }
 		            }
-		         // }
+		       //   }
 		          catch(SocketTimeoutException _) {
 		             // gibt die möglichkeit, running zu checken
 		          }
@@ -73,26 +77,23 @@ public class ServerModel {
 		        try {
 		          so.close();
 		        }
-		        catch(final Exception x) {
+		        catch(final Exception x){
 		          x.printStackTrace();
 		        }
 		      }
 		    }
 
 		    private synchronized void writeMessage(Integer msg) throws Exception {
-		      ObjectOutputStream os = new ObjectOutputStream(so.getOutputStream());
 		      os.writeObject(msg);
 		      os.flush();
 		    }
 
 		    private synchronized Integer readMessage() throws Exception {
-		    
-		      ObjectInputStream is = new ObjectInputStream(so.getInputStream());
-		      Integer i = (Integer)is.readObject();
-		      
-		        return i;
-		      }
+		    	Integer i = 0;
+		    		i =(Integer)is.readObject();
+		      return i;
 		    }
+		      }
 
 		  public void start(int port) throws Exception {
 		    final ServerSocket ss = new ServerSocket(port);
