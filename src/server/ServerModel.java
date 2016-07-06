@@ -7,6 +7,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -29,6 +31,7 @@ public class ServerModel {
 		    private final ByteArrayOutputStream baos;
 		    private final byte b[];
 		    private volatile int running;
+		    private int Zahl;
 
 		    private Servant(Socket so) {
 		      this.so = so;
@@ -42,12 +45,12 @@ public class ServerModel {
 		        for(running = 2; running == 2; ) {
 		          try {
 		        	System.out.println("hier");
-		            final String msg = readMessage();
+		            Integer msg = readMessage();
 		            if(msg ==  null) {
 		              throw new IOException("socket closed by peer");
 		            }
 		            for(Servant servant : servants) {
-		              if(servant != this) {
+		              //if(servant != this) {
 		                try {
 		                  servant.writeMessage(msg);
 		                }
@@ -56,7 +59,7 @@ public class ServerModel {
 		                }
 		              }
 		            }
-		          }
+		         // }
 		          catch(SocketTimeoutException _) {
 		             // gibt die möglichkeit, running zu checken
 		          }
@@ -76,36 +79,24 @@ public class ServerModel {
 		      }
 		    }
 
-		    private synchronized void writeMessage(String msg) throws Exception {
-		      final OutputStream os = so.getOutputStream();
-		      os.write(msg.getBytes());
-		      os.write(delim);
+		    private synchronized void writeMessage(Integer msg) throws Exception {
+		      ObjectOutputStream os = new ObjectOutputStream(so.getOutputStream());
+		      os.flush();
+		      os.writeObject(msg);
 		      os.flush();
 		    }
 
-		    private String readMessage() throws Exception {
-		      final InputStream is = so.getInputStream();
-		      for(int x;;) {
-		        final byte[] a = baos.toByteArray(); // give me a copy
-		        for(int end = 0; end < a.length; end++) {
-		          if(a[end] == delim) { // delimiter found
-		            baos.reset();
-		            if((x = a.length - end - 1) > 0) {
-		              baos.write(a, end + 1, x);
-		            }
-		            return new String(a, 0, end);
-		          }
-		        }
-		        if((x = is.read(b)) <= 0) {
-		          return null;
-		        }
-		        baos.write(b, 0, x);
+		    private Integer readMessage() throws Exception {
+		      ObjectInputStream is = new ObjectInputStream(so.getInputStream());
+		      
+		      Integer i = (Integer)is.readObject();
+		      
+		        return i;
 		      }
 		    }
-		  }
 
-		  public static void start() throws Exception {
-		    final ServerSocket ss = new ServerSocket(8080);
+		  public void start(int port) throws Exception {
+		    final ServerSocket ss = new ServerSocket(port);
 		    try {
 		      for(;;) {
 		        final Socket so = ss.accept();

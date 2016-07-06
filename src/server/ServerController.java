@@ -18,7 +18,8 @@ public class ServerController {
             @Override
             public void handle(ActionEvent event) {
                 try {
-					model.start();
+					model.start(Integer.parseInt(view.txtPort.getText()));
+                	
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

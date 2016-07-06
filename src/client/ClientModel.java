@@ -3,6 +3,8 @@ package client;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
@@ -13,9 +15,9 @@ public class ClientModel {
 			
 	}
 	
-	public String browse(String ipAddress, Integer port, int n) {
+	public String browse(String ipAddress, Integer port, Integer n) {
         Socket s = null;
-        OutputStreamWriter out = null;
+        ObjectOutputStream out = null;
         BufferedReader inReader = null;
         String lineIn;
         StringBuffer urlContent = new StringBuffer();
@@ -26,20 +28,18 @@ public class ClientModel {
             s = new Socket(ipAddress, port);
 
             // Send our request, using the HTTP 1.0 protocol
-            out = new OutputStreamWriter(s.getOutputStream());
-            out.write(n);
+            out = new ObjectOutputStream(s.getOutputStream());
+            out.writeObject(n);
             out.flush();
 
             // Set up the reader classes
-            InputStream in1 = s.getInputStream();
-            InputStreamReader in2 = new InputStreamReader(in1);
-            inReader = new BufferedReader(in2);
-
-            while ((lineIn = inReader.readLine()) != null) {
-                urlContent.append(lineIn + "\n");
-            }
-
-            return urlContent.toString();
+            //ObjectInputStream erlaubt das Einlesen von binär serialisierten Objekten:
+            ObjectInputStream in = new ObjectInputStream(s.getInputStream());
+          
+            //Hier wird ein String-Objekt erwartet:  
+            Integer f = (Integer) in.readObject();
+            
+            return f.toString();
         }
 
         // If an error occurred, show the error message in txtInhalt
