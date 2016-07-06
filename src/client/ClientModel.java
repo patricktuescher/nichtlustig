@@ -13,7 +13,7 @@ public class ClientModel {
 			
 	}
 	
-	public String browse(String ipAddress, Integer port) {
+	public String browse(String ipAddress, Integer port, int n) {
         Socket s = null;
         OutputStreamWriter out = null;
         BufferedReader inReader = null;
@@ -27,10 +27,7 @@ public class ClientModel {
 
             // Send our request, using the HTTP 1.0 protocol
             out = new OutputStreamWriter(s.getOutputStream());
-            out.write("GET / HTTP/1.0\n");
-            out.write("User-Agent: Browser0\n");
-            out.write("Host: " + ipAddress + ":" + port + "\n");
-            out.write("Accept: text/html, */*\n\n");
+            out.write(n);
             out.flush();
 
             // Set up the reader classes

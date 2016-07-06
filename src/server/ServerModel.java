@@ -38,18 +38,21 @@ public class ServerModel {
                     PrintWriter outClient = new PrintWriter(client.getOutputStream());
 
                     // Send our reply using HTTP 1.0 - we could also use the "write" method
-                    outClient.print("HTTP/1.0 200 \n"); // Version and status
-                    outClient.print("Content-Type: text/plain\n");
+                    outClient.print("Nachricht erhalten");
                     outClient.print("\n");
 
                     // Read request from client and send it straight back
                     // An empty string (length 0) is the end of an HTTP request
                     StringBuilder received = new StringBuilder();
                     String inString;
-                    while ((inString = inClient.readLine()) != null && inString.length() != 0) {
-                        received.append(inString + "\n");
-                    }
-                    String outString = received.toString() + "hallo";
+                    int z;
+                    
+                   // while ((inString = inClient.readLine()) != null && inString.length() != 0) {
+                        z = inClient.read();
+                    //}
+                    String outString = (z+5)+"";
+                    
+                 
                     
                     outClient.print(outString);
                     logger.info("Request contents:\n" + outString);

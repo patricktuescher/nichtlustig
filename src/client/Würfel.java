@@ -38,7 +38,7 @@ public class Würfel {
 		image.setFitHeight(cubeheight);
 		image.setFitWidth(cubewidth);
 		image.setId("Wuerfel");
-		logger.info("Die has been created");
+		logger.fine("Die has been created");
 		this.roll();
 
 	}
@@ -72,7 +72,7 @@ public class Würfel {
 		this.aktAugenzahl = rand.nextInt(maxAugenzahl)+1;
 		image.setImage(new Image("images/" + this.farbe.name()+"_Würfel_"+aktAugenzahl+".png"));
 		this.image.setStyle("");
-		logger.info("Die has been rolled. Number of die: " + this.aktAugenzahl);
+		logger.fine("Die has been rolled. Number of die: " + this.aktAugenzahl);
 		}
 	}
 	
