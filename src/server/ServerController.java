@@ -17,8 +17,12 @@ public class ServerController {
         view.btnGo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Integer port = new Integer(view.txtPort.getText());
-                model.serveContent(port);
+                try {
+					model.start();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 

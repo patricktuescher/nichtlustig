@@ -3,78 +3,122 @@ package server;
 import javafx.scene.shape.Circle;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Logger;
 
 import javafx.concurrent.Task;
 
 public class ServerModel {
-    private Integer port;
-    private final Logger logger = Logger.getLogger("");
-    
-    final Task<Void> serverTask = new Task<Void>() {
-        @Override
-        protected Void call() throws Exception {
-            try {
-                ServerSocket listener = new ServerSocket(port, 10, null);
-                logger.info("Listening on port " + port);
+		  static private int delim = 13; // CR, LF, ETX...
+		  static private final Collection<Servant> servants = new ArrayList<Servant>();
+		  // TODO servants nicht synced => ConcurrentModificationException
 
-                while (true) {
-                    // The "accept" method waits for a request, then creates a socket
-                    // connected to the requesting client
-                    Socket client = listener.accept();
-                    int n;
+		  static private final class Servant implements Runnable
+		  {
+		    private final Socket so;
+		    private final ByteArrayOutputStream baos;
+		    private final byte b[];
+		    private volatile int running;
 
-                    logger.info("Request from client "
-                            + client.getInetAddress().toString() + " for server "
-                            + client.getLocalAddress().toString());
+		    private Servant(Socket so) {
+		      this.so = so;
+		      b = new byte[1024*1024];
+		      baos = new ByteArrayOutputStream(b.length);
+		    }
+		   
+		    @Override
+		    public void run() {
+		      try {
+		        for(running = 2; running == 2; ) {
+		          try {
+		        	System.out.println("hier");
+		            final String msg = readMessage();
+		            if(msg ==  null) {
+		              throw new IOException("socket closed by peer");
+		            }
+		            for(Servant servant : servants) {
+		              if(servant != this) {
+		                try {
+		                  servant.writeMessage(msg);
+		                }
+		                catch(Exception x) {
+		                  x.printStackTrace();
+		                }
+		              }
+		            }
+		          }
+		          catch(SocketTimeoutException _) {
+		             // gibt die möglichkeit, running zu checken
+		          }
+		        }
+		      }
+		      catch(final Exception x) {
+		        x.printStackTrace();
+		      }
+		      finally {
+		        servants.remove(this);
+		        try {
+		          so.close();
+		        }
+		        catch(final Exception x) {
+		          x.printStackTrace();
+		        }
+		      }
+		    }
 
-                    // Create input and output streams to talk to the client
-                    BufferedReader inClient = new BufferedReader(new InputStreamReader(client
-                            .getInputStream()));
-                    PrintWriter outClient = new PrintWriter(client.getOutputStream());
+		    private synchronized void writeMessage(String msg) throws Exception {
+		      final OutputStream os = so.getOutputStream();
+		      os.write(msg.getBytes());
+		      os.write(delim);
+		      os.flush();
+		    }
 
-                    // Send our reply using HTTP 1.0 - we could also use the "write" method
-                    outClient.print("Nachricht erhalten");
-                    outClient.print("\n");
+		    private String readMessage() throws Exception {
+		      final InputStream is = so.getInputStream();
+		      for(int x;;) {
+		        final byte[] a = baos.toByteArray(); // give me a copy
+		        for(int end = 0; end < a.length; end++) {
+		          if(a[end] == delim) { // delimiter found
+		            baos.reset();
+		            if((x = a.length - end - 1) > 0) {
+		              baos.write(a, end + 1, x);
+		            }
+		            return new String(a, 0, end);
+		          }
+		        }
+		        if((x = is.read(b)) <= 0) {
+		          return null;
+		        }
+		        baos.write(b, 0, x);
+		      }
+		    }
+		  }
 
-                    // Read request from client and send it straight back
-                    // An empty string (length 0) is the end of an HTTP request
-                    StringBuilder received = new StringBuilder();
-                    String inString;
-                    int z;
-                    
-                   // while ((inString = inClient.readLine()) != null && inString.length() != 0) {
-                        z = inClient.read();
-                    //}
-                    String outString = (z+5)+"";
-                    
-                 
-                    
-                    outClient.print(outString);
-                    logger.info("Request contents:\n" + outString);
-                    
-                    outClient.flush(); // Be safe, always "flush"
-                    outClient.close();
-                    inClient.close();
-                    client.close();
-                }
-            } catch (Exception e) {
-                System.err.println(e);
-            }
-            return null;
-        }
-    };    
-    
-    /**
-     * Called by the controller, to start the task, to serve web content
-     */
-    public void serveContent(Integer port) {
-        this.port = port;
-        new Thread(serverTask).start();
-    }
+		  public static void start() throws Exception {
+		    final ServerSocket ss = new ServerSocket(8080);
+		    try {
+		      for(;;) {
+		        final Socket so = ss.accept();
+		        so.setKeepAlive(true);
+		        so.setSoTimeout(1000);
+		        final Servant servant = new Servant(so);
+		        servants.add(servant);
+		        new Thread(servant).start();
+		      }
+		    }
+		    finally {
+		      ss.close();
+		    }
+		  }
 }
 
