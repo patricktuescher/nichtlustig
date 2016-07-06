@@ -50,7 +50,7 @@ public class ServerModel {
 		              throw new IOException("socket closed by peer");
 		            }
 		            for(Servant servant : servants) {
-		              //if(servant != this) {
+		            //  if(servant != this) {
 		                try {
 		                  servant.writeMessage(msg);
 		                }
@@ -81,14 +81,13 @@ public class ServerModel {
 
 		    private synchronized void writeMessage(Integer msg) throws Exception {
 		      ObjectOutputStream os = new ObjectOutputStream(so.getOutputStream());
-		      os.flush();
 		      os.writeObject(msg);
 		      os.flush();
 		    }
 
-		    private Integer readMessage() throws Exception {
+		    private synchronized Integer readMessage() throws Exception {
+		    
 		      ObjectInputStream is = new ObjectInputStream(so.getInputStream());
-		      
 		      Integer i = (Integer)is.readObject();
 		      
 		        return i;
