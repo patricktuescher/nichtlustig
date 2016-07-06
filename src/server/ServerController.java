@@ -1,52 +1,35 @@
 package server;
-
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.stage.WindowEvent;
 
 public class ServerController {
-	
-	ServerView view;
-	ServerModel model;
-	
-	public ServerController(ServerView view, ServerModel model){
-		this.view = view;
-		this.model = model;
-		
-		view.ConnectServer.setOnAction(new EventHandler<ActionEvent>(){
+    
+    final private ServerModel model;
+    final private ServerView view;
+    
+    protected ServerController(ServerModel model, ServerView view) {
+        this.model = model;
+        this.view = view;
+        
+        // register ourselves to listen for button clicks
+        view.btnGo.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Integer port = new Integer(view.txtPort.getText());
+                model.serveContent(port);
+            }
+        });
 
-			@Override
-			public void handle(ActionEvent event) {
-				view.status.setId("greenCircle");
-				view.onlineOffline.setText("Online");
-				view.onlineOffline.setId("online");
-				
-			}
-			
-			
-		});
-		
-		view.DisconnectServer.setOnAction(new EventHandler<ActionEvent>(){
-
-			@Override
-			public void handle(ActionEvent event) {
-				view.status.setId("redCircle");
-				view.onlineOffline.setText("Offline");
-				view.onlineOffline.setId("offline");	
-			}
-			
-			
-		});
-		
-		view.MIclose.setOnAction(new EventHandler<ActionEvent>(){
-
-			@Override
-			public void handle(ActionEvent event) {
-				view.primaryStage.close();	
-			}
-			
-			
-		});
-	}
-	
-
+        // register ourselves to handle window-closing event
+        view.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                view.stop();     // closes the GUI
+                Platform.exit(); // ends any JavaFX activities
+                System.exit(0);  // end all activities (our server task) - not good code
+            }
+        });
+    }
 }
