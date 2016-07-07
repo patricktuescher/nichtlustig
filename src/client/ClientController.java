@@ -1,6 +1,8 @@
 package client;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 import client.ClientModel;
 import client.ClientView;
@@ -115,8 +117,8 @@ public class ClientController {
 			@Override
 			public void handle(ActionEvent arg0) {
 			view.primaryStage.setScene(view.sceneGame);	
-			}
-					
+			
+			}		
 		});
 			
 			

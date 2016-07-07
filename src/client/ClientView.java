@@ -90,7 +90,7 @@ public class ClientView {
 		this.model = model;
 		sl = ServiceLocator.getServiceLocator();
 		t = sl.getTranslator();
-		System.out.println(model.browse("127.0.0.1", 8080, new Integer(3)));
+		//System.out.println(model.browse("127.0.0.1", 8080, new Integer(3)));
 		
 		
 		

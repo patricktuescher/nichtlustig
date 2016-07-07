@@ -54,7 +54,7 @@ public class ServerModel {
 		              throw new IOException("socket closed by peer");
 		            }
 		            for(Servant servant : servants) {
-		            //  if(servant != this) {
+		              if(servant != this) {
 		                try {
 		                  servant.writeMessage(msg);
 		                }
@@ -63,7 +63,7 @@ public class ServerModel {
 		                }
 		              }
 		            }
-		       //   }
+		          }
 		          catch(SocketTimeoutException _) {
 		             // gibt die möglichkeit, running zu checken
 		          }
