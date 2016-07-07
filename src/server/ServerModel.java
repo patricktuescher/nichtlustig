@@ -29,19 +29,15 @@ public class ServerModel {
 		  static private final class Servant implements Runnable
 		  {
 		    private final Socket so;
-		    private final ByteArrayOutputStream baos;
 		    private ObjectOutputStream os;
 		    private ObjectInputStream is;
-		    private final byte b[];
 		    private volatile int running;
 		    private int Zahl;
 
 		    private Servant(Socket so) throws IOException {
 		      this.so = so;
-		      b = new byte[1024*1024];
 		      os = new ObjectOutputStream(this.so.getOutputStream());
 		      is = new ObjectInputStream(this.so.getInputStream());
-		      baos = new ByteArrayOutputStream(b.length);
 		    }
 		   
 		    @Override
@@ -54,7 +50,7 @@ public class ServerModel {
 		              throw new IOException("socket closed by peer");
 		            }
 		            for(Servant servant : servants) {
-		              if(servant != this) {
+		           //   if(servant != this) {
 		                try {
 		                  servant.writeMessage(msg);
 		                }
@@ -63,7 +59,7 @@ public class ServerModel {
 		                }
 		              }
 		            }
-		          }
+		      //    }
 		          catch(SocketTimeoutException _) {
 		             // gibt die möglichkeit, running zu checken
 		          }
@@ -89,9 +85,8 @@ public class ServerModel {
 		    }
 
 		    private synchronized Integer readMessage() throws Exception {
-		    	Integer i = 0;
-		    		i =(Integer)is.readObject();
-		      return i;
+		    	Integer i =(Integer)is.readObject();
+		    	return i;
 		    }
 		      }
 
