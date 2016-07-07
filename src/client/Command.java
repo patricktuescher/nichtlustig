@@ -1,4 +1,4 @@
-package Vorlage;
+package client;
 
 import java.io.Serializable;
 

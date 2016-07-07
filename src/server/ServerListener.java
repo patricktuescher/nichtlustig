@@ -1,6 +1,7 @@
-package Vorlage;
+package server;
 
-import Vorlage.Server.ConnectionToClient;
+import client.Command;
+import server.Server.ConnectionToClient;
 
 public interface ServerListener {
 	

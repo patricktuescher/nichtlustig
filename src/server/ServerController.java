@@ -18,7 +18,7 @@ public class ServerController {
             @Override
             public void handle(ActionEvent event) {
                 try {
-					model.start(Integer.parseInt(view.txtPort.getText()));
+					model.startServer(Integer.parseInt(view.txtPort.getText()));
                 	
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

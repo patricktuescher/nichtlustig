@@ -2,7 +2,12 @@ package Vorlage;
 
 import java.io.PrintStream;
 
-import Vorlage.Server.ConnectionToClient;
+import client.Client;
+import client.ClientListener;
+import client.Command;
+import server.Server;
+import server.ServerListener;
+import server.Server.ConnectionToClient;
 
 public class Logger implements ServerListener, ClientListener {
 
