@@ -3,7 +3,6 @@ package client;
 import java.awt.Color;
 import java.io.IOException;
 import java.net.UnknownHostException;
-
 import client.ClientModel;
 import client.ClientView;
 import javafx.event.ActionEvent;
@@ -18,14 +17,14 @@ import javafx.scene.input.MouseEvent;
 public class ClientController {
 
 
-	
+	protected ServiceLocator sl;       
 	ClientView view;
 	ClientModel model;
 	
 	public ClientController(ClientView view, ClientModel model){
 		this.view = view;
 		this.model = model;
-		
+		sl = ServiceLocator.getServiceLocator();
 		
 		
 		///////////////// LOGIN FENSTER //////////////////////////
@@ -39,9 +38,9 @@ public class ClientController {
 				Client c = new Client("127.0.0.1",8080);
 				c.start();
 				c.send(new Integer(3));
-				view.primaryStage.setScene(view.sceneLobby);	
+				view.primaryStage.setScene(view.sceneLobby);
+				sl.getLogger().info("Change to Lobby Scene");
 			}
-			
 		});
 		
 		
@@ -50,10 +49,11 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-			view.primaryStage.setScene(view.sceneLobby);	
-			}
-					
+			view.primaryStage.setScene(view.sceneLobby);
+			sl.getLogger().info("Change to Lobby Scene");
+			}		
 		});
+		
 		
 		// EventHandler QuitGameButton - LoginScene
 		view.b_quitGame.setOnAction(new EventHandler<ActionEvent>(){
@@ -61,10 +61,8 @@ public class ClientController {
 			@Override
 			public void handle(ActionEvent arg0) {
 			System.exit(0);	
-			}
-					
+			}		
 		});
-		
 		
 		
 		///////////////// LOBBY FENSTER //////////////////////////
@@ -75,9 +73,9 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-			view.primaryStage.setScene(view.sceneLogin);	
-			}
-					
+			view.primaryStage.setScene(view.sceneLogin);
+			sl.getLogger().info("Change to Login Scene");
+			}		
 		});	
 		
 		
@@ -86,9 +84,9 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-			view.primaryStage.setScene(view.sceneStatistik);	
-			}
-					
+			view.primaryStage.setScene(view.sceneStatistik);
+			sl.getLogger().info("Change to Statistik Scene");
+			}		
 		});
 			
 		
@@ -97,9 +95,9 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-			view.primaryStage.setScene(view.sceneRegeln);	
-			}
-					
+			view.primaryStage.setScene(view.sceneRegeln);
+			sl.getLogger().info("Change to Regeln Scene");
+			}		
 		});
 				
 		
@@ -110,9 +108,9 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 				Client c = new Client("127.0.0.1",8080);
 				c.send(new Integer(3));
-			view.primaryStage.setScene(view.sceneGame);	
-			}
-					
+			view.primaryStage.setScene(view.sceneGame);
+			sl.getLogger().info("Change to Game Scene");
+			}	
 		});
 				
 		
@@ -121,36 +119,37 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-			view.primaryStage.setScene(view.sceneGame);	
-			
+			view.primaryStage.setScene(view.sceneGame);
+			sl.getLogger().info("Change to Game Scene");
 			}		
-		});
-			
+		});	
 			
 		
 		///////////////// STATISTIK FENSTER //////////////////////////
+		
 		
 		// EventHandler ZurückButton - StatistikScene
 		view.b_backStatistik.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				view.primaryStage.setScene(view.sceneLobby);	
+				view.primaryStage.setScene(view.sceneLobby);
+				sl.getLogger().info("Change to Lobby Scene");
 			}
-			
 		});
 		
 		
-	///////////////// REGELN FENSTER //////////////////////////
+	     ///////////////// REGELN FENSTER //////////////////////////
+		
 		
 		// EventHandler ZurückButton - RegelnScene
 		view.b_backRegeln.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				view.primaryStage.setScene(view.sceneLobby);	
+				view.primaryStage.setScene(view.sceneLobby);
+				sl.getLogger().info("Change to Lobby Scene");
 			}
-			
 		});
 		
 		// EventHandler nextImage Button - image position in reglen array to be defined; currently set to 1 for testing
@@ -162,9 +161,9 @@ public class ClientController {
 					if (ClientView.currentRuleImage <view.regeln.length-1){
 					view.regelnView.setImage(view.regeln[ClientView.currentRuleImage+1]);
 					ClientView.currentRuleImage++;
+					sl.getLogger().info("Change RuleImage Plus");
 					}
 					}
-					
 				});
 	
 				
@@ -177,13 +176,14 @@ public class ClientController {
 					if (ClientView.currentRuleImage >0){
 					view.regelnView.setImage(view.regeln[ClientView.currentRuleImage-1]);
 					ClientView.currentRuleImage--;
+					sl.getLogger().info("Change RuleImage Minus");
 					}
 					}
 					
 				});
 	
 		
-	///////////////// GAME FENSTER //////////////////////////
+		///////////////// GAME FENSTER //////////////////////////
 			
 		
 		// EventHandler ZurückButton - GameScene
@@ -191,9 +191,9 @@ public class ClientController {
 		
 			@Override
 			public void handle(ActionEvent arg0) {
-				view.primaryStage.setScene(view.sceneLobby);	
+				view.primaryStage.setScene(view.sceneLobby);
+				sl.getLogger().info("Change to Lobby Scene");
 			}
-			
 		});
 
 		//EventHandler Würfel  - GameScrene
@@ -203,15 +203,14 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 				for(int x = 0; x < view.WürfelPL1.size(); x++){
 					view.WürfelPL1.get(x).roll();
+					sl.getLogger().info("Würfel roll");
 					}
-					
 				}
-			
 		});
 	
-		
 
 		///////////////// EventHandler zoom cards //////////////////////////		
+		
 		
 		//EventHandler Zoom cardRieb
 
@@ -225,8 +224,7 @@ public class ClientController {
 					view.cardRieb[d].toFront();
 					view.cardRieb[d].setScaleX(2);
 					view.cardRieb[d].setScaleY(2);
-				}
-					
+				}	
 			});
 			
 			view.cardRieb[d].setOnMouseExited(new EventHandler<MouseEvent>(){
@@ -237,11 +235,8 @@ public class ClientController {
 					view.cardRieb[d].setScaleX(1);
 					view.cardRieb[d].setScaleY(1);
 				}
-		
-		
 			});		
 		}		
-		
 		
 		//EventHandler Zoom cardYeti
 
@@ -297,7 +292,6 @@ public class ClientController {
 					view.cardLemming[d].setScaleY(1);
 				}
 		
-		
 			});		
 		}		
 		
@@ -326,8 +320,6 @@ public class ClientController {
 					view.cardProf[d].setScaleX(1);
 					view.cardProf[d].setScaleY(1);
 				}
-		
-		
 			});		
 		}		
 		
@@ -355,8 +347,6 @@ public class ClientController {
 					view.cardDino[d].setScaleX(1);
 					view.cardDino[d].setScaleY(1);
 				}
-		
-		
 			});		
 		}			
 
@@ -385,8 +375,6 @@ public class ClientController {
 					view.cardTod[d].setScaleX(1);
 					view.cardTod[d].setScaleY(1);
 				}
-		
-		
 			});		
 		}	
 		
@@ -398,14 +386,13 @@ public class ClientController {
 
 				@Override
 				public void handle(MouseEvent event) {
-					view.WürfelPL1.get(d).click();
-					
+					view.WürfelPL1.get(d).click();	
 				}
-				
-			}
-					);
+				}
+			);
 		}
 
+		
 		///////////////// EventHandler chosen cards //////////////////////////
 		
 		
@@ -439,7 +426,6 @@ public class ClientController {
 			public void handle(MouseEvent arg0){
 				view.cardYeti[d-1].setRotate(180);
 			}
-			
 		});
 		}
 		
@@ -452,7 +438,6 @@ public class ClientController {
 			public void handle(MouseEvent arg0){
 				view.cardLemming[d-1].setRotate(180);
 			}
-			
 		});
 		}		
 		
@@ -481,7 +466,6 @@ public class ClientController {
 //				view.cardDino[d-1].setImage(dinoP1);
 				view.cardDino[d-1].setRotate(180);
 			}
-			
 		});
 		}
 		
@@ -507,9 +491,7 @@ public class ClientController {
 	//				}		
 	//	});
 		
-		
-		
-		
+			
 	}
 	
 
