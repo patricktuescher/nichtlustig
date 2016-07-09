@@ -321,7 +321,7 @@ public class ClientView {
 		b_previousImage.setPrefSize(20,20);
 		b_previousImage.setId("b-login");
 		
-		// added nodes to inner pane regeln
+		// added nodes to inner pane Regeln
 		innerPaneRegeln.getChildren().addAll(b_previousImage, regelnView,b_nextImage);
 		innerPaneRegeln.setSpacing(10);
 		
