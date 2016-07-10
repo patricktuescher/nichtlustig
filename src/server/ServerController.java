@@ -1,4 +1,5 @@
 package server;
+import client.ServiceLocator;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,10 +9,12 @@ public class ServerController {
     
     final private ServerModel model;
     final private ServerView view;
+    protected ServiceLocator sl; 
     
     protected ServerController(ServerModel model, ServerView view) {
         this.model = model;
         this.view = view;
+        sl = ServiceLocator.getServiceLocator();
         
         // register ourselves to listen for button clicks
         view.btnGo.setOnAction(new EventHandler<ActionEvent>() {
@@ -19,6 +22,7 @@ public class ServerController {
             public void handle(ActionEvent event) {
                 try {
 					model.startServer(Integer.parseInt(view.txtPort.getText()));
+					sl.getLogger().info("Start Server Connection");
                 	
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

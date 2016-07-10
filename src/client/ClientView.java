@@ -384,7 +384,7 @@ public class ClientView {
 		
 
 		//Button Zurück
-		b_backGame = new Button("Zurück");
+		b_backGame = new Button(t.getString("Button.Back"));
 		b_backGame.setId("b-login");
 		
 		
@@ -503,7 +503,7 @@ public class ClientView {
 		
 		
 		//Button würfeln
-		b_würfeln = new Button("Würfeln");
+		b_würfeln = new Button(t.getString("Button.roll"));
 		b_würfeln.setId("b-login");
 		
 		//added nodes to BottomPane
@@ -545,7 +545,8 @@ public class ClientView {
 		chatWindow = new TextArea();
 		chatWindow.setMinSize(200, 50);
 		chatWindow.setMaxSize(800, 50);
-		chatWindow.setText("Willkommen");
+		chatWindow.setText(t.getString("TextArea.welcome"));
+		
 		chatWindow.setEditable(false);
 		
 		
@@ -554,18 +555,16 @@ public class ClientView {
 		HBox ChatInput = new HBox();
 		
 		chatInputWindow = new TextField();
-		chatInputWindow.setText("Hier klicken ...");
+		chatInputWindow.setText(t.getString("TextField.click"));
 		chatInputWindow.setMaxSize(700, 30);
 		chatInputWindow.setMinSize(700, 30);
 		
 		
 		Button b_sendchat = new Button();
-		b_sendchat.setText("senden");
+		b_sendchat.setText(t.getString("Button.send"));
 		b_sendchat.setMinSize(100, 30);
 		b_sendchat.setMaxSize(100, 30);
 		b_sendchat.setId("b-sendchat");
-		
-		
 		
 		
 		ChatInput.getChildren().addAll(chatInputWindow, b_sendchat);
@@ -576,7 +575,7 @@ public class ClientView {
 		
 		//////////////// Primary Stage ////////////////////////
 		
-		primaryStage.setTitle("Client-Applikation");
+		primaryStage.setTitle(t.getString("Stage.title"));
 		primaryStage.setScene(sceneLogin);
 		primaryStage.setResizable(false);
 		primaryStage.getIcons().add(new Image("images/ClientIcon.png"));
