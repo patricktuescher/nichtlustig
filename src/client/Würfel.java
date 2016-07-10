@@ -74,7 +74,7 @@ public class Würfel {
 		this.image.setStyle("");
 		logger.fine("Die has been rolled. Number of die: " + this.aktAugenzahl);
 		}
-	}
+		}
 	
 	/**
 	 * activates css effect on selected die
