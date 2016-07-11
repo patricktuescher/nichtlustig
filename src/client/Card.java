@@ -18,6 +18,7 @@ public class Card {
 		this.status = Status.frei;
 		String pfad = new String("Karte_");
 		pfad.concat(this.type.name() + "_" + this.points);
+		this.image = new ImageView(new Image("images/" + pfad));
 	}
 
 
