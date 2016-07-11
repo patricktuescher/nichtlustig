@@ -54,7 +54,8 @@ public class ClientView {
 	
 	//Image Array
 	protected final int colIndex = 13;
-	protected final int rowIndex = 6;	
+	protected final int rowIndex = 6;
+	protected ArrayList <Card> cardAL;
 	protected ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino, cardTod;
 
 	//Cubes PL1
@@ -407,6 +408,12 @@ public class ClientView {
 
 		
 		///////////////// CARDS //////////////////////////
+		
+		for(int x = 0; x < 6; x++){
+			for(int y = 0; y < 5;y++){
+				
+			}
+		}
 		
 		cardRieb = new ImageView[5];
 		for (int i = 1; i < 6; i++){

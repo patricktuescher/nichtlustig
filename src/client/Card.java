@@ -1,6 +1,5 @@
-package server;
+package client;
 
-import client.Würfel;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -13,11 +12,12 @@ public class Card {
 	private Würfel würfel;
 	
 	
-	public Card(cardType type, int point, Image image, Status status){
+	public Card(cardType type, int point){
 		this.type = type;
 		this.points = point;
-		this.image = new ImageView(image);
-		this.status = status;
+		this.status = Status.frei;
+		String pfad = new String("Karte_");
+		pfad.concat(this.type.name() + "_" + this.points);
 	}
 
 
