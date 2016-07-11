@@ -1,10 +1,13 @@
 package client;
 
+import java.io.Serializable;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Card {
+public class Card implements Serializable{
 	
+	private static final long serialVersionUID = 142l;
 	private cardType type = cardType.Dino;
 	private int points;
 	private ImageView image;
