@@ -9,24 +9,25 @@ public class Card implements Serializable{
 	
 	private static final long serialVersionUID = 142l;
 	private cardType type = cardType.Dino;
-	private int points;
+	private int Augenzahl;
 	private ImageView image;
 	private Status status;
 	private Würfel würfel;
 	
 	
-	public Card(cardType type, int point){
+	public Card(cardType type, int Augenzahl){
 		this.type = type;
-		this.points = point;
+		this.Augenzahl = Augenzahl;
 		this.status = Status.frei;
 		String pfad = new String("Karte_");
-		pfad.concat(this.type.name() + "_" + this.points);
-		this.image = new ImageView(new Image("images/" + pfad));
+		pfad = pfad + (this.type.name() + "_" + this.Augenzahl);
+		System.out.println(pfad);
+		this.image = new ImageView(new Image("images/" + pfad + ".png"));
 	}
 
 
-	protected int getPoints() {
-		return points;
+	protected int getAugenzahl() {
+		return Augenzahl;
 	}
 
 

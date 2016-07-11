@@ -55,7 +55,7 @@ public class ClientView {
 	//Image Array
 	protected final int colIndex = 13;
 	protected final int rowIndex = 6;
-	protected ArrayList <Card> cardAL;
+	protected ArrayList <Card> cardAL = new ArrayList<Card>();
 	protected ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino, cardTod;
 
 	//Cubes PL1
@@ -409,11 +409,18 @@ public class ClientView {
 		
 		///////////////// CARDS //////////////////////////
 		
-		for(int x = 0; x < 6; x++){
-			for(int y = 0; y < 5;y++){
-				
-			}
+		for(int x = 1;x<6;x++){
+			this.cardAL.add(new Card(cardType.Dino, x));
+			this.cardAL.add(new Card(cardType.Lemming, x));
+			this.cardAL.add(new Card(cardType.Prof, x));
+			this.cardAL.add(new Card(cardType.Rieb, x));
+			this.cardAL.add(new Card(cardType.Yeti, x));
+			this.cardAL.add(new Card(cardType.Tod, x));
 		}
+		this.cardAL.add(new Card(cardType.Tod, 6));
+		
+		
+		
 		
 		cardRieb = new ImageView[5];
 		for (int i = 1; i < 6; i++){
