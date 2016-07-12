@@ -1,6 +1,7 @@
 package client;
 
 import java.io.Serializable;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.scene.effect.DropShadow;
@@ -17,9 +18,9 @@ public class Card implements Serializable{
 	private ImageView image;
 	private Status status;
 	private Würfel würfel;
-	final int cardheight = 90;
-	final int cardwidth = 90;
-	Logger logger = ServiceLocator.getServiceLocator().getLogger();
+	private final int cardheight = 90;
+	private final int cardwidth = 90;
+	private Logger logger = ServiceLocator.getServiceLocator().getLogger();
 
 	
 	
@@ -34,32 +35,32 @@ public class Card implements Serializable{
 	}
 
 
-	protected int getAugenzahl() {
+	public int getAugenzahl() {
 		return Augenzahl;
 	}
 
 
-	protected ImageView getImage() {
+	public ImageView getImage() {
 		this.image.setFitHeight(this.cardheight);
 		this.image.setFitWidth(this.cardwidth);
 		return image;
 	}
 
 
-	protected Status getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 	
 	
-	protected void setStatus(Status status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
 
-	protected Würfel getWürfel() {
+	public Würfel getWürfel() {
 		return würfel;
 	}
-	protected String getType(){
+	public String getType(){
 		return this.type.name();
 	}
 	public String toString(){
