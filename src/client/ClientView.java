@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import CommonClasses.Translator;
+import tools.Translator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
