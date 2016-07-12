@@ -22,7 +22,27 @@ public class ServerController {
             public void handle(ActionEvent event) {
                 try {
 					model.startServer(8080);
+					view.onlineOffline.setText("Online");
+					view.status.setId("greenCircle");
+					view.onlineOffline.setId("online");
 					sl.getLogger().info("Start Server Connection");
+                	
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            }
+        });
+        
+        view.DisconnectServer.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+					model.stopServer();
+					view.onlineOffline.setText("Offline");
+					view.status.setId("redCircle");
+					view.onlineOffline.setId("offline");
+					sl.getLogger().info("Stop Server Connection");
                 	
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

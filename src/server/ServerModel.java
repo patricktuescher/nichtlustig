@@ -30,5 +30,8 @@ public class ServerModel {
 		this.verbindung = new Server(port);
 		this.verbindung.start();
 	}
+	public void stopServer(){
+		this.verbindung.shutDown();
+	}
 }
 
