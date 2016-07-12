@@ -1,5 +1,6 @@
 package client;
 
+import java.io.Serializable;
 import java.util.Random;
 import java.util.logging.Logger;
 
@@ -13,7 +14,11 @@ import javafx.scene.image.ImageView;
  * This class represents a die which can be implemented into the nichtLustig application.
  * @author Manipake Kontroburtüs
  */
-public class Würfel {
+public class Würfel implements Serializable {
+	/**
+	 * 
+	 */
+
 	//Height and Width of cubes
 	final int cubeheight = 60;
 	final int cubewidth = 60;
@@ -22,10 +27,10 @@ public class Würfel {
 	private boolean selected = false;
 	private int maxAugenzahl;
 	private int aktAugenzahl = 1;
-	private ImageView image = new ImageView(new Image("images/" + this.farbe.name()+ "_Würfel_"+aktAugenzahl+".png"));
+	private transient ImageView image = new ImageView(new Image("images/" + this.farbe.name()+ "_Würfel_"+aktAugenzahl+".png"));
 	
-	private ServiceLocator sl = ServiceLocator.getServiceLocator();
-	private Logger logger = sl.getLogger();
+	private transient ServiceLocator sl = ServiceLocator.getServiceLocator();
+	private transient Logger logger = sl.getLogger();
 	
 	public Würfel(Farbe farbe){
 		this.farbe = farbe;

@@ -20,6 +20,7 @@ public class ClientController {
 	protected ServiceLocator sl;       
 	ClientView view;
 	ClientModel model;
+	ServerListener server;
 	
 	public ClientController(ClientView view, ClientModel model){
 		this.view = view;
@@ -35,14 +36,12 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				Client c = new Client("127.0.0.1",8080);
-				c.start();
-				c.send(new Integer(3));
-				c.send(new String("Hello World"));
+				server = ServerListener.getServerListener();
+				server.connect();
+				server.sendObject(new Würfel(Farbe.Pink));
 				view.primaryStage.setScene(view.sceneLobby);
 				sl.getLogger().info("Change to Lobby Scene");
-				view.chatInputWindow.setText(c.toString());
-				view.chatWindow.setText(c.toString());
+
 			}
 		});
 		
@@ -109,8 +108,6 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				Client c = new Client("127.0.0.1",8080);
-				c.send(new Integer(3));
 			view.primaryStage.setScene(view.sceneGame);
 			sl.getLogger().info("Change to Game Scene");
 			}	
