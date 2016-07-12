@@ -16,5 +16,9 @@ public class ClientLogin implements Serializable {
 	public ClientLogin(Account acc){
 		this.acc = acc;
 	}
+	
+	public Account getAccount(){
+		return this.acc;
+	}
 
 }

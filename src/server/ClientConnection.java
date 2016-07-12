@@ -45,8 +45,9 @@ public class ClientConnection extends Thread {
 			while (true) {
 				obj = in.readObject();
 				if(obj instanceof ClientLogin){
-					Account acc = (Account) obj;
-					this.ClientConnectionName = acc.getAccName();
+					ClientLogin acc = (ClientLogin) obj;
+					this.ClientConnectionName = acc.getAccount().getAccName();
+					System.out.println("eingeloggt mit: " + this.ClientConnectionName);
 				}
 				System.out.println("Objekt wurde auf dem Server empfangen");
 				model.broadcast(obj);

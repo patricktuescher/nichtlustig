@@ -41,6 +41,7 @@ public class ServerListener extends Thread {
 
 				if (out == null) {
 					out = new ObjectOutputStream(socket.getOutputStream());
+					System.out.println("hier");
 					this.sendObject(new ClientLogin(acc));
 				}
 				this.start();
