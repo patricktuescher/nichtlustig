@@ -48,7 +48,6 @@ public class ServerModel {
 	
 	public void addClient(ClientConnection newClient) {
 		synchronized (clientList) {
-			if()
 			clientList.add(newClient);
 		}
 	}
