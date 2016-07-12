@@ -34,6 +34,7 @@ public class ClientView {
 	
 	Stage primaryStage;
 	ClientModel model;
+	protected TextField tf_username;
 	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, fertigGame ;
 	protected Label labelPL1, labelPL2;
 	protected PasswordField pf_password;
@@ -108,7 +109,7 @@ public class ClientView {
 		lb_password.setId("lb-password");
 		
 		//Textbox Username
-		TextField tf_username = new TextField();
+		tf_username = new TextField();
 		innerPaneLogin.add(tf_username, 2, 2);
 		tf_username.setId("pf-login");
 		tf_username.setPromptText(t.getString("Label.UserName"));

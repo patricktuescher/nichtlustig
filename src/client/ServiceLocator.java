@@ -3,8 +3,8 @@ package client;
 import java.util.Locale;
 import java.util.logging.Logger;
 
-import CommonClasses.Configuration;
-import CommonClasses.Translator;
+import tools.Configuration;
+import tools.Translator;
 
 
 /**
