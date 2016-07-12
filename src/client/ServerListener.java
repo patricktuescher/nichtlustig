@@ -6,6 +6,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.List;
 
+import message.ClientLogin;
+
 
 
 public class ServerListener extends Thread {
@@ -31,7 +33,7 @@ public class ServerListener extends Thread {
 	}
 
 
-	public boolean connect() {
+	public boolean connect(Account acc) {
 		try {
 
 			if (socket == null) {
@@ -39,6 +41,8 @@ public class ServerListener extends Thread {
 
 				if (out == null) {
 					out = new ObjectOutputStream(socket.getOutputStream());
+					System.out.println("hier");
+					this.sendObject(new ClientLogin(acc));
 				}
 				this.start();
 			}

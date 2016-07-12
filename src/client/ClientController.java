@@ -37,7 +37,7 @@ public class ClientController {
 			@Override
 			public void handle(ActionEvent arg0) {
 				server = ServerListener.getServerListener();
-				server.connect();
+				server.connect(new Account(view.tf_username.getText()));
 				server.sendObject(new Würfel(Farbe.Pink));
 				view.primaryStage.setScene(view.sceneLobby);
 				sl.getLogger().info("Change to Lobby Scene");
