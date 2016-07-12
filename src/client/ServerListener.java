@@ -87,7 +87,7 @@ public class ServerListener extends Thread {
 				try {
 					obj = in.readObject();
 					System.out.println("Objekt empfangen");
-
+					
 					
 				}
 
