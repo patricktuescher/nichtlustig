@@ -13,6 +13,8 @@ public class Card implements Serializable{
 	private ImageView image;
 	private Status status;
 	private Würfel würfel;
+	final int cardheight = 90;
+	final int cardwidth = 90;
 
 	
 	
@@ -22,7 +24,6 @@ public class Card implements Serializable{
 		this.status = Status.frei;
 		String pfad = new String("Karte_");
 		pfad = pfad + (this.type.name() + "_" + this.Augenzahl);
-		System.out.println(pfad);
 		this.image = new ImageView(new Image("images/" + pfad + ".png"));
 	}
 
@@ -33,6 +34,8 @@ public class Card implements Serializable{
 
 
 	protected ImageView getImage() {
+		this.image.setFitHeight(this.cardheight);
+		this.image.setFitWidth(this.cardwidth);
 		return image;
 	}
 
@@ -52,6 +55,9 @@ public class Card implements Serializable{
 	}
 	protected String getType(){
 		return this.type.name();
+	}
+	public String toString(){
+		return this.getType() + " Nr: " + this.Augenzahl;
 	}
 
 

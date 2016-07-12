@@ -420,94 +420,36 @@ public class ClientView {
 		this.cardAL.add(new Card(cardType.Tod, 6));
 		
 		//Putting it into the Grid
-		int dino = 0;
-		int lemming = 0;
-		int prof = 0;
-		int rieb = 0;
-		int yeti = 0;
-		int tod = 0;
-//		for(int x = 0;x<26;x++){
-//			System.out.println(x);
-//			String s = this.cardAL.get(x).getType();
-//			
-//			switch(s){
-//			case "dino": innerPaneGame.add(this.cardAL.get(x).getImage(), dino++,0); break;
-//			case "Prof": innerPaneGame.add(this.cardAL.get(x).getImage(), prof++, 1); break;
-//			case "Lemming":innerPaneGame.add(this.cardAL.get(x).getImage(), lemming++, 2); break;
-//			case "Yeti":innerPaneGame.add(this.cardAL.get(x).getImage(), yeti++, 3); break;
-//			case "Rieb":innerPaneGame.add(this.cardAL.get(x).getImage(), rieb++, 4); break;
-//			
-//			}
-//		}
-		
-		
-		
-		
-		cardRieb = new ImageView[5];
-		for (int i = 1; i < 6; i++){
-				Image imageRieb = new Image("images/Karte_Rieb_"+i+".png");
-				cardRieb[i-1] = new ImageView();
-				cardRieb[i-1].setImage(imageRieb);
-				cardRieb[i-1].setFitHeight(cardheight);
-				cardRieb[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardRieb[i-1], i, 2);
+		int dino = 1;
+		int lemming = 1;
+		int prof = 1;
+		int rieb = 1;
+		int yeti = 1;
+		int tod = 1;
+		boolean b = true;
+		for(int x = 0;x<31;x++){
+			System.out.println(this.cardAL.get(x));
+			String s = this.cardAL.get(x).getType();
+			
+			switch(s){
+			case "Dino": innerPaneGame.add(this.cardAL.get(x).getImage(), dino++,10); break;
+			case "Prof": innerPaneGame.add(this.cardAL.get(x).getImage(), prof++, 8); break;
+			case "Lemming":innerPaneGame.add(this.cardAL.get(x).getImage(), lemming++, 6); break;
+			case "Yeti":innerPaneGame.add(this.cardAL.get(x).getImage(), yeti++, 4); break;
+			case "Rieb":innerPaneGame.add(this.cardAL.get(x).getImage(), rieb++, 2); break;
+			default: if(b){
+				leftPaneGame.add(this.cardAL.get(x).getImage(), 0, tod);
+				b = false;
+				break;
 			}
-				
-		cardYeti = new ImageView[5];
-		for (int i = 1; i < 6; i++){
-				Image imageYeti = new Image("images/Karte_Yeti_"+i+".png");
-				cardYeti[i-1] = new ImageView();
-				cardYeti[i-1].setImage(imageYeti);
-				cardYeti[i-1].setFitHeight(cardheight);
-				cardYeti[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardYeti[i-1], i, 4);
-				}
-		
-		cardLemming = new ImageView[5];
-		for (int i = 1; i < 6; i++){
-				Image imageLemming = new Image("images/Karte_Lemming_"+i+".png");
-				cardLemming[i-1] = new ImageView();
-				cardLemming[i-1].setImage(imageLemming);
-				cardLemming[i-1].setFitHeight(cardheight);
-				cardLemming[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardLemming[i-1], i, 6);
-				}
-
-		cardProf = new ImageView[5];
-		for (int i = 1; i < 6; i++){
-				Image imageYeti = new Image("images/Karte_Prof_"+i+".png");
-				cardProf[i-1] = new ImageView();
-				cardProf[i-1].setImage(imageYeti);
-				cardProf[i-1].setFitHeight(cardheight);
-				cardProf[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardProf[i-1], i, 8);
-				}
-		
-		cardDino = new ImageView[5];
-		for (int i = 1; i < 6; i++){
-				Image imageDino = new Image("images/Karte_Dino_"+i+".png");
-				cardDino[i-1] = new ImageView();
-				cardDino[i-1].setImage(imageDino);
-				cardDino[i-1].setFitHeight(cardheight);
-				cardDino[i-1].setFitWidth(cardwidth);
-				innerPaneGame.add(cardDino[i-1], i, 10);
-				}		
-		
-		cardTod = new ImageView[6];		
-		for (int i = 1; i < 7; i++){		
-				Image imageTod = new Image("images/Karte_Tod_"+i+".png");		
-				cardTod[i-1] = new ImageView();		
-				cardTod[i-1].setImage(imageTod);		
-				cardTod[i-1].setFitHeight(cardheight);		
-				cardTod[i-1].setFitWidth(cardwidth);		
-				if(i<4){		
-					leftPaneGame.add(cardTod[i-1], 2, 2*i);		
-				}		
-				else{		
-					leftPaneGame.add(cardTod[i-1], 4, 2*(i-3)); 
-				}
+			else{
+				leftPaneGame.add(this.cardAL.get(x).getImage(), 1, tod++);
+				b = true;
+				break;
+			}
+			}
 		}
-		
+
 		
 		////////////////// CUBES PL1//////////////////////////
 		

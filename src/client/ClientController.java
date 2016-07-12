@@ -215,171 +215,171 @@ public class ClientController {
 		///////////////// EventHandler zoom cards //////////////////////////		
 		
 		
-		//EventHandler Zoom cardRieb
-
-		for(int i = 0; i<5; i++){
-			final int d = i;
-			
-			view.cardRieb[d].setOnMouseEntered(new EventHandler<MouseEvent>(){
-		
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardRieb[d].toFront();
-					view.cardRieb[d].setScaleX(2);
-					view.cardRieb[d].setScaleY(2);
-				}	
-			});
-			
-			view.cardRieb[d].setOnMouseExited(new EventHandler<MouseEvent>(){
-		
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardRieb[d].toBack();
-					view.cardRieb[d].setScaleX(1);
-					view.cardRieb[d].setScaleY(1);
-				}
-			});		
-		}		
-		
-		//EventHandler Zoom cardYeti
-
-		for(int i = 0; i<5; i++){
-			final int d = i;
-			
-			view.cardYeti[d].setOnMouseEntered(new EventHandler<MouseEvent>(){
-		
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardYeti[d].toFront();
-					view.cardYeti[d].setScaleX(2);
-					view.cardYeti[d].setScaleY(2);
-				}
-					
-			});
-			
-			view.cardYeti[d].setOnMouseExited(new EventHandler<MouseEvent>(){
-		
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardYeti[d].toBack();
-					view.cardYeti[d].setScaleX(1);
-					view.cardYeti[d].setScaleY(1);
-				}
-		
-		
-			});		
-		}		
-		
-		//EventHandler Zoom cardLemming
-
-		for(int i = 0; i<5; i++){
-			final int d = i;
-			
-			view.cardLemming[d].setOnMouseEntered(new EventHandler<MouseEvent>(){
-		
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardLemming[d].toFront();
-					view.cardLemming[d].setScaleX(2);
-					view.cardLemming[d].setScaleY(2);
-				}
-					
-			});
-			
-			view.cardLemming[d].setOnMouseExited(new EventHandler<MouseEvent>(){
-		
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardLemming[d].toBack();
-					view.cardLemming[d].setScaleX(1);
-					view.cardLemming[d].setScaleY(1);
-				}
-		
-			});		
-		}		
-		
-		
-		//EventHandler Zoom cardProf
-
-		for(int i = 0; i<5; i++){
-			final int d = i;
-			
-			view.cardProf[d].setOnMouseEntered(new EventHandler<MouseEvent>(){
-		
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardProf[d].toFront();
-					view.cardProf[d].setScaleX(2);
-					view.cardProf[d].setScaleY(2);
-				}
-					
-			});
-			
-			view.cardProf[d].setOnMouseExited(new EventHandler<MouseEvent>(){
-		
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardProf[d].toBack();
-					view.cardProf[d].setScaleX(1);
-					view.cardProf[d].setScaleY(1);
-				}
-			});		
-		}		
-		
-		//EventHandler Zoom cardDino
-
-		for(int i = 0; i<5; i++){
-			final int d = i;
-			
-			view.cardDino[d].setOnMouseEntered(new EventHandler<MouseEvent>(){
-		
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardDino[d].toFront();
-					view.cardDino[d].setScaleX(2);
-					view.cardDino[d].setScaleY(2);
-				}
-					
-			});
-			
-			view.cardDino[d].setOnMouseExited(new EventHandler<MouseEvent>(){
-		
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardDino[d].toBack();
-					view.cardDino[d].setScaleX(1);
-					view.cardDino[d].setScaleY(1);
-				}
-			});		
-		}			
-
-		
-		//EventHandler Zoom cardTod
-
-		for(int i = 0; i<6; i++){
-			final int d = i;
-			
-			view.cardTod[d].setOnMouseEntered(new EventHandler<MouseEvent>(){
-		
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardTod[d].toFront();
-					view.cardTod[d].setScaleX(2);
-					view.cardTod[d].setScaleY(2);
-				}
-					
-			});
-			
-			view.cardTod[d].setOnMouseExited(new EventHandler<MouseEvent>(){
-		
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardTod[d].toBack();
-					view.cardTod[d].setScaleX(1);
-					view.cardTod[d].setScaleY(1);
-				}
-			});		
-		}	
+//		//EventHandler Zoom cardRieb
+//
+//		for(int i = 0; i<5; i++){
+//			final int d = i;
+//			
+//			view.cardRieb[d].setOnMouseEntered(new EventHandler<MouseEvent>(){
+//		
+//				@Override
+//				public void handle(MouseEvent arg0){
+//					view.cardRieb[d].toFront();
+//					view.cardRieb[d].setScaleX(2);
+//					view.cardRieb[d].setScaleY(2);
+//				}	
+//			});
+//			
+//			view.cardRieb[d].setOnMouseExited(new EventHandler<MouseEvent>(){
+//		
+//				@Override
+//				public void handle(MouseEvent arg0){
+//					view.cardRieb[d].toBack();
+//					view.cardRieb[d].setScaleX(1);
+//					view.cardRieb[d].setScaleY(1);
+//				}
+//			});		
+//		}		
+//		
+//		//EventHandler Zoom cardYeti
+//
+//		for(int i = 0; i<5; i++){
+//			final int d = i;
+//			
+//			view.cardYeti[d].setOnMouseEntered(new EventHandler<MouseEvent>(){
+//		
+//				@Override
+//				public void handle(MouseEvent arg0){
+//					view.cardYeti[d].toFront();
+//					view.cardYeti[d].setScaleX(2);
+//					view.cardYeti[d].setScaleY(2);
+//				}
+//					
+//			});
+//			
+//			view.cardYeti[d].setOnMouseExited(new EventHandler<MouseEvent>(){
+//		
+//				@Override
+//				public void handle(MouseEvent arg0){
+//					view.cardYeti[d].toBack();
+//					view.cardYeti[d].setScaleX(1);
+//					view.cardYeti[d].setScaleY(1);
+//				}
+//		
+//		
+//			});		
+//		}		
+//		
+//		//EventHandler Zoom cardLemming
+//
+//		for(int i = 0; i<5; i++){
+//			final int d = i;
+//			
+//			view.cardLemming[d].setOnMouseEntered(new EventHandler<MouseEvent>(){
+//		
+//				@Override
+//				public void handle(MouseEvent arg0){
+//					view.cardLemming[d].toFront();
+//					view.cardLemming[d].setScaleX(2);
+//					view.cardLemming[d].setScaleY(2);
+//				}
+//					
+//			});
+//			
+//			view.cardLemming[d].setOnMouseExited(new EventHandler<MouseEvent>(){
+//		
+//				@Override
+//				public void handle(MouseEvent arg0){
+//					view.cardLemming[d].toBack();
+//					view.cardLemming[d].setScaleX(1);
+//					view.cardLemming[d].setScaleY(1);
+//				}
+//		
+//			});		
+//		}		
+//		
+//		
+//		//EventHandler Zoom cardProf
+//
+//		for(int i = 0; i<5; i++){
+//			final int d = i;
+//			
+//			view.cardProf[d].setOnMouseEntered(new EventHandler<MouseEvent>(){
+//		
+//				@Override
+//				public void handle(MouseEvent arg0){
+//					view.cardProf[d].toFront();
+//					view.cardProf[d].setScaleX(2);
+//					view.cardProf[d].setScaleY(2);
+//				}
+//					
+//			});
+//			
+//			view.cardProf[d].setOnMouseExited(new EventHandler<MouseEvent>(){
+//		
+//				@Override
+//				public void handle(MouseEvent arg0){
+//					view.cardProf[d].toBack();
+//					view.cardProf[d].setScaleX(1);
+//					view.cardProf[d].setScaleY(1);
+//				}
+//			});		
+//		}		
+//		
+//		//EventHandler Zoom cardDino
+//
+//		for(int i = 0; i<5; i++){
+//			final int d = i;
+//			
+//			view.cardDino[d].setOnMouseEntered(new EventHandler<MouseEvent>(){
+//		
+//				@Override
+//				public void handle(MouseEvent arg0){
+//					view.cardDino[d].toFront();
+//					view.cardDino[d].setScaleX(2);
+//					view.cardDino[d].setScaleY(2);
+//				}
+//					
+//			});
+//			
+//			view.cardDino[d].setOnMouseExited(new EventHandler<MouseEvent>(){
+//		
+//				@Override
+//				public void handle(MouseEvent arg0){
+//					view.cardDino[d].toBack();
+//					view.cardDino[d].setScaleX(1);
+//					view.cardDino[d].setScaleY(1);
+//				}
+//			});		
+//		}			
+//
+//		
+//		//EventHandler Zoom cardTod
+//
+//		for(int i = 0; i<6; i++){
+//			final int d = i;
+//			
+//			view.cardTod[d].setOnMouseEntered(new EventHandler<MouseEvent>(){
+//		
+//				@Override
+//				public void handle(MouseEvent arg0){
+//					view.cardTod[d].toFront();
+//					view.cardTod[d].setScaleX(2);
+//					view.cardTod[d].setScaleY(2);
+//				}
+//					
+//			});
+//			
+//			view.cardTod[d].setOnMouseExited(new EventHandler<MouseEvent>(){
+//		
+//				@Override
+//				public void handle(MouseEvent arg0){
+//					view.cardTod[d].toBack();
+//					view.cardTod[d].setScaleX(1);
+//					view.cardTod[d].setScaleY(1);
+//				}
+//			});		
+//		}	
 		
 		///////////////// EventHandler chosen cubes //////////////////////////
 		
@@ -399,78 +399,78 @@ public class ClientController {
 		///////////////// EventHandler chosen cards //////////////////////////
 		
 		
-		//EventHandler Choose cardRieb
-		for(int i = 1; i<6; i++){
-			final int d = i;
-		view.cardRieb[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
-			
-			@Override
-			public void handle(MouseEvent arg0){
-//				view.cardRieb[d-1].setRotate(180);
-//				view.cardRieb[d-1].setOpacity(0.5);
-		
-				InnerShadow innerShadow = new InnerShadow();
-				innerShadow.setOffsetX(2);
-				innerShadow.setOffsetY(2);
-				innerShadow.setChoke(0.5);				
-				view.cardRieb[d-1].setEffect(innerShadow);
-//				view.cardRieb[d-1].setId("shadow");
-			}
-			
-		});
-		}		
-		
-		//EventHandler Choose cardYeti
-		for(int i = 1; i<6; i++){
-			final int d = i;
-		view.cardYeti[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
-			
-			@Override
-			public void handle(MouseEvent arg0){
-				view.cardYeti[d-1].setRotate(180);
-			}
-		});
-		}
-		
-		//EventHandler Choose cardLemming
-		for(int i = 1; i<6; i++){
-			final int d = i;
-		view.cardLemming[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
-			
-			@Override
-			public void handle(MouseEvent arg0){
-				view.cardLemming[d-1].setRotate(180);
-			}
-		});
-		}		
-		
-		//EventHandler Choose cardProf
-		for(int i = 1; i<6; i++){
-			final int d = i;
-		view.cardProf[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
-			
-			@Override
-			public void handle(MouseEvent arg0){
-				view.cardProf[d-1].setRotate(180);
-			}
-			
-		});
-		}		
-		
-		
-		//EventHandler Choose cardDino
-		for(int i = 1; i<6; i++){
-			final int d = i;
-		view.cardDino[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
-			
-			@Override
-			public void handle(MouseEvent arg0){
-//				Image dinoP1 = new Image("images/Karte_Yeti_"+d+".png");
-//				view.cardDino[d-1].setImage(dinoP1);
-				view.cardDino[d-1].setRotate(180);
-			}
-		});
-		}
+//		//EventHandler Choose cardRieb
+//		for(int i = 1; i<6; i++){
+//			final int d = i;
+//		view.cardRieb[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
+//			
+//			@Override
+//			public void handle(MouseEvent arg0){
+////				view.cardRieb[d-1].setRotate(180);
+////				view.cardRieb[d-1].setOpacity(0.5);
+//		
+//				InnerShadow innerShadow = new InnerShadow();
+//				innerShadow.setOffsetX(2);
+//				innerShadow.setOffsetY(2);
+//				innerShadow.setChoke(0.5);				
+//				view.cardRieb[d-1].setEffect(innerShadow);
+////				view.cardRieb[d-1].setId("shadow");
+//			}
+//			
+//		});
+//		}		
+//		
+//		//EventHandler Choose cardYeti
+//		for(int i = 1; i<6; i++){
+//			final int d = i;
+//		view.cardYeti[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
+//			
+//			@Override
+//			public void handle(MouseEvent arg0){
+//				view.cardYeti[d-1].setRotate(180);
+//			}
+//		});
+//		}
+//		
+//		//EventHandler Choose cardLemming
+//		for(int i = 1; i<6; i++){
+//			final int d = i;
+//		view.cardLemming[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
+//			
+//			@Override
+//			public void handle(MouseEvent arg0){
+//				view.cardLemming[d-1].setRotate(180);
+//			}
+//		});
+//		}		
+//		
+//		//EventHandler Choose cardProf
+//		for(int i = 1; i<6; i++){
+//			final int d = i;
+//		view.cardProf[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
+//			
+//			@Override
+//			public void handle(MouseEvent arg0){
+//				view.cardProf[d-1].setRotate(180);
+//			}
+//			
+//		});
+//		}		
+//		
+//		
+//		//EventHandler Choose cardDino
+//		for(int i = 1; i<6; i++){
+//			final int d = i;
+//		view.cardDino[i-1].setOnMouseClicked(new EventHandler<MouseEvent>(){
+//			
+//			@Override
+//			public void handle(MouseEvent arg0){
+////				Image dinoP1 = new Image("images/Karte_Yeti_"+d+".png");
+////				view.cardDino[d-1].setImage(dinoP1);
+//				view.cardDino[d-1].setRotate(180);
+//			}
+//		});
+//		}
 		
 
 		
