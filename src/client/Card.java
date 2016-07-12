@@ -18,8 +18,8 @@ public class Card implements Serializable{
 	private ImageView image;
 	private Status status;
 	private Würfel würfel;
-	private final int cardheight = 90;
-	private final int cardwidth = 90;
+	private final int cardHeight = 90;
+	private final int cardWidth = 90;
 	private Logger logger = ServiceLocator.getServiceLocator().getLogger();
 
 	
@@ -41,8 +41,8 @@ public class Card implements Serializable{
 
 
 	public ImageView getImage() {
-		this.image.setFitHeight(this.cardheight);
-		this.image.setFitWidth(this.cardwidth);
+		this.image.setFitHeight(this.cardHeight);
+		this.image.setFitWidth(this.cardWidth);
 		return image;
 	}
 
