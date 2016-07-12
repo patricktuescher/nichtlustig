@@ -17,11 +17,11 @@ public class ServerController {
         sl = ServiceLocator.getServiceLocator();
         
         // register ourselves to listen for button clicks
-        view.btnGo.setOnAction(new EventHandler<ActionEvent>() {
+        view.ConnectServer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
-					model.startServer(Integer.parseInt(view.txtPort.getText()));
+					model.startServer(8080);
 					sl.getLogger().info("Start Server Connection");
                 	
 				} catch (Exception e) {
