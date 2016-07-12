@@ -237,10 +237,7 @@ public class ClientController {
 				public void handle(MouseEvent arg0){
 					view.cardAL.get(d).click();
 				}
-			});
-			
-			
-			
+			});	
 		}
 		
 		///////////////// EventHandler chosen cubes //////////////////////////
