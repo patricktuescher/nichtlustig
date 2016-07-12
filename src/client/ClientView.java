@@ -36,7 +36,7 @@ public class ClientView {
 	ClientModel model;
 	protected TextField tf_username;
 	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, fertigGame ;
-	protected Label labelPL1, labelPL2;
+	protected Label labelPL1, labelPL2,turnPL1, turnPL2; 
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
 	protected CheckBox passwordCheck;
@@ -396,7 +396,12 @@ public class ClientView {
 				
 		// Label Score PL2 - to be difined
 		labelPL2 = new Label("PunktezahlSpieler2");
-			
+		
+		// Label Turn PL1
+		turnPL1 = new Label("Your turn");
+		
+		// Label Turn PL2
+		turnPL2 = new Label("opponent's turn");
 	
 		
 		//Scene Game
@@ -485,7 +490,7 @@ public class ClientView {
 		b_würfeln.setId("b-login");
 		
 		//added nodes to BottomPane
-		bottomPaneGameCube.getChildren().addAll(b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),fertigGame,labelPL1);
+		bottomPaneGameCube.getChildren().addAll(turnPL1, b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),fertigGame,labelPL1);
 		
 		
 		//////////////////CUBES PL2 (SecondPlayer) //////////////////////////
@@ -516,7 +521,7 @@ public class ClientView {
 		WürfelPL2.add(cubeViewRed2PL2);
 		
 		//added nodes to innertopPaneGame
-		innertopPaneGame.getChildren().addAll(cubeViewPinkPL2.getImageView(), cubeViewWhite1PL2.getImageView(), cubeViewWhite2PL2.getImageView(), cubeViewBlack1PL2.getImageView(), cubeViewBlack2PL2.getImageView(), cubeViewRed1PL2.getImageView(), cubeViewRed2PL2.getImageView(),labelPL2);
+		innertopPaneGame.getChildren().addAll(turnPL2,cubeViewPinkPL2.getImageView(), cubeViewWhite1PL2.getImageView(), cubeViewWhite2PL2.getImageView(), cubeViewBlack1PL2.getImageView(), cubeViewBlack2PL2.getImageView(), cubeViewRed1PL2.getImageView(), cubeViewRed2PL2.getImageView(),labelPL2);
 				
 		//Chat
 		
