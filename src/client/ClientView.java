@@ -538,7 +538,7 @@ public class ClientView {
 		chatInputWindow.setMinSize(700, 30);
 		
 		
-		Button b_sendchat = new Button();
+		b_sendchat = new Button();
 		b_sendchat.setText(t.getString("Button.send"));
 		b_sendchat.setMinSize(100, 30);
 		b_sendchat.setMaxSize(100, 30);

@@ -253,27 +253,18 @@ public class ClientController {
 		
 
 		
-		//EventHandler Chat send-Button
-	//view.b_sendchat.setOnAction(new EventHandler<ActionEvent>(){
+		// EventHandler LoginButton - LoginScene
+				view.b_sendchat.setOnAction(new EventHandler<ActionEvent>(){
 
-	//@Override
-	//public void handle(ActionEvent arg0) {
-	//Client c1 = new Client("127.0.0.1",8081);
-	//c1.start();
-	//c1.send(new String("Hello World"));
-    //view.chatInputWindow.setText(c1.toString());	
-	//}		
-	//});	
-		
-		// EventHandler Chat send-Button
-	//			view.chatInputWindow.setOnAction(new EventHandler<ActionEvent>(){
+					@Override
+					public void handle(ActionEvent arg0) {
+						server.sendObject(view.chatInputWindow.getText());
+						view.chatInputWindow.clear();
+						
+						sl.getLogger().info("Change to Lobby Scene");
 
-	//			@Override
-	//			public void handle(ActionEvent arg0) {
-	//				view.streamOut.println(view.chatInputWindow.getText());
-	//	            view.chatInputWindow.setText("");	
-	//				}		
-	//	});
+					}
+				});
 		
 			
 	}

@@ -19,6 +19,8 @@ public class ServerListener extends Thread {
 
 	public static ServerListener serverListener;
 
+	ClientView view;
+	
 	private ObjectInputStream in = null;
 	private ObjectOutputStream out = null;
 	private Object obj = null;
@@ -90,6 +92,7 @@ public class ServerListener extends Thread {
 			{
 				try {
 					obj = in.readObject();
+					
 					System.out.println("Objekt empfangen");
 					
 					
