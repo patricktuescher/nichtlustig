@@ -6,7 +6,6 @@ import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import CommonClasses.Translator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -28,6 +27,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import tools.Translator;
 
 
 public class ClientView {

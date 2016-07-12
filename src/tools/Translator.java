@@ -1,4 +1,4 @@
-package CommonClasses;
+package tools;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
