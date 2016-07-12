@@ -102,6 +102,10 @@ public class ClientConnection extends Thread {
 			e.printStackTrace();
 		}
 	}
+	
+	public String getClientName(){
+		return this.ClientConnectionName;
+	}
 
 
 
