@@ -13,6 +13,7 @@ public class Card implements Serializable{
 	private ImageView image;
 	private Status status;
 	private Würfel würfel;
+
 	
 	
 	public Card(cardType type, int Augenzahl){
@@ -48,6 +49,9 @@ public class Card implements Serializable{
 
 	protected Würfel getWürfel() {
 		return würfel;
+	}
+	protected String getType(){
+		return this.type.name();
 	}
 
 

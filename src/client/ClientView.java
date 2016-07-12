@@ -419,6 +419,27 @@ public class ClientView {
 		}
 		this.cardAL.add(new Card(cardType.Tod, 6));
 		
+		//Putting it into the Grid
+		int dino = 0;
+		int lemming = 0;
+		int prof = 0;
+		int rieb = 0;
+		int yeti = 0;
+		int tod = 0;
+//		for(int x = 0;x<26;x++){
+//			System.out.println(x);
+//			String s = this.cardAL.get(x).getType();
+//			
+//			switch(s){
+//			case "dino": innerPaneGame.add(this.cardAL.get(x).getImage(), dino++,0); break;
+//			case "Prof": innerPaneGame.add(this.cardAL.get(x).getImage(), prof++, 1); break;
+//			case "Lemming":innerPaneGame.add(this.cardAL.get(x).getImage(), lemming++, 2); break;
+//			case "Yeti":innerPaneGame.add(this.cardAL.get(x).getImage(), yeti++, 3); break;
+//			case "Rieb":innerPaneGame.add(this.cardAL.get(x).getImage(), rieb++, 4); break;
+//			
+//			}
+//		}
+		
 		
 		
 		
