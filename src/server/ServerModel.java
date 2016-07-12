@@ -12,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
@@ -23,15 +24,41 @@ import javafx.concurrent.Task;
 
 public class ServerModel {
 	
-	Server verbindung;
-		  
+	private Listener listener;
+	private static final int portNumber = 8080;
+	private boolean isServerRunning = false;
+	private String ipAddress;
+	private ArrayList<ClientConnection> clientList = new ArrayList<>();
 	
-	public void startServer(int port){
-		this.verbindung = new Server(port);
-		this.verbindung.start();
+	
+	
+	public void startServer() {
+		try {
+			listener = new Listener(this, portNumber);
+			listener.start();
+			isServerRunning = true;
+			ipAddress = InetAddress.getLocalHost().getHostAddress();
+	
+	
+		}catch (IOException e) {
+
+		}
+		
 	}
-	public void stopServer(){
-		this.verbindung.shutDown();
+	
+	public void addClient(ClientConnection newClient) {
+		synchronized (clientList) {
+			clientList.add(newClient);
+		}
+	}
+	
+	
+	public void broadcast(Object obj) {
+		synchronized (clientList) {
+			for (ClientConnection client : clientList) {
+				client.sendObject(obj);
+			}
+		}
 	}
 }
 

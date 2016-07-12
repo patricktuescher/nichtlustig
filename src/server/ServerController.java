@@ -21,7 +21,7 @@ public class ServerController {
             @Override
             public void handle(ActionEvent event) {
                 try {
-					model.startServer(8080);
+                	model.startServer();
 					view.onlineOffline.setText("Online");
 					view.status.setId("greenCircle");
 					view.onlineOffline.setId("online");
@@ -38,7 +38,7 @@ public class ServerController {
             @Override
             public void handle(ActionEvent event) {
                 try {
-					model.stopServer();
+//					model.stopServer();
 					view.onlineOffline.setText("Offline");
 					view.status.setId("redCircle");
 					view.onlineOffline.setId("offline");
