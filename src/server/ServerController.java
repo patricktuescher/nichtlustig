@@ -39,6 +39,7 @@ public class ServerController {
             public void handle(ActionEvent event) {
                 try {
 					model.stopServer();
+					System.exit(0);
 					view.onlineOffline.setText("Offline");
 					view.status.setId("redCircle");
 					view.onlineOffline.setId("offline");
