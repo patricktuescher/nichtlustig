@@ -2,9 +2,11 @@ package client;
 
 import java.io.Serializable;
 
+import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 public class Card implements Serializable{
 	
@@ -73,7 +75,7 @@ public class Card implements Serializable{
 	}
 	public void click(){
 		
-		InnerShadow innerShadow = new InnerShadow();
+		InnerShadow innerShadow = new InnerShadow(20, Color.BLUE);
 		innerShadow.setOffsetX(2);
 		innerShadow.setOffsetY(2);
 		innerShadow.setChoke(0.5);	
