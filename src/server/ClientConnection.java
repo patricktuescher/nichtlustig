@@ -7,6 +7,9 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
 
+import client.Account;
+import message.ClientLogin;
+
 
 
 public class ClientConnection extends Thread {
@@ -17,6 +20,7 @@ public class ClientConnection extends Thread {
 	private ObjectOutputStream out;
 	private Object obj;
 	private String msg;
+	private String ClientConnectionName;
 
 
 	public ClientConnection(ServerModel model, Socket socket) {
@@ -40,6 +44,10 @@ public class ClientConnection extends Thread {
 			}
 			while (true) {
 				obj = in.readObject();
+				if(obj instanceof ClientLogin){
+					Account acc = (Account) obj;
+					this.ClientConnectionName = acc.getAccName();
+				}
 				System.out.println("Objekt wurde auf dem Server empfangen");
 				model.broadcast(obj);
 				System.out.println("Objekt wurde zurück an den Client geschickt");
