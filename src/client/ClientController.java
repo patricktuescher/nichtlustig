@@ -38,7 +38,7 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 				server = ServerListener.getServerListener();
 				server.connect();
-				server.sendObject(new Integer(5));
+				server.sendObject(new Würfel(Farbe.Pink));
 				view.primaryStage.setScene(view.sceneLobby);
 				sl.getLogger().info("Change to Lobby Scene");
 

@@ -18,7 +18,7 @@ public class Würfel implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5;
+
 	//Height and Width of cubes
 	final int cubeheight = 60;
 	final int cubewidth = 60;
@@ -27,10 +27,10 @@ public class Würfel implements Serializable {
 	private boolean selected = false;
 	private int maxAugenzahl;
 	private int aktAugenzahl = 1;
-	private ImageView image = new ImageView(new Image("images/" + this.farbe.name()+ "_Würfel_"+aktAugenzahl+".png"));
+	private transient ImageView image = new ImageView(new Image("images/" + this.farbe.name()+ "_Würfel_"+aktAugenzahl+".png"));
 	
-	private ServiceLocator sl = ServiceLocator.getServiceLocator();
-	private Logger logger = sl.getLogger();
+	private transient ServiceLocator sl = ServiceLocator.getServiceLocator();
+	private transient Logger logger = sl.getLogger();
 	
 	public Würfel(Farbe farbe){
 		this.farbe = farbe;
