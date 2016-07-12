@@ -428,7 +428,6 @@ public class ClientView {
 		int tod = 1;
 		boolean b = true;
 		for(int x = 0;x<31;x++){
-			System.out.println(this.cardAL.get(x));
 			String s = this.cardAL.get(x).getType();
 			
 			switch(s){
