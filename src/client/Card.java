@@ -2,6 +2,7 @@ package client;
 
 import java.io.Serializable;
 
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -58,6 +59,27 @@ public class Card implements Serializable{
 	}
 	public String toString(){
 		return this.getType() + " Nr: " + this.Augenzahl;
+	}
+	
+	public void zoomCard(){
+		this.image.toFront();
+		this.image.setScaleX(2);
+		this.image.setScaleY(2);
+	}
+	public void deZoomCard(){
+		this.image.toBack();
+		this.image.setScaleX(1);
+		this.image.setScaleY(1);
+	}
+	public void click(){
+		
+		InnerShadow innerShadow = new InnerShadow();
+		innerShadow.setOffsetX(2);
+		innerShadow.setOffsetY(2);
+		innerShadow.setChoke(0.5);	
+		this.getImage().setEffect(innerShadow);
+		this.getImage().setId("shadow");
+		
 	}
 
 
