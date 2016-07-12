@@ -206,7 +206,6 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 				for(int x = 0; x < view.WürfelPL1.size(); x++){
 					view.WürfelPL1.get(x).roll();
-					sl.getLogger().info("Würfel roll");
 					}
 				}
 		});

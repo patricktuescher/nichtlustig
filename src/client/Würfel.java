@@ -72,7 +72,7 @@ public class Würfel {
 		this.aktAugenzahl = rand.nextInt(maxAugenzahl)+1;
 		image.setImage(new Image("images/" + this.farbe.name()+"_Würfel_"+aktAugenzahl+".png"));
 		this.image.setStyle("");
-		logger.fine("Die has been rolled. Number of die: " + this.aktAugenzahl);
+		logger.fine(this.farbe + " die has been rolled. Number of die: " + this.aktAugenzahl);
 		}
 		}
 	
@@ -89,7 +89,7 @@ public class Würfel {
 			this.image.setStyle(css);
 		}
 		selected = true;
-		logger.fine("Dice has been clicked");
+		logger.fine(this.farbe + " die has been clicked. Number of die: " + this.aktAugenzahl);
 	}
 	
 	/**

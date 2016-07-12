@@ -1,6 +1,7 @@
 package client;
 
 import java.io.Serializable;
+import java.util.logging.Logger;
 
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
@@ -18,6 +19,7 @@ public class Card implements Serializable{
 	private Würfel würfel;
 	final int cardheight = 90;
 	final int cardwidth = 90;
+	Logger logger = ServiceLocator.getServiceLocator().getLogger();
 
 	
 	
@@ -28,6 +30,7 @@ public class Card implements Serializable{
 		String pfad = new String("Karte_");
 		pfad = pfad + (this.type.name() + "_" + this.Augenzahl);
 		this.image = new ImageView(new Image("images/" + pfad + ".png"));
+		logger.fine(this.type.name()+ " Card has been created. Number of card is: " + this.Augenzahl);
 	}
 
 
@@ -81,6 +84,7 @@ public class Card implements Serializable{
 		innerShadow.setChoke(0.5);	
 		this.getImage().setEffect(innerShadow);
 		this.getImage().setId("shadow");
+		logger.info(this.type.name()+ " Card has been clicked on. Number of card is: " + this.Augenzahl);
 		
 	}
 
