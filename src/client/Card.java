@@ -1,14 +1,19 @@
 package client;
 
 import java.io.Serializable;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+
+/**
+ * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kontroburtüs.
+ * All rights reserved.
+ * 
+ * This class represents a card which can be implemented into the nichtLustig application.
+ * @author Manipake Kontroburtüs
+ */
 
 public class Card implements Serializable{
 	
@@ -22,7 +27,11 @@ public class Card implements Serializable{
 	private final int cardWidth = 90;
 	private Logger logger = ServiceLocator.getServiceLocator().getLogger();
 
-	
+	/**
+	 * The constructor creates a card
+	 * @param type example cardType.Dino
+	 * @param Augenzahl What number is showing on the card
+	 */
 	
 	public Card(cardType type, int Augenzahl){
 		this.type = type;
