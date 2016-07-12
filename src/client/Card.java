@@ -88,7 +88,7 @@ public class Card implements Serializable{
 	}
 	public void click(){
 		
-		InnerShadow innerShadow = new InnerShadow(20, Color.BLUE);
+		InnerShadow innerShadow = new InnerShadow(20, Color.web("489dff"));
 		innerShadow.setOffsetX(2);
 		innerShadow.setOffsetY(2);
 		innerShadow.setChoke(0.5);	

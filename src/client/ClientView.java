@@ -34,7 +34,7 @@ public class ClientView {
 	
 	Stage primaryStage;
 	ClientModel model;
-	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat ;
+	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, fertigGame ;
 	protected Label labelPL1, labelPL2;
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
@@ -380,14 +380,21 @@ public class ClientView {
 
 		//Button Zurück
 		b_backGame = new Button(t.getString("Button.Back"));
-		b_backGame.setId("b-login");
+		b_backGame.setMinSize(100, 30);
+		b_backGame.setMaxSize(100, 30);
+		b_backGame.setId("b-sendchat");
+		
+		//Button Fertig
+		fertigGame = new Button(t.getString("Button.Fertig"));
+		fertigGame.setId("b-login");
+		fertigGame.setDisable(true);
 		
 		
 		// Label Score PL1 - to be difined
-		labelPL1 = new Label("");
+		labelPL1 = new Label("PunktezahlSpieler1");
 				
 		// Label Score PL2 - to be difined
-		labelPL2 = new Label("");
+		labelPL2 = new Label("PunktezahlSpieler2");
 			
 	
 		
@@ -477,7 +484,7 @@ public class ClientView {
 		b_würfeln.setId("b-login");
 		
 		//added nodes to BottomPane
-		bottomPaneGameCube.getChildren().addAll(b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_backGame);
+		bottomPaneGameCube.getChildren().addAll(b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),fertigGame,labelPL1);
 		
 		
 		//////////////////CUBES PL2 (SecondPlayer) //////////////////////////
@@ -508,7 +515,7 @@ public class ClientView {
 		WürfelPL2.add(cubeViewRed2PL2);
 		
 		//added nodes to innertopPaneGame
-		innertopPaneGame.getChildren().addAll(cubeViewPinkPL2.getImageView(), cubeViewWhite1PL2.getImageView(), cubeViewWhite2PL2.getImageView(), cubeViewBlack1PL2.getImageView(), cubeViewBlack2PL2.getImageView(), cubeViewRed1PL2.getImageView(), cubeViewRed2PL2.getImageView());
+		innertopPaneGame.getChildren().addAll(cubeViewPinkPL2.getImageView(), cubeViewWhite1PL2.getImageView(), cubeViewWhite2PL2.getImageView(), cubeViewBlack1PL2.getImageView(), cubeViewBlack2PL2.getImageView(), cubeViewRed1PL2.getImageView(), cubeViewRed2PL2.getImageView(),labelPL2);
 				
 		//Chat
 		
@@ -537,7 +544,7 @@ public class ClientView {
 		b_sendchat.setId("b-sendchat");
 		
 		
-		ChatInput.getChildren().addAll(chatInputWindow, b_sendchat);
+		ChatInput.getChildren().addAll(chatInputWindow, b_sendchat, b_backGame);
 		
 		
 		bottomPaneGameChat.getChildren().addAll(chatWindow, ChatInput);
