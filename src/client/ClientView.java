@@ -389,7 +389,7 @@ public class ClientView {
 		//Button Fertig
 		fertigGame = new Button(t.getString("Button.Fertig"));
 		fertigGame.setId("b-login");
-		fertigGame.setDisable(true);
+		
 		
 		
 		// Label Score PL1 - to be difined
