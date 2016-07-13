@@ -8,10 +8,14 @@ public class ClientLoginChecker {
 	}
 	
 	public static boolean check(ClientLogin clientLogin){
-		if(clientLogin.getAccount().getAccName().equals("Burri")){
-			return true;
+		String[] logins = {"Burri", "Patrick", "Kevin", "Marco"};
+		for(String s: logins){
+			if(clientLogin.getAccount().getAccName().equals(s)){
+				return true;
+			}
 		}
-		else return false;
+		
+		return false;
 	}
 
 }
