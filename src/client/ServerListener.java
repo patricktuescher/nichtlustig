@@ -145,6 +145,15 @@ public class ServerListener extends Thread {
 						
 					}
 					
+					if(obj instanceof ClientTurn){
+						ClientTurn yturn = (ClientTurn) obj;
+						if (!yturn.getTurn()){
+							view.labelPL1.setVisible(false);
+							view.labelPL2.setVisible(true);
+						}
+						
+						
+					}
 					
 				}
 

@@ -276,8 +276,9 @@ public class ClientController {
 					
 					//@Override
 					public void handle(ActionEvent arg0) {
+						server.sendObject(new ClientTurn(false));
 						view.turnPL1.setVisible(true);
-						view.turnPL2.setVisible(true);
+						view.turnPL1.setVisible(false);
 					}
 				});
 			

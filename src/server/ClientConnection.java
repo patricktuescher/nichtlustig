@@ -64,6 +64,10 @@ public class ClientConnection extends Thread {
 					WürfelRoll wf = (WürfelRoll) obj;
 					model.sendToOtherClients(wf, this);
 				}
+				if(obj instanceof ClientTurn){
+					ClientTurn yturn = (ClientTurn) obj;
+					model.sendToOtherClients(yturn, this);
+				}
 
 				
 		}
