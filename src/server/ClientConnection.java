@@ -9,6 +9,7 @@ import java.net.SocketException;
 
 import client.Account;
 import message.ClientLogin;
+import message.ClientLoginSuccess;
 
 
 
@@ -47,7 +48,7 @@ public class ClientConnection extends Thread {
 				if(obj instanceof ClientLogin){
 					ClientLogin acc = (ClientLogin) obj;
 					this.ClientConnectionName = acc.getAccount().getAccName();
-					System.out.println("eingeloggt mit: " + this.ClientConnectionName);
+					this.sendObject(new ClientLoginSuccess(false));
 				}
 				System.out.println("Objekt wurde auf dem Server empfangen");
 				model.broadcast(obj);

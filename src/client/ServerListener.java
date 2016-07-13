@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.util.List;
 
 import message.ClientLogin;
+import message.ClientLoginSuccess;
 
 
 
@@ -92,8 +93,13 @@ public class ServerListener extends Thread {
 			{
 				try {
 					obj = in.readObject();
-					
-					System.out.println("Objekt empfangen");
+					if(obj instanceof ClientLoginSuccess){
+						ClientLoginSuccess cls = (ClientLoginSuccess) obj;
+						if(cls.getSuccess())
+							System.out.println("Hier kummsch du rein");
+						else
+							System.out.println("Hier kummsch du ned rein");
+					}
 					
 					
 				}
