@@ -193,7 +193,7 @@ public class ClientView {
 		
 		
 		//Button Zurück
-		b_backLobby = new Button(t.getString("Button.Back"));
+		b_backLobby = new Button(t.getString("Button.Logout"));
 		b_backLobby.setPrefSize(200,70);
 		innerPaneLobby.add(b_backLobby, 6, 9);
 		b_backLobby.setId("b-login");
