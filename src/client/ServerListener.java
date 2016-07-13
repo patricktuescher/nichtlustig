@@ -7,8 +7,8 @@ import java.net.Socket;
 import java.util.List;
 import java.util.logging.Logger;
 
-import message.ClientLogin;
-import message.ClientLoginSuccess;
+import javafx.application.Platform;
+import message.*;
 
 
 
@@ -22,7 +22,8 @@ public class ServerListener extends Thread {
 
 	public static ServerListener serverListener;
 
-	ClientView view;
+	public static ClientView view;
+	public static ClientController controller;
 	
 	private ObjectInputStream in = null;
 	private ObjectOutputStream out = null;
@@ -48,7 +49,11 @@ public class ServerListener extends Thread {
 					out = new ObjectOutputStream(socket.getOutputStream());
 					this.sendObject(new ClientLogin(acc));
 				}
+				
 				this.start();
+			}
+			else{
+				this.sendObject(new ClientLogin(acc));
 			}
 		}
 		catch (IOException e) {
@@ -96,10 +101,30 @@ public class ServerListener extends Thread {
 					obj = in.readObject();
 					if(obj instanceof ClientLoginSuccess){
 						ClientLoginSuccess cls = (ClientLoginSuccess) obj;
-						if(cls.getSuccess())
+						if(cls.getSuccess()){
+							
+							//Without this, there will be a thread conflict
+							Platform.runLater(new Runnable() {
+								   @Override
+								   public void run() {
+									  controller.setLobbyScene();
+								   }
+								});
 							logger.info("Login successful");
+						}
 						else
 							logger.info("Login unsuccessful");
+					}
+					if(obj instanceof ClientLogoutSuccess){
+						ClientLogoutSuccess cls = (ClientLogoutSuccess) obj;
+						//Without this, there will be a thread conflict
+						Platform.runLater(new Runnable() {
+							   @Override
+							   public void run() {
+								  controller.setLoginScene();
+							   }
+							});
+						logger.info("Logout successful");
 					}
 					
 					

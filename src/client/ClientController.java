@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 import client.ClientModel;
 import client.ClientView;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.effect.InnerShadow;
@@ -12,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import message.ClientLogout;
 
 
 public class ClientController {
@@ -26,6 +28,7 @@ public class ClientController {
 		this.view = view;
 		this.model = model;
 		sl = ServiceLocator.getServiceLocator();
+		ServerListener.controller = this;
 		
 		
 		///////////////// LOGIN FENSTER //////////////////////////
@@ -38,8 +41,6 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 				server = ServerListener.getServerListener();
 				server.connect(new Account(view.tf_username.getText()));
-				server.sendObject(new Würfel(Farbe.Pink));
-				view.primaryStage.setScene(view.sceneLobby);
 				sl.getLogger().info("Change to Lobby Scene");
 
 			}
@@ -75,7 +76,7 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-			view.primaryStage.setScene(view.sceneLogin);
+			server.sendObject(new ClientLogout());
 			sl.getLogger().info("Change to Login Scene");
 			}		
 		});	
@@ -261,12 +262,19 @@ public class ClientController {
 						server.sendObject(view.chatInputWindow.getText());
 						view.chatInputWindow.clear();
 						
-						sl.getLogger().info("Change to Lobby Scene");
 
 					}
 				});
 		
 			
+	}
+	
+	public void setLobbyScene(){
+		this.view.primaryStage.setScene(this.view.sceneLobby);
+	}
+	public void setLoginScene(){
+		this.view.primaryStage.setScene(this.view.sceneLogin);
+		this.view.tf_username.clear();
 	}
 	
 

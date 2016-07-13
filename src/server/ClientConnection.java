@@ -8,8 +8,7 @@ import java.net.Socket;
 import java.net.SocketException;
 
 import client.Account;
-import message.ClientLogin;
-import message.ClientLoginSuccess;
+import message.*;
 
 
 
@@ -50,7 +49,11 @@ public class ClientConnection extends Thread {
 					this.ClientConnectionName = acc.getAccount().getAccName();
 					this.sendObject(new ClientLoginSuccess(new ClientLoginChecker().check(acc)));
 				}
-				model.broadcast(obj);
+				if(obj instanceof ClientLogout){
+					ClientLogout logout = (ClientLogout) obj;
+					this.ClientConnectionName = null;
+					this.sendObject(new ClientLogoutSuccess(true));
+				}
 
 				
 		}
