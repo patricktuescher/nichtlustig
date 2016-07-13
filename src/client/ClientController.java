@@ -258,7 +258,7 @@ public class ClientController {
 		
 
 		
-		// EventHandler LoginButton - LoginScene
+		///////////////// EventHandler LoginButton - LoginScene //////////////////////////
 				view.b_sendchat.setOnAction(new EventHandler<ActionEvent>(){
 
 					@Override
@@ -270,6 +270,16 @@ public class ClientController {
 					}
 				});
 		
+				
+		///////////////// EventHandler FertigButton - LoginScene //////////////////////////
+				view.b_fertigGame.setOnAction(new EventHandler<ActionEvent>(){
+					
+					//@Override
+					public void handle(ActionEvent arg0) {
+						view.turnPL1.setVisible(true);
+						view.turnPL2.setVisible(true);
+					}
+				});
 			
 	}
 	

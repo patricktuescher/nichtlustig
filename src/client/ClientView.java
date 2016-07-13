@@ -35,7 +35,7 @@ public class ClientView {
 	Stage primaryStage;
 	ClientModel model;
 	protected TextField tf_username;
-	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, fertigGame ;
+	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame ;
 	protected Label labelPL1, labelPL2,turnPL1, turnPL2; 
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
@@ -387,8 +387,8 @@ public class ClientView {
 		b_backGame.setId("b-sendchat");
 		
 		//Button Fertig
-		fertigGame = new Button(t.getString("Button.Fertig"));
-		fertigGame.setId("b-login");
+		b_fertigGame = new Button(t.getString("Button.Fertig"));
+		b_fertigGame.setId("b-login");
 		
 		
 		
@@ -400,10 +400,11 @@ public class ClientView {
 		
 		// Label Turn PL1
 		turnPL1 = new Label("Your turn");
+		turnPL1.setVisible(false);
 		
 		// Label Turn PL2
 		turnPL2 = new Label("opponent's turn");
-	
+		turnPL2.setVisible(false);
 		
 		//Scene Game
 		sceneGame = new Scene(topPaneGame, 1200, 800);
@@ -491,7 +492,7 @@ public class ClientView {
 		b_würfeln.setId("b-login");
 		
 		//added nodes to BottomPane
-		bottomPaneGameCube.getChildren().addAll(turnPL1, b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),fertigGame,labelPL1);
+		bottomPaneGameCube.getChildren().addAll(turnPL1, b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_fertigGame,labelPL1);
 		
 		
 		//////////////////CUBES PL2 (SecondPlayer) //////////////////////////
