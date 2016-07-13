@@ -206,7 +206,7 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 				for(int x = 0; x < view.WürfelPL1.size(); x++){
 					view.WürfelPL1.get(x).roll();
-					server.sendObject(new WürfelSelect(view.WürfelPL1));
+					server.sendObject(new WürfelRoll(view.WürfelPL1));
 					}
 				}
 		});
@@ -284,11 +284,13 @@ public class ClientController {
 	public void addNewMessage(String s){
 		view.chatWindow.appendText(s+"\n");
 	}
-	public void setOpponentDice(ArrayList<Würfel> würfel){
+	public void setOpponentDi(ArrayList<Würfel> würfel){
 		view.WürfelPL2.clear();
 		view.WürfelPL2.addAll(würfel);
 		view.innertopPaneGame.getChildren().clear();
 		for(int x = 0;x<view.WürfelPL2.size();x++){
+		if(view.WürfelPL2.get(x).isSelected())
+			view.WürfelPL2.get(x).getImageView().setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);");
 		view.innertopPaneGame.getChildren().addAll(view.WürfelPL2.get(x).getImageView());
 		}
 	}

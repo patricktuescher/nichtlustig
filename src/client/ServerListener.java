@@ -133,13 +133,13 @@ public class ServerListener extends Thread {
 						controller.addNewMessage(msg.getMessage());
 					}
 					
-					if(obj instanceof WürfelSelect){
-						WürfelSelect ws = (WürfelSelect) obj;
+					if(obj instanceof WürfelRoll){
+						WürfelRoll ws = (WürfelRoll) obj;
 						ArrayList<Würfel> würfel = ws.getWürfel();
 						Platform.runLater(new Runnable() {
 							   @Override
 							   public void run() {
-								   controller.setOpponentDice(würfel);
+								   controller.setOpponentDi(würfel);
 							   }
 							});
 						
