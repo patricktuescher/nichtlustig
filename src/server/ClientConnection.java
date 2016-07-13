@@ -54,6 +54,12 @@ public class ClientConnection extends Thread {
 					this.ClientConnectionName = null;
 					this.sendObject(new ClientLogoutSuccess(true));
 				}
+				if(obj instanceof ChatMessage){
+					ChatMessage msg = (ChatMessage) obj;
+					String s = this.getClientName()+ ": ";
+					s = s + msg.getMessage();
+					model.broadcast(new ChatMessage(s));
+				}
 
 				
 		}

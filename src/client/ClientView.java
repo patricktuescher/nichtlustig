@@ -528,7 +528,7 @@ public class ClientView {
 		chatWindow = new TextArea();
 		chatWindow.setMinSize(200, 50);
 		chatWindow.setMaxSize(800, 50);
-		chatWindow.setText(t.getString("TextArea.welcome"));
+		chatWindow.setText("");
 		
 		chatWindow.setEditable(false);
 		

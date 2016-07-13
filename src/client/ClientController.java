@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import message.ClientLogout;
+import message.*;
 
 
 public class ClientController {
@@ -259,7 +259,7 @@ public class ClientController {
 
 					@Override
 					public void handle(ActionEvent arg0) {
-						server.sendObject(view.chatInputWindow.getText());
+						server.sendObject(new ChatMessage(view.chatInputWindow.getText()));
 						view.chatInputWindow.clear();
 						
 
@@ -275,6 +275,10 @@ public class ClientController {
 	public void setLoginScene(){
 		this.view.primaryStage.setScene(this.view.sceneLogin);
 		this.view.tf_username.clear();
+	}
+	
+	public void addNewMessage(String s){
+		view.chatWindow.appendText(s+"\n");
 	}
 	
 

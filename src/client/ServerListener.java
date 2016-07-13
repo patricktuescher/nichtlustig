@@ -126,6 +126,10 @@ public class ServerListener extends Thread {
 							});
 						logger.info("Logout successful");
 					}
+					if(obj instanceof ChatMessage){
+						ChatMessage msg = (ChatMessage) obj;
+						controller.addNewMessage(msg.getMessage());
+					}
 					
 					
 				}
