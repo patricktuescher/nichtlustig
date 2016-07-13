@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.List;
+import java.util.logging.Logger;
 
 import message.ClientLogin;
 import message.ClientLoginSuccess;
@@ -17,6 +18,7 @@ public class ServerListener extends Thread {
 
 	private static String hostAddress; 
 	private static Socket socket;
+	private Logger logger = ServiceLocator.getServiceLocator().getLogger();
 
 	public static ServerListener serverListener;
 
@@ -44,7 +46,6 @@ public class ServerListener extends Thread {
 
 				if (out == null) {
 					out = new ObjectOutputStream(socket.getOutputStream());
-					System.out.println("hier");
 					this.sendObject(new ClientLogin(acc));
 				}
 				this.start();
@@ -96,9 +97,9 @@ public class ServerListener extends Thread {
 					if(obj instanceof ClientLoginSuccess){
 						ClientLoginSuccess cls = (ClientLoginSuccess) obj;
 						if(cls.getSuccess())
-							System.out.println("Hier kummsch du rein");
+							logger.info("Login successful");
 						else
-							System.out.println("Hier kummsch du ned rein");
+							logger.info("Login unsuccessful");
 					}
 					
 					

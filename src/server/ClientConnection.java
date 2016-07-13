@@ -48,11 +48,9 @@ public class ClientConnection extends Thread {
 				if(obj instanceof ClientLogin){
 					ClientLogin acc = (ClientLogin) obj;
 					this.ClientConnectionName = acc.getAccount().getAccName();
-					this.sendObject(new ClientLoginSuccess(false));
+					this.sendObject(new ClientLoginSuccess(new ClientLoginChecker().check(acc)));
 				}
-				System.out.println("Objekt wurde auf dem Server empfangen");
 				model.broadcast(obj);
-				System.out.println("Objekt wurde zurück an den Client geschickt");
 
 				
 		}
