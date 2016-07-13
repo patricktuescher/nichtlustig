@@ -43,6 +43,7 @@ public class Würfel implements Serializable {
 		image.setFitHeight(cubeheight);
 		image.setFitWidth(cubewidth);
 		image.setId("Wuerfel");
+		
 		logger.fine("Die has been created");
 		this.roll();
 
@@ -58,6 +59,12 @@ public class Würfel implements Serializable {
 	 * @return ImageView of die
 	 */
 	public ImageView getImageView(){
+		if(this.image == null){
+			image = new ImageView(new Image("images/" + this.farbe.name()+"_Würfel_"+aktAugenzahl+".png"));
+			image.setFitHeight(cubeheight);
+			image.setFitWidth(cubewidth);
+			image.setId("Wuerfel");
+		}
 		return this.image;
 	}
 	

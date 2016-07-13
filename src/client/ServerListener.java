@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -128,7 +129,20 @@ public class ServerListener extends Thread {
 					}
 					if(obj instanceof ChatMessage){
 						ChatMessage msg = (ChatMessage) obj;
+						
 						controller.addNewMessage(msg.getMessage());
+					}
+					
+					if(obj instanceof WürfelSelect){
+						WürfelSelect ws = (WürfelSelect) obj;
+						ArrayList<Würfel> würfel = ws.getWürfel();
+						Platform.runLater(new Runnable() {
+							   @Override
+							   public void run() {
+								   controller.setOpponentDice(würfel);
+							   }
+							});
+						
 					}
 					
 					

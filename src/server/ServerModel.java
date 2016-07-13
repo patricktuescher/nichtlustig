@@ -60,5 +60,14 @@ public class ServerModel {
 			}
 		}
 	}
+	public void sendToOtherClients(Object obj, ClientConnection current){
+		synchronized (clientList) {
+			for (ClientConnection client : clientList) {
+				if(client != current){
+					client.sendObject(obj);
+				}
+			}
+		}
+	}
 }
 

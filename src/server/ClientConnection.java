@@ -60,6 +60,10 @@ public class ClientConnection extends Thread {
 					s = s + msg.getMessage();
 					model.broadcast(new ChatMessage(s));
 				}
+				if(obj instanceof WürfelSelect){
+					WürfelSelect wf = (WürfelSelect) obj;
+					model.sendToOtherClients(wf, this);
+				}
 
 				
 		}

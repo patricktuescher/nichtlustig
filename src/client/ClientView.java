@@ -58,6 +58,7 @@ public class ClientView {
 	Würfel cubeViewPink,cubeViewWhite1, cubeViewWhite2, cubeViewBlack1, cubeViewBlack2, cubeViewRed1, cubeViewRed2;
 	
 	//Cubes PL2
+	HBox innertopPaneGame;
 	ArrayList <Würfel> WürfelPL2;
 	Würfel cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2;
 	
@@ -334,7 +335,7 @@ public class ClientView {
 		
 
 		//HBox Game Top
-		HBox innertopPaneGame = new HBox();
+		innertopPaneGame = new HBox();
 		innertopPaneGame.setPadding(new Insets(20,0,0,350));
 		innertopPaneGame.setMinHeight(100);
 		innertopPaneGame.setMaxHeight(100);

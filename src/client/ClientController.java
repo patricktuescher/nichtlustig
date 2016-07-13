@@ -3,6 +3,8 @@ package client;
 import java.awt.Color;
 import java.io.IOException;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+
 import client.ClientModel;
 import client.ClientView;
 import javafx.application.Platform;
@@ -204,6 +206,7 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 				for(int x = 0; x < view.WürfelPL1.size(); x++){
 					view.WürfelPL1.get(x).roll();
+					server.sendObject(new WürfelSelect(view.WürfelPL1));
 					}
 				}
 		});
@@ -245,7 +248,8 @@ public class ClientController {
 
 				@Override
 				public void handle(MouseEvent event) {
-					view.WürfelPL1.get(d).click();	
+					view.WürfelPL1.get(d).click();
+					
 				}
 				}
 			);
@@ -279,6 +283,14 @@ public class ClientController {
 	
 	public void addNewMessage(String s){
 		view.chatWindow.appendText(s+"\n");
+	}
+	public void setOpponentDice(ArrayList<Würfel> würfel){
+		view.WürfelPL2.clear();
+		view.WürfelPL2.addAll(würfel);
+		view.innertopPaneGame.getChildren().clear();
+		for(int x = 0;x<view.WürfelPL2.size();x++){
+		view.innertopPaneGame.getChildren().addAll(view.WürfelPL2.get(x).getImageView());
+		}
 	}
 	
 
