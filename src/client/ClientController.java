@@ -235,7 +235,8 @@ public class ClientController {
 				
 				@Override
 				public void handle(MouseEvent arg0){
-					view.cardAL.get(d).click();
+					view.cardAL.get(d).clickMe();
+					server.sendObject(new CardClick(view.cardAL.get(d)));
 				}
 			});	
 		}
@@ -303,6 +304,16 @@ public class ClientController {
 		if(view.WürfelPL2.get(x).isSelected())
 			view.WürfelPL2.get(x).getImageView().setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);");
 		view.innertopPaneGame.getChildren().addAll(view.WürfelPL2.get(x).getImageView());
+		}
+	}
+	public void opponentSelectCard(Card card){
+		for(int x = 0; x < view.cardAL.size();x++){
+			if(view.cardAL.get(x).equals(card)){
+				card.clickOther();
+				view.cardAL.set(x, card);
+				view.updateCards();
+				break;
+			}
 		}
 	}
 	

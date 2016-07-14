@@ -68,6 +68,10 @@ public class ClientConnection extends Thread {
 					ClientTurn yturn = (ClientTurn) obj;
 					model.sendToOtherClients(yturn, this);
 				}
+				if(obj instanceof CardClick){
+					CardClick click = (CardClick) obj;
+					model.sendToOtherClients(click, this);
+				}
 
 				
 		}

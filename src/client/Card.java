@@ -17,15 +17,19 @@ import javafx.scene.paint.Color;
 
 public class Card implements Serializable{
 	
-	private static final long serialVersionUID = 142l;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9093800489872546795L;
 	private cardType type = cardType.Dino;
 	private int Augenzahl;
-	private ImageView image;
+	private transient ImageView image;
 	private Status status;
 	private Würfel würfel;
 	private final int cardHeight = 90;
 	private final int cardWidth = 90;
-	private Logger logger = ServiceLocator.getServiceLocator().getLogger();
+	private transient Logger logger = ServiceLocator.getServiceLocator().getLogger();
 
 	/**
 	 * The constructor creates a card
@@ -37,9 +41,6 @@ public class Card implements Serializable{
 		this.type = type;
 		this.Augenzahl = Augenzahl;
 		this.status = Status.frei;
-		String pfad = new String("Karte_");
-		pfad = pfad + (this.type.name() + "_" + this.Augenzahl);
-		this.image = new ImageView(new Image("images/" + pfad + ".png"));
 		logger.fine(this.type.name()+ " Card has been created. Number of card is: " + this.Augenzahl);
 	}
 
@@ -50,6 +51,12 @@ public class Card implements Serializable{
 
 
 	public ImageView getImage() {
+		if(this.image == null){
+		this.image = new ImageView();
+		}
+		String pfad = new String("Karte_");
+		pfad = pfad + (this.type.name() + "_" + this.Augenzahl);
+		this.image.setImage(new Image("images/" + pfad + ".png"));
 		this.image.setFitHeight(this.cardHeight);
 		this.image.setFitWidth(this.cardWidth);
 		return image;
@@ -75,6 +82,12 @@ public class Card implements Serializable{
 	public String toString(){
 		return this.getType() + " Nr: " + this.Augenzahl;
 	}
+	public boolean equals(Card otherCard){
+		if(this.Augenzahl == otherCard.getAugenzahl() && this.getType().equals(otherCard.getType())){
+			return true;
+		}
+		else return false;
+	}
 	
 	public void zoomCard(){
 		this.image.toFront();
@@ -86,7 +99,7 @@ public class Card implements Serializable{
 		this.image.setScaleX(1);
 		this.image.setScaleY(1);
 	}
-	public void click(){
+	public void clickMe(){
 		
 		InnerShadow innerShadow = new InnerShadow(20, Color.web("489dff"));
 		innerShadow.setOffsetX(2);
@@ -96,6 +109,15 @@ public class Card implements Serializable{
 		this.getImage().setId("shadow");
 		logger.info(this.type.name()+ " Card has been clicked on. Number of card is: " + this.Augenzahl);
 		
+	}
+	public void clickOther(){
+		InnerShadow innerShadow = new InnerShadow(20, Color.GREEN);
+		innerShadow.setOffsetX(2);
+		innerShadow.setOffsetY(2);
+		innerShadow.setChoke(0.5);	
+		this.getImage().setEffect(innerShadow);
+		this.getImage().setId("shadow");
+
 	}
 
 

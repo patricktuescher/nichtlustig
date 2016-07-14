@@ -50,6 +50,9 @@ public class ClientView {
 	//Image Array
 	protected final int colIndex = 13;
 	protected final int rowIndex = 6;
+	GridPane innerPaneGame;
+	GridPane leftPaneGame;
+	BorderPane topPaneGame;
 	protected ArrayList <Card> cardAL = new ArrayList<Card>();
 	protected ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino, cardTod;
 
@@ -330,7 +333,7 @@ public class ClientView {
 		///////////////// GAME FENSTER //////////////////////////
 		
 		//TopPane Game
-		BorderPane topPaneGame = new BorderPane();
+		topPaneGame = new BorderPane();
 		topPaneGame.setId("topPaneGame"); //ID for CSS
 		
 
@@ -363,21 +366,8 @@ public class ClientView {
 		
 		
 		
-		//GridPane Game Center
-		GridPane innerPaneGame= new GridPane();
-		innerPaneGame.setHgap(5);
-		innerPaneGame.setVgap(5);
-		innerPaneGame.setPadding(new Insets(0, 0, 15, 120));
-		innerPaneGame.setGridLinesVisible(false);
-		topPaneGame.setCenter(innerPaneGame);	
 		
-		//GridPane Game Left
-		GridPane leftPaneGame = new GridPane();
-		leftPaneGame.setHgap(5);
-		leftPaneGame.setVgap(5);
-		leftPaneGame.setPadding(new Insets(105, 0, 15, 100));
-		leftPaneGame.setGridLinesVisible(false);
-		topPaneGame.setLeft(leftPaneGame);
+		
 		
 
 		//Button Zurück
@@ -427,36 +417,9 @@ public class ClientView {
 			this.cardAL.add(new Card(cardType.Tod, x));
 		}
 		this.cardAL.add(new Card(cardType.Tod, 6));
+		updateCards();
 		
-		//Putting it into the Grid
-		int dino = 1;
-		int lemming = 1;
-		int prof = 1;
-		int rieb = 1;
-		int yeti = 1;
-		int tod = 1;
-		boolean b = true;
-		for(int x = 0;x<31;x++){
-			String s = this.cardAL.get(x).getType();
-			
-			switch(s){
-			case "Dino": innerPaneGame.add(this.cardAL.get(x).getImage(), dino++,10); break;
-			case "Prof": innerPaneGame.add(this.cardAL.get(x).getImage(), prof++, 8); break;
-			case "Lemming":innerPaneGame.add(this.cardAL.get(x).getImage(), lemming++, 6); break;
-			case "Yeti":innerPaneGame.add(this.cardAL.get(x).getImage(), yeti++, 4); break;
-			case "Rieb":innerPaneGame.add(this.cardAL.get(x).getImage(), rieb++, 2); break;
-			default: if(b){
-				leftPaneGame.add(this.cardAL.get(x).getImage(), 0, tod);
-				b = false;
-				break;
-			}
-			else{
-				leftPaneGame.add(this.cardAL.get(x).getImage(), 1, tod++);
-				b = true;
-				break;
-			}
-			}
-		}
+
 
 		
 		////////////////// CUBES PL1//////////////////////////
@@ -574,5 +537,51 @@ public class ClientView {
 	
 	public String getName(){
 		return "ClientView";
-	}	
+	}
+	public void updateCards(){
+		innerPaneGame= new GridPane();
+		innerPaneGame.setHgap(5);
+		innerPaneGame.setVgap(5);
+		innerPaneGame.setPadding(new Insets(0, 0, 15, 120));
+		innerPaneGame.setGridLinesVisible(false);
+		
+		leftPaneGame = new GridPane();
+		leftPaneGame.setHgap(5);
+		leftPaneGame.setVgap(5);
+		leftPaneGame.setPadding(new Insets(105, 0, 15, 100));
+		leftPaneGame.setGridLinesVisible(false);
+		
+		
+		//Putting it into the Grid
+		int dino = 1;
+		int lemming = 1;
+		int prof = 1;
+		int rieb = 1;
+		int yeti = 1;
+		int tod = 1;
+		boolean b = true;
+		for(int x = 0;x<31;x++){
+			String s = this.cardAL.get(x).getType();
+			
+			switch(s){
+			case "Dino": innerPaneGame.add(this.cardAL.get(x).getImage(), dino++,10); break;
+			case "Prof": innerPaneGame.add(this.cardAL.get(x).getImage(), prof++, 8); break;
+			case "Lemming":innerPaneGame.add(this.cardAL.get(x).getImage(), lemming++, 6); break;
+			case "Yeti":innerPaneGame.add(this.cardAL.get(x).getImage(), yeti++, 4); break;
+			case "Rieb":innerPaneGame.add(this.cardAL.get(x).getImage(), rieb++, 2); break;
+			default: if(b){
+				leftPaneGame.add(this.cardAL.get(x).getImage(), 0, tod);
+				b = false;
+				break;
+			}
+			else{
+				leftPaneGame.add(this.cardAL.get(x).getImage(), 1, tod++);
+				b = true;
+				break;
+			}
+			}
+		}
+		topPaneGame.setLeft(leftPaneGame);
+		topPaneGame.setCenter(innerPaneGame);
+	}
 }

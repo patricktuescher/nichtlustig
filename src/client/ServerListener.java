@@ -154,6 +154,16 @@ public class ServerListener extends Thread {
 						
 						
 					}
+					if(obj instanceof CardClick){
+						CardClick click = (CardClick) obj;
+						Platform.runLater(new Runnable() {
+							   @Override
+							   public void run() {
+								   controller.opponentSelectCard(click.getCard());
+							   }
+							});
+						
+					}
 					
 				}
 
