@@ -36,7 +36,8 @@ public class ClientView {
 	ClientModel model;
 	protected TextField tf_username;
 	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame ;
-	protected Label labelPL1, labelPL2,turnPL1, turnPL2; 
+	protected Label labelPL1, labelPL2,turnPL1, turnPL2;
+	protected GameAvailableImage gai;
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
 	protected CheckBox passwordCheck;
@@ -211,11 +212,8 @@ public class ClientView {
 		
 		
 		//Images availabe games
-		//gamesview = new ImageView();
-		//gamesview.setItems(itemsLobby);
-		//gamesview.setFitHeight(200);
-		//gamesview.setFitWidth(200);
-		//innerPaneLobby.add(gamesview, 2, 7);
+		this.gai = new GameAvailableImage(false);
+		innerPaneLobby.add(gai.getImage(), 2, 7);
 				
 				
 		//Scene Lobby
