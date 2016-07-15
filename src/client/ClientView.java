@@ -212,7 +212,7 @@ public class ClientView {
 		
 		
 		//Images availabe games
-		this.gai = new GameAvailableImage(false);
+		this.gai = new GameAvailableImage(true);
 		innerPaneLobby.add(gai.getImage(), 2, 7);
 				
 				
