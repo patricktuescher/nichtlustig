@@ -48,6 +48,8 @@ public class ClientView {
 	final int cardheight = 90;
 	final int cardwidth = 90;
 	
+	GridPane innerPaneLobby;
+	
 	//Image Array
 	protected final int colIndex = 13;
 	protected final int rowIndex = 6;
@@ -161,7 +163,7 @@ public class ClientView {
 		
 		
 		//GridPane Lobby
-		GridPane innerPaneLobby = new GridPane();
+		innerPaneLobby = new GridPane();
 		innerPaneLobby.setHgap(20);
 		innerPaneLobby.setVgap(20);
 		innerPaneLobby.setGridLinesVisible(false);

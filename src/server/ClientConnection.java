@@ -51,8 +51,12 @@ public class ClientConnection extends Thread {
 					this.ClientConnectionName = acc.getAccount().getAccName();
 					this.sendObject(new ClientLoginSuccess(new ClientLoginChecker().check(acc)));
 					if(new ClientLoginChecker().check(acc)){
-						Game game = new Game(acc.getAccount());
-						this.sendObject(new GameAvailableMessage(game.isGameAvailabe()));
+						if(model.setGame(acc.getAccount())){
+							this.sendObject(new GameAvailableMessage(false));
+						}
+						else
+							this.sendObject(new GameAvailableMessage(true));
+							
 					}
 				
 				}

@@ -177,9 +177,7 @@ public class ServerListener extends Thread {
 					}
 					if(obj instanceof GameAvailableMessage){
 						GameAvailableMessage msg = (GameAvailableMessage) obj;
-						if(msg.getAvailibility())
-							System.out.println("Spiel verfügbar");
-						else System.out.println("Spiel nicht verfügbar");
+						controller.setGameAvImageOnOff(msg.getAvailibility());
 					}
 					
 				}

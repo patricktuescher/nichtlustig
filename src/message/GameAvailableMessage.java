@@ -10,7 +10,7 @@ public class GameAvailableMessage implements Serializable {
 	private static final long serialVersionUID = -7179519019155023027L;
 	public boolean available;
 	
-	public GameAvailableMessage(boolean availabe){
+	public GameAvailableMessage(boolean available){
 		this.available = available;
 	}
 	public boolean getAvailibility(){
