@@ -322,5 +322,18 @@ public class ClientController {
 		view.turnPL1.setVisible(true);
 		view.turnPL2.setVisible(false);
 	}
+	public void setGameAvImageOnOff(boolean on){
+		if(on){
+			this.view.gai.setImageOn();
+			this.view.b_spielErstellen.setDisable(false);
+			this.view.b_spielBeitreten.setDisable(true);
+		}
+		else{
+			this.view.b_spielErstellen.setDisable(true);
+			this.view.b_spielBeitreten.setDisable(false);
+			this.view.gai.setImageOff();
+		}
+		view.innerPaneLobby.add(view.gai.getImage(), 2, 7);
+	}
 
 }

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Logger;
 
+import client.Account;
 import javafx.concurrent.Task;
 
 public class ServerModel {
@@ -30,6 +31,7 @@ public class ServerModel {
 	private boolean isServerRunning = false;
 	private String ipAddress;
 	private ArrayList<ClientConnection> clientList = new ArrayList<>();
+	private Game game;
 	
 	
 	
@@ -73,6 +75,19 @@ public class ServerModel {
 					client.sendObject(obj);
 				}
 			}
+		}
+	}
+	/**
+	 * @return returns if the account is the first one to log on to the game
+	 */
+	public boolean setGame(Account acc){
+		if(this.game == null){
+			this.game = new Game(acc);
+			return true;
+		}
+		else{
+			this.game.joinPlayer(acc);
+			return false;
 		}
 	}
 }
