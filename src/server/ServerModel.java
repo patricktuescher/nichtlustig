@@ -1,6 +1,7 @@
 package server;
 
 import javafx.scene.shape.Circle;
+import message.*;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -48,7 +49,12 @@ public class ServerModel {
 	
 	public void addClient(ClientConnection newClient) {
 		synchronized (clientList) {
+			if(clientList.size() < 2){
 			clientList.add(newClient);
+			}
+			else
+				newClient.closeSocket();
+				newClient.sendObject(new ClientLoginSuccess(false));
 		}
 	}
 	
