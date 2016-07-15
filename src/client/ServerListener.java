@@ -177,7 +177,13 @@ public class ServerListener extends Thread {
 					}
 					if(obj instanceof GameAvailableMessage){
 						GameAvailableMessage msg = (GameAvailableMessage) obj;
-						controller.setGameAvImageOnOff(msg.getAvailibility());
+						Platform.runLater(new Runnable() {
+							   @Override
+							   public void run() {
+								   controller.setGameAvImageOnOff(msg.getAvailibility());
+							   }
+							});
+						
 					}
 					
 				}

@@ -45,19 +45,13 @@ public class ClientConnection extends Thread {
 			}
 			while (true) {
 				obj = in.readObject();
+				
 				if(obj instanceof ClientLogin){
 					ClientLogin acc = (ClientLogin) obj;
 					this.Player = acc.getAccount();
 					this.ClientConnectionName = acc.getAccount().getAccName();
 					this.sendObject(new ClientLoginSuccess(new ClientLoginChecker().check(acc)));
-					if(new ClientLoginChecker().check(acc)){
-						if(model.setGame(acc.getAccount())){
-							this.sendObject(new GameAvailableMessage(false));
-						}
-						else
-							this.sendObject(new GameAvailableMessage(true));
-							
-					}
+					
 				
 				}
 				if(obj instanceof ClientLogout){
@@ -82,6 +76,11 @@ public class ClientConnection extends Thread {
 				if(obj instanceof CardClick){
 					CardClick click = (CardClick) obj;
 					model.sendToOtherClients(click, this);
+				}
+				if(obj instanceof startNewGame){
+					model.setGame(Player);
+					model.sendToOtherClients(new GameAvailableMessage(true), this);
+					
 				}
 
 				

@@ -113,6 +113,7 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 			view.primaryStage.setScene(view.sceneGame);
 			sl.getLogger().info("Change to Game Scene");
+			server.sendObject(new startNewGame());
 			}	
 		});
 				
@@ -325,12 +326,12 @@ public class ClientController {
 	public void setGameAvImageOnOff(boolean on){
 		if(on){
 			this.view.gai.setImageOn();
-			this.view.b_spielErstellen.setDisable(false);
-			this.view.b_spielBeitreten.setDisable(true);
-		}
-		else{
 			this.view.b_spielErstellen.setDisable(true);
 			this.view.b_spielBeitreten.setDisable(false);
+		}
+		else{
+			this.view.b_spielErstellen.setDisable(false);
+			this.view.b_spielBeitreten.setDisable(true);
 			this.view.gai.setImageOff();
 		}
 		view.innerPaneLobby.add(view.gai.getImage(), 2, 7);

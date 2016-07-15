@@ -90,5 +90,8 @@ public class ServerModel {
 			return false;
 		}
 	}
+	public ArrayList getListeners(){
+		return this.clientList;
+	}
 }
 
