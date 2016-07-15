@@ -278,8 +278,8 @@ public class ClientController {
 					//@Override
 					public void handle(ActionEvent arg0) {
 						server.sendObject(new ClientTurn(false));
-						view.turnPL1.setVisible(true);
 						view.turnPL1.setVisible(false);
+						view.turnPL2.setVisible(true);
 					}
 				});
 			
@@ -317,5 +317,10 @@ public class ClientController {
 		}
 	}
 	
+	public void setOpClientTurn(){
+		System.out.println("Hier");
+		view.turnPL1.setVisible(true);
+		view.turnPL2.setVisible(false);
+	}
 
 }
