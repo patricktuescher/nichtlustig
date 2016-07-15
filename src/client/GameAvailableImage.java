@@ -11,10 +11,12 @@ public class GameAvailableImage {
 	
 	public GameAvailableImage(boolean on){
 		this.on = on;
-		if (on)
-			this.iv= new ImageView(new Image("images/Clown_on.png"));
-		else
-			this.iv= new ImageView(new Image("images/Clown_off.png"));
+		if (on){
+			setImageOn();
+		}
+		else{
+			setImageOff();
+		}
 	}
 	public void setImageOn(){
 		this.iv = new ImageView(new Image("images/Clown_on.png"));

@@ -10,6 +10,7 @@ import client.ClientView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -44,6 +45,7 @@ public class ClientController {
 				server = ServerListener.getServerListener();
 				server.connect(new Account(view.tf_username.getText()));
 				sl.getLogger().info("Change to Lobby Scene");
+				
 
 			}
 		});
@@ -335,6 +337,11 @@ public class ClientController {
 			this.view.gai.setImageOff();
 		}
 		view.innerPaneLobby.add(view.gai.getImage(), 2, 7);
+	}
+	public void setAvailableLabel(String connectionName){
+		view.select_label.setText(connectionName + " ist online");
+		view.innerPaneLobby.getChildren().remove(view.select_label);
+		view.innerPaneLobby.add(view.select_label, 2, 8);
 	}
 
 }

@@ -79,7 +79,7 @@ public class ClientConnection extends Thread {
 				}
 				if(obj instanceof startNewGame){
 					model.setGame(Player);
-					model.sendToOtherClients(new GameAvailableMessage(true), this);
+					model.sendToOtherClients(new GameAvailableMessage(true, model.getOtherClient(this).getClientName()), this);
 					
 				}
 

@@ -49,6 +49,7 @@ public class ClientView {
 	final int cardwidth = 90;
 	
 	GridPane innerPaneLobby;
+	Label select_label;
 	
 	//Image Array
 	protected final int colIndex = 13;
@@ -206,7 +207,7 @@ public class ClientView {
 		b_backLobby.setId("b-login");
 		
 		//Label Spielerhost game
-		Label select_label = new Label();
+		select_label = new Label();
 		select_label.setId("label");
 		select_label.setPrefSize(200, 20);
 		select_label.setAlignment(Pos.CENTER);
@@ -215,6 +216,7 @@ public class ClientView {
 		
 		//Images availabe games
 		this.gai = new GameAvailableImage(false);
+		
 		innerPaneLobby.add(gai.getImage(), 2, 7);
 				
 				

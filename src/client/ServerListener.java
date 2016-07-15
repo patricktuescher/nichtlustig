@@ -181,6 +181,8 @@ public class ServerListener extends Thread {
 							   @Override
 							   public void run() {
 								   controller.setGameAvImageOnOff(msg.getAvailibility());
+								   if(msg.getAvailibility())
+									   controller.setAvailableLabel(msg.getOtherConnectionName());
 							   }
 							});
 						

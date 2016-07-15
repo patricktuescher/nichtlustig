@@ -77,6 +77,18 @@ public class ServerModel {
 			}
 		}
 	}
+	public ClientConnection getOtherClient(ClientConnection current){
+		synchronized (clientList) {
+			for (ClientConnection client : clientList) {
+				if(client == current){
+					System.out.println(client.getClientName());
+					return client;
+				}
+			}
+		}
+		//shouldn't return this
+		return current;
+	}
 	/**
 	 * @return returns if the account is the first one to log on to the game
 	 */
