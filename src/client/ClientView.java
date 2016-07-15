@@ -297,8 +297,8 @@ public class ClientView {
 		regelnView = new ImageView();
 		regelnView.setImage(regeln[currentRuleImage]);
 		innerPaneRegeln.setAlignment(Pos.CENTER);
-		regelnView.setFitHeight(500);
-		regelnView.setFitWidth(400);
+		regelnView.setFitHeight(600);
+		regelnView.setFitWidth(600);
 
 					
 		// Button next
