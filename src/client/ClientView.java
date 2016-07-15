@@ -54,7 +54,7 @@ public class ClientView {
 	GridPane leftPaneGame;
 	BorderPane topPaneGame;
 	protected ArrayList <Card> cardAL = new ArrayList<Card>();
-	protected ImageView[] cardRieb, cardYeti, cardLemming, cardProf, cardDino, cardTod;
+	
 
 	//Cubes PL1
 	ArrayList <Würfel> WürfelPL1;
@@ -202,29 +202,20 @@ public class ClientView {
 		innerPaneLobby.add(b_backLobby, 6, 9);
 		b_backLobby.setId("b-login");
 		
-		//Label select game
-		Label select_label = new Label(t.getString("Label.selectGame")+": ");
+		//Label Spielerhost game
+		Label select_label = new Label();
 		select_label.setId("label");
 		select_label.setPrefSize(200, 20);
 		select_label.setAlignment(Pos.CENTER);
-		innerPaneLobby.add(select_label, 2, 7);
+		innerPaneLobby.add(select_label, 2, 8);
 		
 		
-		
-	
-		
-		//ListView availabe games
-		ListView<String> listLobby = new ListView<String>();
-		ObservableList<String> itemsLobby =FXCollections.observableArrayList (
-		 "bisch", "druffe", "?", "?");
-		listLobby.setItems(itemsLobby);
-		listLobby.setMinSize(100, 200);
-		listLobby.setMaxSize(200, 200);
-		listLobby.setId("gamelist");
-		innerPaneLobby.add(listLobby, 2, 8);
-		
-		
-		
+		//Images availabe games
+		//gamesview = new ImageView();
+		//gamesview.setItems(itemsLobby);
+		//gamesview.setFitHeight(200);
+		//gamesview.setFitWidth(200);
+		//innerPaneLobby.add(gamesview, 2, 7);
 				
 				
 		//Scene Lobby
