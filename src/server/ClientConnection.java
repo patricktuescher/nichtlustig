@@ -48,6 +48,7 @@ public class ClientConnection extends Thread {
 					ClientLogin acc = (ClientLogin) obj;
 					this.ClientConnectionName = acc.getAccount().getAccName();
 					this.sendObject(new ClientLoginSuccess(new ClientLoginChecker().check(acc)));
+				
 				}
 				if(obj instanceof ClientLogout){
 					ClientLogout logout = (ClientLogout) obj;

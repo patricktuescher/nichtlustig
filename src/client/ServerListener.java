@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import message.*;
 
 
@@ -113,8 +115,18 @@ public class ServerListener extends Thread {
 								});
 							logger.info("Login successful");
 						}
-						else
+						else{
 							logger.info("Login unsuccessful");
+							Platform.runLater(new Runnable() {
+								   @Override
+								   public void run() {
+									   System.out.println("Hier");
+									   	Alert alert = new Alert(AlertType.INFORMATION);
+										alert.setTitle("Login failure");
+										alert.setHeaderText("Login not sucessfull");
+								   }
+								});
+						}
 					}
 					if(obj instanceof ClientLogoutSuccess){
 						ClientLogoutSuccess cls = (ClientLogoutSuccess) obj;
