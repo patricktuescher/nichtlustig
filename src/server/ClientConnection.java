@@ -21,6 +21,7 @@ public class ClientConnection extends Thread {
 	private Object obj;
 	private String msg;
 	private String ClientConnectionName;
+	private Account Player;
 
 
 	public ClientConnection(ServerModel model, Socket socket) {
@@ -46,8 +47,13 @@ public class ClientConnection extends Thread {
 				obj = in.readObject();
 				if(obj instanceof ClientLogin){
 					ClientLogin acc = (ClientLogin) obj;
+					this.Player = acc.getAccount();
 					this.ClientConnectionName = acc.getAccount().getAccName();
 					this.sendObject(new ClientLoginSuccess(new ClientLoginChecker().check(acc)));
+					if(new ClientLoginChecker().check(acc)){
+						Game game = new Game(acc.getAccount());
+						this.sendObject(new GameAvailableMessage(game.isGameAvailabe()));
+					}
 				
 				}
 				if(obj instanceof ClientLogout){
