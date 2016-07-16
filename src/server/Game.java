@@ -16,10 +16,10 @@ public class Game {
 	}
 	
 	public boolean isGameAvailabe(){
-		if(this.PL2 != null){
-			return false;
+		if(this.PL1 != null && this.PL2 == null){
+			return true;
 		}
-		else return true;
+		else return false;
 	}
 
 }

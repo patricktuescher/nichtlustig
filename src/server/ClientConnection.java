@@ -20,7 +20,6 @@ public class ClientConnection extends Thread {
 	private ObjectOutputStream out;
 	private Object obj;
 	private String msg;
-	private String ClientConnectionName;
 	private Account Player;
 
 
@@ -49,14 +48,14 @@ public class ClientConnection extends Thread {
 				if(obj instanceof ClientLogin){
 					ClientLogin acc = (ClientLogin) obj;
 					this.Player = acc.getAccount();
-					this.ClientConnectionName = acc.getAccount().getAccName();
 					this.sendObject(new ClientLoginSuccess(new ClientLoginChecker().check(acc)));
+					
 					
 				
 				}
 				if(obj instanceof ClientLogout){
 					ClientLogout logout = (ClientLogout) obj;
-					this.ClientConnectionName = null;
+					this.Player = null;
 					this.sendObject(new ClientLogoutSuccess(true));
 				}
 				if(obj instanceof ChatMessage){
@@ -77,9 +76,9 @@ public class ClientConnection extends Thread {
 					CardClick click = (CardClick) obj;
 					model.sendToOtherClients(click, this);
 				}
-				if(obj instanceof startNewGame){
+				if(obj instanceof initiateNewGame){
 					model.setGame(Player);
-					model.sendToOtherClients(new GameAvailableMessage(true, model.getOtherClient(this).getClientName()), this);
+					model.sendToOtherClients(new GameAvailableMessage(true, this.getClientName()), this);
 					
 				}
 
@@ -134,7 +133,7 @@ public class ClientConnection extends Thread {
 	}
 	
 	public String getClientName(){
-		return this.ClientConnectionName;
+		return this.Player.getAccName();
 	}
 
 

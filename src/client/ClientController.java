@@ -115,7 +115,7 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 			view.primaryStage.setScene(view.sceneGame);
 			sl.getLogger().info("Change to Game Scene");
-			server.sendObject(new startNewGame());
+			server.sendObject(new initiateNewGame());
 			}	
 		});
 				

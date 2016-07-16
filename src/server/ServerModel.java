@@ -80,8 +80,7 @@ public class ServerModel {
 	public ClientConnection getOtherClient(ClientConnection current){
 		synchronized (clientList) {
 			for (ClientConnection client : clientList) {
-				if(client == current){
-					System.out.println(client.getClientName());
+				if(client != current){
 					return client;
 				}
 			}
@@ -104,6 +103,9 @@ public class ServerModel {
 	}
 	public ArrayList getListeners(){
 		return this.clientList;
+	}
+	public Game getGame(){
+		return this.game;
 	}
 }
 
