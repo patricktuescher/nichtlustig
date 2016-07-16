@@ -119,7 +119,6 @@ public class ServerListener extends Thread {
 							Platform.runLater(new Runnable() {
 								   @Override
 								   public void run() {
-									   System.out.println("Hier");
 									   	Alert alert = new Alert(AlertType.INFORMATION);
 										alert.setTitle("Login failure");
 										alert.setHeaderText("Login not sucessfull");
@@ -181,7 +180,6 @@ public class ServerListener extends Thread {
 						Platform.runLater(new Runnable() {
 							   @Override
 							   public void run() {
-								   System.out.println("hallo" + msg.getAvailibility());
 								   controller.setGameAvImageOnOff(msg.getAvailibility());
 								   if(msg.getAvailibility())
 									   controller.setAvailableLabel(msg.getOtherConnectionName());
