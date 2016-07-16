@@ -48,7 +48,11 @@ public class ClientConnection extends Thread {
 				if(obj instanceof ClientLogin){
 					ClientLogin acc = (ClientLogin) obj;
 					this.Player = acc.getAccount();
-					this.sendObject(new ClientLoginSuccess(new ClientLoginChecker().check(acc)));
+					boolean b = new ClientLoginChecker().check(acc);
+					this.sendObject(new ClientLoginSuccess(b));
+					if(b){
+						this.sendObject(new GameAvailableMessage(model.getGame().isGameAvailabe()));
+					}
 					
 					
 				
@@ -77,7 +81,7 @@ public class ClientConnection extends Thread {
 					model.sendToOtherClients(click, this);
 				}
 				if(obj instanceof initiateNewGame){
-					model.setGame(Player);
+					model.getGame().joinPlayer(Player);
 					model.sendToOtherClients(new GameAvailableMessage(true, this.getClientName()), this);
 					
 				}
