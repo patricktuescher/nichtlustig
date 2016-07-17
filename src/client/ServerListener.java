@@ -117,10 +117,12 @@ public class ServerListener extends Thread {
 						}
 						else{
 							logger.info("Login unsuccessful");
+
+
 							Platform.runLater(new Runnable() {
 								   @Override
 								   public void run() {
-//									   view.primaryStage.setScene(view.sceneLoginFailed);
+										controller.setLoginFailedScene();
 									   	Alert alert = new Alert(AlertType.INFORMATION);
 										alert.setTitle("Login failure");
 										alert.setHeaderText("Login not sucessfull");
