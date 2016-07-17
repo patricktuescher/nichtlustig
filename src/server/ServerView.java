@@ -87,7 +87,6 @@ public class ServerView {
 		
 		//ConOnline
 		Image conOnline;
-		ImageView conOnlineIMV;
 		conOnline = new  Image("images/ConOnline.png");
 		conOnlineIMV = new ImageView();
 		conOnlineIMV.setImage(conOnline);
@@ -96,7 +95,6 @@ public class ServerView {
 		
 		//ConOffline
 		Image conOffline;
-		ImageView conOfflineIMV;
 		conOffline = new  Image("images/ConOffline.png");
 		conOfflineIMV = new ImageView();
 		conOfflineIMV.setImage(conOffline);
