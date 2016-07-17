@@ -86,7 +86,9 @@ public class ClientConnection extends Thread {
 				if(obj instanceof initiateNewGame){
 					model.getGame().joinPlayer(Player);
 					model.sendToOtherClients(new GameAvailableMessage(true, this.getClientName()), this);
-					
+				}
+				if(obj instanceof GameComplete){
+					model.broadcast((GameComplete) obj);
 				}
 
 				

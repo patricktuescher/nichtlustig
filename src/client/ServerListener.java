@@ -187,6 +187,9 @@ public class ServerListener extends Thread {
 							});
 						
 					}
+					if(obj instanceof GameComplete){
+						controller.setUpGame();
+					}
 					
 				}
 

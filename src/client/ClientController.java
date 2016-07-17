@@ -125,6 +125,7 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
+			server.sendObject(new GameComplete());
 			view.primaryStage.setScene(view.sceneGame);
 			sl.getLogger().info("Change to Game Scene");
 			}		
@@ -342,6 +343,12 @@ public class ClientController {
 		view.select_label.setText(connectionName + " ist online");
 		view.innerPaneLobby.getChildren().remove(view.select_label);
 		view.innerPaneLobby.add(view.select_label, 2, 8);
+	}
+	public void setUpGame(){
+		for(int x = 0; x < view.WürfelPL1.size(); x++){
+			view.WürfelPL1.get(x).roll();
+			server.sendObject(new WürfelRoll(view.WürfelPL1));
+			}
 	}
 
 }
