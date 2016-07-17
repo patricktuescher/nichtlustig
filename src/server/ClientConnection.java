@@ -88,24 +88,30 @@ public class ClientConnection extends Thread {
 					model.sendToOtherClients(new GameAvailableMessage(true, this.getClientName()), this);
 				}
 				if(obj instanceof GameComplete){
-					model.broadcast((GameComplete) obj);
 					model.getGame().joinPlayer(Player);
+					model.broadcast((GameComplete) obj);
 				}
 				if(obj instanceof EvaluateFirstPlayer){
 					EvaluateFirstPlayer efp = (EvaluateFirstPlayer) obj;
-					model.getGame().setWürfel(efp.getWürfel());
+					model.getGame().setWürfel(efp.getWürfel(), this.Player);
 					if(model.getGame().würfelComplete()){
-						Account firstPlayer = model.getGame().firstPlayer();
+						Account firstPlayer;
+						try {
+							firstPlayer = model.getGame().firstPlayer();
+							System.out.println(firstPlayer+ " " + model.getGame().AugenzahlPunktePL1 + " " + model.getGame().AugenzahlPunktePL2);
 							if(this.Player.getAccName().equals(firstPlayer.getAccName())){
-								System.out.println("Erster Spieler ist: " + this.Player.getAccName());
 								this.sendObject(new ClientTurn(true));
 								model.sendToOtherClients(new ClientTurn(false), this);
 							}
 							else{
-								System.out.println("Erster Spieler ist nicht: " + this.Player.getAccName());
 								this.sendObject(new ClientTurn(false));
 								model.sendToOtherClients(new ClientTurn(true), this);
 							}
+						} catch (Exception e) {
+							// Vorgang neu starten, falls die Augenzahl gleich gross sind
+							model.broadcast((GameComplete) obj);
+						}
+						
 							
 						
 				}

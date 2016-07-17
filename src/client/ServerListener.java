@@ -193,6 +193,7 @@ public class ServerListener extends Thread {
 					}
 					if(obj instanceof GameComplete){
 						controller.setUpGame();
+						this.sendObject(new EvaluateFirstPlayer(controller.getWürfel()));
 					}
 					
 				}

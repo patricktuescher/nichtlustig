@@ -322,6 +322,7 @@ public class ClientController {
 		System.out.println("Hier");
 		view.turnPL1.setVisible(true);
 		view.turnPL2.setVisible(false);
+		view.b_würfeln.setDisable(true);
 	}
 	public void setGameAvImageOnOff(boolean on){
 		if(on){
@@ -349,8 +350,11 @@ public class ClientController {
 			view.WürfelPL1.get(x).roll();
 			server.sendObject(new WürfelRoll(view.WürfelPL1));
 			}
-		server.sendObject(new EvaluateFirstPlayer(view.WürfelPL1));
+		
 
+	}
+	public ArrayList<Würfel> getWürfel(){
+		return view.WürfelPL1;
 	}
 
 }

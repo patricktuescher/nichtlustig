@@ -22,5 +22,8 @@ public class Account implements Serializable {
 			return true;
 		else return false;
 	}
+	public String toString(){
+		return "Account: " + this.accName;
+	}
 
 }
