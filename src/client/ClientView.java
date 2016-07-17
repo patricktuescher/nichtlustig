@@ -36,8 +36,8 @@ public class ClientView {
 	Stage primaryStage;
 	ClientModel model;
 	protected TextField tf_username;
-	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame ;
-	protected Label labelPL1, labelPL2,turnPL1, turnPL2;
+	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame, b_backLoginFailed;
+	protected Label labelPL1, labelPL2,turnPL1, turnPL2, loginFailed;
 	protected GameAvailableImage gai;
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln, sceneLoginFailed;
@@ -157,16 +157,40 @@ public class ClientView {
 		sceneLogin = new Scene(innerPaneLogin, 1200, 800);
 		sceneLogin.getStylesheets().add("ClientStylesheet");
 		
+		
+		///////////////// LOGIN FAILED POPUP //////////////////////////
+		
+		
 		//Stage LoginFailed
 		
 		BorderPane topPaneLoginFailed = new BorderPane();
 		topPaneLoginFailed.setId("topPaneLoginFailed");
 		
+
 		
 		//LoginFailed Scene
-		sceneLoginFailed = new Scene(topPaneLoginFailed, 400, 400);
+		sceneLoginFailed = new Scene(topPaneLoginFailed, 600, 400);
 		sceneLoginFailed.getStylesheets().add("ClientStylesheet");
+				
+		//Label Login Failed
 		
+		loginFailed = new Label("Login fehlgeschlagen");
+		loginFailed.setPrefSize(300, 70);
+//		topPaneLoginFailed.setCenter(loginFailed);
+		loginFailed.setId("lb-password");
+		
+		
+		//Button Back
+		
+		b_backLoginFailed = new Button("Erneut versuchen");
+		b_backLoginFailed.setPrefSize(300, 70);
+//		topPaneLoginFailed.setCenter(b_backLoginFailed);
+		b_backLoginFailed.setId("b-login");
+		
+		VBox loginFailedVBox = new VBox();
+		topPaneLoginFailed.setCenter(loginFailedVBox);
+		loginFailedVBox.getChildren().add(loginFailed);
+		loginFailedVBox.getChildren().add(b_backLoginFailed);
 		
 		
 		///////////////// LOBBY FENSTER //////////////////////////

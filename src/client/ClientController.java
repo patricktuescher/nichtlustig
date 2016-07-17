@@ -72,6 +72,9 @@ public class ClientController {
 		});
 		
 		
+		
+		
+		
 		///////////////// LOBBY FENSTER //////////////////////////
 				
 		
@@ -284,11 +287,30 @@ public class ClientController {
 					}
 				});
 			
-	}
+	
+	
+	
+			///////////////// EventHandler FertigButton - LoginScene //////////////////////////
+			view.b_backLoginFailed.setOnAction(new EventHandler<ActionEvent>(){
+				
+				//@Override
+				public void handle(ActionEvent arg0) {
+					view.primaryStage.setScene(view.sceneLogin);
+				}
+			});
+		
+		}
+	
 	
 	public void setLobbyScene(){
 		this.view.primaryStage.setScene(this.view.sceneLobby);
 	}
+	
+	public void setLoginFailedScene(){
+		this.view.primaryStage.setScene(this.view.sceneLoginFailed);
+		this.view.primaryStage.centerOnScreen();
+	}
+	
 	public void setLoginScene(){
 		this.view.primaryStage.setScene(this.view.sceneLogin);
 		this.view.tf_username.clear();
