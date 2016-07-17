@@ -406,6 +406,7 @@ public class ClientController {
 		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(view.WürfelPL1)){
 		view.b_fertigGame.setDisable(false);
 		}
+		selectAllWürfel();
 		view.b_würfeln.setDisable(true);
 		model.resetPlayerRoll();
 		
@@ -414,6 +415,12 @@ public class ClientController {
 		for(int x = 0; x < view.WürfelPL1.size(); x++){
 			view.WürfelPL1.get(x).getImageView().setDisable(disabled);
 		}
+	}
+	public void selectAllWürfel(){
+		for(int x = 0; x < view.WürfelPL1.size(); x++){
+			view.WürfelPL1.get(x).click();
+		}
+		server.sendObject(new WürfelRoll(view.WürfelPL1));
 	}
 	
 
