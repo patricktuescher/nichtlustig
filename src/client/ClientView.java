@@ -39,7 +39,7 @@ public class ClientView {
 	protected Label labelPL1, labelPL2,turnPL1, turnPL2;
 	protected GameAvailableImage gai;
 	protected PasswordField pf_password;
-	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
+	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln, sceneLoginFailed;
 	protected CheckBox passwordCheck;
 	protected ServiceLocator sl;
 	protected Translator t;
@@ -154,6 +154,17 @@ public class ClientView {
 		//Scene Login
 		sceneLogin = new Scene(innerPaneLogin, 1200, 800);
 		sceneLogin.getStylesheets().add("ClientStylesheet");
+		
+		//Stage LoginFailed
+		
+		BorderPane topPaneLoginFailed = new BorderPane();
+		topPaneLoginFailed.setId("topPaneLoginFailed");
+		
+		
+		//LoginFailed Scene
+		sceneLoginFailed = new Scene(topPaneLoginFailed, 400, 400);
+		sceneLoginFailed.getStylesheets().add("ClientStylesheet");
+		
 		
 		
 		///////////////// LOBBY FENSTER //////////////////////////

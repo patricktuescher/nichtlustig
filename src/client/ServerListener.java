@@ -120,9 +120,11 @@ public class ServerListener extends Thread {
 							Platform.runLater(new Runnable() {
 								   @Override
 								   public void run() {
+//									   view.primaryStage.setScene(view.sceneLoginFailed);
 									   	Alert alert = new Alert(AlertType.INFORMATION);
 										alert.setTitle("Login failure");
 										alert.setHeaderText("Login not sucessfull");
+										
 								   }
 								});
 						}
