@@ -108,7 +108,8 @@ public class ServerListener extends Thread {
 							
 							//Without this, there will be a thread conflict
 							Platform.runLater(new Runnable() {
-								   @Override
+				
+								@Override
 								   public void run() {
 									  controller.setLobbyScene();
 								   }
