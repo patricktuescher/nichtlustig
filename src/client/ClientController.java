@@ -208,7 +208,7 @@ public class ClientController {
 		
 			@Override
 			public void handle(ActionEvent arg0) {
-				setUpDi();
+				setUpDie();
 				}
 		});
 	
@@ -342,13 +342,15 @@ public class ClientController {
 		view.innerPaneLobby.add(view.select_label, 2, 8);
 	}
 	public void setUpGame(){
-		setUpDi();
+		setUpDie();
 	}
-	public void setUpDi(){
+	public void setUpDie(){
 		for(int x = 0; x < view.WürfelPL1.size(); x++){
 			view.WürfelPL1.get(x).roll();
 			server.sendObject(new WürfelRoll(view.WürfelPL1));
 			}
+		server.sendObject(new EvaluateFirstPlayer(view.WürfelPL1));
+
 	}
 
 }

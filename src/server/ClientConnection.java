@@ -89,10 +89,29 @@ public class ClientConnection extends Thread {
 				}
 				if(obj instanceof GameComplete){
 					model.broadcast((GameComplete) obj);
+					model.getGame().joinPlayer(Player);
+				}
+				if(obj instanceof EvaluateFirstPlayer){
+					EvaluateFirstPlayer efp = (EvaluateFirstPlayer) obj;
+					model.getGame().setWürfel(efp.getWürfel());
+					if(model.getGame().würfelComplete()){
+						Account firstPlayer = model.getGame().firstPlayer();
+							if(this.Player.getAccName().equals(firstPlayer.getAccName())){
+								System.out.println("Erster Spieler ist: " + this.Player.getAccName());
+								this.sendObject(new ClientTurn(true));
+								model.sendToOtherClients(new ClientTurn(false), this);
+							}
+							else{
+								System.out.println("Erster Spieler ist nicht: " + this.Player.getAccName());
+								this.sendObject(new ClientTurn(false));
+								model.sendToOtherClients(new ClientTurn(true), this);
+							}
+							
+						
 				}
 
-				
-		}
+				}
+				}
 		}catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}

@@ -17,5 +17,10 @@ public class Account implements Serializable {
 	public String getAccName(){
 		return this.accName;
 	}
+	public boolean equals(Account otherAccount){
+		if(accName.equals(otherAccount.getAccName()))
+			return true;
+		else return false;
+	}
 
 }

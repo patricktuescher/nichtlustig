@@ -160,6 +160,7 @@ public class ServerListener extends Thread {
 					if(obj instanceof ClientTurn){
 						ClientTurn yturn = (ClientTurn) obj;
 						if (!yturn.getTurn()){
+							System.out.println("not my turn");
 							controller.setOpClientTurn();
 						}
 						
