@@ -400,14 +400,20 @@ public class ClientController {
 	public void initiateTurn() {
 		view.b_fertigGame.setDisable(true);
 		while(model.getPlayerRollCounter() == 0){
-			
+			setWürfelDisabled(true);
 		}
+		setWürfelDisabled(false);
 		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(view.WürfelPL1)){
 		view.b_fertigGame.setDisable(false);
 		}
 		view.b_würfeln.setDisable(true);
 		model.resetPlayerRoll();
 		
+	}
+	public void setWürfelDisabled(boolean disabled){
+		for(int x = 0; x < view.WürfelPL1.size(); x++){
+			view.WürfelPL1.get(x).getImageView().setDisable(disabled);
+		}
 	}
 	
 
