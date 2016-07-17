@@ -10,18 +10,14 @@ public class ClientLoginChecker {
 	
 	public static boolean check(ClientLogin clientLogin){
 		
-		boolean sucess = true;
-		
-		
+				
 		for(String s: logins){
 			if(clientLogin.getAccount().getAccName().equals(s)){
-				sucess = true;
-			}else{
-				sucess = false;
+				return true;
 			}
 		}
 		
-		return sucess;
+		return false;
 	
 		
 		
