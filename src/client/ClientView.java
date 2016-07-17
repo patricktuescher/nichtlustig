@@ -27,6 +27,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
@@ -39,10 +40,11 @@ public class ClientView {
 	protected Label labelPL1, labelPL2,turnPL1, turnPL2;
 	protected GameAvailableImage gai;
 	protected PasswordField pf_password;
-	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln;
+	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln, sceneLoginFailed;
 	protected CheckBox passwordCheck;
 	protected ServiceLocator sl;
 	protected Translator t;
+	protected Integer scorePL1, scorePL2;
 	
 	//Height and Width of the cards
 	final int cardheight = 90;
@@ -154,6 +156,17 @@ public class ClientView {
 		//Scene Login
 		sceneLogin = new Scene(innerPaneLogin, 1200, 800);
 		sceneLogin.getStylesheets().add("ClientStylesheet");
+		
+		//Stage LoginFailed
+		
+		BorderPane topPaneLoginFailed = new BorderPane();
+		topPaneLoginFailed.setId("topPaneLoginFailed");
+		
+		
+		//LoginFailed Scene
+		sceneLoginFailed = new Scene(topPaneLoginFailed, 400, 400);
+		sceneLoginFailed.getStylesheets().add("ClientStylesheet");
+		
 		
 		
 		///////////////// LOBBY FENSTER //////////////////////////
@@ -375,11 +388,15 @@ public class ClientView {
 		
 		
 		
-		// Label Score PL1 - to be difined
-		labelPL1 = new Label("PunktezahlSpieler1");
+		// Label Score PL1 
+		int scorePL1= 15; // needs to be adjusted
+		labelPL1 = new Label("Your score:\n"+scorePL1);
+		
 				
-		// Label Score PL2 - to be difined
-		labelPL2 = new Label("PunktezahlSpieler2");
+		// Label Score PL2 
+		int scorePL2 = 33; // needs to be adjusted
+		labelPL2 = new Label("Opponent's score:\n"+scorePL2);
+		
 		
 		// Label Turn PL1
 		turnPL1 = new Label("Your turn");

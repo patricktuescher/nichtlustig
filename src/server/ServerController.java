@@ -22,9 +22,8 @@ public class ServerController {
             public void handle(ActionEvent event) {
                 try {
                 	model.startServer();
-					view.onlineOffline.setText("Online");
-					view.status.setId("greenCircle");
-					view.onlineOffline.setId("online");
+                	view.conOfflineIMV.setVisible(false);
+					view.conOnlineIMV.setVisible(true);
 					sl.getLogger().info("Start Server Connection");
                 	
 				} catch (Exception e) {
@@ -39,9 +38,8 @@ public class ServerController {
             public void handle(ActionEvent event) {
                 try {
 //					model.stopServer();
-					view.onlineOffline.setText("Offline");
-					view.status.setId("redCircle");
-					view.onlineOffline.setId("offline");
+                	view.conOfflineIMV.setVisible(true);
+					view.conOnlineIMV.setVisible(false);
 					sl.getLogger().info("Stop Server Connection");
                 	
 				} catch (Exception e) {
@@ -51,6 +49,20 @@ public class ServerController {
             }
         });
 
+        
+     // EventHandler QuitGameButton - LoginScene
+     		view.exit.setOnAction(new EventHandler<ActionEvent>(){
+
+     			@Override
+     			public void handle(ActionEvent arg0) {
+     			view.stop();     // closes the GUI
+                Platform.exit(); // ends any JavaFX activities
+                System.exit(0);  // end all activities (our server task) - not good code
+     			}		
+     		});
+        
+        
+        
         // register ourselves to handle window-closing event
         view.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

@@ -107,7 +107,8 @@ public class ServerListener extends Thread {
 						if(cls.getSuccess()){
 							//Without this, there will be a thread conflict
 							Platform.runLater(new Runnable() {
-								   @Override
+				
+								@Override
 								   public void run() {
 									  controller.setLobbyScene();
 								   }
@@ -119,9 +120,11 @@ public class ServerListener extends Thread {
 							Platform.runLater(new Runnable() {
 								   @Override
 								   public void run() {
+//									   view.primaryStage.setScene(view.sceneLoginFailed);
 									   	Alert alert = new Alert(AlertType.INFORMATION);
 										alert.setTitle("Login failure");
 										alert.setHeaderText("Login not sucessfull");
+										
 								   }
 								});
 						}
