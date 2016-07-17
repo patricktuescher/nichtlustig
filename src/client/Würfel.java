@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
  * All rights reserved.
  * 
  * This class represents a die which can be implemented into the nichtLustig application.
- * @author Manipake Kontroburtüs
+ * @author Nicola Burri
  */
 public class Würfel implements Serializable {
 	/**

@@ -167,6 +167,8 @@ public class ServerListener extends Thread {
 						if (!yturn.getTurn()){
 							controller.setOpClientTurn();
 						}
+						else
+							controller.initiateTurn();
 						
 						
 					}
