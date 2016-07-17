@@ -387,19 +387,13 @@ public class ClientController {
 		while(model.getPlayerRollCounter() == 0){
 			
 		}
-		while(model.getPlayerRollCounter() < 4 && !allWürfelSelected(view.WürfelPL1)){
+		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(view.WürfelPL1)){
 		view.b_fertigGame.setDisable(false);
 		}
 		view.b_würfeln.setDisable(true);
+		model.resetPlayerRoll();
 		
 	}
-	public boolean allWürfelSelected(ArrayList<Würfel> würfel){
-		boolean b = true;
-		for(int x = 0; x < würfel.size(); x++){
-			if(!würfel.get(x).isSelected())
-				return false;
-		}
-		return b;
-	}
+	
 
 }

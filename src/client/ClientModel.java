@@ -1,5 +1,7 @@
 package client;
 
+import java.util.ArrayList;
+
 import javafx.stage.Stage;
 
 public class ClientModel {
@@ -14,6 +16,14 @@ public class ClientModel {
 	}
 	public void resetPlayerRoll(){
 		playerRollCounter = 0;
+	}
+	public boolean allWürfelSelected(ArrayList<Würfel> würfel){
+		boolean b = true;
+		for(int x = 0; x < würfel.size(); x++){
+			if(!würfel.get(x).isSelected())
+				return false;
+		}
+		return b;
 	}
 	
 
