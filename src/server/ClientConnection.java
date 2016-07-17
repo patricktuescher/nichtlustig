@@ -20,7 +20,6 @@ public class ClientConnection extends Thread {
 	private ObjectOutputStream out;
 	private Object obj;
 	private String msg;
-	private String ClientConnectionName;
 	private Account Player;
 
 
@@ -49,14 +48,21 @@ public class ClientConnection extends Thread {
 				if(obj instanceof ClientLogin){
 					ClientLogin acc = (ClientLogin) obj;
 					this.Player = acc.getAccount();
-					this.ClientConnectionName = acc.getAccount().getAccName();
-					this.sendObject(new ClientLoginSuccess(new ClientLoginChecker().check(acc)));
+					boolean b = new ClientLoginChecker().check(acc);
+					this.sendObject(new ClientLoginSuccess(b));
+					if(b){
+						if(model.getGame().isGameAvailabe())
+							this.sendObject(new GameAvailableMessage(model.getGame().isGameAvailabe(), model.getOtherClient(this).getClientName()));
+						else
+							this.sendObject(new GameAvailableMessage(false));
+					}
+					
 					
 				
 				}
 				if(obj instanceof ClientLogout){
 					ClientLogout logout = (ClientLogout) obj;
-					this.ClientConnectionName = null;
+					this.Player = null;
 					this.sendObject(new ClientLogoutSuccess(true));
 				}
 				if(obj instanceof ChatMessage){
@@ -77,10 +83,12 @@ public class ClientConnection extends Thread {
 					CardClick click = (CardClick) obj;
 					model.sendToOtherClients(click, this);
 				}
-				if(obj instanceof startNewGame){
-					model.setGame(Player);
-					model.sendToOtherClients(new GameAvailableMessage(true, model.getOtherClient(this).getClientName()), this);
-					
+				if(obj instanceof initiateNewGame){
+					model.getGame().joinPlayer(Player);
+					model.sendToOtherClients(new GameAvailableMessage(true, this.getClientName()), this);
+				}
+				if(obj instanceof GameComplete){
+					model.broadcast((GameComplete) obj);
 				}
 
 				
@@ -134,7 +142,7 @@ public class ClientConnection extends Thread {
 	}
 	
 	public String getClientName(){
-		return this.ClientConnectionName;
+		return this.Player.getAccName();
 	}
 
 

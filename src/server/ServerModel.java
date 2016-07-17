@@ -80,8 +80,7 @@ public class ServerModel {
 	public ClientConnection getOtherClient(ClientConnection current){
 		synchronized (clientList) {
 			for (ClientConnection client : clientList) {
-				if(client == current){
-					System.out.println(client.getClientName());
+				if(client != current){
 					return client;
 				}
 			}
@@ -89,21 +88,17 @@ public class ServerModel {
 		//shouldn't return this
 		return current;
 	}
-	/**
-	 * @return returns if the account is the first one to log on to the game
-	 */
-	public boolean setGame(Account acc){
-		if(this.game == null){
-			this.game = new Game(acc);
-			return true;
-		}
-		else{
-			this.game.joinPlayer(acc);
-			return false;
-		}
-	}
+
+
+
 	public ArrayList getListeners(){
 		return this.clientList;
+	}
+	public Game getGame(){
+		if(game == null){
+			game = new Game();
+		}
+		return this.game;
 	}
 }
 

@@ -6,20 +6,25 @@ public class Game {
 	Account PL1;
 	Account PL2;
 	
-	public Game(Account player){
+	
+	public Game(){
 		
-			this.PL1 = player;
 	}
 	
 	public void joinPlayer(Account player){
-		this.PL2 = player;
+		if(this.PL1 == null){
+			this.PL1 = player;
+		}
+		else if(this.PL2 == null){
+			this.PL2 = player;
+		}
 	}
 	
 	public boolean isGameAvailabe(){
-		if(this.PL2 != null){
-			return false;
+		if(this.PL1 != null && this.PL2 == null){
+			return true;
 		}
-		else return true;
+		else return false;
 	}
 
 }

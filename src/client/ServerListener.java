@@ -105,7 +105,6 @@ public class ServerListener extends Thread {
 					if(obj instanceof ClientLoginSuccess){
 						ClientLoginSuccess cls = (ClientLoginSuccess) obj;
 						if(cls.getSuccess()){
-							
 							//Without this, there will be a thread conflict
 							Platform.runLater(new Runnable() {
 				
@@ -121,7 +120,6 @@ public class ServerListener extends Thread {
 							Platform.runLater(new Runnable() {
 								   @Override
 								   public void run() {
-									   System.out.println("Hier");
 									   	Alert alert = new Alert(AlertType.INFORMATION);
 										alert.setTitle("Login failure");
 										alert.setHeaderText("Login not sucessfull");
@@ -131,6 +129,7 @@ public class ServerListener extends Thread {
 					}
 					if(obj instanceof ClientLogoutSuccess){
 						ClientLogoutSuccess cls = (ClientLogoutSuccess) obj;
+						if(cls.getSuccess())
 						//Without this, there will be a thread conflict
 						Platform.runLater(new Runnable() {
 							   @Override
@@ -139,6 +138,7 @@ public class ServerListener extends Thread {
 							   }
 							});
 						logger.info("Logout successful");
+						
 					}
 					if(obj instanceof ChatMessage){
 						ChatMessage msg = (ChatMessage) obj;
@@ -187,6 +187,9 @@ public class ServerListener extends Thread {
 							   }
 							});
 						
+					}
+					if(obj instanceof GameComplete){
+						controller.setUpGame();
 					}
 					
 				}
