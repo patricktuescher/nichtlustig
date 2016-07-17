@@ -114,18 +114,18 @@ public class ServerListener extends Thread {
 								   }
 								});
 							logger.info("Login successful");
-						}
-						else{
+						}else{
 							logger.info("Login unsuccessful");
+
+
 
 
 							Platform.runLater(new Runnable() {
 								   @Override
 								   public void run() {
-										controller.setLoginFailedScene();
-									   	Alert alert = new Alert(AlertType.INFORMATION);
-										alert.setTitle("Login failure");
-										alert.setHeaderText("Login not sucessfull");
+									controller.getAlert();
+							
+										
 										
 								   }
 								});

@@ -10,7 +10,9 @@ import client.ClientView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -49,6 +51,9 @@ public class ClientController {
 
 			}
 		});
+		
+		
+		
 		
 		
 		// EventHandler RegisterButton - LoginScene
@@ -291,16 +296,18 @@ public class ClientController {
 	
 	
 			///////////////// EventHandler FertigButton - LoginScene //////////////////////////
-			view.b_backLoginFailed.setOnAction(new EventHandler<ActionEvent>(){
-				
-				//@Override
-				public void handle(ActionEvent arg0) {
-					view.primaryStage.setScene(view.sceneLogin);
-				}
-			});
-		
+//			view.b_backLoginFailed.setOnAction(new EventHandler<ActionEvent>(){
+//				
+//				//@Override
+//				public void handle(ActionEvent arg0) {
+//					view.primaryStage.setScene(view.sceneLogin);
+//				}
+//			});
+//		
 		}
 	
+	
+
 	
 	public void setLobbyScene(){
 		this.view.primaryStage.setScene(this.view.sceneLobby);
@@ -367,6 +374,14 @@ public class ClientController {
 	public void setUpGame(){
 		setUpDie();
 	}
+	
+	public void getAlert(){
+   	Alert alert = new Alert(AlertType.INFORMATION);
+	alert.setTitle("Login failure");
+	alert.setHeaderText("Login not sucessfull");
+	alert.showAndWait();
+	}
+	
 	public void setUpDie(){
 		for(int x = 0; x < view.WürfelPL1.size(); x++){
 			view.WürfelPL1.get(x).roll();
