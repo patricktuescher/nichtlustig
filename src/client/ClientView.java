@@ -407,7 +407,7 @@ public class ClientView {
 		turnPL2.setVisible(false);
 		
 		//Scene Game
-		sceneGame = new Scene(topPaneGame, 1200, 800);
+		sceneGame = new Scene(topPaneGame, 1200, 850);
 		sceneGame.getStylesheets().add("ClientStylesheet");
 		
 		
@@ -501,8 +501,8 @@ public class ClientView {
 		//Chat
 		
 		chatWindow = new TextArea();
-		chatWindow.setMinSize(200, 50);
-		chatWindow.setMaxSize(800, 50);
+		chatWindow.setMinSize(200, 90);
+		chatWindow.setMaxSize(800, 90);
 		chatWindow.setText("");
 		
 		chatWindow.setEditable(false);
