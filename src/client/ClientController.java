@@ -212,6 +212,7 @@ public class ClientController {
 			@Override
 			public void handle(ActionEvent arg0) {
 				setUpDie();
+				model.incrementPlayerRoll();
 				}
 		});
 	
@@ -368,6 +369,7 @@ public class ClientController {
 		setUpDie();
 	}
 	public void setUpDie(){
+		
 		for(int x = 0; x < view.WürfelPL1.size(); x++){
 			view.WürfelPL1.get(x).roll();
 			server.sendObject(new WürfelRoll(view.WürfelPL1));
@@ -377,6 +379,27 @@ public class ClientController {
 	}
 	public ArrayList<Würfel> getWürfel(){
 		return view.WürfelPL1;
+	}
+
+
+	public void initiateTurn() {
+		view.b_fertigGame.setDisable(true);
+		while(model.getPlayerRollCounter() == 0){
+			
+		}
+		while(model.getPlayerRollCounter() < 4 && !allWürfelSelected(view.WürfelPL1)){
+		view.b_fertigGame.setDisable(false);
+		}
+		view.b_würfeln.setDisable(true);
+		
+	}
+	public boolean allWürfelSelected(ArrayList<Würfel> würfel){
+		boolean b = true;
+		for(int x = 0; x < würfel.size(); x++){
+			if(!würfel.get(x).isSelected())
+				return false;
+		}
+		return b;
 	}
 
 }
