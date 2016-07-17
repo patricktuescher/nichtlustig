@@ -98,7 +98,6 @@ public class ClientConnection extends Thread {
 						Account firstPlayer;
 						try {
 							firstPlayer = model.getGame().firstPlayer();
-							System.out.println(firstPlayer+ " " + model.getGame().AugenzahlPunktePL1 + " " + model.getGame().AugenzahlPunktePL2);
 							if(this.Player.getAccName().equals(firstPlayer.getAccName())){
 								this.sendObject(new ClientTurn(true));
 								model.sendToOtherClients(new ClientTurn(false), this);
@@ -108,7 +107,7 @@ public class ClientConnection extends Thread {
 								model.sendToOtherClients(new ClientTurn(true), this);
 							}
 						} catch (Exception e) {
-							// Vorgang neu starten, falls die Augenzahl gleich gross sind
+							// Vorgang neu starten, falls die Augenzahlen gleich gross sind
 							model.broadcast((GameComplete) obj);
 						}
 						

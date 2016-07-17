@@ -23,9 +23,9 @@ public class ClientController {
 
 
 	protected ServiceLocator sl;       
-	ClientView view;
-	ClientModel model;
-	ServerListener server;
+	protected ClientView view;
+	protected ClientModel model;
+	protected ServerListener server;
 	
 	public ClientController(ClientView view, ClientModel model){
 		this.view = view;

@@ -1,8 +1,18 @@
 package server;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
+
+/**
+ * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kontroburtüs.
+ * All rights reserved.
+ * 
+ * This class represents a Game with two Accounts
+ * @author Nicola Burri
+ */
 
 import client.Account;
+import client.ServiceLocator;
 import client.Würfel;
 
 public class Game {
@@ -12,29 +22,41 @@ public class Game {
 	ArrayList<Würfel> würfelPL2;
 	int AugenzahlPunktePL1 = 0;
 	int AugenzahlPunktePL2 = 0;
+	Logger logger = ServiceLocator.getServiceLocator().getLogger();
 	
 	
 	public Game(){
 		
 	}
-	
+	/**
+	 * 
+	 * @param player which joins the game. Only two players can be added to the game.
+	 */
 	public void joinPlayer(Account player){
 		if(this.PL1 == null){
 			this.PL1 = player;
-			System.out.println("erster Spieler = " + player.getAccName());
+			logger.info("First player logs in to the game. Name: " + player.getAccName());
 		}
 		else if(this.PL2 == null){
 			this.PL2 = player;
-			System.out.println("zweiter Spieler = " + player.getAccName());
+			logger.info("Second player logs in to the game. Name: " + player.getAccName());
 		}
 	}
-	
+	/**
+	 * 
+	 * @return if two players have joined the game
+	 */
 	public boolean isGameAvailabe(){
 		if(this.PL1 != null && this.PL2 == null){
 			return true;
 		}
 		else return false;
 	}
+	/** 
+	 * 
+	 * @param würfel die of the player
+	 * @param Player corresponding account
+	 */
 	
 	public void setWürfel(ArrayList<Würfel> würfel, Account Player){
 		if(this.PL1.getAccName().equals(Player.getAccName())){
@@ -48,6 +70,11 @@ public class Game {
 		}
 		else return false;
 	}
+	/**
+	 * 
+	 * @return the player, which has the higher amount of numbers
+	 * @throws Exception if the numbers are equal
+	 */
 	public Account firstPlayer() throws Exception{
 		AugenzahlPunktePL1 = 0;
 		AugenzahlPunktePL2 = 0;
