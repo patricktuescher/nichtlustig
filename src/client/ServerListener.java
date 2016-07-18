@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.application.Platform;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+//import javafx.scene.control.Alert;
+//import javafx.scene.control.Alert.AlertType;
 import message.*;
 
 
