@@ -10,9 +10,7 @@ import client.ClientView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -288,6 +286,12 @@ public class ClientController {
 					//@Override
 					public void handle(ActionEvent arg0) {
 						server.sendObject(new ClientTurn(false));
+						String currentID = view.topPaneGame.getId();
+						if(currentID.equals("topPaneGamePL1")){
+							view.topPaneGame.setId("topPaneGamePL2");
+						}
+						else
+							view.topPaneGame.setId("topPaneGamePL1");
 						view.b_fertigGame.setDisable(true);
 						view.turnPL1.setVisible(false);
 						view.turnPL2.setVisible(true);

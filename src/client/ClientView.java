@@ -12,10 +12,9 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
@@ -120,6 +119,11 @@ public class ClientView {
 		innerPaneLogin.add(lb_password, 2, 4);
 		lb_password.setId("lb-password");
 		
+		//label choose language
+		Label lb_chooseLanguage = new Label(t.getString("Label.Language")+": ");
+		innerPaneLogin.add(lb_chooseLanguage, 2, 6);
+		lb_chooseLanguage.setId("lb-password");
+		
 		//Textbox Username
 		tf_username = new TextField();
 		innerPaneLogin.add(tf_username, 2, 2);
@@ -132,10 +136,20 @@ public class ClientView {
 		pf_password.setId("pf-login");
 		pf_password.setPromptText(t.getString("Label.Password"));
 		
+		/*
 		// checkbox password visibility
 		passwordCheck = new CheckBox(t.getString("CheckBox.passwordCheck")); 	
-		innerPaneLogin.add(passwordCheck, 2, 6);
+		innerPaneLogin.add(passwordCheck, 2, 6);*/
 
+		
+		//language choiceBox
+		ChoiceBox<String> choiceboxLogin = new ChoiceBox<>();
+		choiceboxLogin.getItems().addAll("deutsch","englisch");
+		choiceboxLogin.setPrefSize(200, 40);
+		choiceboxLogin.setValue("deutsch");
+		innerPaneLogin.add(choiceboxLogin,2,7);
+		choiceboxLogin.setId("pf-login");
+		
 		
 		//Button Login
 		b_login = new Button(t.getString("Button.Login"));
@@ -369,7 +383,7 @@ public class ClientView {
 		
 		//TopPane Game
 		topPaneGame = new BorderPane();
-		topPaneGame.setId("topPaneGame"); //ID for CSS
+		topPaneGame.setId("topPaneGamePL1"); //ID for CSS
 		
 
 		//HBox Game Top
@@ -419,12 +433,12 @@ public class ClientView {
 		
 		// Label Score PL1 
 		int scorePL1= 15; // needs to be adjusted
-		labelPL1 = new Label("Your score:\n"+scorePL1);
+		labelPL1 = new Label(""+scorePL1);
 		
 				
 		// Label Score PL2 
 		int scorePL2 = 33; // needs to be adjusted
-		labelPL2 = new Label("Opponent's score:\n"+scorePL2);
+		labelPL2 = new Label(""+scorePL2);
 		
 		
 		// Label Turn PL1

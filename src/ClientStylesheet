@@ -24,6 +24,14 @@
 	-fx-background-image: url(images/gameHintergrundChat.png);
 }
 
+#topPaneGamePL1{
+	-fx-background-image: url(images/gameHintergrundChatPL1.png);
+}
+
+#topPaneGamePL2{
+	-fx-background-image: url(images/gameHintergrundChatPL2.png);
+}
+
 
 #label{
 	-fx-font-family: "Helvetica";
