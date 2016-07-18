@@ -178,44 +178,6 @@ public class ClientView {
 		sceneLogin.getStylesheets().add("ClientStylesheet");
 		
 		
-		///////////////// LOGIN FAILED POPUP //////////////////////////
-		
-		
-//		//Stage LoginFailed
-//		
-//		BorderPane topPaneLoginFailed = new BorderPane();
-//		topPaneLoginFailed.setId("topPaneLoginFailed");
-//		
-//
-//		
-//		//LoginFailed Scene
-//		sceneLoginFailed = new Scene(topPaneLoginFailed, 600, 400);
-//		sceneLoginFailed.getStylesheets().add("ClientStylesheet");
-//				
-//		//Label Login Failed
-//		
-//		loginFailed = new Label("Login fehlgeschlagen");
-//		loginFailed.setPrefSize(300, 70);
-////		topPaneLoginFailed.setCenter(loginFailed);
-//		loginFailed.setId("lb-password");
-//		
-//		
-//		
-//		
-//		//Button Back
-//		
-//		b_backLoginFailed = new Button("Erneut versuchen");
-//		b_backLoginFailed.setPrefSize(300, 70);
-////		topPaneLoginFailed.setCenter(b_backLoginFailed);
-//		b_backLoginFailed.setId("b-login");
-//		
-//		VBox loginFailedVBox = new VBox();
-//		topPaneLoginFailed.setCenter(loginFailedVBox);
-//		loginFailedVBox.getChildren().add(loginFailed);
-//		loginFailedVBox.getChildren().add(b_backLoginFailed);
-		
-
-		
 		///////////////// LOBBY FENSTER //////////////////////////
 		
 		//TopPane Lobby
