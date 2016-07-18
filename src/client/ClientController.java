@@ -402,8 +402,8 @@ public class ClientController {
 		this.setWürfelDisabled(false);
 		view.b_fertigGame.setDisable(true);
 		view.b_würfeln.setDisable(false);
+		setWürfelDisabled(true);
 		while(model.getPlayerRollCounter() == 0){
-			setWürfelDisabled(true);
 		}
 		setWürfelDisabled(false);
 		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(view.WürfelPL1)){
