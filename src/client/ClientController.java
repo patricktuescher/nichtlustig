@@ -350,7 +350,7 @@ public class ClientController {
 	}
 	
 	public void setOpClientTurn(){
-		System.out.println("Hier");
+		view.topPaneGame.setId("topPaneGamePL2");
 		view.turnPL1.setVisible(true);
 		view.turnPL2.setVisible(false);
 		view.b_würfeln.setDisable(true);
@@ -400,6 +400,7 @@ public class ClientController {
 
 
 	public void initiateTurn() {
+		view.topPaneGame.setId("topPaneGamePL1");
 		this.setUpDie();
 		this.setWürfelDisabled(false);
 		view.b_fertigGame.setDisable(true);
