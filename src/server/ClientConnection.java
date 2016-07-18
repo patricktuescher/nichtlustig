@@ -109,7 +109,7 @@ public class ClientConnection extends Thread {
 							}
 						} catch (Exception e) {
 							// Vorgang neu starten, falls die Augenzahlen gleich gross sind
-							model.broadcast((GameComplete) obj);
+							model.broadcast(new GameComplete());
 						}
 						
 							

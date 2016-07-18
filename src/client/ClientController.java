@@ -386,6 +386,7 @@ public class ClientController {
 	public void setUpDie(){
 		
 		for(int x = 0; x < view.WürfelPL1.size(); x++){
+			view.WürfelPL1.get(x).resetCard();
 			view.WürfelPL1.get(x).roll();
 			server.sendObject(new WürfelRoll(view.WürfelPL1));
 			}
@@ -398,6 +399,7 @@ public class ClientController {
 
 
 	public void initiateTurn() {
+		model.resetPlayerRoll();
 		this.setUpDie();
 		this.setWürfelDisabled(false);
 		view.b_fertigGame.setDisable(true);
@@ -406,8 +408,9 @@ public class ClientController {
 		while(model.getPlayerRollCounter() == 0){
 		}
 		setWürfelDisabled(false);
-		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(view.WürfelPL1)){
 		view.b_fertigGame.setDisable(false);
+		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(view.WürfelPL1)){
+		
 		}
 		selectAllWürfel();
 		view.b_würfeln.setDisable(true);
