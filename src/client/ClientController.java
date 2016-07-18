@@ -288,6 +288,7 @@ public class ClientController {
 					//@Override
 					public void handle(ActionEvent arg0) {
 						server.sendObject(new ClientTurn(false));
+						view.b_fertigGame.setDisable(true);
 						view.turnPL1.setVisible(false);
 						view.turnPL2.setVisible(true);
 					}
@@ -399,7 +400,6 @@ public class ClientController {
 
 
 	public void initiateTurn() {
-		model.resetPlayerRoll();
 		this.setUpDie();
 		this.setWürfelDisabled(false);
 		view.b_fertigGame.setDisable(true);

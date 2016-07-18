@@ -112,6 +112,7 @@ public class Würfel implements Serializable {
 	}
 	public void resetCard(){
 		this.image.setStyle("");
+		this.selected = false;
 	}
 
 
