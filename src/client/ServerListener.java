@@ -54,10 +54,9 @@ public class ServerListener extends Thread {
 				}
 				
 				this.start();
+				
 			}
-			else{
-				this.sendObject(new ClientLogin(acc));
-			}
+			
 		}
 		catch (IOException e) {
 
@@ -114,12 +113,9 @@ public class ServerListener extends Thread {
 								   }
 								});
 							logger.info("Login successful");
-						}else{
+						}
+						else{
 							logger.info("Login unsuccessful");
-
-
-
-
 							Platform.runLater(new Runnable() {
 								   @Override
 								   public void run() {

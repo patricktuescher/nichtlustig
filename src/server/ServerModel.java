@@ -54,9 +54,10 @@ public class ServerModel {
 			if(clientList.size() < 2){
 			clientList.add(newClient);
 			}
-			else
+			else{
 				newClient.closeSocket();
 				newClient.sendObject(new ClientLoginSuccess(false));
+			}
 		}
 	}
 	

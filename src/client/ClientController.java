@@ -10,6 +10,8 @@ import client.ClientView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
@@ -348,7 +350,7 @@ public class ClientController {
 	}
 	
 	public void setOpClientTurn(){
-		System.out.println("Hier");
+		view.topPaneGame.setId("topPaneGamePL2");
 		view.turnPL1.setVisible(true);
 		view.turnPL2.setVisible(false);
 		view.b_würfeln.setDisable(true);
@@ -398,6 +400,7 @@ public class ClientController {
 
 
 	public void initiateTurn() {
+		view.topPaneGame.setId("topPaneGamePL1");
 		this.setUpDie();
 		this.setWürfelDisabled(false);
 		view.b_fertigGame.setDisable(true);

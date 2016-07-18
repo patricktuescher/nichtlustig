@@ -13,10 +13,11 @@ public class ClientLoginChecker {
 				
 		for(String s: logins){
 			if(clientLogin.getAccount().getAccName().equals(s)){
+
 				return true;
 			}
 		}
-		
+
 		return false;
 	
 		
