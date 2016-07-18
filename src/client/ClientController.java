@@ -288,6 +288,7 @@ public class ClientController {
 					//@Override
 					public void handle(ActionEvent arg0) {
 						server.sendObject(new ClientTurn(false));
+						model.resetPlayerRoll();
 						view.b_fertigGame.setDisable(true);
 						view.turnPL1.setVisible(false);
 						view.turnPL2.setVisible(true);
@@ -415,7 +416,7 @@ public class ClientController {
 		}
 		selectAllWürfel();
 		view.b_würfeln.setDisable(true);
-		model.resetPlayerRoll();
+		
 		
 	}
 	public void setWürfelDisabled(boolean disabled){
