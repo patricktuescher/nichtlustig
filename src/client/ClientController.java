@@ -398,7 +398,10 @@ public class ClientController {
 
 
 	public void initiateTurn() {
+		this.setUpDie();
+		this.setWürfelDisabled(false);
 		view.b_fertigGame.setDisable(true);
+		view.b_würfeln.setDisable(false);
 		while(model.getPlayerRollCounter() == 0){
 			setWürfelDisabled(true);
 		}
