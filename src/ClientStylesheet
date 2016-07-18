@@ -156,4 +156,18 @@
 		-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);
 
 }
+ 
+
+#spaceRectangle{
+	-fx-fill: transparent;
+}
+
+#lb-labelscore{
+		-fx-font-family: "Helvetica";
+ 		-fx-font-size: 20px;
+   	 	-fx-font-weight: bold;
+    	-fx-text-fill: #333333;
+ 		-fx-text-fill: black;
  				
+ 		}		
+ 		

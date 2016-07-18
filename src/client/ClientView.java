@@ -32,6 +32,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
@@ -50,6 +51,7 @@ public class ClientView {
 	protected ServiceLocator sl;
 	protected Translator t;
 	protected Integer scorePL1, scorePL2;
+	protected Rectangle rectangleSpace,rectangleSpace1, rectangleSpace2;
 	
 	//Height and Width of the cards
 	final int cardheight = 90;
@@ -392,7 +394,7 @@ public class ClientView {
 
 		//HBox Game Top
 		innertopPaneGame = new HBox();
-		innertopPaneGame.setPadding(new Insets(20,0,0,350));
+		innertopPaneGame.setPadding(new Insets(20,0,0,240));
 		innertopPaneGame.setMinHeight(100);
 		innertopPaneGame.setMaxHeight(100);
 		innertopPaneGame.setSpacing(15);
@@ -406,7 +408,7 @@ public class ClientView {
 		
 		//HBox Game Bottom Cube
 		HBox bottomPaneGameCube = new HBox();
-		bottomPaneGameCube.setPadding(new Insets(20,0,20,200));
+		bottomPaneGameCube.setPadding(new Insets(20,100,20,200));
 		bottomPaneGameCube.setSpacing(15);
 		bottomPaneGame.setTop(bottomPaneGameCube);
 
@@ -431,19 +433,27 @@ public class ClientView {
 		
 		//Button Fertig
 		b_fertigGame = new Button(t.getString("Button.Fertig"));
+		b_fertigGame.setMinSize(120, 50);
 		b_fertigGame.setId("b-login");
 		
+		// Space (between send & back button)
+		rectangleSpace = new Rectangle(90,50);
+		rectangleSpace.setId("spaceRectangle");
 		
 		
 		// Label Score PL1 
 		int scorePL1= 15; // needs to be adjusted
 		labelPL1 = new Label(""+scorePL1);
+		labelPL1.setMinSize(50, 50);
+		labelPL1.setId("lb-labelscore");
 		
 
 				
 		// Label Score PL2 
 		int scorePL2 = 33; // needs to be adjusted
 		labelPL2 = new Label(""+scorePL2);
+		labelPL2.setMinSize(50, 50);
+		labelPL2.setId("lb-labelscore");
 		
 		
 		// Label Turn PL1
@@ -510,10 +520,16 @@ public class ClientView {
 		
 		//Button würfeln
 		b_würfeln = new Button(t.getString("Button.roll"));
+		b_würfeln.setMinSize(100, 50);
 		b_würfeln.setId("b-login");
 		
+		// space (between done botton & score label)
+		rectangleSpace1 = new Rectangle(100,50);
+		rectangleSpace1.setId("spaceRectangle");
+		
+		
 		//added nodes to BottomPane
-		bottomPaneGameCube.getChildren().addAll(turnPL1, b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_fertigGame,labelPL1);
+		bottomPaneGameCube.getChildren().addAll(turnPL1, b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_fertigGame,rectangleSpace1,labelPL1);
 		
 		
 		//////////////////CUBES PL2 (SecondPlayer) //////////////////////////
@@ -543,8 +559,12 @@ public class ClientView {
 		WürfelPL2.add(cubeViewRed1PL2);
 		WürfelPL2.add(cubeViewRed2PL2);
 		
+		// space (between dice and score label on "opponent's" side)
+		rectangleSpace2 = new Rectangle(210,50);
+		rectangleSpace2.setId("spaceRectangle");
+		
 		//added nodes to innertopPaneGame
-		innertopPaneGame.getChildren().addAll(turnPL2,cubeViewPinkPL2.getImageView(), cubeViewWhite1PL2.getImageView(), cubeViewWhite2PL2.getImageView(), cubeViewBlack1PL2.getImageView(), cubeViewBlack2PL2.getImageView(), cubeViewRed1PL2.getImageView(), cubeViewRed2PL2.getImageView(),labelPL2);
+		innertopPaneGame.getChildren().addAll(turnPL2,cubeViewPinkPL2.getImageView(), cubeViewWhite1PL2.getImageView(), cubeViewWhite2PL2.getImageView(), cubeViewBlack1PL2.getImageView(), cubeViewBlack2PL2.getImageView(), cubeViewRed1PL2.getImageView(), cubeViewRed2PL2.getImageView(),rectangleSpace2,labelPL2);
 				
 		//Chat
 		
@@ -573,7 +593,7 @@ public class ClientView {
 		b_sendchat.setId("b-sendchat");
 		
 		
-		ChatInput.getChildren().addAll(chatInputWindow, b_sendchat, b_backGame);
+		ChatInput.getChildren().addAll(chatInputWindow, b_sendchat,rectangleSpace, b_backGame);
 		
 		
 		bottomPaneGameChat.getChildren().addAll(chatWindow, ChatInput);
