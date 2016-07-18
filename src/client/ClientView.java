@@ -383,7 +383,7 @@ public class ClientView {
 		
 		//TopPane Game
 		topPaneGame = new BorderPane();
-		topPaneGame.setId("topPaneGamePL1"); //ID for CSS
+		topPaneGame.setId("topPaneGame"); //ID for CSS
 		
 
 		//HBox Game Top
