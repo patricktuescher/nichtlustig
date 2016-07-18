@@ -286,12 +286,6 @@ public class ClientController {
 					//@Override
 					public void handle(ActionEvent arg0) {
 						server.sendObject(new ClientTurn(false));
-						String currentID = view.topPaneGame.getId();
-						if(currentID.equals("topPaneGamePL1")){
-							view.topPaneGame.setId("topPaneGamePL2");
-						}
-						else
-							view.topPaneGame.setId("topPaneGamePL1");
 						view.b_fertigGame.setDisable(true);
 						view.turnPL1.setVisible(false);
 						view.turnPL2.setVisible(true);
