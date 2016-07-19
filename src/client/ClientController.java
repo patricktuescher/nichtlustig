@@ -2,6 +2,8 @@ package client;
 
 import java.util.ArrayList;
 
+import com.sun.media.jfxmedia.logging.Logger;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,6 +26,7 @@ public class ClientController {
 	protected ClientView view;
 	protected ClientModel model;
 	protected ServerListener server;
+
 	
 	public ClientController(ClientView view, ClientModel model){
 		this.view = view;
@@ -326,17 +329,20 @@ public class ClientController {
 		view.chatWindow.appendText(s+"\n");
 	}
 	public void setOpponentDi(ArrayList<Würfel> würfel){
+		sl.getLogger().info("Opponents Die are being set");
 		view.WürfelPL2.clear();
 		view.WürfelPL2.addAll(würfel);
 		view.innertopPaneGame.getChildren().clear();
 		view.innertopPaneGame.getChildren().add(view.turnPL2);
 		for(int x = 0;x<view.WürfelPL2.size();x++){
+			System.out.println(view.WürfelPL2.get(x));
 		if(view.WürfelPL2.get(x).isSelected())
 			view.WürfelPL2.get(x).getImageView().setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);");
-		view.innertopPaneGame.getChildren().addAll(view.WürfelPL2.get(x).getImageView());
+		view.innertopPaneGame.getChildren().add(view.WürfelPL2.get(x).getImageView());
 		}
 		view.innertopPaneGame.getChildren().add(view.rectangleSpace2);
 		view.innertopPaneGame.getChildren().add(view.labelPL2);
+		sl.getLogger().info("Opponent Die changed");
 	}
 	public void opponentSelectCard(Card card){
 		for(int x = 0; x < view.cardAL.size();x++){
@@ -405,6 +411,7 @@ public class ClientController {
 		for(int x = 0; x < view.WürfelPL1.size(); x++){
 			if(!view.WürfelPL1.get(x).isSelected()){
 			view.WürfelPL1.get(x).roll();
+			view.WürfelPL1.set(x, view.WürfelPL1.get(x));
 			}
 			
 			}

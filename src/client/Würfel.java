@@ -118,6 +118,10 @@ public class Würfel implements Serializable {
 		this.image.setStyle("");
 		this.selected = false;
 	}
+	
+	public String toString(){
+		return "Würfel "+ this.aktAugenzahl + " "+this.getFarbe();
+	}
 
 
 }
