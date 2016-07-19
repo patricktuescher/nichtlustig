@@ -234,40 +234,7 @@ public class ServerListener extends Thread {
 	}
 	
 	
-	public void runChat() {
-
-		try {
-			if (in == null) {
-				in = new ObjectInputStream(socket.getInputStream());
-			}
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		while (!stopThread) {
-			{
-				try {
-					obj = in.readObject();
-					if(obj instanceof ChatMessage){
-						ChatMessage msg = (ChatMessage) obj;
-						
-						controller.addNewMessage(msg.getMessage());
-					}
-				}
-
-				catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
-
-				catch (IOException e) {
-					// error when server is not there: close the client because living without a server is useless 
-					stopThread = true;
-					System.exit(0);
-				}
-			}
-		}
-	}
+	
 
 	/**
 	 * Writes any object to the ObjectOutputStream

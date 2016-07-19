@@ -284,8 +284,8 @@ public class ClientController {
 					public void handle(ActionEvent arg0) {
 						model.resetPlayerRoll();
 						view.b_fertigGame.setDisable(true);
-						view.turnPL1.setVisible(false);
-						view.turnPL2.setVisible(true);
+//						view.turnPL1.setVisible(false);
+//						view.turnPL2.setVisible(true);
 						server.sendObject(new ClientTurn(false));
 						}
 				});
@@ -328,11 +328,14 @@ public class ClientController {
 		view.WürfelPL2.clear();
 		view.WürfelPL2.addAll(würfel);
 		view.innertopPaneGame.getChildren().clear();
+		view.innertopPaneGame.getChildren().add(view.turnPL2);
 		for(int x = 0;x<view.WürfelPL2.size();x++){
 		if(view.WürfelPL2.get(x).isSelected())
 			view.WürfelPL2.get(x).getImageView().setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);");
 		view.innertopPaneGame.getChildren().addAll(view.WürfelPL2.get(x).getImageView());
 		}
+		view.innertopPaneGame.getChildren().add(view.rectangleSpace2);
+		view.innertopPaneGame.getChildren().add(view.labelPL2);
 	}
 	public void opponentSelectCard(Card card){
 		for(int x = 0; x < view.cardAL.size();x++){
@@ -348,10 +351,13 @@ public class ClientController {
 	public void setOpClientTurn(){
 		model.resetPlayerRoll();
 		view.topPaneGame.setId("topPaneGamePL2");
-		view.turnPL1.setVisible(false);
-		view.turnPL2.setVisible(true);
+//		view.turnPL1.setVisible(false);
+//		view.turnPL2.setVisible(true);
 		view.b_würfeln.setDisable(true);
+		view.b_fertigGame.setDisable(true);
 	}
+	
+	
 	public void setGameAvImageOnOff(boolean on){
 		if(on){
 			this.view.gai.setImageOn();
@@ -405,18 +411,21 @@ public class ClientController {
 
 
 	public void initiateTurn() {
+		model.resetPlayerRoll();
 		view.topPaneGame.setId("topPaneGamePL1");
 		this.setUpDie();
-		view.b_fertigGame.setDisable(true);
 		view.b_würfeln.setDisable(false);
+		
 		while(model.getPlayerRollCounter() == 0){
-		setWürfelDisabled(false);
-		view.b_fertigGame.setDisable(false);
+		setWürfelDisabled(true);
+		view.b_fertigGame.setDisable(true);
 		}
 		
 		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(view.WürfelPL1)){
+		setWürfelDisabled(false);	
 		view.b_würfeln.setDisable(false);
 		view.b_fertigGame.setDisable(false);
+		
 		}
 		System.out.println("hier");
 		selectAllWürfel();
