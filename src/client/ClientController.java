@@ -1,23 +1,11 @@
 package client;
 
-import java.awt.Color;
-import java.io.IOException;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 
-import client.ClientModel;
-import client.ClientView;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-//import javafx.scene.control.Alert;
-//import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Label;
-import javafx.scene.effect.InnerShadow;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import message.CardClick;
 import message.ChatMessage;
