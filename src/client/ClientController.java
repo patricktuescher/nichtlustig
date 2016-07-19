@@ -410,11 +410,13 @@ public class ClientController {
 		view.b_fertigGame.setDisable(true);
 		view.b_würfeln.setDisable(false);
 		while(model.getPlayerRollCounter() == 0){
-		}
 		setWürfelDisabled(false);
 		view.b_fertigGame.setDisable(false);
-		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(view.WürfelPL1)){
+		}
 		
+		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(view.WürfelPL1)){
+		view.b_würfeln.setDisable(false);
+		view.b_fertigGame.setDisable(false);
 		}
 		System.out.println("hier");
 		selectAllWürfel();
