@@ -150,6 +150,10 @@ public class ServerListener extends Thread {
 						
 					}
 				
+					if(obj instanceof ChatMessage){
+						ChatMessage msg = (ChatMessage) obj;
+						controller.addNewMessage(msg.getMessage());
+					}
 					
 					if(obj instanceof WürfelRoll){
 						WürfelRoll ws = (WürfelRoll) obj;
