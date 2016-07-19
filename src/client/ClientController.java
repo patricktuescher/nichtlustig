@@ -288,8 +288,7 @@ public class ClientController {
 					public void handle(ActionEvent arg0) {
 						model.resetPlayerRoll();
 						view.b_fertigGame.setDisable(true);
-//						view.turnPL1.setVisible(false);
-//						view.turnPL2.setVisible(true);
+						view.b_würfeln.setDisable(true);
 						server.sendObject(new ClientTurn(false));
 						}
 				});
