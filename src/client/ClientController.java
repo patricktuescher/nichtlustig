@@ -2,6 +2,7 @@ package client;
 
 import java.util.ArrayList;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -350,7 +351,12 @@ public class ClientController {
 	
 	public void setOpClientTurn(){
 		model.resetPlayerRoll();
-		view.topPaneGame.setId("topPaneGamePL2");
+		Platform.runLater(new Runnable(){
+			@Override
+			public void run() {
+				view.topPaneGame.setId("topPaneGamePL2");
+			}
+		});
 //		view.turnPL1.setVisible(false);
 //		view.turnPL2.setVisible(true);
 		view.b_würfeln.setDisable(true);
@@ -410,9 +416,15 @@ public class ClientController {
 	}
 
 
-	public void initiateTurn() {
+	public synchronized void initiateTurn() {
 		model.resetPlayerRoll();
-		view.topPaneGame.setId("topPaneGamePL1");
+		Platform.runLater(new Runnable(){
+			@Override
+			public void run() {
+				view.topPaneGame.setId("topPaneGamePL1");
+			}
+		});
+		
 		this.setUpDie();
 		view.b_würfeln.setDisable(false);
 		
