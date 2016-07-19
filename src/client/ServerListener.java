@@ -169,13 +169,14 @@ public class ServerListener extends Thread {
 					
 					if(obj instanceof ClientTurn){
 						ClientTurn yturn = (ClientTurn) obj;
-						if (!yturn.getTurn()){
-							controller.setOpClientTurn();
+						System.out.println(yturn.getTurn());
+						if (yturn.getTurn()){
+							controller.initiateTurn();
 						}
-//						else{
-//							controller.initiateTurn();
-//						
-//						}	
+						else{
+							controller.setOpClientTurn();
+						
+						}	
 					}
 					if(obj instanceof CardClick){
 						CardClick click = (CardClick) obj;
