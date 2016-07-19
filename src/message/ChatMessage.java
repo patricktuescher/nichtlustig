@@ -2,7 +2,7 @@ package message;
 
 import java.io.Serializable;
 
-public class ChatMessage implements Serializable {
+public class ChatMessage implements Serializable{
 	/**
 	 * 
 	 */
@@ -16,5 +16,7 @@ public class ChatMessage implements Serializable {
 	public String getMessage(){
 		return msg;
 	}
+
+
 
 }

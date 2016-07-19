@@ -151,7 +151,10 @@ public class ServerListener extends Thread {
 					}
 					if(obj instanceof ChatMessage){
 						ChatMessage msg = (ChatMessage) obj;
+
 						controller.addNewMessage(msg.getMessage());
+						
+						
 					}
 					
 					if(obj instanceof WürfelRoll){
@@ -170,7 +173,16 @@ public class ServerListener extends Thread {
 						ClientTurn yturn = (ClientTurn) obj;
 						System.out.println(yturn.getTurn());
 						if (yturn.getTurn()){
-							controller.initiateTurn();
+							new Thread(new Runnable(){
+
+								@Override
+								public void run() {
+									// TODO Auto-generated method stub
+									controller.initiateTurn();
+								}
+								
+							}).start();
+							
 						}
 						else{
 							controller.setOpClientTurn();
