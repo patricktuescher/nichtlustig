@@ -110,7 +110,7 @@ public class Würfel implements Serializable {
 	public boolean isSelected(){
 		return this.selected;
 	}
-	public void resetCard(){
+	public void resetWürfel(){
 		this.image.setStyle("");
 		this.selected = false;
 	}

@@ -223,7 +223,7 @@ public class ClientController {
 		
 			@Override
 			public void handle(ActionEvent arg0) {
-				setUpDie();
+				würfeln();
 				model.incrementPlayerRoll();
 				}
 		});
@@ -294,11 +294,11 @@ public class ClientController {
 					
 					//@Override
 					public void handle(ActionEvent arg0) {
-						server.sendObject(new ClientTurn(false));
 						model.resetPlayerRoll();
 						view.b_fertigGame.setDisable(true);
 						view.turnPL1.setVisible(false);
 						view.turnPL2.setVisible(true);
+						server.sendObject(new ClientTurn(false));
 					}
 				});
 			
@@ -394,15 +394,22 @@ public class ClientController {
 	}
 	
 	public void setUpDie(){
-		
 		for(int x = 0; x < view.WürfelPL1.size(); x++){
-			view.WürfelPL1.get(x).resetCard();
-			view.WürfelPL1.get(x).roll();
-			server.sendObject(new WürfelRoll(view.WürfelPL1));
+			view.WürfelPL1.get(x).resetWürfel();
+			
 			}
-		this.setWürfelDisabled(false);
+		this.setWürfelDisabled(true);
+	}
+	
+	public void würfeln(){
+		for(int x = 0; x < view.WürfelPL1.size(); x++){
+			if(!view.WürfelPL1.get(x).isSelected()){
+			view.WürfelPL1.get(x).roll();
+			}
+			
+			}
+		server.sendObject(new WürfelRoll(view.WürfelPL1));
 		
-
 	}
 	public ArrayList<Würfel> getWürfel(){
 		return view.WürfelPL1;
@@ -414,7 +421,6 @@ public class ClientController {
 		this.setUpDie();
 		view.b_fertigGame.setDisable(true);
 		view.b_würfeln.setDisable(false);
-		setWürfelDisabled(true);
 		while(model.getPlayerRollCounter() == 0){
 		}
 		setWürfelDisabled(false);
