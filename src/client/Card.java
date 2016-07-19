@@ -2,6 +2,7 @@ package client;
 
 import java.io.Serializable;
 import java.util.logging.Logger;
+
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

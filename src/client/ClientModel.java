@@ -2,8 +2,6 @@ package client;
 
 import java.util.ArrayList;
 
-import javafx.stage.Stage;
-
 public class ClientModel {
 	
 	private int playerRollCounter = 0;
