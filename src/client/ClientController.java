@@ -287,8 +287,9 @@ public class ClientController {
 					//@Override
 					public void handle(ActionEvent arg0) {
 						model.resetPlayerRoll();
-						view.b_fertigGame.setDisable(true);
-						view.b_würfeln.setDisable(true);
+//						view.b_fertigGame.setDisable(true);
+//						view.b_würfeln.setDisable(true);
+						selectAllWürfel();
 						server.sendObject(new ClientTurn(false));
 						}
 				});
