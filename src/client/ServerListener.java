@@ -157,6 +157,7 @@ public class ServerListener extends Thread {
 						
 						
 					}
+		
 					
 					if(obj instanceof WürfelRoll){
 						WürfelRoll ws = (WürfelRoll) obj;
