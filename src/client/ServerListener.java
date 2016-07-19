@@ -9,9 +9,19 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.application.Platform;
+import message.CardClick;
+import message.ChatMessage;
+import message.ClientLogin;
 //import javafx.scene.control.Alert;
 //import javafx.scene.control.Alert.AlertType;
-import message.*;
+import message.ClientLoginSuccess;
+import message.ClientLogoutSuccess;
+import message.ClientTurn;
+import message.EvaluateFirstPlayer;
+import message.GameAvailableMessage;
+import message.GameComplete;
+import message.WürfelRoll;
+
 
 
 

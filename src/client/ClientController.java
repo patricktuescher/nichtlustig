@@ -17,10 +17,15 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import message.*;
+import message.CardClick;
+import message.ChatMessage;
+import message.ClientLogout;
+import message.ClientTurn;
+import message.GameComplete;
+import message.WürfelRoll;
+import message.initiateNewGame;
 
 
 public class ClientController {

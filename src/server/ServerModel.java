@@ -1,7 +1,7 @@
 package server;
 
 import javafx.scene.shape.Circle;
-import message.*;
+import message.ClientLoginSuccess;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
