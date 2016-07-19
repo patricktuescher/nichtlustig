@@ -17,7 +17,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -28,7 +27,6 @@ public class ServerView {
 	protected Stage primaryStage;
 	protected ServerModel model;
 	protected Button exit, ConnectServer, DisconnectServer;
-	protected Circle status;
 	protected Label onlineOffline;
 	protected ImageView serverIMV, serverIMV2, conOnlineIMV, conOfflineIMV;
 	protected MenuItem MIclose, MIdeutsch, MIenglisch;
@@ -61,11 +59,7 @@ public class ServerView {
 		HBox boxForBar = new HBox();
 		//boxForBar.getChildren().add(bar);
 		topPane.setTop(boxForBar);
-		
-		//Offline-Online Status monitor
-		status = new Circle();
-		status.setRadius(30);
-		status.setId("redCircle");
+
 		
 		//Online-Offline-Label
 		onlineOffline = new Label("Offline");

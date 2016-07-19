@@ -8,7 +8,18 @@ import java.net.Socket;
 import java.net.SocketException;
 
 import client.Account;
-import message.*;
+import message.CardClick;
+import message.ChatMessage;
+import message.ClientLogin;
+import message.ClientLoginSuccess;
+import message.ClientLogout;
+import message.ClientLogoutSuccess;
+import message.ClientTurn;
+import message.EvaluateFirstPlayer;
+import message.GameAvailableMessage;
+import message.GameComplete;
+import message.WürfelRoll;
+import message.initiateNewGame;
 
 
 
