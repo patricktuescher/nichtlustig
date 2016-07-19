@@ -18,6 +18,10 @@ public class Würfel implements Serializable {
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = -7272955027696020072L;
+	/**
+	 * 
+	 */
 
 	//Height and Width of cubes
 	final int cubeheight = 60;

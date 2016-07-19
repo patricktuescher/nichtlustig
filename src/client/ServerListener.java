@@ -277,7 +277,7 @@ public class ServerListener extends Thread {
 	public void sendObject(Object obj) {
 		try {
 			out.writeObject(obj);
-			out.reset();
+			//out.reset();
 			out.flush();
 		}
 		catch (IOException e) {
