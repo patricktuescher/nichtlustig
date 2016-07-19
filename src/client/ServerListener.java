@@ -149,11 +149,7 @@ public class ServerListener extends Thread {
 						logger.info("Logout successful");
 						
 					}
-					if(obj instanceof ChatMessage){
-						ChatMessage msg = (ChatMessage) obj;
-						
-						controller.addNewMessage(msg.getMessage());
-					}
+				
 					
 					if(obj instanceof WürfelRoll){
 						WürfelRoll ws = (WürfelRoll) obj;
@@ -205,6 +201,42 @@ public class ServerListener extends Thread {
 						this.sendObject(new EvaluateFirstPlayer(controller.getWürfel()));
 					}
 					
+				}
+
+				catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+
+				catch (IOException e) {
+					// error when server is not there: close the client because living without a server is useless 
+					stopThread = true;
+					System.exit(0);
+				}
+			}
+		}
+	}
+	
+	
+	public void runChat() {
+
+		try {
+			if (in == null) {
+				in = new ObjectInputStream(socket.getInputStream());
+			}
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		while (!stopThread) {
+			{
+				try {
+					obj = in.readObject();
+					if(obj instanceof ChatMessage){
+						ChatMessage msg = (ChatMessage) obj;
+						
+						controller.addNewMessage(msg.getMessage());
+					}
 				}
 
 				catch (ClassNotFoundException e) {
