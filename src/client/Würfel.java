@@ -63,6 +63,13 @@ public class Würfel implements Serializable {
 		return this.farbe;
 	}
 	
+	public boolean equals(Würfel otherWürfel){
+		if(this.getAktAugenzahl() == otherWürfel.getAktAugenzahl() && this.getFarbe().equals(otherWürfel.getFarbe())){
+			return true;
+		}
+		else return false;
+	}
+	
 	/**
 	 * @return ImageView of die
 	 */
