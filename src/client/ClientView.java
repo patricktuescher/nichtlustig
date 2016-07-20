@@ -5,7 +5,6 @@ package client;
 import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

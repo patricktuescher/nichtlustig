@@ -2,8 +2,6 @@ package client;
 
 import java.util.ArrayList;
 
-import com.sun.media.jfxmedia.logging.Logger;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -220,11 +218,7 @@ public class ClientController {
 				cardChecker cc = new cardChecker();
 				sl.getLogger().info("cardChecker erstellt");
 				cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
-//				ArrayList<Card> al = cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
-//				view.cardAL = al;
-//				view.updateCards();
 				sl.getLogger().info("Cards gecheckt");
-				System.out.println(view.cardAL.get(7).getWürfel());
 				model.incrementPlayerRoll();
 				}
 		});

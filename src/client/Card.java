@@ -51,7 +51,7 @@ public class Card implements Serializable{
 	 */
 	
 	private void setWürfel(){
-		this.würfel = new ArrayList();
+		this.würfel = new ArrayList<Würfel>();
 		switch(this.getType()){
 		case "Tod": 	würfel.add(new Würfel(this.Augenzahl, Farbe.Pink));
 						break;
