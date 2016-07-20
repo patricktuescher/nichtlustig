@@ -288,14 +288,14 @@ public class ClientController {
 					
 					//@Override
 					public void handle(ActionEvent arg0) {
-//						cardChecker cc = new cardChecker();
-//						sl.getLogger().info("cardChecker erstellt");
-//						cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
-//						sl.getLogger().info("Cards gecheckt");
+						cardChecker cc = new cardChecker();
+						sl.getLogger().info("cardChecker erstellt");
+						cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
+						sl.getLogger().info("Cards gecheckt");
 						for(int x = 0;x<view.WürfelPL1.size();x++){
 							System.out.println(view.WürfelPL1.get(x));
-						}	
-						for(int x2 = 0;x2<31;x2++){
+						}
+						for(int x2 = 0;x2<5;x2++){
 							System.out.println(view.cardAL.get(x2).check(view.WürfelPL1));
 						}
 						model.resetPlayerRoll();
