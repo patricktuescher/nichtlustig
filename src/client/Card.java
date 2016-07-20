@@ -75,15 +75,14 @@ public class Card implements Serializable{
 		
 		boolean würfel1;
 		boolean würfel2;
-		Würfel würfelObj1 = this.würfel.get(0);
-		
-		if(this.würfel != null && würfel.contains(würfelObj1)){
+			
+		if(this.würfel != null && würfel.contains(this.getWürfel().get(0))){
 			würfel1 = true;
 		}würfel1 = false;
 		
 		if(this.würfel.size()==1){
 			würfel2 = true;
-		}else if(this.würfel != null && würfel.contains(this.würfel.get(1))){
+		}else if(this.würfel != null && würfel.contains(this.getWürfel().get(1))){
 			würfel2 = true;
 		}else{
 			würfel2 = false;
