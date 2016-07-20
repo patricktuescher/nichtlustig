@@ -292,6 +292,12 @@ public class ClientController {
 //						sl.getLogger().info("cardChecker erstellt");
 //						cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
 //						sl.getLogger().info("Cards gecheckt");
+						for(int x = 0;x<view.WürfelPL1.size();x++){
+							System.out.println(view.WürfelPL1.get(x));
+						}	
+						for(int x2 = 0;x2<31;x2++){
+							System.out.println(view.cardAL.get(x2).check(view.WürfelPL1));
+						}
 						model.resetPlayerRoll();
 //						view.b_fertigGame.setDisable(true);
 //						view.b_würfeln.setDisable(true);
@@ -455,7 +461,7 @@ public class ClientController {
 		
 		}
 		System.out.println("hier");
-		selectAllWürfel();
+//		selectAllWürfel();
 		view.b_würfeln.setDisable(true);
 		
 		
@@ -469,7 +475,7 @@ public class ClientController {
 		for(int x = 0; x < view.WürfelPL1.size(); x++){
 			view.WürfelPL1.get(x).click();
 		}
-		server.sendObject(new WürfelRoll(view.WürfelPL1));
+//		server.sendObject(new WürfelRoll(view.WürfelPL1));
 	}
 	
 

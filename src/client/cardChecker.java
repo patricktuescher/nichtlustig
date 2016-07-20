@@ -16,10 +16,10 @@ public class cardChecker {
 		
 		for(int x = 0;x<31;x++){
 		
-			if(allCards.get(x).check(aktuelleWuerfel)){
-			allCards.get(x).getImage().setDisable(false);
-		}else{
-			allCards.get(x).getImage().setDisable(true);
+			if(!allCards.get(x).check(aktuelleWuerfel)){
+			allCards.get(x).getImage().setRotate(180);
+			}else{
+			allCards.get(x).getImage().setRotate(90);
 		}
 		}
 				
