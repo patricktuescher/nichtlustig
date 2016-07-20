@@ -290,7 +290,9 @@ public class ClientController {
 					public void handle(ActionEvent arg0) {
 						cardChecker cc = new cardChecker();
 						sl.getLogger().info("cardChecker erstellt");
-						cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
+						ArrayList<Card> al = cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
+						view.cardAL = al;
+						view.updateCards();
 						sl.getLogger().info("Cards gecheckt");
 						for(int x = 0;x<view.WürfelPL1.size();x++){
 							System.out.println(view.WürfelPL1.get(x));

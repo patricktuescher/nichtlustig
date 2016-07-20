@@ -2,6 +2,8 @@ package client;
 
 import java.util.ArrayList;
 
+import com.sun.media.jfxmedia.logging.Logger;
+
 public class cardChecker {
 	
 	ClientController controller;
@@ -10,18 +12,20 @@ public class cardChecker {
 		
 	}
 	
-	public void cardCheckforDisable(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
+	public ArrayList <Card> cardCheckforDisable(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
 		ArrayList<Card> allCards = cardAL;
 		ArrayList<Würfel> aktuelleWuerfel = wuerfelAL;
 		
 		for(int x = 0;x<31;x++){
 		
 			if(!allCards.get(x).check(aktuelleWuerfel)){
-			allCards.get(x).getImage().setRotate(180);
+				System.out.println(allCards.get(x) + "geht nicht");
 			}else{
 			allCards.get(x).getImage().setRotate(90);
+			System.out.println(allCards.get(x) + "geht");
 		}
 		}
+		return allCards;
 				
 	}
 	
