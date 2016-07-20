@@ -71,37 +71,18 @@ public class Card implements Serializable{
 	}
 	
 	public boolean check(ArrayList<Würfel> würfel){
-		System.out.println(this.würfel);
-		
-		boolean würfel1;
-		boolean würfel2;
-			
-//		if(this.würfel != null && würfel.contains(this.getWürfel().get(0))){
-//			würfel1 = true;
-//		}würfel1 = false;
-//		
-//		if(this.würfel.size()==1){
-//			würfel2 = true;
-//		}else if(this.würfel != null && würfel.contains(this.getWürfel().get(1))){
-//			würfel2 = true;
-//		}else{
-//			würfel2 = false;
-//		}
-//		
-//		if(würfel1 && würfel2){
-//			
-//			return true;	
-//		}
-//			return false;
-		
 		boolean b = true;
-		
 		for(int x = 0; x < this.getWürfel().size(); x++){
-			if(!würfel.contains(this.getWürfel().get(x)))
+			if(!würfel.contains(this.getWürfel().get(x))){
 				b = false;
+				break;
+			}
+			else
+				würfel.remove(this.getWürfel().get(x));
 		}
 		return b;
 		}
+	
 
 
 	public int getAugenzahl() {
