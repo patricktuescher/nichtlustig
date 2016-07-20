@@ -15,15 +15,13 @@ import javafx.scene.paint.Color;
  * All rights reserved.
  * 
  * This class represents a card which can be implemented into the nichtLustig application.
- * @author Manipake Kontroburtüs
+ * @author Nicola Burri
  */
 
 public class Card implements Serializable{
 	
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 9093800489872546795L;
 	private cardType type = cardType.Dino;
 	private int Augenzahl;
@@ -47,6 +45,10 @@ public class Card implements Serializable{
 		logger.fine(this.type.name()+ " Card has been created. Number of card is: " + this.Augenzahl);
 		setWürfel();
 	}
+	
+	/**
+	 * sets the corresponding die to the card, which will be needed to select the card. 
+	 */
 	
 	private void setWürfel(){
 		this.würfel = new ArrayList();
