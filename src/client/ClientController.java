@@ -459,6 +459,7 @@ public class ClientController {
 		model.startCardChecker(view.cardAL, view.WürfelPL1);
 		
 		
+		
 	}
 	public void setWürfelDisabled(boolean disabled){
 		for(int x = 0; x < view.WürfelPL1.size(); x++){
