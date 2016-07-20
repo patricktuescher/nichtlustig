@@ -12,7 +12,7 @@ public class cardChecker {
 		
 	}
 	
-	public ArrayList <Card> cardCheckforDisable(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
+	public void cardCheckforDisable(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
 		ArrayList<Card> allCards = cardAL;
 		ArrayList<Würfel> aktuelleWuerfel = wuerfelAL;
 		
@@ -25,7 +25,7 @@ public class cardChecker {
 			System.out.println(allCards.get(x) + "geht");
 		}
 		}
-		return allCards;
+		
 				
 	}
 	

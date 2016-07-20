@@ -219,9 +219,10 @@ public class ClientController {
 				würfeln();
 				cardChecker cc = new cardChecker();
 				sl.getLogger().info("cardChecker erstellt");
-				ArrayList<Card> al = cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
-				view.cardAL = al;
-				view.updateCards();
+				cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
+//				ArrayList<Card> al = cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
+//				view.cardAL = al;
+//				view.updateCards();
 				sl.getLogger().info("Cards gecheckt");
 				System.out.println(view.cardAL.get(7).getWürfel());
 				model.incrementPlayerRoll();
