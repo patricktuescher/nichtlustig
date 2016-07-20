@@ -217,6 +217,13 @@ public class ClientController {
 			@Override
 			public void handle(ActionEvent arg0) {
 				würfeln();
+				cardChecker cc = new cardChecker();
+				sl.getLogger().info("cardChecker erstellt");
+				ArrayList<Card> al = cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
+				view.cardAL = al;
+				view.updateCards();
+				sl.getLogger().info("Cards gecheckt");
+				System.out.println(view.cardAL.get(7).getWürfel());
 				model.incrementPlayerRoll();
 				}
 		});
@@ -288,19 +295,7 @@ public class ClientController {
 					
 					//@Override
 					public void handle(ActionEvent arg0) {
-						cardChecker cc = new cardChecker();
-						sl.getLogger().info("cardChecker erstellt");
-						ArrayList<Card> al = cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
-						view.cardAL = al;
-						view.updateCards();
-						sl.getLogger().info("Cards gecheckt");
-						System.out.println(view.cardAL.get(7).getWürfel());
-//						for(int x = 0;x<view.WürfelPL1.size();x++){
-//							System.out.println(view.WürfelPL1.get(x));
-//						}
-//						for(int x2 = 0;x2<5;x2++){
-//							System.out.println(view.cardAL.get(x2).check(view.WürfelPL1));
-//						}
+
 						model.resetPlayerRoll();
 //						view.b_fertigGame.setDisable(true);
 //						view.b_würfeln.setDisable(true);
