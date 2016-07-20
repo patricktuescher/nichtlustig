@@ -1,6 +1,7 @@
 package client;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import javafx.scene.effect.InnerShadow;
@@ -27,7 +28,7 @@ public class Card implements Serializable{
 	private int Augenzahl;
 	private transient ImageView image;
 	private Status status;
-	private Würfel würfel;
+	private ArrayList <Würfel> würfel;
 	private final int cardHeight = 90;
 	private final int cardWidth = 90;
 	private transient Logger logger = ServiceLocator.getServiceLocator().getLogger();
@@ -43,6 +44,17 @@ public class Card implements Serializable{
 		this.Augenzahl = Augenzahl;
 		this.status = Status.frei;
 		logger.fine(this.type.name()+ " Card has been created. Number of card is: " + this.Augenzahl);
+	}
+	
+	public void setWürfel(ArrayList<Würfel> würfel){
+		this.würfel = würfel;
+	}
+	
+	public boolean check(ArrayList<Würfel> würfel){
+		if(this.würfel != null && würfel.contains(this.würfel)){
+			return true;
+		}
+		return false;
 	}
 
 
@@ -74,9 +86,6 @@ public class Card implements Serializable{
 	}
 
 
-	public Würfel getWürfel() {
-		return würfel;
-	}
 	public String getType(){
 		return this.type.name();
 	}
