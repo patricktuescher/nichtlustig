@@ -287,9 +287,9 @@ public class ClientController {
 					//@Override
 					public void handle(ActionEvent arg0) {
 						model.resetPlayerRoll();
-						view.b_fertigGame.setDisable(true);
-//						view.turnPL1.setVisible(false);
-//						view.turnPL2.setVisible(true);
+//						view.b_fertigGame.setDisable(true);
+//						view.b_würfeln.setDisable(true);
+						selectAllWürfel();
 						server.sendObject(new ClientTurn(false));
 						}
 				});
@@ -411,9 +411,12 @@ public class ClientController {
 		for(int x = 0; x < view.WürfelPL1.size(); x++){
 			if(!view.WürfelPL1.get(x).isSelected()){
 
+			view.WürfelPL1.get(x).roll();
+			System.out.println(view.WürfelPL1.get(x));
 			}
 			
 			}
+		
 		server.sendObject(new WürfelRoll(view.WürfelPL1));
 		
 	}

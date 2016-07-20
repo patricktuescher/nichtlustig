@@ -22,7 +22,8 @@ public class ServerModel {
 			listener = new Listener(this, portNumber);
 			listener.start();
 			isServerRunning = true;
-			ipAddress = InetAddress.getLocalHost().getHostAddress();
+			ipAddress = "127.0.0.1";
+//			ipAddress = InetAddress.getLocalHost().getHostAddress();
 	
 	
 		}catch (IOException e) {
