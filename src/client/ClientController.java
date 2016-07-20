@@ -288,10 +288,10 @@ public class ClientController {
 					
 					//@Override
 					public void handle(ActionEvent arg0) {
-						cardChecker cc = new cardChecker();
-						sl.getLogger().info("cardChecker erstellt");
-						cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
-						sl.getLogger().info("Cards gecheckt");
+//						cardChecker cc = new cardChecker();
+//						sl.getLogger().info("cardChecker erstellt");
+//						cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
+//						sl.getLogger().info("Cards gecheckt");
 						model.resetPlayerRoll();
 //						view.b_fertigGame.setDisable(true);
 //						view.b_würfeln.setDisable(true);
