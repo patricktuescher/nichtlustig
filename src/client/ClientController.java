@@ -466,5 +466,10 @@ public class ClientController {
 		server.sendObject(new WürfelRoll(view.WürfelPL1));
 	}
 	
+	
+	public void possibleCardsCheck(){
+		
+	}
+	
 
 }

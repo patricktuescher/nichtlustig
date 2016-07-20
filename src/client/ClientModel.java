@@ -24,6 +24,9 @@ public class ClientModel {
 		return b;
 	}
 	
+	
+
+	
 
 
 }

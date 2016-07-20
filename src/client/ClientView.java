@@ -580,6 +580,16 @@ public class ClientView {
 	public String getName(){
 		return "ClientView";
 	}
+	
+	public ArrayList<Würfel> getWürfelPL1(){
+		return this.WürfelPL1;
+	}
+	
+	public ArrayList<Würfel> getWürfelPL2(){
+		return this.WürfelPL2;
+	}
+	
+	
 	public void updateCards(){
 		innerPaneGame= new GridPane();
 		innerPaneGame.setHgap(5);
