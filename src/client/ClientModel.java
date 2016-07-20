@@ -6,6 +6,8 @@ public class ClientModel {
 	
 	private int playerRollCounter = 0;
 	
+	cardChecker cc = new cardChecker();
+	
 	public int getPlayerRollCounter(){
 		return this.playerRollCounter;
 	}
@@ -22,6 +24,10 @@ public class ClientModel {
 				return false;
 		}
 		return b;
+	}
+	
+	public void startCardChecker(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
+		cc.cardCheckforDisable(cardAL, wuerfelAL);
 	}
 	
 	

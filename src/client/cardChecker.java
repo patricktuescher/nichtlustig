@@ -19,8 +19,9 @@ public class cardChecker {
 		for(int x = 0;x<31;x++){
 		
 			if(!allCards.get(x).check(aktuelleWuerfel)){
+				allCards.get(x).getImage().setRotate(0);
 			}else{
-			allCards.get(x).getImage().setRotate(180);
+			allCards.get(x).getImage().setRotate(90);
 		}
 		}
 		

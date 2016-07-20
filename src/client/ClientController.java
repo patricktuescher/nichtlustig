@@ -215,10 +215,10 @@ public class ClientController {
 			@Override
 			public void handle(ActionEvent arg0) {
 				würfeln();
-				cardChecker cc = new cardChecker();
-				sl.getLogger().info("cardChecker erstellt");
-				cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
-				sl.getLogger().info("Cards gecheckt");
+//				cardChecker cc = new cardChecker();
+//				sl.getLogger().info("cardChecker erstellt");
+//				cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
+//				sl.getLogger().info("Cards gecheckt");
 				model.incrementPlayerRoll();
 				}
 		});
@@ -456,6 +456,7 @@ public class ClientController {
 		System.out.println("hier");
 //		selectAllWürfel();
 		view.b_würfeln.setDisable(true);
+		model.startCardChecker(view.cardAL, view.WürfelPL1);
 		
 		
 	}
