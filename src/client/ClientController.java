@@ -27,6 +27,7 @@ public class ClientController {
 	protected ClientModel model;
 	protected ServerListener server;
 
+
 	
 	public ClientController(ClientView view, ClientModel model){
 		this.view = view;
@@ -284,8 +285,13 @@ public class ClientController {
 		///////////////// EventHandler FertigButton - LoginScene //////////////////////////
 				view.b_fertigGame.setOnAction(new EventHandler<ActionEvent>(){
 					
+					
 					//@Override
 					public void handle(ActionEvent arg0) {
+						cardChecker cc = new cardChecker();
+						sl.getLogger().info("cardChecker erstellt");
+						cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
+						sl.getLogger().info("Cards gecheckt");
 						model.resetPlayerRoll();
 //						view.b_fertigGame.setDisable(true);
 //						view.b_würfeln.setDisable(true);
@@ -466,10 +472,8 @@ public class ClientController {
 		server.sendObject(new WürfelRoll(view.WürfelPL1));
 	}
 	
-	
-	public void possibleCardsCheck(){
-		
-	}
+
+
 	
 
 }
