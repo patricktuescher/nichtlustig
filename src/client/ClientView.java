@@ -5,6 +5,7 @@ package client;
 import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -441,10 +442,20 @@ public class ClientView {
 		this.cardAL.add(new Card(cardType.Tod, 6));
 		
 		//Setting corresponding die to the card
+		ArrayList<Würfel> tod = new ArrayList();
+		ArrayList<Würfel> rieb = new ArrayList();
+		ArrayList<Würfel> lemming = new ArrayList();
+		ArrayList<Würfel> prof = new ArrayList();
+		ArrayList<Würfel> yeti = new ArrayList();
 		for(int x = 1;x < 6; x++){
-			if(this.cardAL.get(x).getType().equals("Tod")){
-		//		this.cardAL.get(x).setWürfel(new ArrayList<Würfel>({new Würfel(x, Farbe.Pink)}));
+			switch(this.cardAL.get(x).getType()){
+			case "Tod": tod.add(new Würfel(x, Farbe.Pink));
+			case "Rieb": rieb.addAll(Arrays.asList(new Würfel(x, Farbe.Schwarz), new Würfel(x, Farbe.Schwarz)));
+			case "Prof": prof.addAll(Arrays.asList(new Würfel(x, Farbe.Schwarz), new Würfel(x, Farbe.Weiss), new Würfel(x, Farbe.Rot)));
+			case "Lemming": lemming.addAll(Arrays.asList(new Würfel(x, Farbe.Weiss), new Würfel(x, Farbe.Weiss)));
+			case "Yeti": yeti.addAll(Arrays.asList(new Würfel(x, Farbe.Rot), new Würfel(x, Farbe.Rot)));
 			}
+			tod.add(new Würfel(6, Farbe.Pink));
 		}
 		
 		updateCards();
