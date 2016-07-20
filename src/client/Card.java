@@ -71,7 +71,10 @@ public class Card implements Serializable{
 	}
 	
 	public boolean check(ArrayList<Würfel> würfel){
-		if(this.würfel != null && würfel.containsAll(this.getWürfel())){
+		System.out.println(this.würfel);
+		if(
+//			this.würfel != null &&
+			würfel.containsAll(this.würfel)){
 			return true;
 		}
 		return false;

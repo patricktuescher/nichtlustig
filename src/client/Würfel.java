@@ -63,8 +63,9 @@ public class Würfel implements Serializable {
 		return this.farbe;
 	}
 	
-	public boolean equals(Würfel otherWürfel){
-		if(this.getAktAugenzahl() == otherWürfel.getAktAugenzahl() && this.getFarbe().equals(otherWürfel.getFarbe())){
+	public boolean equals(Object obj){
+		Würfel other = (Würfel)obj;
+		if(this.getAktAugenzahl() == other.getAktAugenzahl() && this.getFarbe().equals(other.getFarbe())){
 			return true;
 		}
 		else return false;

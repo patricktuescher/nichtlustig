@@ -294,12 +294,13 @@ public class ClientController {
 						view.cardAL = al;
 						view.updateCards();
 						sl.getLogger().info("Cards gecheckt");
-						for(int x = 0;x<view.WürfelPL1.size();x++){
-							System.out.println(view.WürfelPL1.get(x));
-						}
-						for(int x2 = 0;x2<5;x2++){
-							System.out.println(view.cardAL.get(x2).check(view.WürfelPL1));
-						}
+						System.out.println(view.cardAL.get(7).getWürfel());
+//						for(int x = 0;x<view.WürfelPL1.size();x++){
+//							System.out.println(view.WürfelPL1.get(x));
+//						}
+//						for(int x2 = 0;x2<5;x2++){
+//							System.out.println(view.cardAL.get(x2).check(view.WürfelPL1));
+//						}
 						model.resetPlayerRoll();
 //						view.b_fertigGame.setDisable(true);
 //						view.b_würfeln.setDisable(true);

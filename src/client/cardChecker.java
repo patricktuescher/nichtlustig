@@ -21,7 +21,7 @@ public class cardChecker {
 			if(!allCards.get(x).check(aktuelleWuerfel)){
 				System.out.println(allCards.get(x) + "geht nicht");
 			}else{
-			allCards.get(x).getImage().setRotate(90);
+			allCards.get(x).getImage().setRotate(180);
 			System.out.println(allCards.get(x) + "geht");
 		}
 		}
