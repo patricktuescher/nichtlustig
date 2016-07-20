@@ -52,6 +52,10 @@ public class Würfel implements Serializable {
 		this.roll();
 
 	}
+	public Würfel(int Augenzahl, Farbe farbe){
+		this.aktAugenzahl = Augenzahl;
+		this.farbe = farbe;
+	}
 	/**
 	 * @return color of the die
 	 */

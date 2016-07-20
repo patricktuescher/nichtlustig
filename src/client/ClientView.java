@@ -439,6 +439,14 @@ public class ClientView {
 			this.cardAL.add(new Card(cardType.Tod, x));
 		}
 		this.cardAL.add(new Card(cardType.Tod, 6));
+		
+		//Setting corresponding die to the card
+		for(int x = 1;x < 6; x++){
+			if(this.cardAL.get(x).getType().equals("Tod")){
+		//		this.cardAL.get(x).setWürfel(new ArrayList<Würfel>({new Würfel(x, Farbe.Pink)}));
+			}
+		}
+		
 		updateCards();
 		
 
