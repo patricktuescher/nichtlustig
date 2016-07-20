@@ -2,6 +2,7 @@ package client;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import javafx.scene.effect.InnerShadow;
@@ -44,10 +45,23 @@ public class Card implements Serializable{
 		this.Augenzahl = Augenzahl;
 		this.status = Status.frei;
 		logger.fine(this.type.name()+ " Card has been created. Number of card is: " + this.Augenzahl);
+		setWürfel();
 	}
 	
-	public void setWürfel(ArrayList<Würfel> würfel){
-		this.würfel = würfel;
+	private void setWürfel(){
+		this.würfel = new ArrayList();
+		switch(this.getType()){
+		case "Tod": 	würfel.add(new Würfel(this.Augenzahl, Farbe.Pink));
+						break;
+		case "Rieb": 	würfel.addAll(Arrays.asList(new Würfel(this.Augenzahl, Farbe.Schwarz), new Würfel(this.Augenzahl, Farbe.Schwarz)));
+						break;
+		case "Prof":	würfel.addAll(Arrays.asList(new Würfel(this.Augenzahl, Farbe.Schwarz), new Würfel(this.Augenzahl, Farbe.Weiss), new Würfel(this.Augenzahl, Farbe.Rot)));
+						break;
+		case "Lemming": würfel.addAll(Arrays.asList(new Würfel(this.Augenzahl, Farbe.Weiss), new Würfel(this.Augenzahl, Farbe.Weiss)));
+						break;
+		case "Yeti": 	würfel.addAll(Arrays.asList(new Würfel(this.Augenzahl, Farbe.Rot), new Würfel(this.Augenzahl, Farbe.Rot)));
+						break;
+		}
 	}
 	
 	public ArrayList<Würfel> getWürfel(){
@@ -121,7 +135,7 @@ public class Card implements Serializable{
 		innerShadow.setChoke(0.5);	
 		this.getImage().setEffect(innerShadow);
 		this.getImage().setId("shadow");
-		logger.info(this.type.name()+ " Card has been clicked on. Number of card is: " + this.Augenzahl);
+		logger.info(this.type.name()+ " Card has been clicked on. Needed die are: " + würfel.toString());
 		
 	}
 	public void clickOther(){
