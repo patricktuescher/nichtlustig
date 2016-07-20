@@ -50,6 +50,10 @@ public class Card implements Serializable{
 		this.würfel = würfel;
 	}
 	
+	public ArrayList<Würfel> getWürfel(){
+		return this.würfel;
+	}
+	
 	public boolean check(ArrayList<Würfel> würfel){
 		if(this.würfel != null && würfel.contains(this.würfel)){
 			return true;
