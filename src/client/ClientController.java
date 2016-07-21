@@ -24,7 +24,7 @@ public class ClientController {
 	protected ClientView view;
 	protected ClientModel model;
 	protected ServerListener server;
-	protected cardChecker cc;
+
 
 
 	
@@ -33,7 +33,7 @@ public class ClientController {
 		this.model = model;
 		sl = ServiceLocator.getServiceLocator();
 		ServerListener.controller = this;
-		cc = new cardChecker();
+
 		
 		
 		///////////////// LOGIN FENSTER //////////////////////////
@@ -444,6 +444,7 @@ public class ClientController {
 			}
 		
 		server.sendObject(new WürfelRoll(view.WürfelPL1));
+
 	}
 	
 	public ArrayList<Würfel> getWürfel(){
@@ -477,8 +478,8 @@ public class ClientController {
 		System.out.println("hier");
 //		selectAllWürfel();
 		view.b_würfeln.setDisable(true);
-//		cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);	
-		model.startCardChecker(view.cardAL, view.WürfelPL1);
+
+//		model.startCardChecker(view.cardAL, view.WürfelPL1);
 //			}
 //			});
 	}
