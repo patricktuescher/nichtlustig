@@ -91,6 +91,12 @@ public class Würfel implements Serializable {
 		return this.aktAugenzahl;
 	}
 	
+	public void setAktAugenzahl(int Augenzahl){
+		this.aktAugenzahl = Augenzahl;
+		image.setImage(new Image("images/" + this.farbe.name()+"_Würfel_"+aktAugenzahl+".png"));
+		this.image.setStyle("");
+	}
+	
 	/**
 	 * rolls the dice which have not been selected
 	 */

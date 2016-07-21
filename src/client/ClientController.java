@@ -335,20 +335,29 @@ public class ClientController {
 	}
 	public void setOpponentDi(ArrayList<Würfel> würfel){
 		sl.getLogger().info("Opponents Die are being set");
-		view.WürfelPL2.clear();
-		view.WürfelPL2.addAll(würfel);
-		view.innertopPaneGame.getChildren().clear();
-		view.innertopPaneGame.getChildren().add(view.turnPL2);
+		
 		for(int x = 0;x<view.WürfelPL2.size();x++){
-			System.out.println(view.WürfelPL2.get(x));
-		if(view.WürfelPL2.get(x).isSelected())
-			view.WürfelPL2.get(x).getImageView().setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);");
-		view.innertopPaneGame.getChildren().add(view.WürfelPL2.get(x).getImageView());
+			view.WürfelPL2.get(x).setAktAugenzahl(würfel.get(x).getAktAugenzahl());
 		}
-		view.innertopPaneGame.getChildren().add(view.rectangleSpace2);
-		view.innertopPaneGame.getChildren().add(view.labelPL2);
+		
+		
+		
+//		view.WürfelPL2.clear();
+//		view.WürfelPL2.addAll(würfel);
+//		view.innertopPaneGame.getChildren().clear();
+//		view.innertopPaneGame.getChildren().add(view.turnPL2);
+//		for(int x = 0;x<view.WürfelPL2.size();x++){
+//		if(view.WürfelPL2.get(x).isSelected())
+//			view.WürfelPL2.get(x).getImageView().setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);");
+//		view.innertopPaneGame.getChildren().add(view.WürfelPL2.get(x).getImageView());
+//		}
+//		view.innertopPaneGame.getChildren().add(view.rectangleSpace2);
+//		view.innertopPaneGame.getChildren().add(view.labelPL2);
 		sl.getLogger().info("Opponent Die changed");
 	}
+	
+	
+	
 	public void opponentSelectCard(Card card){
 		for(int x = 0; x < view.cardAL.size();x++){
 			if(view.cardAL.get(x).equals(card)){
@@ -360,14 +369,15 @@ public class ClientController {
 		}
 	}
 	
+	
 	public void setOpClientTurn(){
 		model.resetPlayerRoll();
-		Platform.runLater(new Runnable(){
-			@Override
-			public void run() {
-				view.topPaneGame.setId("topPaneGamePL2");
-			}
-		});
+//		Platform.runLater(new Runnable(){
+//			@Override
+//			public void run() {
+//				view.topPaneGame.setId("topPaneGamePL2");
+//			}
+//		});
 //		view.turnPL1.setVisible(false);
 //		view.turnPL2.setVisible(true);
 		view.b_würfeln.setDisable(true);
@@ -432,12 +442,12 @@ public class ClientController {
 
 	public synchronized void initiateTurn() {
 		model.resetPlayerRoll();
-		Platform.runLater(new Runnable(){
-			@Override
-			public void run() {
-				view.topPaneGame.setId("topPaneGamePL1");
-			}
-		});
+//		Platform.runLater(new Runnable(){
+//			@Override
+//			public void run() {
+//				view.topPaneGame.setId("topPaneGamePL1");
+//			}
+//		});
 		
 		this.setUpDie();
 		view.b_würfeln.setDisable(false);
