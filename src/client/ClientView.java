@@ -35,7 +35,7 @@ public class ClientView {
 	ClientModel model;
 	protected TextField tf_username;
 	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame, b_backLoginFailed;
-	protected Label labelPL1, labelPL2,turnPL1, turnPL2, loginFailed;
+	protected Label labelPL1, labelPL2, loginFailed;
 	protected GameAvailableImage gai;
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln, sceneLoginFailed;
@@ -44,6 +44,7 @@ public class ClientView {
 	protected Translator t;
 	protected Integer scorePL1, scorePL2;
 	protected Rectangle rectangleSpace,rectangleSpace1, rectangleSpace2;
+	protected ImageView turnPL1, turnPL2;
 	
 	//Height and Width of the cards
 	final int cardheight = 90;
@@ -410,13 +411,22 @@ public class ClientView {
 		labelPL2.setId("lb-labelscore");
 		
 		
-		// Label Turn PL1
-		turnPL1 = new Label("Your turn");
-		turnPL1.setVisible(false);
+//		// Label Turn PL1
+//		turnPL1 = new Label("Your turn");
+//		turnPL1.setVisible(false);
+//		
+//		// Label Turn PL2
+//		turnPL2 = new Label("opponent's turn");
+//		turnPL2.setVisible(false);
 		
-		// Label Turn PL2
-		turnPL2 = new Label("opponent's turn");
-		turnPL2.setVisible(false);
+		//ImageView Turn PL1
+		
+		turnPL1 = new ImageView();
+		
+		//ImageView Turn PL2
+		
+		turnPL2 = new ImageView();
+
 		
 		//Scene Game
 		sceneGame = new Scene(topPaneGame, 1200, 850);
@@ -487,6 +497,7 @@ public class ClientView {
 		//added nodes to BottomPane
 		bottomPaneGameCube.getChildren().addAll(turnPL1, b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_fertigGame,rectangleSpace1,labelPL1);
 		
+	
 		
 		//////////////////CUBES PL2 (SecondPlayer) //////////////////////////
 		
