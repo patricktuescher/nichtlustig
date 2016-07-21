@@ -115,7 +115,7 @@ public class ServerView {
 		
 	
 		//Exit button
-		exit = new Button("Exit");
+		exit = new Button(t.getString("Button.exit"));
 		exit.setId("ServerButtons");
 		exit.setPrefWidth(500);
 		
