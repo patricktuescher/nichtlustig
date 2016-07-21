@@ -337,7 +337,7 @@ public class ClientController {
 	}
 	
 	
-	public synchronized void setOpponentDi(ArrayList<Würfel> würfel){
+	public void setOpponentDi(ArrayList<Würfel> würfel){
 		sl.getLogger().info("Opponents Die are being set");
 		
 				
