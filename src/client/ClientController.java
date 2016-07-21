@@ -294,7 +294,7 @@ public class ClientController {
 						model.resetPlayerRoll();
 //						view.b_fertigGame.setDisable(true);
 //						view.b_würfeln.setDisable(true);
-						selectAllWürfel();
+//						selectAllWürfel();
 						server.sendObject(new ClientTurn(false));
 						}
 				});
@@ -335,9 +335,10 @@ public class ClientController {
 	}
 	public void setOpponentDi(ArrayList<Würfel> würfel){
 		sl.getLogger().info("Opponents Die are being set");
-		
-		for(int x = 0;x<view.WürfelPL2.size();x++){
+		int x = 0;
+		for(x = 0;x<view.WürfelPL2.size();x++){
 			view.WürfelPL2.get(x).setAktAugenzahl(würfel.get(x).getAktAugenzahl());
+		
 		}
 		
 		
@@ -427,14 +428,13 @@ public class ClientController {
 			if(!view.WürfelPL1.get(x).isSelected()){
 
 			view.WürfelPL1.get(x).roll();
-			System.out.println(view.WürfelPL1.get(x));
 			}
 			
 			}
 		
 		server.sendObject(new WürfelRoll(view.WürfelPL1));
-		
 	}
+	
 	public ArrayList<Würfel> getWürfel(){
 		return view.WürfelPL1;
 	}

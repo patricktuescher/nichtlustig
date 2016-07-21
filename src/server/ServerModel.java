@@ -8,7 +8,7 @@ import message.ClientLoginSuccess;
 public class ServerModel {
 	
 	private Listener listener;
-	private static final int portNumber = 8080;
+	private static final int portNumber = 55555;
 	private boolean isServerRunning = false;
 	private String ipAddress;
 	private ArrayList<ClientConnection> clientList = new ArrayList<>();

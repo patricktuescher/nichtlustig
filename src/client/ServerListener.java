@@ -26,7 +26,7 @@ import message.WürfelRoll;
 
 public class ServerListener extends Thread {
 
-	private static final int portNumber = 8080;
+	private static final int portNumber = 55555;
 
 	private static String hostAddress; 
 	private static Socket socket;
