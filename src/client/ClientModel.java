@@ -2,6 +2,8 @@ package client;
 
 import java.util.ArrayList;
 
+import javafx.application.Platform;
+
 public class ClientModel {
 	
 	private int playerRollCounter = 0;
@@ -27,8 +29,8 @@ public class ClientModel {
 	}
 	
 	public void startCardChecker(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
-		cc.cardCheckforDisable(cardAL, wuerfelAL);
-	}
+					cc.cardCheckforDisable(cardAL, wuerfelAL);	
+		}
 	
 	
 

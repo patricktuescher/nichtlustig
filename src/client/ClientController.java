@@ -24,6 +24,7 @@ public class ClientController {
 	protected ClientView view;
 	protected ClientModel model;
 	protected ServerListener server;
+	protected cardChecker cc;
 
 
 	
@@ -32,6 +33,7 @@ public class ClientController {
 		this.model = model;
 		sl = ServiceLocator.getServiceLocator();
 		ServerListener.controller = this;
+		cc = new cardChecker();
 		
 		
 		///////////////// LOGIN FENSTER //////////////////////////
@@ -333,12 +335,17 @@ public class ClientController {
 	public void addNewMessage(String s){
 		view.chatWindow.appendText(s+"\n");
 	}
+	
+	
 	public void setOpponentDi(ArrayList<Würfel> würfel){
 		sl.getLogger().info("Opponents Die are being set");
+		
+				
 		for(int x = 0;x<view.WürfelPL2.size();x++){
 			view.WürfelPL2.get(x).setAktAugenzahl(würfel.get(x).getAktAugenzahl());
+			}
+	
 		
-		}
 		
 		
 		
@@ -414,11 +421,17 @@ public class ClientController {
 	}
 	
 	public void setUpDie(){
-		for(int x = 0; x < view.WürfelPL1.size(); x++){
-			view.WürfelPL1.get(x).resetWürfel();
-			
+		Platform.runLater(new Runnable(){
+			@Override
+			public void run(){
+				for(int x = 0; x < view.WürfelPL1.size(); x++){
+					view.WürfelPL1.get(x).resetWürfel();
+					
+					}
+				setWürfelDisabled(true);
 			}
-		this.setWürfelDisabled(true);
+		});
+		
 	}
 	
 	public void würfeln(){
@@ -444,10 +457,9 @@ public class ClientController {
 //			@Override
 //			public void run() {
 //				view.topPaneGame.setId("topPaneGamePL1");
-//			}
-//		});
+	
 		
-		this.setUpDie();
+		setUpDie();
 		view.b_würfeln.setDisable(false);
 		
 		while(model.getPlayerRollCounter() == 0){
@@ -465,11 +477,13 @@ public class ClientController {
 		System.out.println("hier");
 //		selectAllWürfel();
 		view.b_würfeln.setDisable(true);
+//		cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);	
 		model.startCardChecker(view.cardAL, view.WürfelPL1);
-		
-		
-		
+//			}
+//			});
 	}
+	
+	
 	public void setWürfelDisabled(boolean disabled){
 		for(int x = 0; x < view.WürfelPL1.size(); x++){
 			view.WürfelPL1.get(x).getImageView().setDisable(disabled);

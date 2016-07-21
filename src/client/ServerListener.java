@@ -162,12 +162,12 @@ public class ServerListener extends Thread {
 					if(obj instanceof WürfelRoll){
 						WürfelRoll ws = (WürfelRoll) obj;
 						ArrayList<Würfel> würfel = ws.getWürfel();
-//						Platform.runLater(new Runnable() {
-//							   @Override
-//							   public void run() {
+						Platform.runLater(new Runnable() {
+							   @Override
+							   public void run() {
 								   controller.setOpponentDi(würfel);
-//							   }
-//							});
+							   }
+							});
 						
 					}
 					
