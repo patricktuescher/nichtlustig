@@ -349,7 +349,7 @@ public class ClientView {
 
 		//HBox Game Top
 		innertopPaneGame = new HBox();
-		innertopPaneGame.setPadding(new Insets(20,0,0,240));
+		innertopPaneGame.setPadding(new Insets(20,0,0,320));
 		innertopPaneGame.setMinHeight(100);
 		innertopPaneGame.setMaxHeight(100);
 		innertopPaneGame.setSpacing(15);
@@ -363,7 +363,7 @@ public class ClientView {
 		
 		//HBox Game Bottom Cube
 		HBox bottomPaneGameCube = new HBox();
-		bottomPaneGameCube.setPadding(new Insets(20,100,20,200));
+		bottomPaneGameCube.setPadding(new Insets(20,0,20,200));
 		bottomPaneGameCube.setSpacing(15);
 		bottomPaneGame.setTop(bottomPaneGameCube);
 
@@ -400,6 +400,7 @@ public class ClientView {
 		int scorePL1= 15; // needs to be adjusted
 		labelPL1 = new Label(""+scorePL1);
 		labelPL1.setMinSize(50, 50);
+		labelPL1.setPadding(new Insets(0,0,0,130));
 		labelPL1.setId("lb-labelscore");
 		
 
@@ -408,6 +409,7 @@ public class ClientView {
 		int scorePL2 = 33; // needs to be adjusted
 		labelPL2 = new Label(""+scorePL2);
 		labelPL2.setMinSize(50, 50);
+		labelPL2.setPadding(new Insets(0,0,0,260));
 		labelPL2.setId("lb-labelscore");
 		
 		
@@ -495,7 +497,7 @@ public class ClientView {
 		
 		
 		//added nodes to BottomPane
-		bottomPaneGameCube.getChildren().addAll(turnPL1, b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_fertigGame,rectangleSpace1,labelPL1);
+		bottomPaneGameCube.getChildren().addAll(turnPL1, b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_fertigGame,labelPL1);
 		
 	
 		
@@ -531,7 +533,7 @@ public class ClientView {
 		rectangleSpace2.setId("spaceRectangle");
 		
 		//added nodes to innertopPaneGame
-		innertopPaneGame.getChildren().addAll(turnPL2,cubeViewPinkPL2.getImageView(), cubeViewWhite1PL2.getImageView(), cubeViewWhite2PL2.getImageView(), cubeViewBlack1PL2.getImageView(), cubeViewBlack2PL2.getImageView(), cubeViewRed1PL2.getImageView(), cubeViewRed2PL2.getImageView(),rectangleSpace2,labelPL2);
+		innertopPaneGame.getChildren().addAll(turnPL2,cubeViewPinkPL2.getImageView(), cubeViewWhite1PL2.getImageView(), cubeViewWhite2PL2.getImageView(), cubeViewBlack1PL2.getImageView(), cubeViewBlack2PL2.getImageView(), cubeViewRed1PL2.getImageView(), cubeViewRed2PL2.getImageView(),labelPL2);
 				
 		//Chat
 		
