@@ -337,7 +337,7 @@ public class ClientController {
 	}
 	
 	
-	public void setOpponentDi(ArrayList<Würfel> würfel){
+	public synchronized void setOpponentDi(ArrayList<Würfel> würfel){
 		sl.getLogger().info("Opponents Die are being set");
 		
 				
@@ -479,7 +479,7 @@ public class ClientController {
 //		selectAllWürfel();
 		view.b_würfeln.setDisable(true);
 
-//		model.startCardChecker(view.cardAL, view.WürfelPL1);
+		model.startCardChecker(view.cardAL, view.WürfelPL1);
 //			}
 //			});
 	}
