@@ -152,7 +152,9 @@ public class ClientConnection extends Thread {
 		try {
 			if (!socket.isClosed()) {
 				out.writeObject(obj);
-				out.reset();
+				if(out != null){
+					out.reset();
+				}
 				out.flush();
 			}
 		}

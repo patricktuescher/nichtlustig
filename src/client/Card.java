@@ -79,7 +79,8 @@ public class Card implements Serializable{
 			}
 			else
 				würfel.remove(this.getWürfel().get(x));
-		}
+			}
+		this.setWürfel();
 		return b;
 		}
 	

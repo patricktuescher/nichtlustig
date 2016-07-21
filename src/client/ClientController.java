@@ -335,8 +335,7 @@ public class ClientController {
 	}
 	public void setOpponentDi(ArrayList<Würfel> würfel){
 		sl.getLogger().info("Opponents Die are being set");
-		int x = 0;
-		for(x = 0;x<view.WürfelPL2.size();x++){
+		for(int x = 0;x<view.WürfelPL2.size();x++){
 			view.WürfelPL2.get(x).setAktAugenzahl(würfel.get(x).getAktAugenzahl());
 		
 		}
@@ -352,7 +351,6 @@ public class ClientController {
 //			view.WürfelPL2.get(x).getImageView().setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);");
 //		view.innertopPaneGame.getChildren().add(view.WürfelPL2.get(x).getImageView());
 //		}
-//		view.innertopPaneGame.getChildren().add(view.rectangleSpace2);
 //		view.innertopPaneGame.getChildren().add(view.labelPL2);
 		sl.getLogger().info("Opponent Die changed");
 	}
@@ -455,6 +453,7 @@ public class ClientController {
 		while(model.getPlayerRollCounter() == 0){
 		setWürfelDisabled(true);
 		view.b_fertigGame.setDisable(true);
+
 		}
 		
 		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(view.WürfelPL1)){
