@@ -1,10 +1,10 @@
 package server;
 
 
+import client.ServiceLocator;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -14,21 +14,26 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import tools.Translator;
 
 
 public class ServerView {
 	
 	protected Stage primaryStage;
 	protected ServerModel model;
-	protected Button exit, ConnectServer, DisconnectServer;
+	protected Button exit, ConnectServer, DisconnectServer, languageChange;
 	protected Label onlineOffline;
 	protected ImageView serverIMV, serverIMV2, conOnlineIMV, conOfflineIMV;
 	protected MenuItem MIclose, MIdeutsch, MIenglisch;
 	protected GridPane upperPane;
+	protected Translator t;
+	protected ServiceLocator sl;
 	
 	public ServerView(Stage primaryStage, ServerModel model){
 		this.primaryStage = primaryStage;
 		this.model = model;
+		sl = ServiceLocator.getServiceLocator();
+		t = sl.getTranslator();
 	
 		
 		//Setting up BorderPane
@@ -90,21 +95,25 @@ public class ServerView {
 		
 		
 		//Connect- and Disconnect Buttons
-		ConnectServer = new Button("Connect to Server");
+		ConnectServer = new Button(t.getString("Button.ConnectServer"));
 		ConnectServer.setId("ServerButtons");
 		ConnectServer.setPrefWidth(500);
-		DisconnectServer = new Button("Disconnect from Server");
+		DisconnectServer = new Button(t.getString("Button.DisconnectServer"));
 		DisconnectServer.setId("ServerButtons");
 		DisconnectServer.setPrefWidth(500);
 		
 		//language choiceBox
-		ChoiceBox<String> choicebox = new ChoiceBox<>();
-		choicebox.getItems().addAll("choose language","deutsch","englisch");
-		choicebox.setPrefSize(500, 10);
-		choicebox.setValue("choose language");
-		choicebox.setId("ServerButtons");
+//		ChoiceBox<String> choicebox = new ChoiceBox<>();
+//		choicebox.getItems().addAll("choose language","deutsch","englisch");
+//		choicebox.setPrefSize(500, 10);
+//		choicebox.setValue("choose language");
+//		choicebox.setId("ServerButtons");
 		
+		languageChange = new Button (t.getString("Button.languageChange"));
+		languageChange.setId("ServerButtons");
+		languageChange.setPrefWidth(500);
 		
+	
 		//Exit button
 		exit = new Button("Exit");
 		exit.setId("ServerButtons");
@@ -128,7 +137,7 @@ public class ServerView {
 		GridPane bottomPane = new GridPane();
 		bottomPane.setAlignment(Pos.TOP_CENTER);
 		bottomPane.setVgap(10);
-		bottomPane.add(choicebox,0,0);
+		bottomPane.add(languageChange,0,0);
 		bottomPane.add(ConnectServer, 0, 1);
 		bottomPane.add(DisconnectServer, 0, 2);
 		bottomPane.add(exit, 0, 3);
@@ -147,6 +156,10 @@ public class ServerView {
 		primaryStage.setResizable(false);
 		primaryStage.getIcons().add(new Image("images/ServerIcon.png"));
 		primaryStage.setScene(scene);
+	}
+	
+	public String getName(){
+		return "ServerView";
 	}
 	
 	public void start(){
