@@ -74,50 +74,49 @@ public class Card implements Serializable{
 	
 	
 	
-	public void check(ArrayList<Würfel> würfel, int summe){
+	public void check(ArrayList<Würfel> wuerfeltoTest, int summe){
 		boolean b = true;
-	
-		System.out.println(summe);
-		System.out.println(this.getType());
-		if(this.getType().equals(type.Dino)){
-			switch(this.getAugenzahl()){
-			case 1:	if(summe != 20){
+		ArrayList<Würfel> würfelPL1 = new ArrayList<Würfel>();
+		würfelPL1.addAll(wuerfeltoTest);
+		int auswahl = this.getAugenzahl();
+		if(this.getType().equals(cardType.Dino.toString())){
+			switch(auswahl){
+			case 1:	if(summe <= 24){
 					b = false;
-					break;
-					}
-			case 2:	if(summe != 21){
+					}break;
+					
+			case 2:	if(summe <= 25){
 					b = false;
-					break;
-					}
-			case 3:	if(summe != 22){
+					}break;
+			
+			case 3:	if(summe <= 26){
 					b = false;
-					break;
-					}
-			case 4:	if(summe != 23){
+					}break;
+					
+			case 4:	if(summe <= 27){
 					b = false;
-					break;
-					}
-			case 5:	if(summe != 24){
+					}break;
+					
+			case 5:	if(summe <= 28){
 					b = false;
-					break;
-					}
+					}break;
+					
 			}
 		}else{
 				
 		for(int x = 0; x < this.getWürfel().size(); x++){
-			if(!würfel.contains(this.getWürfel().get(x))){
+			if(!würfelPL1.contains(this.getWürfel().get(x))){
 				b = false;
 				break;
 			}
 			else
-				würfel.remove(this.getWürfel().get(x));
+				würfelPL1.remove(this.getWürfel().get(x));
 			}
-		
+		}
 		if(b){
 			this.getImage().setVisible(true);
 		}else{
 			this.getImage().setVisible(false);
-		}
 		}
 	}
 	
