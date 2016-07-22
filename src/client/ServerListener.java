@@ -64,6 +64,8 @@ public class ServerListener extends Thread {
 				
 				this.start();
 				
+			}else{
+				this.sendObject(new ClientLogin(acc));
 			}
 			
 		}
@@ -129,6 +131,7 @@ public class ServerListener extends Thread {
 								   @Override
 								   public void run() {
 									controller.getAlert();
+									
 							
 										
 										

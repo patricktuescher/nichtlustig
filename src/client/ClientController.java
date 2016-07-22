@@ -423,6 +423,7 @@ public class ClientController {
 	alert.initStyle(StageStyle.TRANSPARENT);
 	alert.setContentText("Oops... your account couldn't be verified. Please make sure you enter valid credentials");
 	alert.showAndWait();
+	this.setLoginScene();
 	}
 	
 	public void setUpDie(){
