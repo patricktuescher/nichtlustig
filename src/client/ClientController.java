@@ -225,6 +225,8 @@ public class ClientController {
 //				sl.getLogger().info("Cards gecheckt");
 				model.incrementPlayerRoll();
 				System.out.println(getWürfel());
+				model.startCardChecker(view.cardAL, getWürfel());
+				checkTurn();
 				}
 		});
 	
@@ -302,7 +304,7 @@ public class ClientController {
 //						view.b_fertigGame.setDisable(true);
 //						view.b_würfeln.setDisable(true);
 //						selectAllWürfel();
-						model.startCardChecker(view.cardAL, getWürfel());
+//						model.startCardChecker(view.cardAL, getWürfel());
 						System.out.println(getWürfel());
 						server.sendObject(new ClientTurn(false));
 						}
@@ -460,32 +462,44 @@ public class ClientController {
 	}
 
 
-	public synchronized void initiateTurn() {
+	public void initiateTurn() {
 		view.turnPL1.setVisible(true);
 		view.turnPL2.setVisible(false);
 		model.resetPlayerRoll();
 		setUpDie();
 		view.b_würfeln.setDisable(false);
-		
-		while(model.getPlayerRollCounter() == 0){
-		setWürfelDisabled(true);
-		view.b_fertigGame.setDisable(true);
-
-		}
-		
-		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(this.getWürfel())){
-		setWürfelDisabled(false);	
-		view.b_würfeln.setDisable(false);
-		view.b_fertigGame.setDisable(false);
-		
-		}
-		System.out.println("hier");
+//		while(model.getPlayerRollCounter() == 0){
+//		setWürfelDisabled(true);
+//		view.b_fertigGame.setDisable(true);
+//
+//		}
+//		
+//		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(this.getWürfel())){
+//		setWürfelDisabled(false);	
+//		view.b_würfeln.setDisable(false);
+//		view.b_fertigGame.setDisable(false);
+//		
+//		}
+//		System.out.println("hier");
 //		selectAllWürfel();
-		view.b_würfeln.setDisable(true);
+//		view.b_würfeln.setDisable(true);
+
+
 		
-
-
-
+	}
+	
+	public void checkTurn(){
+		if(model.getPlayerRollCounter() == 0){
+			setWürfelDisabled(true);
+			view.b_fertigGame.setDisable(true);
+		}else if(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(getWürfel())){
+			setWürfelDisabled(false);
+			view.b_würfeln.setDisable(false);
+			view.b_fertigGame.setDisable(false);
+		}else{
+			view.b_würfeln.setDisable(true);
+			
+		}
 	}
 	
 	
