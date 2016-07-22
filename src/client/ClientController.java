@@ -257,13 +257,14 @@ public class ClientController {
 		
 		///////////////// EventHandler chosen cubes //////////////////////////
 		
-		for(int i = 0; i < view.WürfelPL1.size();i++){
+		for(int i = 0; i < this.getWürfel().size();i++){
 			final int d = i;
-			view.WürfelPL1.get(i).getImageView().setOnMouseClicked(new EventHandler<MouseEvent>(){
+			this.getWürfel().get(i).getImageView().setOnMouseClicked(new EventHandler<MouseEvent>(){
 
 				@Override
 				public void handle(MouseEvent event) {
-					view.WürfelPL1.get(d).click();
+					getWürfel().get(d).click();
+					
 					
 				}
 				}
@@ -280,6 +281,7 @@ public class ClientController {
 					public void handle(ActionEvent arg0) {
 						server.sendObject(new ChatMessage(view.chatInputWindow.getText()));
 						view.chatInputWindow.clear();
+//						model.startCardChecker(view.cardAL, getWürfel());
 						
 
 					}
@@ -423,8 +425,8 @@ public class ClientController {
 		Platform.runLater(new Runnable(){
 			@Override
 			public void run(){
-				for(int x = 0; x < view.WürfelPL1.size(); x++){
-					view.WürfelPL1.get(x).resetWürfel();
+				for(int x = 0; x < getWürfel().size(); x++){
+					getWürfel().get(x).resetWürfel();
 					
 					}
 				setWürfelDisabled(true);
@@ -434,20 +436,22 @@ public class ClientController {
 	}
 	
 	public void würfeln(){
-		for(int x = 0; x < view.WürfelPL1.size(); x++){
-			if(!view.WürfelPL1.get(x).isSelected()){
+		sl.getLogger().info("Würfel-Methode aufgerufen");
+		for(int x = 0; x < this.getWürfel().size(); x++){
+			if(!this.getWürfel().get(x).isSelected()){
 
-			view.WürfelPL1.get(x).roll();
+			this.getWürfel().get(x).roll();
 			}
 			
 			}
 		
-		server.sendObject(new WürfelRoll(view.WürfelPL1));
+		server.sendObject(new WürfelRoll(this.getWürfel()));
+		
 
 	}
 	
 	public ArrayList<Würfel> getWürfel(){
-		return view.WürfelPL1;
+		return view.getWürfelPL1();
 	}
 
 
@@ -462,7 +466,7 @@ public class ClientController {
 
 		}
 		
-		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(view.WürfelPL1)){
+		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(this.getWürfel())){
 		setWürfelDisabled(false);	
 		view.b_würfeln.setDisable(false);
 		view.b_fertigGame.setDisable(false);
@@ -480,13 +484,15 @@ public class ClientController {
 	
 	
 	public void setWürfelDisabled(boolean disabled){
-		for(int x = 0; x < view.WürfelPL1.size(); x++){
-			view.WürfelPL1.get(x).getImageView().setDisable(disabled);
+		for(int x = 0; x < this.getWürfel().size(); x++){
+			this.getWürfel().get(x).getImageView().setDisable(disabled);
 		}
 	}
+	
+	
 	public void selectAllWürfel(){
-		for(int x = 0; x < view.WürfelPL1.size(); x++){
-			view.WürfelPL1.get(x).click();
+		for(int x = 0; x < this.getWürfel().size(); x++){
+			this.getWürfel().get(x).click();
 		}
 //		server.sendObject(new WürfelRoll(view.WürfelPL1));
 	}
