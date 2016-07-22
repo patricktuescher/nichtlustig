@@ -81,24 +81,25 @@ public class Card implements Serializable{
 		würfelPL1.addAll(wuerfeltoTest);
 		int auswahl = this.getAugenzahl();
 		if(this.getType().equals(cardType.Dino.toString())){
+			summe = summe - würfelPL1.get(0).getAktAugenzahl();
 			switch(auswahl){
-			case 1:	if(summe <= 24){
+			case 1:	if(summe != 24){
 					b = false;
 					}break;
 					
-			case 2:	if(summe <= 25){
+			case 2:	if(summe != 25){
 					b = false;
 					}break;
 			
-			case 3:	if(summe <= 26){
+			case 3:	if(summe != 26){
 					b = false;
 					}break;
 					
-			case 4:	if(summe <= 27){
+			case 4:	if(summe != 27){
 					b = false;
 					}break;
 					
-			case 5:	if(summe <= 28){
+			case 5:	if(summe != 28){
 					b = false;
 					}break;
 					
