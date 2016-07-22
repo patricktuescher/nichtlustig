@@ -31,8 +31,15 @@ public class ClientModel {
 	public void startCardChecker(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
 		ArrayList<Würfel> wuerfeltoTest = new ArrayList<Würfel>();
 		wuerfeltoTest.addAll(wuerfelAL);
+		int summe = 0;
+		int w = 0;
+		while(w<wuerfelAL.size()){
+			summe = summe + wuerfelAL.get(w).getAktAugenzahl();
+			w++;
+		}
+		
 		for(int x = 0;x<31;x++){
-			cardAL.get(x).check(wuerfeltoTest);
+			cardAL.get(x).check(wuerfeltoTest, summe);
 		}
 		
 		

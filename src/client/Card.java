@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
+import javax.sound.sampled.AudioFileFormat.Type;
+
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -70,8 +72,37 @@ public class Card implements Serializable{
 		return this.würfel;
 	}
 	
-	public void check(ArrayList<Würfel> würfel){
+	
+	
+	public void check(ArrayList<Würfel> würfel, int summe){
 		boolean b = true;
+	
+		System.out.println(summe);
+		System.out.println(this.getType());
+		if(this.getType().equals(type.Dino)){
+			switch(this.getAugenzahl()){
+			case 1:	if(summe != 20){
+					b = false;
+					break;
+					}
+			case 2:	if(summe != 21){
+					b = false;
+					break;
+					}
+			case 3:	if(summe != 22){
+					b = false;
+					break;
+					}
+			case 4:	if(summe != 23){
+					b = false;
+					break;
+					}
+			case 5:	if(summe != 24){
+					b = false;
+					break;
+					}
+			}
+		}else{
 				
 		for(int x = 0; x < this.getWürfel().size(); x++){
 			if(!würfel.contains(this.getWürfel().get(x))){
@@ -88,6 +119,7 @@ public class Card implements Serializable{
 			this.getImage().setVisible(false);
 		}
 		}
+	}
 	
 	
 
