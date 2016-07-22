@@ -350,7 +350,7 @@ public class ClientView {
 
 		//HBox Game Top aka Spieler 2 Bereich
 		innertopPaneGame = new HBox();
-		innertopPaneGame.setPadding(new Insets(15,0,0,50));
+		innertopPaneGame.setPadding(new Insets(15,0,0,60));
 		innertopPaneGame.setMinHeight(100);
 		innertopPaneGame.setMaxHeight(100);
 		innertopPaneGame.setSpacing(15);
@@ -393,7 +393,7 @@ public class ClientView {
 		b_fertigGame.setId("b-login");
 		
 		// Space (between send & back button)
-		rectangleSpace = new Rectangle(90,50);
+		rectangleSpace = new Rectangle(95,50);
 		rectangleSpace.setId("spaceRectangle");
 		
 		
@@ -495,7 +495,7 @@ public class ClientView {
 		b_würfeln.setId("b-login");
 		
 		// space (between done botton & score label)
-		rectangleSpace1 = new Rectangle(80,50);
+		rectangleSpace1 = new Rectangle(70,50);
 		rectangleSpace1.setId("spaceRectangle");
 		
 		
@@ -532,7 +532,7 @@ public class ClientView {
 		WürfelPL2.add(cubeViewRed2PL2);
 		
 		// space (between dice and score label on "opponent's" side)
-		rectangleSpace2 = new Rectangle(210,50);
+		rectangleSpace2 = new Rectangle(220,50);
 		rectangleSpace2.setId("spaceRectangle");
 		
 		//added nodes to innertopPaneGame
