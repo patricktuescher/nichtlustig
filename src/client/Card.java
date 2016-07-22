@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import javax.sound.sampled.AudioFileFormat.Type;
 
+import javafx.application.Platform;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -114,8 +115,11 @@ public class Card implements Serializable{
 			}
 		}
 		if(b){
+//			this.getImage().setOpacity(0.5);
 			this.getImage().setVisible(true);
 		}else{
+//			getImage().setOpacity(0.5);
+//			this.getImage().setOpacity(0.5);
 			this.getImage().setVisible(false);
 		}
 	}
