@@ -452,15 +452,7 @@ public class ClientController {
 
 
 	public synchronized void initiateTurn() {
-		new Thread(new Runnable(){
-		@Override public void run(){
-			
-		
 		model.resetPlayerRoll();
-
-
-	
-		
 		setUpDie();
 		view.b_würfeln.setDisable(false);
 		
@@ -480,18 +472,10 @@ public class ClientController {
 //		selectAllWürfel();
 		view.b_würfeln.setDisable(true);
 		
-		Platform.runLater(new Runnable(){
-			@Override
-			public void run() {
-			model.startCardChecker(view.cardAL, view.WürfelPL1);
+//				model.startCardChecker(view.cardAL, view.WürfelPL1);
 
-		};
-		
-//		model.startCardChecker(view.cardAL, view.WürfelPL1);
-		
-			});
-			}
-		}).start();
+
+
 	}
 	
 	
