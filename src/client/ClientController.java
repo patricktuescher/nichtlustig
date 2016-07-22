@@ -387,8 +387,8 @@ public class ClientController {
 //				view.topPaneGame.setId("topPaneGamePL2");
 //			}
 //		});
-//		view.turnPL1.setVisible(false);
-//		view.turnPL2.setVisible(true);
+		view.turnPL1.setVisible(false);
+		view.turnPL2.setVisible(true);
 		view.b_würfeln.setDisable(true);
 		view.b_fertigGame.setDisable(true);
 	}
@@ -461,6 +461,8 @@ public class ClientController {
 
 
 	public synchronized void initiateTurn() {
+		view.turnPL1.setVisible(true);
+		view.turnPL2.setVisible(false);
 		model.resetPlayerRoll();
 		setUpDie();
 		view.b_würfeln.setDisable(false);
