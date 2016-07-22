@@ -7,7 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.StageStyle;
 import message.CardClick;
 import message.ChatMessage;
 import message.ClientLogout;
@@ -415,9 +417,11 @@ public class ClientController {
 	}
 	
 	public void getAlert(){
-   	Alert alert = new Alert(AlertType.INFORMATION);
+   	Alert alert = new Alert(AlertType.ERROR);
 	alert.setTitle("Login failure");
-	alert.setHeaderText("Login not sucessfull");
+	alert.setHeaderText("Login failed");
+	alert.initStyle(StageStyle.TRANSPARENT);
+	alert.setContentText("Oops... your account couldn't be verified. Please make sure you enter valid credentials");
 	alert.showAndWait();
 	}
 	
