@@ -373,9 +373,10 @@ public class ClientController {
 	public void opponentSelectCard(Card card){
 		for(int x = 0; x < view.cardAL.size();x++){
 			if(view.cardAL.get(x).equals(card)){
-				card.clickOther();
-				view.cardAL.set(x, card);
-				view.updateCards();
+				view.cardAL.get(x).clickOther();
+//				card.clickOther();
+//				view.cardAL.set(x, card);
+//				view.updateCards();
 				break;
 			}
 		}
