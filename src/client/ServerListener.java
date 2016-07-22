@@ -165,7 +165,9 @@ public class ServerListener extends Thread {
 						Platform.runLater(new Runnable() {
 							   @Override
 							   public void run() {
+								   
 								   controller.setOpponentDi(würfel);
+								   
 							   }
 							});
 						

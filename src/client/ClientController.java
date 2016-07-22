@@ -339,13 +339,12 @@ public class ClientController {
 	
 	public void setOpponentDi(ArrayList<Würfel> würfel){
 		sl.getLogger().info("Opponents Die are being set");
-		
-				
+			
 		for(int x = 0;x<view.WürfelPL2.size();x++){
 			view.WürfelPL2.get(x).setAktAugenzahl(würfel.get(x).getAktAugenzahl());
-			}
-	
 		
+	
+		}
 		
 		
 		
@@ -453,11 +452,13 @@ public class ClientController {
 
 
 	public synchronized void initiateTurn() {
+		new Thread(new Runnable(){
+		@Override public void run(){
+			
+		
 		model.resetPlayerRoll();
-//		Platform.runLater(new Runnable(){
-//			@Override
-//			public void run() {
-//				view.topPaneGame.setId("topPaneGamePL1");
+
+
 	
 		
 		setUpDie();
@@ -478,10 +479,19 @@ public class ClientController {
 		System.out.println("hier");
 //		selectAllWürfel();
 		view.b_würfeln.setDisable(true);
+		
+		Platform.runLater(new Runnable(){
+			@Override
+			public void run() {
+			model.startCardChecker(view.cardAL, view.WürfelPL1);
 
-		model.startCardChecker(view.cardAL, view.WürfelPL1);
-//			}
-//			});
+		};
+		
+//		model.startCardChecker(view.cardAL, view.WürfelPL1);
+		
+			});
+			}
+		}).start();
 	}
 	
 	
