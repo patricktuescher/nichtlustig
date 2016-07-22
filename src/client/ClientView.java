@@ -45,7 +45,7 @@ public class ClientView {
 	protected Integer scorePL1, scorePL2;
 	protected Rectangle rectangleSpace,rectangleSpace1, rectangleSpace2;
 	protected ImageView turnPL1, turnPL2;
-	protected Image turn1, turn2;
+	protected Image turn1, turn2, turn1_de, turn2_de;
 	
 	//Height and Width of the cards
 	final int cardheight = 90;
@@ -419,14 +419,19 @@ public class ClientView {
 		
 		turnPL1 = new ImageView();
 		turn1 = new Image("images/yourTurn.png");
+		turn1_de = new Image("images/deinZug.png");
 		turnPL1.setImage(turn1);
 		
 		//ImageView Turn PL2
 		
 		turnPL2 = new ImageView();
 		turn2= new Image("images/opponentsTurn.png");
+		turn2_de= new Image("images/gegnersZug.png");
 		turnPL2.setImage(turn2);
-
+		
+	
+		
+	
 		
 		//Scene Game
 		sceneGame = new Scene(topPaneGame, 1200, 850);
