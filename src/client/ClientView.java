@@ -45,6 +45,7 @@ public class ClientView {
 	protected Integer scorePL1, scorePL2;
 	protected Rectangle rectangleSpace,rectangleSpace1, rectangleSpace2;
 	protected ImageView turnPL1, turnPL2;
+	protected Image turn1, turn2;
 	
 	//Height and Width of the cards
 	final int cardheight = 90;
@@ -347,9 +348,9 @@ public class ClientView {
 		topPaneGame.setId("topPaneGame"); //ID for CSS
 		
 
-		//HBox Game Top
+		//HBox Game Top aka Spieler 2 Bereich
 		innertopPaneGame = new HBox();
-		innertopPaneGame.setPadding(new Insets(20,0,0,320));
+		innertopPaneGame.setPadding(new Insets(15,0,0,50));
 		innertopPaneGame.setMinHeight(100);
 		innertopPaneGame.setMaxHeight(100);
 		innertopPaneGame.setSpacing(15);
@@ -361,9 +362,9 @@ public class ClientView {
 		
 		
 		
-		//HBox Game Bottom Cube
+		//HBox Game Bottom Cube aka Spieler 1 Bereich
 		HBox bottomPaneGameCube = new HBox();
-		bottomPaneGameCube.setPadding(new Insets(20,0,20,200));
+		bottomPaneGameCube.setPadding(new Insets(20,0,0,10));
 		bottomPaneGameCube.setSpacing(15);
 		bottomPaneGame.setTop(bottomPaneGameCube);
 
@@ -413,21 +414,18 @@ public class ClientView {
 		labelPL2.setId("lb-labelscore");
 		
 		
-//		// Label Turn PL1
-//		turnPL1 = new Label("Your turn");
-//		turnPL1.setVisible(false);
-//		
-//		// Label Turn PL2
-//		turnPL2 = new Label("opponent's turn");
-//		turnPL2.setVisible(false);
-		
+
 		//ImageView Turn PL1
 		
 		turnPL1 = new ImageView();
+		turn1 = new Image("images/yourTurn.png");
+		turnPL1.setImage(turn1);
 		
 		//ImageView Turn PL2
 		
 		turnPL2 = new ImageView();
+		turn2= new Image("images/opponentsTurn.png");
+		turnPL2.setImage(turn2);
 
 		
 		//Scene Game
@@ -492,7 +490,7 @@ public class ClientView {
 		b_würfeln.setId("b-login");
 		
 		// space (between done botton & score label)
-		rectangleSpace1 = new Rectangle(100,50);
+		rectangleSpace1 = new Rectangle(80,50);
 		rectangleSpace1.setId("spaceRectangle");
 		
 		
