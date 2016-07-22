@@ -70,8 +70,9 @@ public class Card implements Serializable{
 		return this.würfel;
 	}
 	
-	public boolean check(ArrayList<Würfel> würfel){
+	public void check(ArrayList<Würfel> würfel){
 		boolean b = true;
+				
 		for(int x = 0; x < this.getWürfel().size(); x++){
 			if(!würfel.contains(this.getWürfel().get(x))){
 				b = false;
@@ -81,8 +82,13 @@ public class Card implements Serializable{
 				würfel.remove(this.getWürfel().get(x));
 			}
 		
-		return b;
+		if(b){
+			this.getImage().setVisible(true);
+		}else{
+			this.getImage().setVisible(false);
 		}
+		}
+	
 	
 
 

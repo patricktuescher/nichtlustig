@@ -29,7 +29,13 @@ public class ClientModel {
 	}
 	
 	public void startCardChecker(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
-					cc.cardCheckforDisable(cardAL, wuerfelAL);	
+		ArrayList<Würfel> wuerfeltoTest = new ArrayList<Würfel>();
+		wuerfeltoTest.addAll(wuerfelAL);
+		for(int x = 0;x<31;x++){
+			cardAL.get(x).check(wuerfeltoTest);
+		}
+		
+		
 		}
 	
 	
