@@ -16,6 +16,9 @@ public class Translator {
     private ResourceBundle resourceBundle;
 
     public Translator(String localeString) {
+    	
+
+    	
         // Can we find the language in our supported locales?
         // If not, use VM default locale
         Locale locale = Locale.getDefault();
@@ -31,7 +34,7 @@ public class Translator {
         }
         
         // Load the resource strings
-        resourceBundle = ResourceBundle.getBundle(sl.getAPP_CLASS().getName(), locale);
+        resourceBundle = ResourceBundle.getBundle("tools.Language", locale);
         Locale.setDefault(locale); // Change VM default (for dialogs, etc.)
         currentLocale = locale;
         

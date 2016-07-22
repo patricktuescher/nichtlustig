@@ -23,7 +23,7 @@ public class ServiceLocator {
 
     // Application-global constants
     final private Class<?> APP_CLASS = ClientView.class;
-    final private String APP_NAME = "ClientView";
+    final private String APP_NAME = "Language";
     
     // Supported locales (for translations)
     final private Locale[] locales = new Locale[] { new Locale("en"), new Locale("de") };
