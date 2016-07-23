@@ -50,11 +50,16 @@ public class ClientController {
 						if(view.t.getCurrentLocaleString().equals("en")) {
 			            	   view.t = new Translator("de");
 			            	   sl.getLogger().info("Language changed to de");
+			            	   view.turnPL1.setImage(view.turn1_de);
+			            	   view.turnPL2.setImage(view.turn2_de);
 			      			}
 			     			else{
+			 
 			       			view.t = new Translator("en");}
-			             	sl.getLogger().info("Language changed to en");
+							view.turnPL1.setImage(view.turn1);
+							view.turnPL2.setImage(view.turn2);
 			               updateView();
+			               sl.getLogger().info("Language changed to en");
 					}
 				});
 				
@@ -429,7 +434,7 @@ public class ClientController {
 		view.innerPaneLobby.add(view.gai.getImage(), 2, 7);
 	}
 	public void setAvailableLabel(String connectionName){
-		view.select_label.setText(connectionName + " ist online");
+		view.select_label.setText(connectionName + " " + view.t.getString("Text.isonline"));
 		view.innerPaneLobby.getChildren().remove(view.select_label);
 		view.innerPaneLobby.add(view.select_label, 2, 8);
 	}
@@ -565,7 +570,9 @@ public class ClientController {
 			view.b_sendchat.setText(view.t.getString("Button.send"));
 			view.chatInputWindow.setText(view.t.getString("TextField.click"));
 			view.b_fertigGame.setText(view.t.getString("Button.Fertig"));
-			view.primaryStage.setTitle(view.t.getString("Stage.title"));		
+			view.primaryStage.setTitle(view.t.getString("Stage.title"));
+			view.b_languageChange.setText(view.t.getString("Button.languageChange"));
+			
 		}
 	
 
