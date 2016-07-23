@@ -51,16 +51,17 @@ public class ClientController {
 						if(view.t.getCurrentLocaleString().equals("en")) {
 			            	   view.t = new Translator("de");
 			            	   sl.getLogger().info("Language changed to de");
-			            	   view.turnPL1.setImage(new Image("images/deinZug.png"));
+			            	   view.turnPL1.setImage(view.turn1_de);
 			            	   view.turnPL2.setImage(view.turn2_de);
 			      			}
 			     			else{
 			 
-			       			view.t = new Translator("en");}
+			       			view.t = new Translator("en");
 							view.turnPL1.setImage(view.turn1);
 							view.turnPL2.setImage(view.turn2);
-			               updateView();
 			               sl.getLogger().info("Language changed to en");
+			     			} 
+						updateView();
 					}
 				});
 				
