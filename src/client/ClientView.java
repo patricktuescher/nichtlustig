@@ -626,18 +626,20 @@ public class ClientView {
 			String s = this.cardAL.get(x).getType();
 			
 			switch(s){
-			case "Dino": innerPaneGame.add(this.cardAL.get(x).getImage(), dino++,10); break;
-			case "Prof": innerPaneGame.add(this.cardAL.get(x).getImage(), prof++, 8); break;
-			case "Lemming":innerPaneGame.add(this.cardAL.get(x).getImage(), lemming++, 6); break;
-			case "Yeti":innerPaneGame.add(this.cardAL.get(x).getImage(), yeti++, 4); break;
-			case "Rieb":innerPaneGame.add(this.cardAL.get(x).getImage(), rieb++, 2); break;
+			case "Dino": innerPaneGame.add(this.cardAL.get(x).getImage(), dino++,10); this.cardAL.get(x).getImage().setDisable(true);break;
+			case "Prof": innerPaneGame.add(this.cardAL.get(x).getImage(), prof++, 8); this.cardAL.get(x).getImage().setDisable(true);break;
+			case "Lemming":innerPaneGame.add(this.cardAL.get(x).getImage(), lemming++, 6); this.cardAL.get(x).getImage().setDisable(true);break;
+			case "Yeti":innerPaneGame.add(this.cardAL.get(x).getImage(), yeti++, 4); this.cardAL.get(x).getImage().setDisable(true);break;
+			case "Rieb":innerPaneGame.add(this.cardAL.get(x).getImage(), rieb++, 2); this.cardAL.get(x).getImage().setDisable(true);break;
 			default: if(b){
 				leftPaneGame.add(this.cardAL.get(x).getImage(), 0, tod);
+				this.cardAL.get(x).getImage().setDisable(true);
 				b = false;
 				break;
 			}
 			else{
 				leftPaneGame.add(this.cardAL.get(x).getImage(), 1, tod++);
+				this.cardAL.get(x).getImage().setDisable(true);
 				b = true;
 				break;
 			}

@@ -117,11 +117,10 @@ public class Card implements Serializable{
 		}
 		if(b){
 			this.getImage().setOpacity(1);
-//			this.getImage().setVisible(true);
+			this.getImage().setDisable(false);
 		}else{
-//			getImage().setOpacity(0.5);
 			this.getImage().setOpacity(0.5);
-//			this.getImage().setVisible(false);
+			this.getImage().setDisable(true);
 		}
 	}
 	
