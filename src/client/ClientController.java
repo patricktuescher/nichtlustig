@@ -301,11 +301,13 @@ public class ClientController {
 					public void handle(ActionEvent arg0) {
 
 						model.resetPlayerRoll();
+						
 //						view.b_fertigGame.setDisable(true);
 //						view.b_würfeln.setDisable(true);
 //						selectAllWürfel();
 //						model.startCardChecker(view.cardAL, getWürfel());
 						System.out.println(getWürfel());
+						disableCards();
 						server.sendObject(new ClientTurn(false));
 						}
 				});
@@ -515,6 +517,12 @@ public class ClientController {
 			this.getWürfel().get(x).click();
 		}
 //		server.sendObject(new WürfelRoll(view.WürfelPL1));
+	}
+	
+	public void disableCards(){
+		for(int x = 0; x< view.cardAL.size(); x++){
+			view.cardAL.get(x).getImage().setDisable(true);
+		}
 	}
 	
 
