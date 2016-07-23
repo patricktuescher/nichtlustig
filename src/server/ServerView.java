@@ -102,13 +102,7 @@ public class ServerView {
 		DisconnectServer.setId("ServerButtons");
 		DisconnectServer.setPrefWidth(500);
 		
-		//language choiceBox
-//		ChoiceBox<String> choicebox = new ChoiceBox<>();
-//		choicebox.getItems().addAll("choose language","deutsch","englisch");
-//		choicebox.setPrefSize(500, 10);
-//		choicebox.setValue("choose language");
-//		choicebox.setId("ServerButtons");
-		
+		//Language Change Button German / Englisch
 		languageChange = new Button (t.getString("Button.languageChange"));
 		languageChange.setId("ServerButtons");
 		languageChange.setPrefWidth(500);

@@ -34,12 +34,13 @@ public class ClientView {
 	Stage primaryStage;
 	ClientModel model;
 	protected TextField tf_username;
-	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame, b_backLoginFailed;
-	protected Label labelPL1, labelPL2, loginFailed;
+	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame, b_backLoginFailed, b_languageChange;
+	protected Label labelPL1, labelPL2, loginFailed, lb_username, lb_password, lb_chooseLanguage;
+	protected TableView table;
+	protected TableColumn userNameCol, scoreCol, dateCol;
 	protected GameAvailableImage gai;
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln, sceneLoginFailed;
-	protected CheckBox passwordCheck;
 	protected ServiceLocator sl;
 	protected Translator t;
 	protected Integer scorePL1, scorePL2;
@@ -110,17 +111,17 @@ public class ClientView {
 		innerPaneLogin.setPadding(new Insets(200,200,0,280));
 		
 		//Label Username
-		Label lb_username = new Label(t.getString("Label.UserName")+ ": ");
+		lb_username = new Label(t.getString("Label.UserName")+ ": ");
 		innerPaneLogin.add(lb_username, 2, 1);
 		lb_username.setId("lb-username");
 		
 		//Label Password
-		Label lb_password = new Label(t.getString("Label.Password")+": ");
+		lb_password = new Label(t.getString("Label.Password")+": ");
 		innerPaneLogin.add(lb_password, 2, 4);
 		lb_password.setId("lb-password");
 		
 		//label choose language
-		Label lb_chooseLanguage = new Label(t.getString("Label.Language")+": ");
+		lb_chooseLanguage = new Label(t.getString("Label.Language")+": ");
 		innerPaneLogin.add(lb_chooseLanguage, 2, 6);
 		lb_chooseLanguage.setId("lb-password");
 		
@@ -136,19 +137,12 @@ public class ClientView {
 		pf_password.setId("pf-login");
 		pf_password.setPromptText(t.getString("Label.Password"));
 		
-		/*
-		// checkbox password visibility
-		passwordCheck = new CheckBox(t.getString("CheckBox.passwordCheck")); 	
-		innerPaneLogin.add(passwordCheck, 2, 6);*/
 
-		
-		//language choiceBox
-		ChoiceBox<String> choiceboxLogin = new ChoiceBox<>();
-		choiceboxLogin.getItems().addAll("deutsch","englisch");
-		choiceboxLogin.setPrefSize(200, 40);
-		choiceboxLogin.setValue("deutsch");
-		innerPaneLogin.add(choiceboxLogin,2,7);
-		choiceboxLogin.setId("pf-login");
+		//language Chnage Button (German / Englisch)
+		b_languageChange = new Button(t.getString("Button.languageChange"));
+		innerPaneLogin.add(b_languageChange,2,7);
+		b_languageChange.setPrefSize(210, 40);
+		b_languageChange.setId("b-login");
 		
 		
 		//Button Login
@@ -261,11 +255,11 @@ public class ClientView {
 		topPaneStatistik.setBottom(bottomPaneStatistik);
 		
 		//TableView Statistik
-		TableView table = new TableView();
+		table = new TableView();
 	    table.setEditable(true);
-	    TableColumn userNameCol = new TableColumn(t.getString("TableColumn.UserNameCol"));
-	    TableColumn scoreCol = new TableColumn(t.getString("TableColumn.Score"));
-	    TableColumn dateCol = new TableColumn(t.getString("TableColumn.date"));
+	    userNameCol = new TableColumn(t.getString("TableColumn.UserNameCol"));
+	    scoreCol = new TableColumn(t.getString("TableColumn.Score"));
+	    dateCol = new TableColumn(t.getString("TableColumn.date"));
 	    table.getColumns().addAll(userNameCol, scoreCol, dateCol);
 	    table.setMaxSize(600, 400);
 	    table.setMinSize(600, 400);

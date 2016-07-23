@@ -17,6 +17,7 @@ import message.ClientTurn;
 import message.GameComplete;
 import message.WürfelRoll;
 import message.initiateNewGame;
+import tools.Translator;
 
 
 public class ClientController {
@@ -41,6 +42,22 @@ public class ClientController {
 		///////////////// LOGIN FENSTER //////////////////////////
 		
 		
+		// EventHandler Language Change Button - LoginScene
+				view.b_languageChange.setOnAction(new EventHandler<ActionEvent>(){
+
+					@Override
+					public void handle(ActionEvent arg0) {
+						if(view.t.getCurrentLocaleString().equals("en")) {
+			            	   view.t = new Translator("de");
+			            	   sl.getLogger().info("Language changed to de");
+			      			}
+			     			else{
+			       			view.t = new Translator("en");}
+			             	sl.getLogger().info("Language changed to en");
+			               updateView();
+					}
+				});
+				
 		// EventHandler LoginButton - LoginScene
 		view.b_login.setOnAction(new EventHandler<ActionEvent>(){
 
@@ -525,8 +542,31 @@ public class ClientController {
 		}
 	}
 	
-
-
+	 public void updateView(){
+			view.b_register.setText(view.t.getString("Button.Register"));
+			view.b_login.setText(view.t.getString("Button.Login"));
+			view.b_quitGame.setText(view.t.getString("Button.QuitGame"));
+			view.lb_username.setText(view.t.getString("Label.UserName"));
+			view.lb_password.setText(view.t.getString("Label.Password"));
+			view.lb_chooseLanguage.setText(view.t.getString("Label.Language"));
+			view.b_spielErstellen.setText(view.t.getString("Button.newGame"));
+			view.b_backStatistik.setText(view.t.getString("Button.Stats"));
+			view.b_spielBeitreten.setText(view.t.getString("Button.JoinGame"));
+			view.b_backLobby.setText(view.t.getString("Button.Logout"));
+			view.b_backGame.setText(view.t.getString("Button.Back"));
+			view.b_backRegeln.setText(view.t.getString("Button.Back"));
+			view.b_backStatistik.setText(view.t.getString("Button.Back"));
+			view.b_rules.setText(view.t.getString("Button.Rules"));
+			view.b_statistic.setText(view.t.getString("Button.Stats"));
+			view.userNameCol.setText(view.t.getString("TableColumn.UserNameCol"));
+			view.scoreCol.setText(view.t.getString("TableColumn.Score"));
+			view.dateCol.setText(view.t.getString("TableColumn.date"));
+			view.b_würfeln.setText(view.t.getString("Button.roll"));
+			view.b_sendchat.setText(view.t.getString("Button.send"));
+			view.chatInputWindow.setText(view.t.getString("TextField.click"));
+			view.b_fertigGame.setText(view.t.getString("Button.Fertig"));
+			view.primaryStage.setTitle(view.t.getString("Stage.title"));		
+		}
 	
 
 }
