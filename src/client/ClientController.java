@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.control.DialogPane;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.StageStyle;
@@ -50,7 +51,7 @@ public class ClientController {
 						if(view.t.getCurrentLocaleString().equals("en")) {
 			            	   view.t = new Translator("de");
 			            	   sl.getLogger().info("Language changed to de");
-			            	   view.turnPL1.setImage(view.turn1_de);
+			            	   view.turnPL1.setImage(new Image("images/deinZug.png"));
 			            	   view.turnPL2.setImage(view.turn2_de);
 			      			}
 			     			else{
