@@ -1,9 +1,12 @@
 package server;
+import java.util.Locale;
+
 import client.ServiceLocator;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
+import tools.Translator;
 
 public class ServerController {
     
@@ -72,5 +75,28 @@ public class ServerController {
                 System.exit(0);  // end all activities (our server task) - not good code
             }
         });
+        
+        view.languageChange.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+             if(view.t.getCurrentLocaleString().equals("en")) {
+            	   view.t = new Translator("de");
+            	   sl.getLogger().info("Language changed to de");
+      			}
+     			else{
+       			view.t = new Translator("en");}
+             	sl.getLogger().info("Language changed to en");
+               updateView();
+            	            }
+        });
+       
     }
+    
+    public void updateView(){
+		view.languageChange.setText(view.t.getString("Button.languageChange"));
+		view.ConnectServer.setText(view.t.getString("Button.ConnectServer"));
+		view.DisconnectServer.setText(view.t.getString("Button.DisconnectServer"));
+		view.exit.setText(view.t.getString("Button.exit"));
+	
+	}
 }

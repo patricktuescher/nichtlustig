@@ -47,6 +47,10 @@ public class Translator {
     public Locale getCurrentLocale() {
         return currentLocale;
     }
+    
+    public String getCurrentLocaleString(){
+    	return currentLocale.toString();
+    }
 
     /**
      * Public method to get string resources, default to "--" *
