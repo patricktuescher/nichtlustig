@@ -141,6 +141,12 @@ public class Würfel implements Serializable {
 	public String toString(){
 		return "Würfel "+ this.aktAugenzahl + " "+this.getFarbe();
 	}
+	public void setUsed(boolean used){
+		this.used = used;
+	}
+	public boolean isUsed(){
+		return this.used;
+	}
 
 
 }

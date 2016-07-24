@@ -279,6 +279,10 @@ public class ClientController {
 				@Override
 				public void handle(MouseEvent arg0){
 					view.cardAL.get(d).click();
+					for(int x = 0; x < view.cardAL.get(d).getWürfel().size(); x++){
+						view.cardAL.get(d).getWürfel().get(x).setUsed(true);
+					}
+					model.startCardChecker(view.cardAL, view.WürfelPL1);
 					server.sendObject(new CardClick(view.cardAL.get(d)));
 				}
 			});	
