@@ -29,6 +29,7 @@ public class Würfel implements Serializable {
 	
 	private Farbe farbe = Farbe.Pink;
 	private boolean selected = false;
+	private boolean used = false;
 	private int maxAugenzahl;
 	private int aktAugenzahl = 1;
 	private transient ImageView image = new ImageView(new Image("images/" + this.farbe.name()+ "_Würfel_"+aktAugenzahl+".png"));

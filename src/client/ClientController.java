@@ -278,7 +278,7 @@ public class ClientController {
 				
 				@Override
 				public void handle(MouseEvent arg0){
-					view.cardAL.get(d).clickMe();
+					view.cardAL.get(d).click();
 					server.sendObject(new CardClick(view.cardAL.get(d)));
 				}
 			});	

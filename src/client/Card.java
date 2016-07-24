@@ -178,8 +178,8 @@ public class Card implements Serializable{
 		this.image.setScaleX(1);
 		this.image.setScaleY(1);
 	}
-	public void clickMe(){
-		
+	public void click(){
+		this.status = Status.gewählt;
 		InnerShadow innerShadow = new InnerShadow(20, Color.web("489dff"));
 		innerShadow.setOffsetX(2);
 		innerShadow.setOffsetY(2);
