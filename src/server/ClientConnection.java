@@ -18,6 +18,7 @@ import message.ClientTurn;
 import message.EvaluateFirstPlayer;
 import message.GameAvailableMessage;
 import message.GameComplete;
+import message.NewGameChatMessage;
 import message.WürfelRoll;
 import message.initiateNewGame;
 
@@ -102,7 +103,7 @@ public class ClientConnection extends Thread {
 				if(obj instanceof GameComplete){
 					model.getGame().joinPlayer(Player);
 					model.broadcast((GameComplete) obj);
-					model.broadcast(new ChatMessage("<< Game has begun >>"));
+					model.broadcast(new NewGameChatMessage());
 				}
 				if(obj instanceof EvaluateFirstPlayer){
 					EvaluateFirstPlayer efp = (EvaluateFirstPlayer) obj;

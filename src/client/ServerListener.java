@@ -7,6 +7,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 import javafx.application.Platform;
 import message.CardClick;
 import message.ChatMessage;
@@ -19,6 +21,7 @@ import message.ClientTurn;
 import message.EvaluateFirstPlayer;
 import message.GameAvailableMessage;
 import message.GameComplete;
+import message.NewGameChatMessage;
 import message.WürfelRoll;
 
 
@@ -151,6 +154,10 @@ public class ServerListener extends Thread {
 							});
 						logger.info("Logout successful");
 						
+					}
+					if(obj instanceof NewGameChatMessage){
+
+						controller.addNewMessage("<< Game has begun >>");
 					}
 				
 					if(obj instanceof ChatMessage){
