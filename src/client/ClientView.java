@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import client.ClientController.Highscore;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -255,8 +256,8 @@ public class ClientView {
 		topPaneStatistik.setBottom(bottomPaneStatistik);
 		
 		//TableView Statistik
-		table = new TableView();
-	    table.setEditable(true);
+		TableView<Highscore> table = new TableView<Highscore>();
+		table.setEditable(true);
 	    userNameCol = new TableColumn(t.getString("TableColumn.UserNameCol"));
 	    scoreCol = new TableColumn(t.getString("TableColumn.Score"));
 	    dateCol = new TableColumn(t.getString("TableColumn.date"));

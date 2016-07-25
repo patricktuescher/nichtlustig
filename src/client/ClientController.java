@@ -1,8 +1,14 @@
 package client;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -127,6 +133,36 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 			view.primaryStage.setScene(view.sceneStatistik);
 			sl.getLogger().info("Change to Statistik Scene");
+			
+			   BufferedReader br = null;
+			    try {
+			        br = new BufferedReader(new FileReader(new File("src/server/Highscore.txt")));
+			        String line = null;
+			        
+			        while((line = br.readLine()) != null) {
+			        	
+			            String[] parts = line.split(",");
+			            System.out.println( parts[0]);
+			            System.out.println( parts[1]);
+			            System.out.println( parts[2]);
+//			            view.userNameCol.cellFactoryProperty(parts[0]);
+			            
+			        }
+			    } catch(FileNotFoundException e) {
+			        e.printStackTrace();
+			    } catch(IOException e) {
+			        e.printStackTrace();
+			    } finally {
+			        if(br != null) {
+			            try {
+			                br.close();
+			            } catch(IOException e) {
+			                e.printStackTrace();
+			            }
+			        }
+			    }
+			    
+			
 			}		
 		});
 			
@@ -585,6 +621,17 @@ public class ClientController {
 			view.b_languageChange.setText(view.t.getString("Button.languageChange"));
 			
 		}
-	
+	 
+	 public static class Highscore {
+	        private final SimpleStringProperty scorename;
+	        private final SimpleStringProperty scorepoints;
+	        private final SimpleStringProperty scoredate;
+
+	        private Highscore(String sName, String spoints, String sdate) {
+	            this.scorename = new SimpleStringProperty(sName);
+	            this.scorepoints = new SimpleStringProperty(spoints);
+	            this.scoredate = new SimpleStringProperty(sdate);
+	        }
+	 }
 
 }
