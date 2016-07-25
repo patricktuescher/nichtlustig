@@ -1,6 +1,7 @@
 package client;
 
 import java.io.IOException;
+import tools.Translator;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -28,7 +29,8 @@ import message.WürfelRoll;
 
 
 public class ServerListener extends Thread {
-
+	protected Translator t;
+	protected ServiceLocator sl;
 	private static final int portNumber = 55555;
 
 	private static String hostAddress; 
@@ -44,7 +46,8 @@ public class ServerListener extends Thread {
 	private ObjectOutputStream out = null;
 	private Object obj = null;
 	private boolean stopThread = false;
-
+	
+	
 
 	public static ServerListener getServerListener() {
 		if (serverListener == null) {
@@ -55,6 +58,8 @@ public class ServerListener extends Thread {
 
 
 	public boolean connect(Account acc) {
+		
+		
 		try {
 
 			if (socket == null) {
@@ -101,7 +106,7 @@ public class ServerListener extends Thread {
 	 * server side!
 	 */
 	public void run() {
-
+		
 		try {
 			if (in == null) {
 				in = new ObjectInputStream(socket.getInputStream());
@@ -156,8 +161,9 @@ public class ServerListener extends Thread {
 						
 					}
 					if(obj instanceof NewGameChatMessage){
-
-						controller.addNewMessage("<< Game has begun >>");
+						sl = ServiceLocator.getServiceLocator();
+						t = sl.getTranslator();
+						controller.addNewMessage("<< " +t.getString("Text.Gamestart") + " >>");
 					}
 				
 					if(obj instanceof ChatMessage){
