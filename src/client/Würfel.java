@@ -135,6 +135,7 @@ public class Würfel implements Serializable {
 	}
 	public void resetWürfel(){
 		this.image.setStyle("");
+		this.used = false;
 		this.selected = false;
 	}
 	
