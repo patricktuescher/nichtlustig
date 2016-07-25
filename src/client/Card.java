@@ -106,7 +106,7 @@ public class Card implements Serializable{
 			}
 		}else{		
 		for(int x = 0; x < this.getWürfel().size(); x++){
-			if(!würfelPL1.contains(this.getWürfel().get(x))){
+			if(!würfelPL1.contains(this.getWürfel().get(x)) || würfelPL1.get(würfelPL1.indexOf(this.getWürfel().get(x))).isUsed()){
 				b = false;
 				break;
 			}
