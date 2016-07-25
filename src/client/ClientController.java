@@ -531,6 +531,7 @@ public class ClientController {
 			view.b_würfeln.setDisable(false);
 			view.b_fertigGame.setDisable(false);
 		}else{
+			selectAllWürfel();
 			view.b_würfeln.setDisable(true);
 			
 		}
