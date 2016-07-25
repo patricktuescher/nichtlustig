@@ -622,16 +622,6 @@ public class ClientController {
 			
 		}
 	 
-	 public static class Highscore {
-	        private final SimpleStringProperty scorename;
-	        private final SimpleStringProperty scorepoints;
-	        private final SimpleStringProperty scoredate;
-
-	        private Highscore(String sName, String spoints, String sdate) {
-	            this.scorename = new SimpleStringProperty(sName);
-	            this.scorepoints = new SimpleStringProperty(spoints);
-	            this.scoredate = new SimpleStringProperty(sdate);
-	        }
-	 }
+	
 
 }
