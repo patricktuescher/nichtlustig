@@ -55,14 +55,16 @@ public class ClientController {
 					@Override
 					public void handle(ActionEvent arg0) {
 						if(view.t.getCurrentLocaleString().equals("en")) {
-			            	   view.t = new Translator("de");
+			            	   //view.t = new Translator("de");
+			            	   sl.getServiceLocator().setTranslator(new Translator("de"));
 			            	   sl.getLogger().info("Language changed to de");
 			            	   view.turnPL1.setImage(view.turn1_de);
 			            	   view.turnPL2.setImage(view.turn2_de);
 			      			}
 			     			else{
 			 
-			       			view.t = new Translator("en");
+			       			//view.t = new Translator("en");
+			     			sl.getServiceLocator().setTranslator(new Translator("en"));
 							view.turnPL1.setImage(view.turn1);
 							view.turnPL2.setImage(view.turn2);
 			               sl.getLogger().info("Language changed to en");
@@ -595,6 +597,7 @@ public class ClientController {
 	}
 	
 	 public void updateView(){
+		 	view.t = sl.getTranslator();
 			view.b_register.setText(view.t.getString("Button.Register"));
 			view.b_login.setText(view.t.getString("Button.Login"));
 			view.b_quitGame.setText(view.t.getString("Button.QuitGame"));

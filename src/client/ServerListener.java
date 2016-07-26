@@ -29,13 +29,13 @@ import message.WürfelRoll;
 
 
 public class ServerListener extends Thread {
-	protected Translator t;
-	protected ServiceLocator sl;
+	protected ServiceLocator sl = ServiceLocator.getServiceLocator();
+	protected Translator t = sl.getTranslator();
 	private static final int portNumber = 55555;
 
 	private static String hostAddress; 
 	private static Socket socket;
-	private Logger logger = ServiceLocator.getServiceLocator().getLogger();
+	private Logger logger = sl.getLogger();
 
 	public static ServerListener serverListener;
 
@@ -161,8 +161,6 @@ public class ServerListener extends Thread {
 						
 					}
 					if(obj instanceof NewGameChatMessage){
-						sl = ServiceLocator.getServiceLocator();
-						t = sl.getTranslator();
 						controller.addNewMessage("<< " +t.getString("Text.Gamestart") + " >>");
 					}
 				
