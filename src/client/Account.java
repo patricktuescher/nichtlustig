@@ -17,11 +17,13 @@ public class Account implements Serializable {
 	public String getAccName(){
 		return this.accName;
 	}
-	public boolean equals(Account otherAccount){
-		if(accName.equals(otherAccount.getAccName()))
-			return true;
-		else return false;
-	}
+	
+	public boolean equals(Object obj){
+			Account otherAccount = (Account) obj;
+			if(accName.equals(otherAccount.getAccName()))
+				return true;
+			else return false;
+		}
 	public String toString(){
 		return "Account: " + this.accName;
 	}
