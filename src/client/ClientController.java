@@ -317,13 +317,21 @@ public class ClientController {
 				@Override
 				public void handle(MouseEvent arg0){
 					view.cardAL.get(d).click();
+					System.out.println(view.cardAL.get(d).getType());
 					for(int y = 0; y < view.cardAL.get(d).getWürfel().size(); y++){
 						if(view.WürfelPL1.contains(view.cardAL.get(d).getWürfel().get(y))){
 							view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
 							view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).click();
 							System.out.println(view.cardAL.get(d).getWürfel().get(y) + "is used");
 						}
-					}		
+					}
+					if(view.cardAL.get(d).getType().equals("Dino")){
+						System.out.println("Dino geklickt!!");
+						for(int y = 0; y < view.WürfelPL1.size(); y++){
+						view.WürfelPL1.get(y).setUsed(true);
+						view.WürfelPL1.get(y).click();
+						}
+					}
 					model.startCardChecker(view.cardAL, view.WürfelPL1);
 					server.sendObject(new CardClick(view.cardAL.get(d)));
 				}

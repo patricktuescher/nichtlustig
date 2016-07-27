@@ -185,7 +185,7 @@ public class Card implements Serializable{
 		innerShadow.setChoke(0.5);	
 		this.getImage().setEffect(innerShadow);
 		this.getImage().setId("shadow");
-		logger.info(this.type.name()+ " Card has been clicked on. Needed die are: " + würfel.toString());
+		logger.info(this.type.name()+ " card has been clicked on. Needed die are: " + würfel.toString());
 		
 	}
 	public void clickOther(){
