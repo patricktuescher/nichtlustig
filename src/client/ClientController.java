@@ -589,6 +589,7 @@ public class ClientController {
 	
 	public void bewerteCards(){
 		sl.getLogger().info("Bewertung gestartet");
+		System.out.println(view.getWürfelPL1().get(0).getAktAugenzahl());
 		for(int x = 0; x>view.cardAL.size(); x++){
 			if(view.cardAL.get(x).getType().equals(cardType.Tod)){				
 			}else if(view.cardAL.get(x).getAugenzahl() == view.getWürfelPL1().get(0).getAktAugenzahl()){
