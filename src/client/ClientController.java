@@ -387,6 +387,8 @@ public class ClientController {
 						model.resetPlayerRoll();
 						System.out.println(getWürfel());
 						disableCards();
+						bewerteCards();
+						updatePunktePL1();
 						server.sendObject(new ClientTurn(false));
 						}
 				});
@@ -587,7 +589,22 @@ public class ClientController {
 	
 	public void bewerteCards(){
 		for(int x = 0; x>view.cardAL.size(); x++){
-			
+			if(view.cardAL.get(x).getType().equals(cardType.Tod)){				
+			}else if(view.cardAL.get(x).getAugenzahl() == view.getWürfelPL1().get(0).getAktAugenzahl()){
+					view.cardAL.get(x).setStatus(Status.gewertet);
+					sl.getLogger().info(view.cardAL.get(x).toString() + "hat jetzt den Status:" + view.cardAL.get(x).getStatus());
+								
+			}
+		}
+	}
+	
+	public void updatePunktePL1(){
+		for(int x = 0; x>view.cardAL.size();x++){
+			if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && view.cardAL.get(x).getOwner().equals(clientOwner)){
+				//Hier kommte die Berechnung der Punkte
+				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
+				
+			}
 		}
 	}
 	
@@ -603,7 +620,6 @@ public class ClientController {
 		for(int x = 0; x < this.getWürfel().size(); x++){
 			this.getWürfel().get(x).click();
 		}
-//		server.sendObject(new WürfelRoll(view.WürfelPL1));
 	}
 	
 	public void disableCards(){
