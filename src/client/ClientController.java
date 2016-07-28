@@ -590,13 +590,15 @@ public class ClientController {
 	public void bewerteCards(){
 		sl.getLogger().info("Bewertung gestartet");
 		System.out.println(view.getWürfelPL1().get(0).getAktAugenzahl());
-		for(int x = 0; x>view.cardAL.size(); x++){
-			if(view.cardAL.get(x).getType().equals(cardType.Tod)){				
-			}else if(view.cardAL.get(x).getAugenzahl() == view.getWürfelPL1().get(0).getAktAugenzahl()){
-					view.cardAL.get(x).setStatus(Status.gewertet);
-					sl.getLogger().info(view.cardAL.get(x).toString() + "hat jetzt den Status:" + view.cardAL.get(x).getStatus());
-								
-			}
+		System.out.println(view.cardAL.toString());
+		for(int x = 0; x > view.cardAL.size(); x++){
+			System.out.println(view.cardAL.get(x).getAugenzahl());
+//			if(view.cardAL.get(x).getType().equals(cardType.Tod)){				
+//			}else if(view.cardAL.get(x).getAugenzahl() == view.getWürfelPL1().get(0).getAktAugenzahl()){
+//					view.cardAL.get(x).setStatus(Status.gewertet);
+//					sl.getLogger().info(view.cardAL.get(x).toString() + "hat jetzt den Status:" + view.cardAL.get(x).getStatus());
+//								
+//			}
 		}
 	}
 	
