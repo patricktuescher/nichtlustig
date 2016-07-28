@@ -84,6 +84,33 @@ public class ServerListener extends Thread {
 		return true;
 
 	}
+	
+public boolean connect() {
+		
+		
+		try {
+
+			if (socket == null) {
+				socket = new Socket(hostAddress, portNumber);
+
+				if (out == null) {
+					out = new ObjectOutputStream(socket.getOutputStream());
+				}
+				
+				this.start();
+				
+			}else{
+				
+			}
+			
+		}
+		catch (IOException e) {
+
+			return false;
+		}
+		return true;
+
+	}
 
 	/**
 	 * Disconnect and close socket

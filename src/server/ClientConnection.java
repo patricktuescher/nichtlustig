@@ -21,6 +21,7 @@ import message.GameComplete;
 import message.NewGameChatMessage;
 import message.WürfelRoll;
 import message.initiateNewGame;
+import message.newAccountMessage;
 
 
 
@@ -71,6 +72,13 @@ public class ClientConnection extends Thread {
 					
 					
 				
+				}
+				if(obj instanceof newAccountMessage){
+					newAccountMessage nam = (newAccountMessage) obj;
+					Account acc = nam.getAccount();
+					AccountRegister ar = new AccountRegister();
+					ar.writeNewAccount(acc);
+					
 				}
 				if(obj instanceof ClientLogout){
 					ClientLogout logout = (ClientLogout) obj;

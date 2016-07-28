@@ -24,6 +24,7 @@ import message.ClientTurn;
 import message.GameComplete;
 import message.WürfelRoll;
 import message.initiateNewGame;
+import message.newAccountMessage;
 import tools.Translator;
 
 
@@ -95,8 +96,10 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-			view.primaryStage.setScene(view.sceneLobby);
-			sl.getLogger().info("Change to Lobby Scene");
+			server = ServerListener.getServerListener();
+			server.connect();
+			server.sendObject(new newAccountMessage(new Account(view.tf_username.getText())));
+			//server.disconnect();
 			}		
 		});
 		
