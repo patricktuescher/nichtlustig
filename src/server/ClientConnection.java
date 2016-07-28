@@ -125,8 +125,8 @@ public class ClientConnection extends Thread {
 								model.sendToOtherClients(new ClientTurn(false), this);
 							}
 							else{
-								this.sendObject(new ClientTurn(false));
 								model.sendToOtherClients(new ClientTurn(true), this);
+								this.sendObject(new ClientTurn(false));
 							}
 						} catch (Exception e) {
 							// Vorgang neu starten, falls die Augenzahlen gleich gross sind

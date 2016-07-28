@@ -329,6 +329,10 @@ public class ClientController {
 						if(view.WürfelPL1.contains(view.cardAL.get(d).getWürfel().get(y))){
 							view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
 							view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).click();
+							if(view.cardAL.get(d).getWürfel().size() == 2){
+								view.WürfelPL1.get(view.WürfelPL1.lastIndexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
+								view.WürfelPL1.get(view.WürfelPL1.lastIndexOf(view.cardAL.get(d).getWürfel().get(y))).click();
+							}
 							System.out.println(view.cardAL.get(d).getWürfel().get(y) + "is used");
 						}
 					}
