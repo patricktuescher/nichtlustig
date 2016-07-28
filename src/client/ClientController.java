@@ -37,6 +37,7 @@ public class ClientController {
 	protected ClientView view;
 	protected ClientModel model;
 	protected ServerListener server;
+	protected Account clientOwner;
 
 
 
@@ -82,7 +83,8 @@ public class ClientController {
 			@Override
 			public void handle(ActionEvent arg0) {
 				server = ServerListener.getServerListener();
-				server.connect(new Account(view.tf_username.getText(), view.pf_password.getText()));
+				clientOwner = new Account(view.tf_username.getText(), view.pf_password.getText());
+				server.connect(clientOwner);
 				sl.getLogger().info("Change to Lobby Scene");
 				
 
@@ -322,6 +324,7 @@ public class ClientController {
 				@Override
 				public void handle(MouseEvent arg0){
 					view.cardAL.get(d).click();
+					view.cardAL.get(d).setOwner(clientOwner);
 					for(int y = 0; y < view.cardAL.get(d).getWürfel().size(); y++){
 						if(view.WürfelPL1.contains(view.cardAL.get(d).getWürfel().get(y))){
 							view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
