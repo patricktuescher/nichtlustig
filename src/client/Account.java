@@ -11,16 +11,20 @@ public class Account implements Serializable {
 	private String accName;
 	private String accPassword;
 	
-	public Account(String accName){
+	public Account(String accName, String accPassword){
 		this.accName = accName;
+		this.accPassword = accPassword;
 	}
 	public String getAccName(){
 		return this.accName;
 	}
+	public String getPassword(){
+		return this.accPassword;
+	}
 	
 	public boolean equals(Object obj){
 			Account otherAccount = (Account) obj;
-			if(accName.equals(otherAccount.getAccName()))
+			if(accName.equals(otherAccount.getAccName()) && accPassword.equals(otherAccount.getPassword()))
 				return true;
 			else return false;
 		}

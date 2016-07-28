@@ -9,7 +9,7 @@ import client.Account;
 import message.ClientLogin;
 
 public class ClientLoginChecker {
-	private static ArrayList <Account> accountList = new ArrayList<Account>();
+	protected static ArrayList <Account> accountList = new ArrayList<Account>();
 		
 	public ClientLoginChecker(){
 	}
@@ -19,8 +19,9 @@ public class ClientLoginChecker {
 		Scanner scan;
 		try {
 			scan = new Scanner(file);
+			scan.useDelimiter(",");
 			while(scan.hasNext()){
-				Account acc = new Account(scan.next());
+				Account acc = new Account(scan.next(), scan.next());
 				System.out.println(acc);
 				accountList.add(acc);
 			}
@@ -37,6 +38,10 @@ public class ClientLoginChecker {
 		
 		
 		
+	}
+	public static ArrayList<Account> getAccountList(){
+		check(new ClientLogin(new Account("","")));
+		return accountList;
 	}
 
 }

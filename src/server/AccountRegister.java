@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import client.Account;
 import message.ClientLogin;
@@ -17,26 +19,34 @@ import message.ClientLogin;
  */
 
 public class AccountRegister {
-	Account acc;
+	private Account acc;
+	protected Logger logger = ServiceLocator.getServiceLocator().getLogger();
 	
 	/**
-	 * Checks, if there is already an account registred with the same credentials
+	 * Checks, if there is already an account registred with the same name
 	 * @param acc Account
 	 * @return if already exists == true; if doesn't exist == false
 	 */
 	
 	private boolean check(){
-		if(ClientLoginChecker.check(new ClientLogin(acc)))
-				return false;
-		return true;	
+		boolean b = true;
+		ArrayList <Account>accList = ClientLoginChecker.getAccountList();
+		for(int x = 0; x < accList.size(); x++){
+			if(accList.get(x).getAccName().equals(acc.getAccName())){
+				b = false;
+				break;
+			}
+		}
+		
+		return b;
 	}
 	public void writeNewAccount(Account acc){
 		this.acc = acc;
-		System.out.println("hier 1");
 		if(check()){
 			try {
 				PrintWriter pw = new PrintWriter(new FileOutputStream(new File("src/server/AccountDB.txt"),true));
-				pw.println("\n" + acc.getAccName());
+				pw.print("," + acc.getAccName() + "," + acc.getPassword());
+				logger.info("New account \"" + acc.getAccName()+"\" has been added to the database");
 				pw.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

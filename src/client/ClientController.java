@@ -82,7 +82,7 @@ public class ClientController {
 			@Override
 			public void handle(ActionEvent arg0) {
 				server = ServerListener.getServerListener();
-				server.connect(new Account(view.tf_username.getText()));
+				server.connect(new Account(view.tf_username.getText(), view.pf_password.getText()));
 				sl.getLogger().info("Change to Lobby Scene");
 				
 
@@ -100,7 +100,7 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 			server = ServerListener.getServerListener();
 			server.connect();
-			server.sendObject(new newAccountMessage(new Account(view.tf_username.getText())));
+			server.sendObject(new newAccountMessage(new Account(view.tf_username.getText(), view.pf_password.getText())));
 			//server.disconnect();
 			}		
 		});

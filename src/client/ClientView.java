@@ -132,7 +132,7 @@ public class ClientView {
 		tf_username.setPromptText(t.getString("Label.UserName"));
 		
 		//Passwortbox Password
-		PasswordField pf_password = new PasswordField();
+		pf_password = new PasswordField();
 		innerPaneLogin.add(pf_password, 2, 5);
 		pf_password.setId("pf-login");
 		pf_password.setPromptText(t.getString("Label.Password"));
