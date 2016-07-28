@@ -588,6 +588,7 @@ public class ClientController {
 	
 	
 	public void bewerteCards(){
+		sl.getLogger().info("Bewertung gestartet");
 		for(int x = 0; x>view.cardAL.size(); x++){
 			if(view.cardAL.get(x).getType().equals(cardType.Tod)){				
 			}else if(view.cardAL.get(x).getAugenzahl() == view.getWürfelPL1().get(0).getAktAugenzahl()){
@@ -599,6 +600,7 @@ public class ClientController {
 	}
 	
 	public void updatePunktePL1(){
+		sl.getLogger().info("Update der Punkte gestartet");
 		for(int x = 0; x>view.cardAL.size();x++){
 			if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && view.cardAL.get(x).getOwner().equals(clientOwner)){
 				//Hier kommte die Berechnung der Punkte
