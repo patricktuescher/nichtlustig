@@ -34,7 +34,7 @@ public class Card implements Serializable{
 	private final int cardHeight = 90;
 	private final int cardWidth = 90;
 	private transient Logger logger = ServiceLocator.getServiceLocator().getLogger();
-	private Account owner;
+	private String owner;
 
 	/**
 	 * The constructor creates a card
@@ -155,11 +155,11 @@ public class Card implements Serializable{
 		this.status = status;
 	}
 	
-	public Account getOwner(){
+	public String getOwner(){
 		return owner;
 	}
 	
-	public void setOwner(Account owner){
+	public void setOwner(String owner){
 		this.owner= owner;
 	}
 
