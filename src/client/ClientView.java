@@ -43,7 +43,7 @@ public class ClientView {
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln, sceneLoginFailed;
 	protected ServiceLocator sl;
 	protected Translator t;
-	protected Integer scorePL1, scorePL2;
+	protected int scorePL1, scorePL2;
 	protected Rectangle rectangleSpace,rectangleSpace1, rectangleSpace2;
 	protected ImageView turnPL1, turnPL2;
 	protected Image turn1, turn2, turn1_de, turn2_de;

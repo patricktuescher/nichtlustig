@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.sun.security.ntlm.Client;
 
@@ -604,14 +605,26 @@ public class ClientController {
 	}
 	
 	public void updatePunktePL1(){
+		view.scorePL1 = 0;
+		view.labelPL1.setText(""+view.scorePL1);
 		sl.getLogger().info("Update der Punkte gestartet");
 		for(int x = 0; x>view.cardAL.size();x++){
 			if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && view.cardAL.get(x).getOwner().equals(clientOwner)){
-				//Hier kommte die Berechnung der Punkte
+				switch(view.cardAL.get(x).getType()){
+				case "Rieb": 	view.scorePL1 =+ 10;
+				break;
+				case "Prof":	view.scorePL1 =+ 15;
+				break;
+				case "Lemming": view.scorePL1 =+ 20;
+				break;
+				case "Yeti": 	view.scorePL1 =+ 25;
+				break;
+				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 				
 			}
 		}
+		view.labelPL1.setText(""+view.scorePL1);
 	}
 	
 	
