@@ -1,10 +1,10 @@
-// Gruppe: Manipake Kontroburt�s
-// 
-// Version 1.0.0
-//
-// CLient-Applikation
-//
-/////////////////////////////////////////////////////////////////////////////////////
+/**
+	 * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
+	 * All rights reserved.
+	 * 
+	 * @function 
+	 * @author 
+	 */
 
 package client;
 

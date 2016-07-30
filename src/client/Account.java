@@ -2,8 +2,8 @@
 	 * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
 	 * All rights reserved.
 	 * 
-	 * @function This class represents an account  which can be implemented into the nichtLustig application.
-	 * @author Nicola Burri
+	 * @function 
+	 * @author 
 	 */
 
 package client;

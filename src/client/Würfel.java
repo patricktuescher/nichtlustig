@@ -1,4 +1,10 @@
-
+/**
+	 * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
+	 * All rights reserved.
+	 * 
+	 * @function This class represents a die which can be implemented into the nichtLustig application.
+	 * @author Nicola Burri
+	 */
 
 package client;
 
@@ -9,13 +15,7 @@ import java.util.logging.Logger;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/**
- * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kontroburtüs.
- * All rights reserved.
- * 
- * This class represents a die which can be implemented into the nichtLustig application.
- * @author Nicola Burri
- */
+
 public class Würfel implements Serializable {
 	/**
 	 * 
