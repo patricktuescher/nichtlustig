@@ -1,3 +1,11 @@
+/**
+	 * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
+	 * All rights reserved.
+	 * 
+	 * @function This class represents an object, which checks new accounts and writes into the database
+	 * @author Nicola Burri
+	 */
+
 package server;
 
 import java.io.BufferedWriter;
@@ -12,11 +20,6 @@ import java.util.logging.Logger;
 import client.Account;
 import message.ClientLogin;
 
-/**
- * This class represents an object, which checks new accounts and writes into the database
- * @author Nicola Burri
- *
- */
 
 public class AccountRegister {
 	private Account acc;
