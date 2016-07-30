@@ -172,12 +172,8 @@ public class ClientController {
 			            nameValues.add(parts[0]);
 			            scoreValues.add(Integer.parseInt(parts[1]));
 			            dateValues.add(parts[2]);
-			            
-			         
-			            System.out.println( parts[0]);
-			            System.out.println( parts[1]);
-			            System.out.println( parts[2]);
-			            
+			     
+			           
 			     
 			        }
 			       
@@ -240,7 +236,8 @@ public class ClientController {
 	    	    table.setMinSize(600, 400);
 	    	   view. centerPaneStatistik.getChildren().add(table);
 			    
-			    
+	    	   sl.getLogger().info("TableView created");
+	    	   sl.getLogger().info("added Data from Highscore file to TableView");
 			    
 			    
 			}		
@@ -444,7 +441,7 @@ public class ClientController {
 		
 
 		
-		///////////////// EventHandler LoginButton - LoginScene //////////////////////////
+		///////////////// EventHandler b_sendchatButton - GameScene //////////////////////////
 				view.b_sendchat.setOnAction(new EventHandler<ActionEvent>(){
 
 					@Override
@@ -458,7 +455,7 @@ public class ClientController {
 				});
 		
 				
-		///////////////// EventHandler FertigButton - LoginScene //////////////////////////
+		///////////////// EventHandler FertigButton - GameScene //////////////////////////
 				view.b_fertigGame.setOnAction(new EventHandler<ActionEvent>(){
 					
 					
