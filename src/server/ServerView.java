@@ -8,7 +8,6 @@
 
 package server;
 
-
 import server.ServiceLocator;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -23,7 +22,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tools.Translator;
-
 
 public class ServerView {
 	
@@ -42,44 +40,30 @@ public class ServerView {
 		this.model = model;
 		sl = ServiceLocator.getServiceLocator();
 		t = sl.getTranslator();
-	
-		
+			
 		//Setting up BorderPane
 		BorderPane topPane = new BorderPane();
 		topPane.setId("topPane"); //ID for CSS
 		topPane.setPrefHeight(800);
 		topPane.setPrefWidth(1200);
-	
-		/*
-		//Menu-Bar
-		MenuBar bar = new MenuBar();
-		Menu file = new Menu("Datei");
-		Menu language = new Menu("Sprache");
-		MIdeutsch = new MenuItem("deutsch");
-		MIenglisch = new MenuItem("englisch");
-		language.getItems().addAll(MIdeutsch,MIenglisch);
-		MIclose = new MenuItem("schliessen");
-		file.getItems().add(MIclose);
-		bar.getMenus().addAll(file, language);*/
 		
 		//Vertical-Box
 		HBox boxForBar = new HBox();
 		//boxForBar.getChildren().add(bar);
 		topPane.setTop(boxForBar);
-
 		
 		//Online-Offline-Label
 		onlineOffline = new Label("Offline");
 		onlineOffline.setId("offline");
 		
-		//serverImage 1
+		//serverImage 1 Background
 		Image serverImage;
 		ImageView serverIMV;
 		serverImage = new  Image("images/server.png");
 		serverIMV = new ImageView();
 		serverIMV.setImage(serverImage);
 		
-		//serverImage 2
+		//serverImage 2 Background
 		Image serverImage2;
 		ImageView serverIMV2;
 		serverImage2 = new  Image("images/server.png");
@@ -93,14 +77,12 @@ public class ServerView {
 		conOnlineIMV.setImage(conOnline);
 		conOnlineIMV.setVisible(false);
 		
-		
 		//ConOffline
 		Image conOffline;
 		conOffline = new  Image("images/ConOffline.png");
 		conOfflineIMV = new ImageView();
 		conOfflineIMV.setImage(conOffline);
 		conOfflineIMV.setVisible(true);
-		
 		
 		//Connect- and Disconnect Buttons
 		ConnectServer = new Button(t.getString("Button.ConnectServer"));
@@ -115,12 +97,10 @@ public class ServerView {
 		languageChange.setId("ServerButtons");
 		languageChange.setPrefWidth(500);
 		
-	
 		//Exit button
 		exit = new Button(t.getString("Button.exit"));
 		exit.setId("ServerButtons");
 		exit.setPrefWidth(500);
-		
 		
 		//upperPane
 		GridPane upperPane = new GridPane();
@@ -133,8 +113,6 @@ public class ServerView {
 		upperPane.add(serverIMV, 3, 20);
 		upperPane.add(serverIMV2, 5, 20);
 		
-		
-		
 		//bottomPane
 		GridPane bottomPane = new GridPane();
 		bottomPane.setAlignment(Pos.TOP_CENTER);
@@ -144,13 +122,11 @@ public class ServerView {
 		bottomPane.add(DisconnectServer, 0, 2);
 		bottomPane.add(exit, 0, 3);
 
-		
 		//Vertical-Box
 		VBox centerBox = new VBox();
 		centerBox.getChildren().add(upperPane);
 		centerBox.getChildren().add(bottomPane);
 		topPane.setCenter(centerBox);
-		
 		
 		Scene scene = new Scene(topPane);
 		scene.getStylesheets().add("ServerStylesheet");

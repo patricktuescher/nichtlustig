@@ -2,23 +2,14 @@
 	 * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
 	 * All rights reserved.
 	 * 
-	 * @function 
-	 * @author 
+	 * @function This class represents a Game with two Accounts
+	 * @author Nicola Burri
 	 */
 
 package server;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
-
-/**
- * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kontroburtüs.
- * All rights reserved.
- * 
- * This class represents a Game with two Accounts
- * @author Nicola Burri
- */
-
 import client.Account;
 import client.ServiceLocator;
 import client.Würfel;
@@ -32,7 +23,6 @@ public class Game {
 	int AugenzahlPunktePL2 = 0;
 	Logger logger = ServiceLocator.getServiceLocator().getLogger();
 	
-	
 	public Game(){
 		
 	}
@@ -40,6 +30,7 @@ public class Game {
 	 * 
 	 * @param player which joins the game. Only two players can be added to the game.
 	 */
+	
 	public void joinPlayer(Account player){
 		if(this.PL1 == null){
 			this.PL1 = player;
@@ -54,12 +45,14 @@ public class Game {
 	 * 
 	 * @return if two players have joined the game
 	 */
+	
 	public boolean isGameAvailabe(){
 		if(this.PL1 != null && this.PL2 == null){
 			return true;
 		}
 		else return false;
 	}
+	
 	/** 
 	 * 
 	 * @param würfel die of the player
@@ -78,11 +71,13 @@ public class Game {
 		}
 		else return false;
 	}
+	
 	/**
 	 * 
 	 * @return the player, which has the higher amount of numbers
 	 * @throws Exception if the numbers are equal
 	 */
+	
 	public Account firstPlayer() throws Exception{
 		AugenzahlPunktePL1 = 0;
 		AugenzahlPunktePL2 = 0;

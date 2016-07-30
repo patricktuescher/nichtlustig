@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-
 public class Listener extends Thread {
 
 	private ServerModel model;
@@ -26,6 +25,7 @@ public class Listener extends Thread {
 	 * @param port
 	 * @throws IOException
 	 */
+	
 	public Listener(ServerModel model, int port) throws IOException {
 		super("Listener:" + port);
 		this.model = model;
@@ -50,6 +50,7 @@ public class Listener extends Thread {
 	/**
 	 * Accepting the sockets from clients and opening a new ClientConnection
 	 */
+	
 	public void run() {
 		while (!stopThread) {
 			Socket socket;

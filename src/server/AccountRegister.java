@@ -8,15 +8,12 @@
 
 package server;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Logger;
-
 import client.Account;
 import message.ClientLogin;
 
@@ -58,6 +55,4 @@ public class AccountRegister {
 		}
 	}
 	
-	
-
 }

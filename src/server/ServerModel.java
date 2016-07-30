@@ -22,21 +22,15 @@ public class ServerModel {
 	private ArrayList<ClientConnection> clientList = new ArrayList<>();
 	private Game game;
 	
-	
-	
 	public void startServer() {
 		try {
 			listener = new Listener(this, portNumber);
 			listener.start();
 			isServerRunning = true;
 			ipAddress = "127.0.0.1";
-//			ipAddress = InetAddress.getLocalHost().getHostAddress();
-	
 	
 		}catch (IOException e) {
-
 		}
-		
 	}
 	
 	public void addClient(ClientConnection newClient) {
@@ -49,8 +43,7 @@ public class ServerModel {
 				newClient.sendObject(new ClientLoginSuccess(false));
 			}
 		}
-	}
-	
+	}	
 	
 	public void broadcast(Object obj) {
 		synchronized (clientList) {
@@ -80,8 +73,6 @@ public class ServerModel {
 		return current;
 	}
 
-
-
 	public ArrayList getListeners(){
 		return this.clientList;
 	}
@@ -92,4 +83,3 @@ public class ServerModel {
 		return this.game;
 	}
 }
-

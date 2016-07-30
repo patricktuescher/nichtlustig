@@ -14,11 +14,8 @@ package server;
 
 import java.util.Locale;
 import java.util.logging.Logger;
-
 import tools.Configuration;
 import tools.Translator;
-
-
 
 public class ServiceLocator {
     private static ServiceLocator serviceLocator; // singleton
@@ -40,6 +37,7 @@ public class ServiceLocator {
      * @param mainClass The main class of this program
      * @return The singleton resource locator
      */
+    
     public static ServiceLocator getServiceLocator() {
     	
         if (serviceLocator == null)

@@ -24,7 +24,6 @@ public class ServerMVC extends Application{
 		ServerView view = new ServerView(primaryStage, model);
 		ServerController controller = new ServerController(model, view);
 	
-		
 		view.start();
 		
 	}}

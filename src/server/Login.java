@@ -20,7 +20,6 @@ import java.util.List;
 
 public class Login {
 	
-	
 	protected void logCredentials (String credentials){
 	
 	try{
@@ -29,7 +28,7 @@ public class Login {
 	BufferedWriter bw = new BufferedWriter(fw);
 	bw.write(credentials+" "); 
 	
-	// nur wenn falls credentials noch nicht in file vorhanden sind
+	// only if credentials are not avaiable 
 	
 	bw.close();
 	} 
@@ -40,8 +39,8 @@ public class Login {
 	
 }
 
-	
-//http://www.mkyong.com/java/how-to-write-to-file-in-java-bufferedwriter-example/
+	// Copied from
+	//http://www.mkyong.com/java/how-to-write-to-file-in-java-bufferedwriter-example/
 
 
 	protected boolean checkCredentials( boolean b){
@@ -52,9 +51,6 @@ public class Login {
   	
   	try {
 	List<String> lines = Files.readAllLines(credentialsFile, charset);
-	
-	// ist String Credentials in lines vorhanden?? --> muss überprüft werden
-	
   	} 
 	    
   	catch (IOException e){
@@ -65,8 +61,4 @@ public class Login {
 	}
 }
 	
-
-
-
-
 

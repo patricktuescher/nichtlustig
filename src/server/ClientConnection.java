@@ -14,7 +14,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
-
 import client.Account;
 import message.CardClick;
 import message.ChatMessage;
@@ -31,8 +30,6 @@ import message.WürfelRoll;
 import message.initiateNewGame;
 import message.newAccountMessage;
 
-
-
 public class ClientConnection extends Thread {
 
 	private ServerModel model;
@@ -42,7 +39,6 @@ public class ClientConnection extends Thread {
 	private Object obj;
 	private String msg;
 	private Account Player;
-
 
 	public ClientConnection(ServerModel model, Socket socket) {
 		super();
@@ -200,7 +196,5 @@ public class ClientConnection extends Thread {
 	public String getClientName(){
 		return this.Player.getAccName();
 	}
-
-
 
 }

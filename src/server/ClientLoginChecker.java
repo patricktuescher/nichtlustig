@@ -42,9 +42,7 @@ public class ClientLoginChecker {
 			return true;
 		}
 		return false;
-	
-		
-		
+			
 		
 	}
 	public static ArrayList<Account> getAccountList(){

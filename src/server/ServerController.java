@@ -7,8 +7,6 @@
 	 */
 
 package server;
-import java.util.Locale;
-
 import client.ServiceLocator;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -27,7 +25,8 @@ public class ServerController {
         this.view = view;
         sl = ServiceLocator.getServiceLocator();
         
-        // register ourselves to listen for button clicks
+    //EventHandler - register ourselves to listen for button clicks
+        
         view.ConnectServer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -44,11 +43,13 @@ public class ServerController {
             }
         });
         
+        
+     // EventHandler Disconnect Server - LoginScene
+        
         view.DisconnectServer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
-//					model.stopServer();
                 	view.conOfflineIMV.setVisible(true);
 					view.conOnlineIMV.setVisible(false);
 					sl.getLogger().info("Stop Server Connection");
@@ -59,9 +60,9 @@ public class ServerController {
 				}
             }
         });
-
         
      // EventHandler QuitGameButton - LoginScene
+        
      		view.exit.setOnAction(new EventHandler<ActionEvent>(){
 
      			@Override
@@ -72,9 +73,9 @@ public class ServerController {
      			}		
      		});
         
-        
-        
-        // register ourselves to handle window-closing event
+       
+     // EventHandler - to handle window-closing event
+     		
         view.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
@@ -83,6 +84,8 @@ public class ServerController {
                 System.exit(0);  // end all activities (our server task) - not good code
             }
         });
+        
+     // EventHandler - to handle window-closing event
         
         view.languageChange.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -97,7 +100,6 @@ public class ServerController {
                updateView();
             	            }
         });
-       
     }
     
     public void updateView(){
