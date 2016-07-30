@@ -348,9 +348,10 @@ public class ClientController {
 		
 /*----------------------------------------- Game Fenster -----------------------------------------*/ 
 			
-		
-		// EventHandler ZurückButton - GameScene
-		view.b_backGame.setOnAction(new EventHandler<ActionEvent>(){
+
+/*----------------------------------------- EventHandler Zurück Button -----------------------------------------*/ 
+
+				view.b_backGame.setOnAction(new EventHandler<ActionEvent>(){
 		
 			@Override
 			public void handle(ActionEvent arg0) {
@@ -359,7 +360,8 @@ public class ClientController {
 			}
 		});
 
-		//EventHandler Würfel  - GameScrene
+/*----------------------------------------- EventHandler Würfel -----------------------------------------*/ 
+
 		view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
 		
 			@Override
@@ -375,10 +377,8 @@ public class ClientController {
 				checkTurn();
 				}
 		});
-	
 		
-			
-/*----------------------------------------- EventHandler Zoom Cards-----------------------------------------*/ 
+/*----------------------------------------- EventHandler Zoom Cards -----------------------------------------*/ 
 		
 		for(int x = 0;x<31;x++){	
 		final int d = x;
@@ -397,7 +397,8 @@ public class ClientController {
 				}
 			});
 			
-			///////////////// EventHandler chosen cards //////////////////////////
+/*----------------------------------------- EventHandler Chosen  Cards -----------------------------------------*/ 
+			
 			view.cardAL.get(x).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
 				
 				@Override
@@ -427,7 +428,7 @@ public class ClientController {
 			});	
 		}
 		
-		///////////////// EventHandler chosen cubes //////////////////////////
+/*----------------------------------------- EventHandler Chosen Cubes -----------------------------------------*/ 
 		
 		for(int i = 0; i < this.getWürfel().size();i++){
 			final int d = i;
@@ -444,9 +445,9 @@ public class ClientController {
 			
 		}
 		
-
 		
-		///////////////// EventHandler b_sendchatButton - GameScene //////////////////////////
+/*----------------------------------------- EventHandler b_sendchat Button -----------------------------------------*/ 
+		
 				view.b_sendchat.setOnAction(new EventHandler<ActionEvent>(){
 
 					@Override
@@ -460,7 +461,8 @@ public class ClientController {
 				});
 		
 				
-		///////////////// EventHandler FertigButton - GameScene //////////////////////////
+/*----------------------------------------- EventHandler Fertig Button -----------------------------------------*/ 
+				
 				view.b_fertigGame.setOnAction(new EventHandler<ActionEvent>(){
 					
 					
@@ -475,23 +477,8 @@ public class ClientController {
 						server.sendObject(new ClientTurn(false));
 						}
 				});
-			
-	
-	
-	
-			///////////////// EventHandler FertigButton - LoginScene //////////////////////////
-//			view.b_backLoginFailed.setOnAction(new EventHandler<ActionEvent>(){
-//				
-//				//@Override
-//				public void handle(ActionEvent arg0) {
-//					view.primaryStage.setScene(view.sceneLogin);
-//				}
-//			});
-//		
-		}
-	
-	
 
+		}
 	
 	public void setLobbyScene(){
 		this.view.primaryStage.setScene(this.view.sceneLobby);
@@ -636,8 +623,7 @@ public class ClientController {
 			}
 		
 		server.sendObject(new WürfelRoll(this.getWürfel()));
-		
-
+	
 	}
 	
 	public ArrayList<Würfel> getWürfel(){
@@ -771,6 +757,4 @@ public class ClientController {
 			
 		}
 	 
-	
-
 }

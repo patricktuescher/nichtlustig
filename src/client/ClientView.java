@@ -110,7 +110,7 @@ public class ClientView {
 		
 		
 		
-		///////////////// LOGIN FENSTER //////////////////////////
+/*----------------------------------------- Login Fenster -----------------------------------------*/ 
 		
 		//InnerPane Login
 		GridPane innerPaneLogin = new GridPane();
@@ -176,8 +176,7 @@ public class ClientView {
 		sceneLogin = new Scene(innerPaneLogin, 1200, 800);
 		sceneLogin.getStylesheets().add("ClientStylesheet");
 		
-		
-		///////////////// LOBBY FENSTER //////////////////////////
+/*----------------------------------------- Lobby Fenster -----------------------------------------*/ 
 		
 		//TopPane Lobby
 		BorderPane topPaneLobby = new BorderPane();
@@ -245,7 +244,7 @@ public class ClientView {
 		sceneLobby = new Scene(topPaneLobby, 1200, 800);
 		sceneLobby.getStylesheets().add("ClientStylesheet");
 		
-		///////////////// STATISTIK FENSTER //////////////////////////
+/*----------------------------------------- Statistik Fenster -----------------------------------------*/ 
 		
 		//TopPane Statistik
 		BorderPane topPaneStatistik = new BorderPane();
@@ -263,43 +262,6 @@ public class ClientView {
 		bottomPaneStatistik.setAlignment(Pos.CENTER);
 		topPaneStatistik.setBottom(bottomPaneStatistik);
 		
-		/*//TableView Statistik
-		
-		
-		
-		table = new TableView <>();
-		for (int i = 0; i < intValues.size() && i < stringValues.size(); i++) {
-            table.getItems().add(i);
-        }
-		
-		
-		
-		
-		table.setEditable(true);
-		
-	
-		
-		
-	    userNameCol<Integer,String> = new TableColumn<>(t.getString("TableColumn.UserNameCol"));
-	    scoreCol = new TableColumn<>(t.getString("TableColumn.Score"));
-	    dateCol = new TableColumn<>(t.getString("TableColumn.date"));
-	    table.getColumns().add(userNameCol);
-	    userNameCol.setCellValueFactory(cellData -> {
-            Integer rowIndex = cellData.getValue();
-            return new ReadOnlyStringWrapper(stringValues.get(rowIndex));
-        });
-	    
-	    
-	    
-	    
-	    
-	    
-	    table.getColumns().add(userNameCol, scoreCol, dateCol);
-	    table.getColumns().add(userNameCol, scoreCol, dateCol);
-	    table.setMaxSize(600, 400);
-	    table.setMinSize(600, 400);
-	    centerPaneStatistik.getChildren().add(table); */
-		
 		//Button Zurück
 		b_backStatistik = new Button(t.getString("Button.Back"));
 		bottomPaneStatistik.getChildren().add(b_backStatistik);
@@ -311,7 +273,7 @@ public class ClientView {
 		sceneStatistik.getStylesheets().add("ClientStylesheet");
 		
 		
-		///////////////// REGELN FENSTER //////////////////////////
+/*----------------------------------------- Regeln Fenster -----------------------------------------*/ 
 		
 		//BorderPane Regeln
 		BorderPane topPaneRegeln = new BorderPane();
@@ -328,14 +290,11 @@ public class ClientView {
 		bottomPaneRegeln.setAlignment(Pos.CENTER);
 		topPaneRegeln.setBottom(bottomPaneRegeln);
 		
-		
-
 		//Button Zurück
 		b_backRegeln = new Button(t.getString("Button.Back"));
 		b_backRegeln.setPrefSize(200, 70);
 		bottomPaneRegeln.getChildren().add(b_backRegeln);
 		b_backRegeln.setId("b-login");
-		
 		
 		//Regeln image[] //// image position in reglen array to be defined; currently set to 0 for testing
 		regeln = new Image[6];
@@ -349,12 +308,10 @@ public class ClientView {
 		regelnView.setFitHeight(600);
 		regelnView.setFitWidth(600);
 
-					
 		// Button next
 		b_nextImage = new Button(">");
 		b_nextImage.setPrefSize(20,20);
-		b_nextImage.setId("b-login");
-	
+		b_nextImage.setId("b-login");	
 		
 		// Button previous
 		b_previousImage = new Button("<");
@@ -364,13 +321,12 @@ public class ClientView {
 		// added nodes to inner pane Regeln
 		innerPaneRegeln.getChildren().addAll(b_previousImage, regelnView,b_nextImage);
 		innerPaneRegeln.setSpacing(10);
-		
 				
 		//Scene Regeln
 		sceneRegeln = new Scene(topPaneRegeln, 1200, 800);
 		sceneRegeln.getStylesheets().add("ClientStylesheet");
 		
-		///////////////// GAME FENSTER //////////////////////////
+/*----------------------------------------- Game Fenster -----------------------------------------*/ 
 		
 		//TopPane Game
 		topPaneGame = new BorderPane();
@@ -404,12 +360,6 @@ public class ClientView {
 		bottomPaneGameChat.setMinHeight(100);
 		bottomPaneGame.setBottom(bottomPaneGameChat);
 		
-		
-		
-		
-		
-		
-
 		//Button Zurück
 		b_backGame = new Button(t.getString("Button.Back"));
 		b_backGame.setMinSize(100, 30);
@@ -425,15 +375,12 @@ public class ClientView {
 		rectangleSpace = new Rectangle(95,50);
 		rectangleSpace.setId("spaceRectangle");
 		
-		
 		// Label Score PL1 
 		int scorePL1= 15; // needs to be adjusted
 		labelPL1 = new Label(""+scorePL1);
 		labelPL1.setMinSize(50, 50);
 		labelPL1.setPadding(new Insets(0,0,0,130));
 		labelPL1.setId("lb-labelscore");
-		
-
 				
 		// Label Score PL2 
 		int scorePL2 = 33; // needs to be adjusted
@@ -441,38 +388,24 @@ public class ClientView {
 		labelPL2.setMinSize(50, 50);
 		labelPL2.setPadding(new Insets(0,0,0,260));
 		labelPL2.setId("lb-labelscore");
-		
-		
 
 		//ImageView Turn PL1
-		
 		turnPL1 = new ImageView();
 		turn1 = new Image("images/yourTurn.png");
 		turn1_de = new Image("images/deinZug.png");
 		turnPL1.setImage(turn1);
 		
 		//ImageView Turn PL2
-		
 		turnPL2 = new ImageView();
 		turn2= new Image("images/opponentsTurn.png");
 		turn2_de= new Image("images/gegnersZug.png");
 		turnPL2.setImage(turn2);
 		
-	
-		
-	
-		
 		//Scene Game
 		sceneGame = new Scene(topPaneGame, 1200, 850);
 		sceneGame.getStylesheets().add("ClientStylesheet");
 		
-		
-		
-				
-				
-
-		
-		///////////////// CARDS //////////////////////////
+/*-----------------------------------------  Cards -----------------------------------------*/ 
 		
 		for(int x = 1;x<6;x++){
 			this.cardAL.add(new Card(cardType.Dino, x));
@@ -483,14 +416,10 @@ public class ClientView {
 			this.cardAL.add(new Card(cardType.Tod, x));
 		}
 		this.cardAL.add(new Card(cardType.Tod, 6));
-		
-		
+	
 		updateCards();
 		
-
-
-		
-		////////////////// CUBES PL1//////////////////////////
+/*----------------------------------------- Cubes Player 1  -----------------------------------------*/ 
 		
 		WürfelPL1  = new ArrayList<Würfel>();
 		
@@ -503,7 +432,6 @@ public class ClientView {
 		cubeViewWhite2 = new Würfel(Farbe.Weiss);
 		WürfelPL1.add(cubeViewWhite1);
 		WürfelPL1.add(cubeViewWhite2);
-		
 
 		// Cubes black1
 		cubeViewBlack1 = new Würfel(Farbe.Schwarz);
@@ -516,7 +444,6 @@ public class ClientView {
 		cubeViewRed2 = new Würfel(Farbe.Rot);
 		WürfelPL1.add(cubeViewRed1);
 		WürfelPL1.add(cubeViewRed2);
-		
 		
 		//Button würfeln
 		b_würfeln = new Button(t.getString("Button.roll"));
@@ -531,9 +458,7 @@ public class ClientView {
 		//added nodes to BottomPane
 		bottomPaneGameCube.getChildren().addAll(turnPL1, b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_fertigGame,labelPL1);
 		
-	
-		
-		//////////////////CUBES PL2 (SecondPlayer) //////////////////////////
+/*----------------------------------------- Cubes Player 2 -----------------------------------------*/ 
 		
 		WürfelPL2  = new ArrayList<Würfel>();
 		
@@ -546,7 +471,6 @@ public class ClientView {
 		cubeViewWhite2PL2 = new Würfel(Farbe.Weiss);
 		WürfelPL2.add(cubeViewWhite1PL2);
 		WürfelPL2.add(cubeViewWhite2PL2);
-	
 		
 		// Cubes black PL2
 		cubeViewBlack1PL2 = new Würfel(Farbe.Schwarz);
@@ -568,53 +492,42 @@ public class ClientView {
 		innertopPaneGame.getChildren().addAll(turnPL2,cubeViewPinkPL2.getImageView(), cubeViewWhite1PL2.getImageView(), cubeViewWhite2PL2.getImageView(), cubeViewBlack1PL2.getImageView(), cubeViewBlack2PL2.getImageView(), cubeViewRed1PL2.getImageView(), cubeViewRed2PL2.getImageView(),labelPL2);
 				
 		//Chat
-		
 		chatWindow = new TextArea();
 		chatWindow.setMinSize(200, 90);
 		chatWindow.setMaxSize(800, 90);
 		chatWindow.setText("");
-		
 		chatWindow.setEditable(false);
 		
-		
 		//VBox Chat Input and Send
-		
 		HBox ChatInput = new HBox();
-		
 		chatInputWindow = new TextField();
 		chatInputWindow.setText(t.getString("TextField.click"));
 		chatInputWindow.setMaxSize(700, 30);
 		chatInputWindow.setMinSize(700, 30);
 		
-		
+		// b_sendchat Button
 		b_sendchat = new Button();
 		b_sendchat.setText(t.getString("Button.send"));
 		b_sendchat.setMinSize(100, 30);
 		b_sendchat.setMaxSize(100, 30);
 		b_sendchat.setId("b-sendchat");
 		
-		
 		ChatInput.getChildren().addAll(chatInputWindow, b_sendchat,rectangleSpace, b_backGame);
 		
-		
 		bottomPaneGameChat.getChildren().addAll(chatWindow, ChatInput);
-		
-		
-		//////////////// Primary Stage ////////////////////////
+
+/*----------------------------------------- Primary Stage -----------------------------------------*/ 
 		
 		primaryStage.setTitle(t.getString("Stage.title"));
 		primaryStage.setScene(sceneLogin);
 		primaryStage.setResizable(false);
 		primaryStage.getIcons().add(new Image("images/ClientIcon.png"));
-		
-		
+
 	}
 	
 	public void start(){
 		primaryStage.show();
 	}
-	
-
 	
 	public String getName(){
 		return "ClientView";
@@ -628,7 +541,6 @@ public class ClientView {
 		return this.WürfelPL2;
 	}
 	
-	
 	public void updateCards(){
 		innerPaneGame= new GridPane();
 		innerPaneGame.setHgap(5);
@@ -641,7 +553,6 @@ public class ClientView {
 		leftPaneGame.setVgap(5);
 		leftPaneGame.setPadding(new Insets(105, 0, 15, 100));
 		leftPaneGame.setGridLinesVisible(false);
-		
 		
 		//Putting it into the Grid
 		int dino = 1;
