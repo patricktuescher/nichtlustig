@@ -1,3 +1,11 @@
+/**
+	 * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
+	 * All rights reserved.
+	 * 
+	 * @function This class represents a card which can be implemented into the nichtLustig application.
+	 * @author Nicola Burri
+	 */
+
 package client;
 
 import java.io.Serializable;
@@ -13,18 +21,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-/**
- * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kontroburtüs.
- * All rights reserved.
- * 
- * This class represents a card which can be implemented into the nichtLustig application.
- * @author Nicola Burri
- */
-
 public class Card implements Serializable{
 	
-	
-
 	private static final long serialVersionUID = 9093800489872546795L;
 	private cardType type = cardType.Dino;
 	private int Augenzahl;
