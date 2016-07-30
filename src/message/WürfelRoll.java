@@ -15,9 +15,6 @@ import client.Würfel;
 
 public class WürfelRoll implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8993725853828317933L;
 	private ArrayList<Würfel> würfel;
 	

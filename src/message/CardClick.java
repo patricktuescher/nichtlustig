@@ -14,9 +14,6 @@ import client.Card;
 
 public class CardClick implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 9088399730588893988L;
 	private Card card;
 	

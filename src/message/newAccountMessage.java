@@ -13,9 +13,7 @@ import java.io.Serializable;
 import client.Account;
 
 public class newAccountMessage implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 5104845804236928955L;
 	public Account account;
 	
@@ -26,7 +24,5 @@ public class newAccountMessage implements Serializable{
 	public Account getAccount(){
 		return this.account;
 	}
-	
-	
 
 }

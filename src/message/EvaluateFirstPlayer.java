@@ -15,9 +15,6 @@ import client.Würfel;
 
 public class EvaluateFirstPlayer implements Serializable{
 
-	/**
-	 * 
-	 */
 	private ArrayList<Würfel> würfel;
 	private static final long serialVersionUID = -8611920176794530185L;
 	

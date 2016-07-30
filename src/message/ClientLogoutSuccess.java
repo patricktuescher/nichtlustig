@@ -12,9 +12,6 @@ import java.io.Serializable;
 
 public class ClientLogoutSuccess implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6285999042052320061L;
 	private boolean b = true;
 	

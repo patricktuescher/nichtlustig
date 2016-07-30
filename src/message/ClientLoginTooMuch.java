@@ -11,9 +11,6 @@ package message;
 import java.io.Serializable;
 
 public class ClientLoginTooMuch implements Serializable {
-	/**
-	 * 
-	 */
 	
 	private boolean success;
 	
