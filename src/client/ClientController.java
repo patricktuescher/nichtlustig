@@ -589,6 +589,26 @@ public class ClientController {
 	this.setLoginScene();
 	}
 	
+	public void getRegAlert(){
+	   	Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Registration successful");
+		alert.setHeaderText("Registration successful");
+		alert.initStyle(StageStyle.TRANSPARENT);
+		alert.setContentText("Your Account is now registered");
+		alert.showAndWait();
+		this.setLoginScene();
+		}
+	
+	public void getRegFailedAlert(){
+	   	Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Registration unsuccessful");
+		alert.setHeaderText("Registration unsuccessful");
+		alert.initStyle(StageStyle.TRANSPARENT);
+		alert.setContentText("Your account has been registered already");
+		alert.showAndWait();
+		this.setLoginScene();
+		}
+	
 	public void setUpDie(){
 		Platform.runLater(new Runnable(){
 			@Override
