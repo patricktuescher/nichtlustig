@@ -2,7 +2,7 @@
 	 * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
 	 * All rights reserved.
 	 * 
-	 * @function 
+	 * @function This class acts as an interface to the server application and monitors incoming data.
 	 * @author 
 	 */
 
@@ -33,9 +33,6 @@ import message.GameComplete;
 import message.NewGameChatMessage;
 import message.WürfelRoll;
 
-
-
-
 public class ServerListener extends Thread {
 	protected ServiceLocator sl = ServiceLocator.getServiceLocator();
 	protected Translator t = sl.getTranslator();
@@ -56,7 +53,6 @@ public class ServerListener extends Thread {
 	private boolean stopThread = false;
 	
 	
-
 	public static ServerListener getServerListener() {
 		if (serverListener == null) {
 			serverListener = new ServerListener();
@@ -64,9 +60,7 @@ public class ServerListener extends Thread {
 		return serverListener;
 	}
 
-
 	public boolean connect(Account acc) {
-		
 		
 		try {
 
@@ -90,11 +84,9 @@ public class ServerListener extends Thread {
 			return false;
 		}
 		return true;
-
 	}
 	
 public boolean connect() {
-		
 		
 		try {
 

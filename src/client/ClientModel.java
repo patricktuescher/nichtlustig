@@ -10,8 +10,6 @@ package client;
 
 import java.util.ArrayList;
 
-import javafx.application.Platform;
-
 public class ClientModel {
 	
 	private int playerRollCounter = 0;
@@ -49,10 +47,8 @@ public class ClientModel {
 		
 		for(int x = 0;x<31;x++){
 			cardAL.get(x).check(wuerfelAL, summe);
-		}
-		
-		
-		}
+		}	
+	}
 	
 	
 

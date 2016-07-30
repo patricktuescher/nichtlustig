@@ -35,15 +35,7 @@ public class cardChecker {
 //					allCards.get(x).getImage().setRotate(90);
 //				}
 //				}
-			
-
-		
-				
+					
 	}
 	
-	
-	
-	
-	
-
 }

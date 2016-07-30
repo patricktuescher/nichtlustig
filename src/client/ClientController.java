@@ -2,7 +2,7 @@
 	 * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
 	 * All rights reserved.
 	 * 
-	 * @function 
+	 * @function  The clientController class  acts on both model and view. It controls the data flow into model object and updates the view whenever data changes.
 	 * @author 
 	 */
 
@@ -43,9 +43,7 @@ import message.initiateNewGame;
 import message.newAccountMessage;
 import tools.Translator;
 
-
 public class ClientController {
-
 
 	protected ServiceLocator sl;       
 	protected ClientView view;
@@ -53,8 +51,6 @@ public class ClientController {
 	protected ServerListener server;
 	protected Account clientOwner;
 	protected Translator t;
-
-
 
 	
 	public ClientController(ClientView view, ClientModel model){
@@ -64,8 +60,7 @@ public class ClientController {
 		ServerListener.controller = this;
 
 		
-		
-		///////////////// LOGIN FENSTER //////////////////////////
+/*----------------------------------------- LOGIN FENSTER -----------------------------------------*/ 
 		
 		
 		// EventHandler Language Change Button - LoginScene
@@ -136,7 +131,7 @@ public class ClientController {
 		
 		
 		
-		///////////////// LOBBY FENSTER //////////////////////////
+/*----------------------------------------- LOBBY FENSTER -----------------------------------------*/ 
 				
 		
 		// EventHandler ZurückButton - LobbyScene
@@ -293,7 +288,7 @@ public class ClientController {
 		});	
 			
 		
-		///////////////// STATISTIK FENSTER //////////////////////////
+/*----------------------------------------- Statistik FENSTER -----------------------------------------*/ 
 		
 		
 		// EventHandler ZurückButton - StatistikScene
@@ -307,7 +302,7 @@ public class ClientController {
 		});
 		
 		
-	     ///////////////// REGELN FENSTER //////////////////////////
+/*----------------------------------------- Regeln FENSTER -----------------------------------------*/ 
 		
 		
 		// EventHandler ZurückButton - RegelnScene
@@ -351,7 +346,7 @@ public class ClientController {
 				});
 	
 		
-		///////////////// GAME FENSTER //////////////////////////
+/*----------------------------------------- Game Fenster -----------------------------------------*/ 
 			
 		
 		// EventHandler ZurückButton - GameScene
@@ -381,10 +376,12 @@ public class ClientController {
 				}
 		});
 	
-		for(int x = 0;x<31;x++){
+		
 			
-		///////////////// EventHandler zoom cards //////////////////////////
-			final int d = x;
+/*----------------------------------------- EventHandler Zoom Cards-----------------------------------------*/ 
+		
+		for(int x = 0;x<31;x++){	
+		final int d = x;
 			view.cardAL.get(x).getImage().setOnMouseEntered(new EventHandler<MouseEvent>(){
 				
 				@Override
@@ -514,15 +511,12 @@ public class ClientController {
 		view.chatWindow.appendText(s+"\n");
 	}
 	
-	
 	public void setOpponentDi(ArrayList<Würfel> würfel){
 		sl.getLogger().info("Opponents Die are being set");
 			
 		for(int x = 0;x<view.WürfelPL2.size();x++){
 			view.WürfelPL2.get(x).setAktAugenzahl(würfel.get(x).getAktAugenzahl());
-		
-	
-		}
+	}
 		
 		
 		

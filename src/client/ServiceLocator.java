@@ -1,9 +1,12 @@
 /**
-	 * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
-	 * All rights reserved.
+	 * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code
+	 * is licensed under the terms of the BSD 3-clause license (see the file
+	 * license.txt).
 	 * 
-	 * @function 
-	 * @author 
+	 * @function The singleton instance of this class provide central storage for resources
+	 * used by the program. It also defines application-global constants, such as
+	 * the application name.
+	 * @author Brad Richards
 	 */
 
 package client;
@@ -14,18 +17,6 @@ import java.util.logging.Logger;
 import tools.Configuration;
 import tools.Translator;
 
-
-/**
- * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code
- * is licensed under the terms of the BSD 3-clause license (see the file
- * license.txt).
- * 
- * The singleton instance of this class provide central storage for resources
- * used by the program. It also defines application-global constants, such as
- * the application name.
- * 
- * @author Brad Richards
- */
 public class ServiceLocator {
     private static ServiceLocator serviceLocator; // singleton
 

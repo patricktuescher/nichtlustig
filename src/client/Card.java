@@ -12,10 +12,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Logger;
-
-import javax.sound.sampled.AudioFileFormat.Type;
-
-import javafx.application.Platform;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -72,8 +68,6 @@ public class Card implements Serializable{
 	public ArrayList<Würfel> getWürfel(){
 		return this.würfel;
 	}
-	
-	
 	
 	public void check(ArrayList<Würfel> wuerfeltoTest, int summe){
 		boolean b = true;
@@ -142,12 +136,10 @@ public class Card implements Serializable{
 		this.image.setFitWidth(this.cardWidth);
 		return image;
 	}
-
-
+	
 	public Status getStatus() {
 		return status;
 	}
-	
 	
 	public void setStatus(Status status) {
 		this.status = status;
@@ -161,13 +153,14 @@ public class Card implements Serializable{
 		this.owner= owner;
 	}
 
-
 	public String getType(){
 		return this.type.name();
 	}
+	
 	public String toString(){
 		return this.getType() + " Nr: " + this.Augenzahl;
 	}
+	
 	public boolean equals(Card otherCard){
 		if(this.Augenzahl == otherCard.getAugenzahl() && this.getType().equals(otherCard.getType())){
 			return true;
@@ -180,11 +173,13 @@ public class Card implements Serializable{
 		this.image.setScaleX(2);
 		this.image.setScaleY(2);
 	}
+	
 	public void deZoomCard(){
 		this.image.toBack();
 		this.image.setScaleX(1);
 		this.image.setScaleY(1);
 	}
+	
 	public void click(){
 		this.status = Status.gewählt;
 		InnerShadow innerShadow = new InnerShadow(20, Color.web("489dff"));
@@ -193,9 +188,9 @@ public class Card implements Serializable{
 		innerShadow.setChoke(0.5);	
 		this.getImage().setEffect(innerShadow);
 		this.getImage().setId("shadow");
-		logger.info(this.type.name()+ " card has been clicked on. Needed die are: " + würfel.toString());
-		
+		logger.info(this.type.name()+ " card has been clicked on. Needed die are: " + würfel.toString());	
 	}
+	
 	public void clickOther(){
 		InnerShadow innerShadow = new InnerShadow(20, Color.GREEN);
 		innerShadow.setOffsetX(2);
@@ -203,8 +198,6 @@ public class Card implements Serializable{
 		innerShadow.setChoke(0.5);	
 		this.getImage().setEffect(innerShadow);
 		this.getImage().setId("shadow");
-
 	}
-
 
 }

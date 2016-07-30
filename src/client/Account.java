@@ -2,7 +2,7 @@
 	 * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
 	 * All rights reserved.
 	 * 
-	 * @function 
+	 * @function This class represents an Account which is used to log in to the nichtLustig application.
 	 * @author 
 	 */
 

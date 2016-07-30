@@ -2,7 +2,7 @@
 	 * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
 	 * All rights reserved.
 	 * 
-	 * @function 
+	 * @function This class is used to set the image according to whether a user already started a game or not.
 	 * @author 
 	 */
 
@@ -24,9 +24,11 @@ public class GameAvailableImage {
 			setImageOff();
 		}
 	}
+	
 	public void setImageOn(){
 		this.iv = new ImageView(new Image("images/Clown_on.png"));
 	}
+	
 	public void setImageOff(){
 		this.iv = new ImageView(new Image("images/Clown_off.png"));
 	}

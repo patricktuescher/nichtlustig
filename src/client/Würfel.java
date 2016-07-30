@@ -17,13 +17,8 @@ import javafx.scene.image.ImageView;
 
 
 public class Würfel implements Serializable {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -7272955027696020072L;
-	/**
-	 * 
-	 */
 
 	//Height and Width of cubes
 	final int cubeheight = 60;
@@ -111,7 +106,7 @@ public class Würfel implements Serializable {
 		this.image.setStyle("");
 		logger.fine(this.farbe + " die has been rolled. Number of die: " + this.aktAugenzahl);
 		}
-		}
+	}
 	
 	/**
 	 * activates css effect on selected die
@@ -135,6 +130,7 @@ public class Würfel implements Serializable {
 	public boolean isSelected(){
 		return this.selected;
 	}
+	
 	public void resetWürfel(){
 		this.image.setStyle("");
 		this.used = false;
@@ -144,9 +140,11 @@ public class Würfel implements Serializable {
 	public String toString(){
 		return "Würfel "+ this.aktAugenzahl + " "+this.getFarbe();
 	}
+	
 	public void setUsed(boolean used){
 		this.used = used;
 	}
+	
 	public boolean isUsed(){
 		return this.used;
 	}
