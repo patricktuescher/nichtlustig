@@ -7,10 +7,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.sun.security.ntlm.Client;
 
 import javafx.application.Platform;
+import javafx.beans.property.ReadOnlyIntegerWrapper;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,6 +21,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.StageStyle;
 import message.CardClick;
@@ -39,6 +44,7 @@ public class ClientController {
 	protected ClientModel model;
 	protected ServerListener server;
 	protected Account clientOwner;
+	protected Translator t;
 
 
 
@@ -141,23 +147,43 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
+				
+				
 			view.primaryStage.setScene(view.sceneStatistik);
 			sl.getLogger().info("Change to Statistik Scene");
+			
+			
+		
+			ArrayList<Integer> scoreValues = new ArrayList<Integer>();
+			ArrayList<String> nameValues = new ArrayList<String>();
+			ArrayList<String> dateValues = new ArrayList<String>();
+	            
 			
 			   BufferedReader br = null;
 			    try {
 			        br = new BufferedReader(new FileReader(new File("src/server/Highscore.txt")));
+			        
+			      
 			        String line = null;
 			        
 			        while((line = br.readLine()) != null) {
 			        	
 			            String[] parts = line.split(",");
+			            nameValues.add(parts[0]);
+			            scoreValues.add(Integer.parseInt(parts[1]));
+			            dateValues.add(parts[2]);
+			            
+			         
 			            System.out.println( parts[0]);
 			            System.out.println( parts[1]);
 			            System.out.println( parts[2]);
-//			            view.userNameCol.cellFactoryProperty(parts[0]);
 			            
+			     
 			        }
+			       
+			        
+
+			        
 			    } catch(FileNotFoundException e) {
 			        e.printStackTrace();
 			    } catch(IOException e) {
@@ -172,9 +198,59 @@ public class ClientController {
 			        }
 			    }
 			    
-			
+				
+				
+				
+				
+	            TableView<Integer> table = new TableView<>();
+	            table.setEditable(true);
+	            
+	            for (int i = 0; i < scoreValues.size() && i < nameValues.size() &&  i < dateValues.size()  ; i++) {
+	                table.getItems().add(i);
+	            }
+	            
+	            TableColumn<Integer,String> nameCol = new TableColumn<>("User Name"); 
+	            nameCol.setCellValueFactory(cellData -> {
+	            	Integer rowIndex = cellData.getValue();
+	            	return new ReadOnlyStringWrapper(nameValues.get(rowIndex));
+	            
+	            });
+	            
+	            TableColumn<Integer,Number> scoreCol = new TableColumn<>("Score"); 
+	            scoreCol.setCellValueFactory(cellData -> {
+	            	Integer rowIndex = cellData.getValue();
+	            	return new ReadOnlyIntegerWrapper(scoreValues.get(rowIndex));
+	            
+	            });
+	            
+	            TableColumn<Integer,String> dateCol = new TableColumn<>("Date"); 
+	            dateCol.setCellValueFactory(cellData -> {
+	            	Integer rowIndex = cellData.getValue();
+	            	return new ReadOnlyStringWrapper(dateValues.get(rowIndex));
+	            
+	            });
+	            
+	            nameCol.setMinWidth(200);
+	            scoreCol.setMinWidth(200);
+	            dateCol.setMinWidth(200);
+	            table.getColumns().add(nameCol);
+	            table.getColumns().add(scoreCol);
+	            table.getColumns().add(dateCol);
+	            table.setMaxSize(600, 400);
+	    	    table.setMinSize(600, 400);
+	    	   view. centerPaneStatistik.getChildren().add(table);
+			    
+			    
+			    
+			    
 			}		
 		});
+		
+		
+		
+		
+		
+		
 			
 		
 		// EventHandler RegelnButton - LobbyScene

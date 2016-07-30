@@ -36,8 +36,8 @@ public class ClientView {
 	protected TextField tf_username;
 	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame, b_backLoginFailed, b_languageChange;
 	protected Label labelPL1, labelPL2, loginFailed, lb_username, lb_password, lb_chooseLanguage;
-	protected TableView table;
-	protected TableColumn userNameCol, scoreCol, dateCol;
+	protected TableView<Integer> table;
+	protected TableColumn<Integer,String> userNameCol, scoreCol, dateCol;
 	protected GameAvailableImage gai;
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln, sceneLoginFailed;
@@ -47,6 +47,7 @@ public class ClientView {
 	protected Rectangle rectangleSpace,rectangleSpace1, rectangleSpace2;
 	protected ImageView turnPL1, turnPL2;
 	protected Image turn1, turn2, turn1_de, turn2_de;
+	protected HBox centerPaneStatistik ;
 	
 	//Height and Width of the cards
 	final int cardheight = 90;
@@ -243,7 +244,7 @@ public class ClientView {
 		topPaneStatistik.setId("topPaneStatistik"); //ID for CSS
 		
 		//HBox Statistik
-		HBox centerPaneStatistik = new HBox();
+		centerPaneStatistik = new HBox();
 		centerPaneStatistik.setAlignment(Pos.CENTER);
 		centerPaneStatistik.setPadding(new Insets(50,0,0,0));
 		topPaneStatistik.setCenter(centerPaneStatistik);
@@ -254,16 +255,42 @@ public class ClientView {
 		bottomPaneStatistik.setAlignment(Pos.CENTER);
 		topPaneStatistik.setBottom(bottomPaneStatistik);
 		
-		//TableView Statistik
-		table = new TableView();
+		/*//TableView Statistik
+		
+		
+		
+		table = new TableView <>();
+		for (int i = 0; i < intValues.size() && i < stringValues.size(); i++) {
+            table.getItems().add(i);
+        }
+		
+		
+		
+		
 		table.setEditable(true);
-	    userNameCol = new TableColumn(t.getString("TableColumn.UserNameCol"));
-	    scoreCol = new TableColumn(t.getString("TableColumn.Score"));
-	    dateCol = new TableColumn(t.getString("TableColumn.date"));
-	    table.getColumns().addAll(userNameCol, scoreCol, dateCol);
+		
+	
+		
+		
+	    userNameCol<Integer,String> = new TableColumn<>(t.getString("TableColumn.UserNameCol"));
+	    scoreCol = new TableColumn<>(t.getString("TableColumn.Score"));
+	    dateCol = new TableColumn<>(t.getString("TableColumn.date"));
+	    table.getColumns().add(userNameCol);
+	    userNameCol.setCellValueFactory(cellData -> {
+            Integer rowIndex = cellData.getValue();
+            return new ReadOnlyStringWrapper(stringValues.get(rowIndex));
+        });
+	    
+	    
+	    
+	    
+	    
+	    
+	    table.getColumns().add(userNameCol, scoreCol, dateCol);
+	    table.getColumns().add(userNameCol, scoreCol, dateCol);
 	    table.setMaxSize(600, 400);
 	    table.setMinSize(600, 400);
-	    centerPaneStatistik.getChildren().add(table);
+	    centerPaneStatistik.getChildren().add(table); */
 		
 		//Button Zurück
 		b_backStatistik = new Button(t.getString("Button.Back"));
