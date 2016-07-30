@@ -347,8 +347,8 @@ public class ClientController {
 	
 		
 /*----------------------------------------- Game Fenster -----------------------------------------*/ 
-			
 
+				
 /*----------------------------------------- EventHandler Zurück Button -----------------------------------------*/ 
 
 				view.b_backGame.setOnAction(new EventHandler<ActionEvent>(){
