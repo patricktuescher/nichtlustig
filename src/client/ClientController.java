@@ -49,7 +49,7 @@ public class ClientController {
 	protected ClientView view;
 	protected ClientModel model;
 	protected ServerListener server;
-	protected Account clientOwner;
+	protected static Account clientOwner;
 	protected Translator t;
 
 	

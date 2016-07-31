@@ -30,6 +30,7 @@ public class Card implements Serializable{
 	private transient Logger logger = ServiceLocator.getServiceLocator().getLogger();
 	private Account owner;
 	private String pfad;
+	
 
 	/**
 	 * The constructor creates a card
@@ -109,7 +110,7 @@ public class Card implements Serializable{
 				würfelPL1.remove(this.getWürfel().get(x));
 			}
 		}
-		if(würfelPL1.get(0).getAktAugenzahl() == this.Augenzahl && this.status == Status.gewählt){
+		if(würfelPL1.get(0).getAktAugenzahl() == this.Augenzahl && this.status == Status.gewählt && this.owner.equals(ClientController.clientOwner)){
 			b = true;
 		}
 		if(b){
@@ -190,6 +191,7 @@ public class Card implements Serializable{
 	public void click(){
 		if(this.status == Status.frei){
 			this.status = Status.gewählt;
+			this.owner = ClientController.clientOwner;
 			InnerShadow innerShadow = new InnerShadow(20, Color.web("489dff"));
 			innerShadow.setOffsetX(2);
 			innerShadow.setOffsetY(2);
