@@ -30,7 +30,6 @@ public class Card implements Serializable{
 	private transient Logger logger = ServiceLocator.getServiceLocator().getLogger();
 	private Account owner;
 	private String pfad;
-	
 
 	/**
 	 * The constructor creates a card
@@ -110,7 +109,7 @@ public class Card implements Serializable{
 				würfelPL1.remove(this.getWürfel().get(x));
 			}
 		}
-		if(würfelPL1.get(0).getAktAugenzahl() == this.Augenzahl && this.status == Status.gewählt && this.owner.equals(ClientController.clientOwner)){
+		if(würfelPL1.get(0).getAktAugenzahl() == this.Augenzahl && this.status == Status.gewählt){
 			b = true;
 		}
 		if(b){
@@ -188,10 +187,10 @@ public class Card implements Serializable{
 		this.image.setScaleY(1);
 	}
 	
-	public void click(){
+	public void click(Account acc){
+		this.owner = acc;
 		if(this.status == Status.frei){
 			this.status = Status.gewählt;
-			this.owner = ClientController.clientOwner;
 			InnerShadow innerShadow = new InnerShadow(20, Color.web("489dff"));
 			innerShadow.setOffsetX(2);
 			innerShadow.setOffsetY(2);
@@ -209,8 +208,8 @@ public class Card implements Serializable{
 		
 	}
 	
-	public void clickOther(){
-		System.out.println(this);
+	public void clickOther(Account acc){
+		this.owner = acc;
 		if(this.status == Status.frei){
 		this.status = Status.gewählt;
 		InnerShadow innerShadow = new InnerShadow(20, Color.GREEN);
@@ -220,7 +219,7 @@ public class Card implements Serializable{
 		this.getImage().setEffect(innerShadow);
 		this.getImage().setId("shadow");
 		}
-		else{	
+		else{	 
 			if(this.status == Status.gewählt){
 			this.status = Status.gewertet;
 			this.getImage();

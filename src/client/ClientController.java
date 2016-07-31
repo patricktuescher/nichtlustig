@@ -403,7 +403,7 @@ public class ClientController {
 				
 				@Override
 				public void handle(MouseEvent arg0){
-					view.cardAL.get(d).click();
+					view.cardAL.get(d).click(clientOwner);
 					view.cardAL.get(d).setOwner(clientOwner);
 					for(int y = 0; y < view.cardAL.get(d).getWürfel().size(); y++){
 						if(view.WürfelPL1.contains(view.cardAL.get(d).getWürfel().get(y))){
@@ -504,19 +504,6 @@ public class ClientController {
 		for(int x = 0;x<view.WürfelPL2.size();x++){
 			view.WürfelPL2.get(x).setAktAugenzahl(würfel.get(x).getAktAugenzahl());
 	}
-		
-		
-		
-//		view.WürfelPL2.clear();
-//		view.WürfelPL2.addAll(würfel);
-//		view.innertopPaneGame.getChildren().clear();
-//		view.innertopPaneGame.getChildren().add(view.turnPL2);
-//		for(int x = 0;x<view.WürfelPL2.size();x++){
-//		if(view.WürfelPL2.get(x).isSelected())
-//			view.WürfelPL2.get(x).getImageView().setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,5), 30, 0, 0, 0);");
-//		view.innertopPaneGame.getChildren().add(view.WürfelPL2.get(x).getImageView());
-//		}
-//		view.innertopPaneGame.getChildren().add(view.labelPL2);
 		sl.getLogger().info("Opponent Die changed");
 	}
 	
@@ -525,10 +512,7 @@ public class ClientController {
 	public void opponentSelectCard(Card card){
 		for(int x = 0; x < view.cardAL.size();x++){
 			if(view.cardAL.get(x).equals(card)){
-				view.cardAL.get(x).clickOther();
-//				card.clickOther();
-//				view.cardAL.set(x, card);
-//				view.updateCards();
+				view.cardAL.get(x).clickOther(card.getOwner());
 				break;
 			}
 		}
