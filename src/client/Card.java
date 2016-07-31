@@ -208,7 +208,9 @@ public class Card implements Serializable{
 	}
 	
 	public void clickOther(){
+		System.out.println(this);
 		if(this.status == Status.frei){
+		this.status = Status.gewählt;
 		InnerShadow innerShadow = new InnerShadow(20, Color.GREEN);
 		innerShadow.setOffsetX(2);
 		innerShadow.setOffsetY(2);
@@ -219,6 +221,7 @@ public class Card implements Serializable{
 		else{	
 			if(this.status == Status.gewählt){
 			this.status = Status.gewertet;
+			this.getImage();
 			logger.info(this+"");
 		}
 		}
