@@ -208,12 +208,21 @@ public class Card implements Serializable{
 	}
 	
 	public void clickOther(){
+		if(this.status == Status.frei){
 		InnerShadow innerShadow = new InnerShadow(20, Color.GREEN);
 		innerShadow.setOffsetX(2);
 		innerShadow.setOffsetY(2);
 		innerShadow.setChoke(0.5);	
 		this.getImage().setEffect(innerShadow);
 		this.getImage().setId("shadow");
+		}
+		else{	
+			if(this.status == Status.gewählt){
+			this.status = Status.gewertet;
+			logger.info(this+"");
+		}
+		}
+		
 	}
 
 }
