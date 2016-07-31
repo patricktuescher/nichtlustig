@@ -29,6 +29,7 @@ public class Card implements Serializable{
 	private final int cardWidth = 90;
 	private transient Logger logger = ServiceLocator.getServiceLocator().getLogger();
 	private Account owner;
+	private String pfad;
 
 	/**
 	 * The constructor creates a card
@@ -108,6 +109,9 @@ public class Card implements Serializable{
 				würfelPL1.remove(this.getWürfel().get(x));
 			}
 		}
+		if(würfelPL1.get(0).getAktAugenzahl() == this.Augenzahl && this.status == Status.gewählt){
+			b = true;
+		}
 		if(b){
 			this.getImage().setOpacity(1);
 			this.getImage().setDisable(false);
@@ -129,8 +133,11 @@ public class Card implements Serializable{
 		if(this.image == null){
 		this.image = new ImageView();
 		}
-		String pfad = new String("Karte_");
+		pfad = new String("Karte_");
 		pfad = pfad + (this.type.name() + "_" + this.Augenzahl);
+		if(status == Status.gewertet){
+			pfad = pfad + "_gewertet";
+		}
 		this.image.setImage(new Image("images/" + pfad + ".png"));
 		this.image.setFitHeight(this.cardHeight);
 		this.image.setFitWidth(this.cardWidth);
@@ -158,7 +165,7 @@ public class Card implements Serializable{
 	}
 	
 	public String toString(){
-		return this.getType() + " Nr: " + this.Augenzahl;
+		return this.getType() + " Nr: " + this.Augenzahl + " Status: " + this.status;
 	}
 	
 	public boolean equals(Card otherCard){
@@ -181,14 +188,23 @@ public class Card implements Serializable{
 	}
 	
 	public void click(){
-		this.status = Status.gewählt;
-		InnerShadow innerShadow = new InnerShadow(20, Color.web("489dff"));
-		innerShadow.setOffsetX(2);
-		innerShadow.setOffsetY(2);
-		innerShadow.setChoke(0.5);	
-		this.getImage().setEffect(innerShadow);
-		this.getImage().setId("shadow");
-		logger.info(this.type.name()+ " card has been clicked on. Needed die are: " + würfel.toString());	
+		if(this.status == Status.frei){
+			this.status = Status.gewählt;
+			InnerShadow innerShadow = new InnerShadow(20, Color.web("489dff"));
+			innerShadow.setOffsetX(2);
+			innerShadow.setOffsetY(2);
+			innerShadow.setChoke(0.5);	
+			this.getImage().setEffect(innerShadow);
+			this.getImage().setId("shadow");
+			logger.info(this + " is chosen. Needed die are: " + würfel.toString());
+		}
+		else{	
+			if(this.status == Status.gewählt){
+			this.status = Status.gewertet;
+			logger.info(this+"");
+		}
+		}
+		
 	}
 	
 	public void clickOther(){
