@@ -678,34 +678,48 @@ public class ClientController {
 	public void updatePunkte(){
 		view.scorePL1 = 0;
 		view.scorePL2 = 0;
+		int yetiPL1 = 0;
+		int yetiPL2 = 0;
 		sl.getLogger().info("Update der Punkte gestartet");
 		for(int x = 0; x<view.cardAL.size();x++){
 			if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
-				case "Rieb": 	view.scorePL1 += 10;
+				case "Rieb": 	view.scorePL1 += 2;
 				continue;
-				case "Prof":	view.scorePL1 += 15;
+				case "Prof":	view.scorePL1 += 0;
 				continue;
-				case "Lemming": view.scorePL1 += 20;
+				case "Lemming": view.scorePL1 += 4;
 				continue;
-				case "Yeti": 	view.scorePL1 += 25;
+				case "Yeti": 	yetiPL1++;
 				continue;
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 			}else if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
-				case "Rieb": 	view.scorePL2 += 10;
+				case "Rieb": 	view.scorePL2 += 2;
 				continue;
-				case "Prof":	view.scorePL2 += 15;
+				case "Prof":	view.scorePL2 += 0;
 				continue;
-				case "Lemming": view.scorePL2 += 20;
+				case "Lemming": view.scorePL2 += 4;
 				continue;
-				case "Yeti": 	view.scorePL2 += 25;
+				case "Yeti": 	yetiPL2++;
 				continue;
 				}
 			}
 
 		}
+		if(yetiPL1 == 1){
+			view.scorePL1 += 1;
+		}else if(yetiPL1>1){
+			view.scorePL1 += yetiPL1*3;
+		}
+		
+		if(yetiPL2 ==1){
+			view.scorePL2 += 1;
+		}else if(yetiPL2>1){
+			view.scorePL2 += yetiPL2*3;
+		}
+		
 		view.labelPL1.setText(""+view.scorePL1);
 		view.labelPL2.setText(""+view.scorePL2);
 		server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
