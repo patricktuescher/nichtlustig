@@ -479,7 +479,8 @@ public class ClientController {
 						if(checkGameContinue()){
 						server.sendObject(new ClientTurn(false));						
 						}else{
-						server.sendObject(new GameFinished());
+//						server.sendObject(new GameFinished());
+						addNewMessage("Das Spiel wäre jetzt FERTIG");	
 						}
 						}
 				});
@@ -785,6 +786,7 @@ public class ClientController {
 		int countFreeCards = 0;
 		for(int x = 0; x<view.cardAL.size(); x++){
 			if(view.cardAL.get(x).getStatus() == Status.frei){
+				if(!view.cardAL.get(x).getType().equals(cardType.Tod))
 				countFreeCards++;
 			}
 		}
