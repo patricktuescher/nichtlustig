@@ -273,6 +273,9 @@ public class ClientController {
 			public void handle(ActionEvent arg0) {
 			view.primaryStage.setScene(view.sceneGame);
 			sl.getLogger().info("Change to Game Scene");
+			disableCards();
+			view.turnPL1.setVisible(false);
+			view.turnPL2.setVisible(false);
 			server.sendObject(new initiateNewGame());
 			}	
 		});
@@ -286,6 +289,7 @@ public class ClientController {
 			server.sendObject(new GameComplete());
 			view.primaryStage.setScene(view.sceneGame);
 			sl.getLogger().info("Change to Game Scene");
+			disableCards();
 			}		
 		});	
 			
@@ -419,7 +423,7 @@ public class ClientController {
 						}
 					}
 					if(view.cardAL.get(d).getType().equals("Dino")){
-						for(int y = 0; y < view.WürfelPL1.size(); y++){
+						for(int y = 1; y < view.WürfelPL1.size(); y++){
 						view.WürfelPL1.get(y).setUsed(true);
 						view.WürfelPL1.get(y).click();
 						}
@@ -692,6 +696,7 @@ public class ClientController {
 				continue;
 				case "Yeti": 	yetiPL1++;
 				continue;
+				case "Dino":	view.scorePL1 += view.cardAL.get(x).getAugenzahl();
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 			}else if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
@@ -750,6 +755,7 @@ public class ClientController {
 	public void disableCards(){
 		for(int x = 0; x< view.cardAL.size(); x++){
 			view.cardAL.get(x).getImage().setDisable(true);
+			view.cardAL.get(x).getImage().setOpacity(0.5);
 		}
 	}
 	

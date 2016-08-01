@@ -75,6 +75,7 @@ public class Card implements Serializable{
 		ArrayList<Würfel> würfelPL1 = new ArrayList<Würfel>();
 		würfelPL1.addAll(wuerfeltoTest);
 		int auswahl = this.getAugenzahl();
+		if(this.getStatus()== Status.frei || this.getStatus() == Status.gewählt && !this.getOwner().equals(ClientController.clientOwner)){
 		if(this.getType().equals(cardType.Dino.toString())){
 			summe = summe - würfelPL1.get(0).getAktAugenzahl();
 			switch(auswahl){
@@ -109,9 +110,13 @@ public class Card implements Serializable{
 				würfelPL1.remove(this.getWürfel().get(x));
 			}
 		}
-		if(würfelPL1.get(0).getAktAugenzahl() == this.Augenzahl && this.status == Status.gewählt){
+		}else{
 			b = false;
 		}
+		
+//		if(würfelPL1.get(0).getAktAugenzahl() == this.Augenzahl && this.status == Status.gewählt){
+//			b = false;
+//		}
 		if(b){
 			this.getImage().setOpacity(1);
 			this.getImage().setDisable(false);
