@@ -9,5 +9,5 @@
 package client;
 
 public enum Status {
-	frei, gewählt, gewertet, tod
+	frei, neugewählt, gewählt, gewertet, tod
 }

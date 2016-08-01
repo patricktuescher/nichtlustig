@@ -474,6 +474,7 @@ public class ClientController {
 						disableCards();
 						bewerteCards();
 						updatePunktePL1();
+						changeCardsToGewählt();
 						server.sendObject(new ClientTurn(false));
 						}
 				});
@@ -636,6 +637,14 @@ public class ClientController {
 			selectAllWürfel();
 			view.b_würfeln.setDisable(true);
 			
+		}
+	}
+	
+	public void changeCardsToGewählt(){
+		for(int x = 0; x< view.cardAL.size();x++){
+			if(view.cardAL.get(x).getStatus().equals(Status.neugewählt)){
+				view.cardAL.get(x).setStatus(Status.gewählt);
+			}
 		}
 	}
 	

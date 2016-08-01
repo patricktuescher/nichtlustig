@@ -190,7 +190,7 @@ public class Card implements Serializable{
 	public void click(Account acc){
 		this.owner = acc;
 		if(this.status == Status.frei){
-			this.status = Status.gewählt;
+			this.status = Status.neugewählt;
 			InnerShadow innerShadow = new InnerShadow(20, Color.web("489dff"));
 			innerShadow.setOffsetX(2);
 			innerShadow.setOffsetY(2);
@@ -211,7 +211,7 @@ public class Card implements Serializable{
 	public void clickOther(Account acc){
 		this.owner = acc;
 		if(this.status == Status.frei){
-		this.status = Status.gewählt;
+		this.status = Status.neugewählt;
 		InnerShadow innerShadow = new InnerShadow(20, Color.GREEN);
 		innerShadow.setOffsetX(2);
 		innerShadow.setOffsetY(2);
