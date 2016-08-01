@@ -492,6 +492,10 @@ public class ClientController {
 					@Override
 					public void handle(ActionEvent arg0) {
 						view.primaryStage.setScene(view.sceneLobby);
+						setUpGame();
+						setGameAvImageOnOff(false);
+						view.b_spielErstellen.setVisible(true);
+												
 						sl.getLogger().info("Change to Lobby Scene");
 					}		
 				});
@@ -820,7 +824,7 @@ public class ClientController {
 			
 			}
 		}
-		if(countFreeCards <= 5){
+		if(countFreeCards <= 23){
 			return false;
 		}else{
 			return true;
