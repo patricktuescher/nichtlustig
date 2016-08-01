@@ -42,13 +42,13 @@ public class ClientView {
 	Stage primaryStage;
 	ClientModel model;
 	protected TextField tf_username;
-	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame, b_backLoginFailed, b_languageChange;
-	protected Label labelPL1, labelPL2, loginFailed, lb_username, lb_password, lb_chooseLanguage;
+	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame, b_backLoginFailed, b_languageChange, b_gameLobby;
+	protected Label labelPL1, labelPL2, loginFailed, lb_username, lb_password, lb_chooseLanguage, labelFinished;
 	protected TableView<Integer> table;
 	protected TableColumn<Integer,String> userNameCol, scoreCol, dateCol;
 	protected GameAvailableImage gai;
 	protected PasswordField pf_password;
-	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln, sceneLoginFailed;
+	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln, sceneLoginFailed, sceneGameFinished;
 	protected ServiceLocator sl;
 	protected Translator t;
 	protected int scorePL1, scorePL2;
@@ -515,6 +515,31 @@ public class ClientView {
 		ChatInput.getChildren().addAll(chatInputWindow, b_sendchat,rectangleSpace, b_backGame);
 		
 		bottomPaneGameChat.getChildren().addAll(chatWindow, ChatInput);
+
+/*----------------------------------------- GameFinished Fenster -----------------------------------------*/
+		
+		//TopPane GameFinished
+		BorderPane topPaneGameFinished = new BorderPane();
+		topPaneGameFinished.setId("topPaneGame");
+		
+		//Button GameLobby
+		b_gameLobby = new Button ("Zurück zur Lobby");
+		b_gameLobby.setPrefSize(220, 70);
+		topPaneGameFinished.setBottom(b_gameLobby);
+		b_gameLobby.setId("b-login");
+		
+		//Label Winner
+		labelFinished = new Label();
+		labelFinished.setId("label");
+		labelFinished.setPrefSize(200, 20);
+		labelFinished.setAlignment(Pos.CENTER);
+		topPaneGameFinished.setCenter(labelFinished);
+				
+		//Scene GameFinished
+		sceneGameFinished = new Scene(topPaneGameFinished, 1200, 800);
+		sceneGameFinished.getStylesheets().add("ClientStylesheet");
+		
+		
 
 /*----------------------------------------- Primary Stage -----------------------------------------*/ 
 		

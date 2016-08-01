@@ -479,16 +479,34 @@ public class ClientController {
 						if(checkGameContinue()){
 						server.sendObject(new ClientTurn(false));						
 						}else{
-//						server.sendObject(new GameFinished());
-						addNewMessage("Das Spiel wäre jetzt FERTIG");	
+						server.sendObject(new GameFinished());
 						}
 						}
+				});
+				
+/*----------------------------------------- EventHandler GameFinished Button -----------------------------------------*/ 
+				
+				// EventHandler ZurückButton - GameFinished
+				view.b_gameLobby.setOnAction(new EventHandler<ActionEvent>(){
+
+					@Override
+					public void handle(ActionEvent arg0) {
+						view.primaryStage.setScene(view.sceneLobby);
+						sl.getLogger().info("Change to Lobby Scene");
+					}		
 				});
 
 		}
 	
+	
+	
+	
 	public void setLobbyScene(){
 		this.view.primaryStage.setScene(this.view.sceneLobby);
+	}
+	
+	public void setGameFinishedScene(){
+		this.view.primaryStage.setScene(this.view.sceneGameFinished);
 	}
 	
 	public void setLoginFailedScene(){
@@ -599,25 +617,8 @@ public class ClientController {
 		this.setLoginScene();
 		}
 	
-	public void getWinnerAlert(){
-	   	Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Your Win");
-		alert.setHeaderText("Your Win");
-		alert.initStyle(StageStyle.TRANSPARENT);
-		alert.setContentText("Your Win");
-		alert.showAndWait();
-		this.setLobbyScene();
-	}
+
 	
-	public void getLoserAlert(){
-	   	Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("You Lose");
-		alert.setHeaderText("You Lose");
-		alert.initStyle(StageStyle.TRANSPARENT);
-		alert.setContentText("You Lose");
-		alert.showAndWait();
-		this.setLobbyScene();
-	}
 	
 	public void setUpDie(){
 		Platform.runLater(new Runnable(){
@@ -785,9 +786,10 @@ public class ClientController {
 	public boolean checkGameContinue(){
 		int countFreeCards = 0;
 		for(int x = 0; x<view.cardAL.size(); x++){
-			if(view.cardAL.get(x).getStatus() == Status.frei){
-				if(!view.cardAL.get(x).getType().equals(cardType.Tod))
+			if(view.cardAL.get(x).getStatus() == Status.frei && !view.cardAL.get(x).getType().equals(cardType.Tod.toString())){
+				
 				countFreeCards++;
+			
 			}
 		}
 		if(countFreeCards <= 5){
@@ -800,10 +802,11 @@ public class ClientController {
 	
 	public void checkWinner(){
 		if(view.scorePL1 > view.scorePL2){
-			getWinnerAlert();
+			view.labelFinished.setText("Du hast gewonnen!!!");
 		}else{
-			getLoserAlert();
+			view.labelFinished.setText("Du hast verloren!!!");
 		}
+		setGameFinishedScene();
 	}
 	
 	
