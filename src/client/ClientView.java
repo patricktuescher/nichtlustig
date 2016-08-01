@@ -498,6 +498,7 @@ public class ClientView {
 		chatWindow.setText("");
 		chatWindow.setEditable(false);
 		
+		
 		//VBox Chat Input and Send
 		HBox ChatInput = new HBox();
 		chatInputWindow = new TextField();

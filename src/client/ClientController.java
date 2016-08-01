@@ -585,6 +585,8 @@ public class ClientController {
 	}
 	public void setUpGame(){
 		setUpDie();
+		setUpCards();
+		setUpPoints();
 	}
 	
 	public void getAlert(){
@@ -632,6 +634,32 @@ public class ClientController {
 			}
 		});
 		
+	}
+	
+	public void setUpCards(){
+		Platform.runLater(new Runnable(){
+			@Override
+			public void run(){
+				for(int x = 0; x<view.cardAL.size(); x++){
+					view.cardAL.get(x).setOwner(null);
+					view.cardAL.get(x).setStatus(Status.frei);
+					view.cardAL.get(x).getImage().setEffect(null);
+					view.cardAL.get(x).getImage().setId(null);
+				}
+			}	
+		});
+	}
+	
+	public void setUpPoints(){
+		Platform.runLater(new Runnable(){
+			@Override
+			public void run(){
+				view.scorePL1 = 0;
+				view.scorePL2 = 0;
+				view.labelPL1.setText(""+view.scorePL1);
+				view.labelPL2.setText(""+view.scorePL2);
+			}
+		});
 	}
 	
 	public void würfeln(){
