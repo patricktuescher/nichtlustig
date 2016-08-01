@@ -598,6 +598,26 @@ public class ClientController {
 		this.setLoginScene();
 		}
 	
+	public void getWinnerAlert(){
+	   	Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Your Win");
+		alert.setHeaderText("Your Win");
+		alert.initStyle(StageStyle.TRANSPARENT);
+		alert.setContentText("Your Win");
+		alert.showAndWait();
+		this.setLobbyScene();
+	}
+	
+	public void getLoserAlert(){
+	   	Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("You Lose");
+		alert.setHeaderText("You Lose");
+		alert.initStyle(StageStyle.TRANSPARENT);
+		alert.setContentText("You Lose");
+		alert.showAndWait();
+		this.setLobbyScene();
+	}
+	
 	public void setUpDie(){
 		Platform.runLater(new Runnable(){
 			@Override
