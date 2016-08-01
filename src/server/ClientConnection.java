@@ -26,6 +26,7 @@ import message.ClientTurn;
 import message.EvaluateFirstPlayer;
 import message.GameAvailableMessage;
 import message.GameComplete;
+import message.GameFinished;
 import message.NewGameChatMessage;
 import message.PointUpdate;
 import message.WürfelRoll;
@@ -130,6 +131,11 @@ public class ClientConnection extends Thread {
 					model.broadcast((GameComplete) obj);
 					model.broadcast(new NewGameChatMessage());
 				}
+				
+				if(obj instanceof GameFinished){
+					model.broadcast((GameFinished) obj);
+				}
+			
 				if(obj instanceof EvaluateFirstPlayer){
 					EvaluateFirstPlayer efp = (EvaluateFirstPlayer) obj;
 					model.getGame().setWürfel(efp.getWürfel(), this.Player);

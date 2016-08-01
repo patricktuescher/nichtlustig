@@ -31,6 +31,7 @@ import message.ClientTurn;
 import message.EvaluateFirstPlayer;
 import message.GameAvailableMessage;
 import message.GameComplete;
+import message.GameFinished;
 import message.NewGameChatMessage;
 import message.PointUpdate;
 import message.WürfelRoll;
@@ -275,6 +276,10 @@ public boolean connect() {
 								controller.updatePunkteFromOtherClient(points.getPoints1(), points.getPoints2());
 							}
 						});
+					}
+					
+					if(obj instanceof GameFinished){
+						
 					}
 					
 					if(obj instanceof CardGewertet){
