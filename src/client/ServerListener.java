@@ -31,6 +31,7 @@ import message.EvaluateFirstPlayer;
 import message.GameAvailableMessage;
 import message.GameComplete;
 import message.NewGameChatMessage;
+import message.PointUpdate;
 import message.WürfelRoll;
 
 public class ServerListener extends Thread {
@@ -263,6 +264,16 @@ public boolean connect() {
 					if(obj instanceof GameComplete){
 						controller.setUpGame();
 						this.sendObject(new EvaluateFirstPlayer(controller.getWürfel()));
+					}
+					
+					if(obj instanceof PointUpdate){
+						PointUpdate points = (PointUpdate) obj;
+						Platform.runLater(new Runnable(){
+							@Override
+							public void run(){
+								controller.updatePunktePL2(points.getPoints());
+							}
+						});
 					}
 					
 				}

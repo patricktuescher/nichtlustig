@@ -26,6 +26,7 @@ import message.EvaluateFirstPlayer;
 import message.GameAvailableMessage;
 import message.GameComplete;
 import message.NewGameChatMessage;
+import message.PointUpdate;
 import message.WürfelRoll;
 import message.initiateNewGame;
 import message.newAccountMessage;
@@ -112,6 +113,12 @@ public class ClientConnection extends Thread {
 					model.getGame().joinPlayer(Player);
 					model.sendToOtherClients(new GameAvailableMessage(true, this.getClientName()), this);
 				}
+				
+				if(obj instanceof PointUpdate){
+					PointUpdate point = (PointUpdate) obj;
+					model.sendToOtherClients(new PointUpdate(point.getPoints()), this);
+				}
+				
 				if(obj instanceof GameComplete){
 					model.getGame().joinPlayer(Player);
 					model.broadcast((GameComplete) obj);

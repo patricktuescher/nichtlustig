@@ -38,6 +38,7 @@ import message.ChatMessage;
 import message.ClientLogout;
 import message.ClientTurn;
 import message.GameComplete;
+import message.PointUpdate;
 import message.WürfelRoll;
 import message.initiateNewGame;
 import message.newAccountMessage;
@@ -664,7 +665,6 @@ public class ClientController {
 	
 	public void updatePunktePL1(){
 		view.scorePL1 = 0;
-		view.scorePL2 = 0;
 		sl.getLogger().info("Update der Punkte gestartet");
 		for(int x = 0; x<view.cardAL.size();x++){
 			if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && view.cardAL.get(x).getOwner().equals(clientOwner)){
@@ -681,24 +681,16 @@ public class ClientController {
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 				
 			}
-			if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
-				switch(view.cardAL.get(x).getType()){
-				case "Rieb": 	view.scorePL2 =+ 10;
-				break;
-				case "Prof":	view.scorePL2 =+ 15;
-				break;
-				case "Lemming": view.scorePL2 =+ 20;
-				break;
-				case "Yeti": 	view.scorePL2 =+ 25;
-				break;
-				}
-				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
-				
-			}
+
 		}
 		view.labelPL1.setText(""+view.scorePL1);
-		view.labelPL2.setText(""+view.scorePL2);
+		server.sendObject(new PointUpdate(view.scorePL1));
 		
+	}
+	
+	public void updatePunktePL2(int points){
+		view.scorePL2 = points;
+		view.labelPL2.setText(""+view.scorePL2);
 	}
 	
 	
