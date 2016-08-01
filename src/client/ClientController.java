@@ -373,10 +373,6 @@ public class ClientController {
 			@Override
 			public void handle(ActionEvent arg0) {
 				würfeln();
-//				cardChecker cc = new cardChecker();
-//				sl.getLogger().info("cardChecker erstellt");
-//				cc.cardCheckforDisable(view.cardAL, view.WürfelPL1);
-//				sl.getLogger().info("Cards gecheckt");
 				model.incrementPlayerRoll();
 				System.out.println(getWürfel());
 				model.startCardChecker(view.cardAL, getWürfel());
@@ -478,8 +474,6 @@ public class ClientController {
 						model.resetPlayerRoll();
 						System.out.println(getWürfel());
 						disableCards();
-						bewerteCards();
-						updatePunkte();
 						changeCardsToGewählt();
 						server.sendObject(new ClientTurn(false));
 						}
@@ -652,6 +646,9 @@ public class ClientController {
 		}else{
 			selectAllWürfel();
 			view.b_würfeln.setDisable(true);
+			bewerteCards();
+			updatePunkte();
+			model.aktivateCards(view.cardAL, getWürfel());
 			
 		}
 	}
@@ -757,6 +754,21 @@ public class ClientController {
 			view.cardAL.get(x).getImage().setDisable(true);
 			view.cardAL.get(x).getImage().setOpacity(0.5);
 		}
+	}
+	
+	public boolean checkGameContinue(){
+		int countFreeCards = 0;
+		for(int x = 0; x<view.cardAL.size(); x++){
+			if(view.cardAL.get(x).getStatus() == Status.frei){
+				countFreeCards++;
+			}
+		}
+		if(countFreeCards <= 5){
+			return false;
+		}else{
+			return true;
+		}
+		
 	}
 	
 	 public void updateView(){

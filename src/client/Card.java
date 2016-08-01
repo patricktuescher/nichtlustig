@@ -70,7 +70,7 @@ public class Card implements Serializable{
 		return this.würfel;
 	}
 	
-	public void check(ArrayList<Würfel> wuerfeltoTest, int summe){
+	public boolean check(ArrayList<Würfel> wuerfeltoTest, int summe){
 		boolean b = true;
 		ArrayList<Würfel> würfelPL1 = new ArrayList<Würfel>();
 		würfelPL1.addAll(wuerfeltoTest);
@@ -119,10 +119,12 @@ public class Card implements Serializable{
 //		}
 		if(b){
 			this.getImage().setOpacity(1);
-			this.getImage().setDisable(false);
+//			this.getImage().setDisable(false);
+			return true;
 		}else{
 			this.getImage().setOpacity(0.5);
-			this.getImage().setDisable(true);
+//			this.getImage().setDisable(true);
+			return false;
 		}
 	}
 	

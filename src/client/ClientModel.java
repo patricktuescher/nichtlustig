@@ -50,6 +50,24 @@ public class ClientModel {
 		}	
 	}
 	
+	public void aktivateCards(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
+		int summe = 0;
+		int w = 0;
+		
+		while(w<wuerfelAL.size()){
+			if(!wuerfelAL.get(w).isUsed()){
+			summe = summe + wuerfelAL.get(w).getAktAugenzahl();
+			}
+			w++;
+		}
+		
+		for(int x = 0;x<31;x++){
+			if(cardAL.get(x).check(wuerfelAL, summe)){
+				cardAL.get(x).getImage().setDisable(false);
+			}
+		}	
+	}
+	
 	
 
 	
