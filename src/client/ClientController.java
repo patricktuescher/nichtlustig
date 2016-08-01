@@ -475,7 +475,12 @@ public class ClientController {
 						System.out.println(getWürfel());
 						disableCards();
 						changeCardsToGewählt();
-						server.sendObject(new ClientTurn(false));
+						if(checkGameContinue()){
+						server.sendObject(new ClientTurn(false));						
+						}else{
+							//Hier kommt die Spielauswertung
+						setLobbyScene();
+						}
 						}
 				});
 
