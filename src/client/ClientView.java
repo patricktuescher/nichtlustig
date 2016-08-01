@@ -376,14 +376,14 @@ public class ClientView {
 		rectangleSpace.setId("spaceRectangle");
 		
 		// Label Score PL1 
-		int scorePL1= 15; // needs to be adjusted
+		int scorePL1= 0; // needs to be adjusted
 		labelPL1 = new Label(""+scorePL1);
 		labelPL1.setMinSize(50, 50);
 		labelPL1.setPadding(new Insets(0,0,0,130));
 		labelPL1.setId("lb-labelscore");
 				
 		// Label Score PL2 
-		int scorePL2 = 33; // needs to be adjusted
+		int scorePL2 = 0; // needs to be adjusted
 		labelPL2 = new Label(""+scorePL2);
 		labelPL2.setMinSize(50, 50);
 		labelPL2.setPadding(new Insets(0,0,0,260));

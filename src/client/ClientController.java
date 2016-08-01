@@ -621,25 +621,8 @@ public class ClientController {
 		model.resetPlayerRoll();
 		setUpDie();
 		view.b_würfeln.setDisable(false);
-//		while(model.getPlayerRollCounter() == 0){
-//		setWürfelDisabled(true);
-//		view.b_fertigGame.setDisable(true);
-//
-//		}
-//		
-//		while(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(this.getWürfel())){
-//		setWürfelDisabled(false);	
-//		view.b_würfeln.setDisable(false);
-//		view.b_fertigGame.setDisable(false);
-//		
-//		}
-//		System.out.println("hier");
-//		selectAllWürfel();
-//		view.b_würfeln.setDisable(true);
-
-
-		
 	}
+
 	
 	public void checkTurn(){
 		if(model.getPlayerRollCounter() == 0){
@@ -664,6 +647,7 @@ public class ClientController {
 			}else if(view.cardAL.get(x).getAugenzahl() == view.getWürfelPL1().get(0).getAktAugenzahl() && view.cardAL.get(x).getStatus().equals(Status.gewählt)){
 					view.cardAL.get(x).setStatus(Status.gewertet);
 					sl.getLogger().info(view.cardAL.get(x).toString() + "hat jetzt den Status:" + view.cardAL.get(x).getStatus());
+					view.cardAL.get(x).getImage();
 								
 			}
 		}
@@ -677,13 +661,13 @@ public class ClientController {
 			if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL1 =+ 10;
-				break;
+//				break;
 				case "Prof":	view.scorePL1 =+ 15;
-				break;
+//				break;
 				case "Lemming": view.scorePL1 =+ 20;
-				break;
+//				break;
 				case "Yeti": 	view.scorePL1 =+ 25;
-				break;
+//				break;
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 				

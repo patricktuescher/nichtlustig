@@ -109,9 +109,9 @@ public class Card implements Serializable{
 				würfelPL1.remove(this.getWürfel().get(x));
 			}
 		}
-		if(würfelPL1.get(0).getAktAugenzahl() == this.Augenzahl && this.status == Status.gewählt){
-			b = true;
-		}
+//		if(würfelPL1.get(0).getAktAugenzahl() == this.Augenzahl && this.status == Status.gewählt){
+//			b = true;
+//		}
 		if(b){
 			this.getImage().setOpacity(1);
 			this.getImage().setDisable(false);
@@ -199,12 +199,12 @@ public class Card implements Serializable{
 			this.getImage().setId("shadow");
 			logger.info(this + " is chosen. Needed die are: " + würfel.toString());
 		}
-		else{	
-			if(this.status == Status.gewählt){
-			this.status = Status.gewertet;
-			logger.info(this+"");
-		}
-		}
+//		else{	
+//			if(this.status == Status.gewählt){
+//			this.status = Status.gewertet;
+//			logger.info(this+"");
+//		}
+//		}
 		
 	}
 	
@@ -219,13 +219,13 @@ public class Card implements Serializable{
 		this.getImage().setEffect(innerShadow);
 		this.getImage().setId("shadow");
 		}
-		else{	 
-			if(this.status == Status.gewählt){
-			this.status = Status.gewertet;
-			this.getImage();
-			logger.info(this+"");
-		}
-		}
+//		else{	 
+//			if(this.status == Status.gewählt){
+//			this.status = Status.gewertet;
+//			this.getImage();
+//			logger.info(this+"");
+//		}
+//		}
 		
 	}
 
