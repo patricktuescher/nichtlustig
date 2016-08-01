@@ -39,6 +39,7 @@ import message.ChatMessage;
 import message.ClientLogout;
 import message.ClientTurn;
 import message.GameComplete;
+import message.GameFinished;
 import message.PointUpdate;
 import message.WürfelRoll;
 import message.initiateNewGame;
@@ -478,8 +479,7 @@ public class ClientController {
 						if(checkGameContinue()){
 						server.sendObject(new ClientTurn(false));						
 						}else{
-							//Hier kommt die Spielauswertung
-						setLobbyScene();
+						server.sendObject(new GameFinished());
 						}
 						}
 				});
@@ -795,6 +795,15 @@ public class ClientController {
 		}
 		
 	}
+	
+	public void checkWinner(){
+		if(view.scorePL1 > view.scorePL2){
+			getWinnerAlert();
+		}else{
+			getLoserAlert();
+		}
+	}
+	
 	
 	 public void updateView(){
 		 	view.t = sl.getTranslator();

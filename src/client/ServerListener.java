@@ -279,7 +279,12 @@ public boolean connect() {
 					}
 					
 					if(obj instanceof GameFinished){
-						
+						Platform.runLater(new Runnable(){
+							@Override
+							public void run(){
+								controller.checkWinner();
+							}
+						});
 					}
 					
 					if(obj instanceof CardGewertet){
