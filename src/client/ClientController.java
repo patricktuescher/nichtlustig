@@ -655,25 +655,41 @@ public class ClientController {
 	
 	public void updatePunktePL1(){
 		view.scorePL1 = 0;
-		view.labelPL1.setText(""+view.scorePL1);
+		view.scorePL2 = 0;
 		sl.getLogger().info("Update der Punkte gestartet");
-		for(int x = 0; x>view.cardAL.size();x++){
+		for(int x = 0; x<view.cardAL.size();x++){
 			if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL1 =+ 10;
-//				break;
+				break;
 				case "Prof":	view.scorePL1 =+ 15;
-//				break;
+				break;
 				case "Lemming": view.scorePL1 =+ 20;
-//				break;
+				break;
 				case "Yeti": 	view.scorePL1 =+ 25;
-//				break;
+				break;
+				}
+				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
+				
+			}
+			if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
+				switch(view.cardAL.get(x).getType()){
+				case "Rieb": 	view.scorePL2 =+ 10;
+				break;
+				case "Prof":	view.scorePL2 =+ 15;
+				break;
+				case "Lemming": view.scorePL2 =+ 20;
+				break;
+				case "Yeti": 	view.scorePL2 =+ 25;
+				break;
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 				
 			}
 		}
 		view.labelPL1.setText(""+view.scorePL1);
+		view.labelPL2.setText(""+view.scorePL2);
+		
 	}
 	
 	

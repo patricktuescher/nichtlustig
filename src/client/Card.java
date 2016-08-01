@@ -109,9 +109,9 @@ public class Card implements Serializable{
 				würfelPL1.remove(this.getWürfel().get(x));
 			}
 		}
-//		if(würfelPL1.get(0).getAktAugenzahl() == this.Augenzahl && this.status == Status.gewählt){
-//			b = true;
-//		}
+		if(würfelPL1.get(0).getAktAugenzahl() == this.Augenzahl && this.status == Status.gewählt){
+			b = false;
+		}
 		if(b){
 			this.getImage().setOpacity(1);
 			this.getImage().setDisable(false);
