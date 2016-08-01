@@ -682,26 +682,26 @@ public class ClientController {
 		for(int x = 0; x<view.cardAL.size();x++){
 			if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
-				case "Rieb": 	view.scorePL1 =+ 10;
-				break;
-				case "Prof":	view.scorePL1 =+ 15;
-				break;
-				case "Lemming": view.scorePL1 =+ 20;
-				break;
-				case "Yeti": 	view.scorePL1 =+ 25;
-				break;
+				case "Rieb": 	view.scorePL1 += 10;
+				continue;
+				case "Prof":	view.scorePL1 += 15;
+				continue;
+				case "Lemming": view.scorePL1 += 20;
+				continue;
+				case "Yeti": 	view.scorePL1 += 25;
+				continue;
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 			}else if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
-				case "Rieb": 	view.scorePL2 =+ 10;
-				break;
-				case "Prof":	view.scorePL2 =+ 15;
-				break;
-				case "Lemming": view.scorePL2 =+ 20;
-				break;
-				case "Yeti": 	view.scorePL2 =+ 25;
-				break;
+				case "Rieb": 	view.scorePL2 += 10;
+				continue;
+				case "Prof":	view.scorePL2 += 15;
+				continue;
+				case "Lemming": view.scorePL2 += 20;
+				continue;
+				case "Yeti": 	view.scorePL2 += 25;
+				continue;
 				}
 			}
 
