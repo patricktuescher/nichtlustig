@@ -34,6 +34,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.StageStyle;
 import message.CardClick;
+import message.CardGewertet;
 import message.ChatMessage;
 import message.ClientLogout;
 import message.ClientTurn;
@@ -474,7 +475,7 @@ public class ClientController {
 						System.out.println(getWürfel());
 						disableCards();
 						bewerteCards();
-						updatePunktePL1();
+						updatePunkte();
 						changeCardsToGewählt();
 						server.sendObject(new ClientTurn(false));
 						}
@@ -515,6 +516,16 @@ public class ClientController {
 		for(int x = 0; x < view.cardAL.size();x++){
 			if(view.cardAL.get(x).equals(card)){
 				view.cardAL.get(x).clickOther(card.getOwner());
+				break;
+			}
+		}
+	}
+	
+	public void opponentWertetCard(Card card){
+		for(int x = 0; x < view.cardAL.size();x++){
+			if(view.cardAL.get(x).equals(card)){
+				view.cardAL.get(x).setStatus(Status.gewertet);
+				view.cardAL.get(x).getImage();
 				break;
 			}
 		}
@@ -658,13 +669,15 @@ public class ClientController {
 					view.cardAL.get(x).setStatus(Status.gewertet);
 					sl.getLogger().info(view.cardAL.get(x).toString() + "hat jetzt den Status:" + view.cardAL.get(x).getStatus());
 					view.cardAL.get(x).getImage();
+					server.sendObject(new CardGewertet(view.cardAL.get(x)));
 								
 			}
 		}
 	}
 	
-	public void updatePunktePL1(){
+	public void updatePunkte(){
 		view.scorePL1 = 0;
+		view.scorePL2 = 0;
 		sl.getLogger().info("Update der Punkte gestartet");
 		for(int x = 0; x<view.cardAL.size();x++){
 			if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && view.cardAL.get(x).getOwner().equals(clientOwner)){
@@ -679,17 +692,30 @@ public class ClientController {
 				break;
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
-				
+			}else if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
+				switch(view.cardAL.get(x).getType()){
+				case "Rieb": 	view.scorePL2 =+ 10;
+				break;
+				case "Prof":	view.scorePL2 =+ 15;
+				break;
+				case "Lemming": view.scorePL2 =+ 20;
+				break;
+				case "Yeti": 	view.scorePL2 =+ 25;
+				break;
+				}
 			}
 
 		}
 		view.labelPL1.setText(""+view.scorePL1);
-		server.sendObject(new PointUpdate(view.scorePL1));
+		view.labelPL2.setText(""+view.scorePL2);
+		server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 		
 	}
 	
-	public void updatePunktePL2(int points){
-		view.scorePL2 = points;
+	public void updatePunkteFromOtherClient(int points1, int points2){
+		view.scorePL1 = points1;
+		view.scorePL2 = points2;
+		view.labelPL1.setText(""+view.scorePL1);
 		view.labelPL2.setText(""+view.scorePL2);
 	}
 	

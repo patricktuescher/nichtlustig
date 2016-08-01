@@ -20,6 +20,7 @@ import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 import javafx.application.Platform;
 import message.CardClick;
+import message.CardGewertet;
 import message.ChatMessage;
 import message.ClientLogin;
 import javafx.scene.control.Alert;
@@ -271,7 +272,17 @@ public boolean connect() {
 						Platform.runLater(new Runnable(){
 							@Override
 							public void run(){
-								controller.updatePunktePL2(points.getPoints());
+								controller.updatePunkteFromOtherClient(points.getPoints1(), points.getPoints2());
+							}
+						});
+					}
+					
+					if(obj instanceof CardGewertet){
+						CardGewertet gewertet = (CardGewertet) obj;
+						Platform.runLater(new Runnable(){
+							@Override
+							public void run(){
+								controller.opponentWertetCard(gewertet.getCard());
 							}
 						});
 					}
