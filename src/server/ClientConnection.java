@@ -86,7 +86,7 @@ public class ClientConnection extends Thread {
 					newAccountMessage nam = (newAccountMessage) obj;
 					Account acc = nam.getAccount();
 					AccountRegister ar = new AccountRegister();
-					if(ar.check()){
+					if(ar.check(acc)){
 					ar.writeNewAccount(acc);
 					this.sendObject(new Registration(true));
 					}else{

@@ -28,7 +28,8 @@ public class AccountRegister {
 	 * @return if already exists == true; if doesn't exist == false
 	 */
 	
-	public boolean check(){
+	public boolean check(Account acc){
+		this.acc = acc;
 		boolean b = true;
 		ArrayList <Account>accList = ClientLoginChecker.getAccountList();
 		for(int x = 0; x < accList.size(); x++){
@@ -42,7 +43,7 @@ public class AccountRegister {
 	}
 	public void writeNewAccount(Account acc){
 		this.acc = acc;
-		if(check()){
+//		if(check()){
 			try {
 				PrintWriter pw = new PrintWriter(new FileOutputStream(new File("src/server/AccountDB.txt"),true));
 				pw.print("," + acc.getAccName() + "," + acc.getPassword());
@@ -53,6 +54,6 @@ public class AccountRegister {
 				e.printStackTrace();
 			}
 		}
-	}
+//	}
 	
 }
