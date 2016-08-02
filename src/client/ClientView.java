@@ -361,7 +361,7 @@ public class ClientView {
 		bottomPaneGame.setBottom(bottomPaneGameChat);
 		
 		//Button Zurück
-		b_backGame = new Button(t.getString("Button.Back"));
+		b_backGame = new Button(t.getString("Button.Aufgeben"));
 		b_backGame.setMinSize(100, 30);
 		b_backGame.setMaxSize(100, 30);
 		b_backGame.setId("b-sendchat");

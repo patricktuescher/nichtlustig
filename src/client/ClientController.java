@@ -855,7 +855,7 @@ public class ClientController {
 			view.b_backStatistik.setText(view.t.getString("Button.Stats"));
 			view.b_spielBeitreten.setText(view.t.getString("Button.JoinGame"));
 			view.b_backLobby.setText(view.t.getString("Button.Logout"));
-			view.b_backGame.setText(view.t.getString("Button.Back"));
+			view.b_backGame.setText(view.t.getString("Button.Aufgeben"));
 			view.b_backRegeln.setText(view.t.getString("Button.Back"));
 			view.b_backStatistik.setText(view.t.getString("Button.Back"));
 			view.b_rules.setText(view.t.getString("Button.Rules"));
