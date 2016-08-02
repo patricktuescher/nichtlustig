@@ -25,6 +25,8 @@ public class ClientMVC extends Application{
 	
 		view.start();
 		
+		
+		
 	}
 	
 	public String getName(){

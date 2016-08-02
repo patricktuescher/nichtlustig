@@ -852,7 +852,6 @@ public class ClientController {
 		view.scorePL1 = 0;
 		view.scorePL2 = 10;
 		server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
-
 	}
 	
 	
