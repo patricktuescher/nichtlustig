@@ -27,6 +27,7 @@ import message.EvaluateFirstPlayer;
 import message.GameAvailableMessage;
 import message.GameComplete;
 import message.GameFinished;
+import message.GameQuit;
 import message.NewGameChatMessage;
 import message.PointUpdate;
 import message.Registration;
@@ -140,6 +141,10 @@ public class ClientConnection extends Thread {
 				
 				if(obj instanceof GameFinished){
 					model.broadcast((GameFinished) obj);
+				}
+				
+				if(obj instanceof GameQuit){
+					model.broadcast((GameQuit) obj);
 				}
 			
 				if(obj instanceof EvaluateFirstPlayer){

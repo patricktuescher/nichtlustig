@@ -40,6 +40,7 @@ import message.ClientLogout;
 import message.ClientTurn;
 import message.GameComplete;
 import message.GameFinished;
+import message.GameQuit;
 import message.PointUpdate;
 import message.WürfelRoll;
 import message.initiateNewGame;
@@ -364,8 +365,8 @@ public class ClientController {
 		
 			@Override
 			public void handle(ActionEvent arg0) {
-				view.primaryStage.setScene(view.sceneLobby);
-				sl.getLogger().info("Change to Lobby Scene");
+				playerQuit();
+				server.sendObject(new GameQuit());
 			}
 		});
 
@@ -840,6 +841,13 @@ public class ClientController {
 			view.labelFinished.setText("Du hast verloren!!!");
 		}
 		setGameFinishedScene();
+	}
+	
+	public void playerQuit(){
+		view.scorePL1 = 0;
+		view.scorePL2 = 10;
+		server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
+
 	}
 	
 	

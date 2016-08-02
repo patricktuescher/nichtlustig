@@ -32,6 +32,7 @@ import message.EvaluateFirstPlayer;
 import message.GameAvailableMessage;
 import message.GameComplete;
 import message.GameFinished;
+import message.GameQuit;
 import message.NewGameChatMessage;
 import message.PointUpdate;
 import message.Registration;
@@ -280,6 +281,16 @@ public boolean connect() {
 					}
 					
 					if(obj instanceof GameFinished){
+						Platform.runLater(new Runnable(){
+							@Override
+							public void run(){
+								controller.checkWinner();
+								controller.setUpGame();
+							}
+						});
+					}
+					
+					if(obj instanceof GameQuit){
 						Platform.runLater(new Runnable(){
 							@Override
 							public void run(){
