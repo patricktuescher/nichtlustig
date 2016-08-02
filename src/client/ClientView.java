@@ -524,7 +524,7 @@ public class ClientView {
 		topPaneGameFinished.setId("topPaneGame");
 		
 		//Button GameLobby
-		b_gameLobby = new Button ("Zurück zur Lobby");
+		b_gameLobby = new Button (t.getString("Button.backLobby"));
 		b_gameLobby.setPrefSize(220, 70);
 		topPaneGameFinished.setBottom(b_gameLobby);
 		b_gameLobby.setId("b-login");
