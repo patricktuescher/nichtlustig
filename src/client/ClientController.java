@@ -602,30 +602,30 @@ public class ClientController {
 	
 	public void getAlert(){
    	Alert alert = new Alert(AlertType.ERROR);
-	alert.setTitle("Login failure");
-	alert.setHeaderText("Login failed");
+	alert.setTitle(t.getString("Text.AlertLogintitel"));
+	alert.setHeaderText(t.getString("Text.AlertLogintext"));
 	alert.initStyle(StageStyle.TRANSPARENT);
-	alert.setContentText("Oops... your account couldn't be verified. Please make sure you enter valid credentials");
+	alert.setContentText(t.getString("Text.AlertLogintext2"));
 	alert.showAndWait();
 	this.setLoginScene();
 	}
 	
 	public void getRegAlert(){
 	   	Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Registration successful");
-		alert.setHeaderText("Registration successful");
+		alert.setTitle(t.getString("Text.AlertRegtitel"));
+		alert.setHeaderText(t.getString("Text.AlertRegtext"));
 		alert.initStyle(StageStyle.TRANSPARENT);
-		alert.setContentText("Your Account is now registered");
+		alert.setContentText(t.getString("Text.AlertRegtext2"));
 		alert.showAndWait();
 		this.setLoginScene();
 		}
 	
 	public void getRegFailedAlert(){
 	   	Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Registration unsuccessful");
-		alert.setHeaderText("Registration unsuccessful");
+		alert.setTitle(t.getString("Text.AlertRegfailtitel"));
+		alert.setHeaderText(t.getString("Text.AlertRegfailtext"));
 		alert.initStyle(StageStyle.TRANSPARENT);
-		alert.setContentText("Your account has been registered already");
+		alert.setContentText(t.getString("Text.AlertRegfailtext2"));
 		alert.showAndWait();
 		this.setLoginScene();
 		}
