@@ -34,6 +34,7 @@ import message.GameComplete;
 import message.GameFinished;
 import message.NewGameChatMessage;
 import message.PointUpdate;
+import message.Registration;
 import message.WürfelRoll;
 
 public class ServerListener extends Thread {
@@ -296,6 +297,26 @@ public boolean connect() {
 								controller.opponentWertetCard(gewertet.getCard());
 							}
 						});
+					}
+					
+					if(obj instanceof Registration){
+						Registration check = (Registration) obj;
+						if(check.getCheck()){
+							Platform.runLater(new Runnable(){
+								@Override
+								public void run(){
+									controller.getRegAlert();
+								}
+							});
+						}else{
+						
+						Platform.runLater(new Runnable(){
+							@Override
+							public void run(){
+								controller.getRegFailedAlert();
+							}
+						});
+						}
 					}
 					
 				}

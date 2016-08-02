@@ -29,6 +29,7 @@ import message.GameComplete;
 import message.GameFinished;
 import message.NewGameChatMessage;
 import message.PointUpdate;
+import message.Registration;
 import message.WürfelRoll;
 import message.initiateNewGame;
 import message.newAccountMessage;
@@ -84,7 +85,12 @@ public class ClientConnection extends Thread {
 					newAccountMessage nam = (newAccountMessage) obj;
 					Account acc = nam.getAccount();
 					AccountRegister ar = new AccountRegister();
+					if(ar.check()){
 					ar.writeNewAccount(acc);
+					this.sendObject(new Registration(true));
+					}else{
+						this.sendObject(new Registration(false));
+					}
 					
 				}
 				if(obj instanceof ClientLogout){
