@@ -54,6 +54,7 @@ public class ClientController {
 	protected ServerListener server;
 	protected static Account clientOwner;
 	protected Translator t;
+	protected TableView<Integer> table;
 
 	
 	public ClientController(ClientView view, ClientModel model){
@@ -204,7 +205,7 @@ public class ClientController {
 				
 				
 				
-	            TableView<Integer> table = new TableView<>();
+	            table = new TableView<>();
 	            table.setEditable(true);
 	            
 	            for (int i = 0; i < scoreValues.size() && i < nameValues.size() &&  i < dateValues.size()  ; i++) {
@@ -303,6 +304,7 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
+				view.centerPaneStatistik.getChildren().remove(table);
 				view.primaryStage.setScene(view.sceneLobby);
 				sl.getLogger().info("Change to Lobby Scene");
 			}
