@@ -21,7 +21,7 @@
 }
 
 #topPaneGame{
-	-fx-background-image: url(images/gameHintergrundChat.png);
+	-fx-background-image: url(images/gameOver.png);
 }
 
 #topPaneGamePL1{
