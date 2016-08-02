@@ -596,7 +596,9 @@ public class ClientController {
 		setUpDie();
 		setUpCards();
 		setUpPoints();
+		view.chatWindow.clear();
 		setGameAvImageOnOff(false);
+		view.select_label.setText(null);
 		view.b_spielErstellen.setVisible(true);
 	}
 	
