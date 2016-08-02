@@ -56,6 +56,8 @@ public class ClientController {
 	protected static Account clientOwner;
 	protected Translator t;
 	protected TableView<Integer> table;
+	protected TableColumn<Integer,String> nameCol, dateCol;
+	protected TableColumn<Integer,Number> scoreCol;
 
 	
 	public ClientController(ClientView view, ClientModel model){
@@ -87,8 +89,10 @@ public class ClientController {
 							view.turnPL1.setImage(view.turn1);
 							view.turnPL2.setImage(view.turn2);
 			               sl.getLogger().info("Language changed to en");
-			     			} 
-						updateView();
+			     			}
+	
+								updateView();
+						
 					}
 				});
 				
@@ -213,21 +217,21 @@ public class ClientController {
 	                table.getItems().add(i);
 	            }
 	            
-	            TableColumn<Integer,String> nameCol = new TableColumn<>("User Name"); 
+	            nameCol = new TableColumn<>(t.getString("Username")); 
 	            nameCol.setCellValueFactory(cellData -> {
 	            	Integer rowIndex = cellData.getValue();
 	            	return new ReadOnlyStringWrapper(nameValues.get(rowIndex));
 	            
 	            });
 	            
-	            TableColumn<Integer,Number> scoreCol = new TableColumn<>("Score"); 
+	            scoreCol = new TableColumn<>("Score"); 
 	            scoreCol.setCellValueFactory(cellData -> {
 	            	Integer rowIndex = cellData.getValue();
 	            	return new ReadOnlyIntegerWrapper(scoreValues.get(rowIndex));
 	            
 	            });
 	            
-	            TableColumn<Integer,String> dateCol = new TableColumn<>("Date"); 
+	            dateCol = new TableColumn<>("Date"); 
 	            dateCol.setCellValueFactory(cellData -> {
 	            	Integer rowIndex = cellData.getValue();
 	            	return new ReadOnlyStringWrapper(dateValues.get(rowIndex));
@@ -869,8 +873,11 @@ public class ClientController {
 			view.b_backStatistik.setText(view.t.getString("Button.Back"));
 			view.b_rules.setText(view.t.getString("Button.Rules"));
 			view.b_statistic.setText(view.t.getString("Button.Stats"));
+//			nameCol.setText(t.getString("TableColumn.UserNameCol"));
 			view.userNameCol.setText(view.t.getString("TableColumn.UserNameCol"));
+//			scoreCol.setText(t.getString("TableColumn.Score"));
 			view.scoreCol.setText(view.t.getString("TableColumn.Score"));
+//			dateCol.setText(t.getString("TableColumn.date"));
 			view.dateCol.setText(view.t.getString("TableColumn.date"));
 			view.b_würfeln.setText(view.t.getString("Button.roll"));
 			view.b_sendchat.setText(view.t.getString("Button.send"));
@@ -878,7 +885,7 @@ public class ClientController {
 			view.b_fertigGame.setText(view.t.getString("Button.Fertig"));
 			view.primaryStage.setTitle(view.t.getString("Stage.title"));
 			view.b_languageChange.setText(view.t.getString("Button.languageChange"));
-			
-		}
+
+				}
 	 
 }
