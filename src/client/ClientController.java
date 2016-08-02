@@ -217,7 +217,7 @@ public class ClientController {
 	                table.getItems().add(i);
 	            }
 	            
-	            nameCol = new TableColumn<>(t.getString("Username")); 
+	            nameCol = new TableColumn<>("Username"); 
 	            nameCol.setCellValueFactory(cellData -> {
 	            	Integer rowIndex = cellData.getValue();
 	            	return new ReadOnlyStringWrapper(nameValues.get(rowIndex));
