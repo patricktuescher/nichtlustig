@@ -458,9 +458,10 @@ public class ClientController {
 
 					@Override
 					public void handle(ActionEvent arg0) {
+						if(!view.chatInputWindow.getText().equals("") && !view.chatInputWindow.getText().startsWith(" ")){
 						server.sendObject(new ChatMessage(view.chatInputWindow.getText()));
 						view.chatInputWindow.clear();
-//						model.startCardChecker(view.cardAL, getWürfel());
+						}
 						
 
 					}
