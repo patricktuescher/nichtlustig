@@ -841,9 +841,9 @@ public class ClientController {
 	
 	public void checkWinner(){
 		if(view.scorePL1 > view.scorePL2){
-			view.labelFinished.setText(t.getString("Text.winner"));
+			view.labelFinished.setText(view.t.getString("Text.winner"));
 		}else{
-			view.labelFinished.setText(t.getString("Text.loser"));
+			view.labelFinished.setText(view.t.getString("Text.loser"));
 		}
 		setGameFinishedScene();
 	}
