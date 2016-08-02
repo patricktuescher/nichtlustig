@@ -28,7 +28,7 @@ public class AccountRegister {
 	 * @return if already exists == true; if doesn't exist == false
 	 */
 	
-	private boolean check(){
+	public boolean check(){
 		boolean b = true;
 		ArrayList <Account>accList = ClientLoginChecker.getAccountList();
 		for(int x = 0; x < accList.size(); x++){
