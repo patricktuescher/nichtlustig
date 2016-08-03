@@ -409,6 +409,7 @@ public class ClientController {
 			
 /*----------------------------------------- EventHandler Chosen  Cards -----------------------------------------*/ 
 			
+			if(!view.cardAL.get(x).getType().equals(cardType.Tod.toString())){
 			view.cardAL.get(x).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
 				
 				@Override
@@ -436,6 +437,16 @@ public class ClientController {
 					server.sendObject(new CardClick(view.cardAL.get(d)));
 				}
 			});	
+			
+			}else{
+				view.cardAL.get(x).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
+					
+					@Override
+					public void handle(MouseEvent arg0){
+						view.cardAL.get(d).setOwner(clientOwner);
+					}
+					});
+			}
 		}
 		
 /*----------------------------------------- EventHandler Chosen Cubes -----------------------------------------*/ 
