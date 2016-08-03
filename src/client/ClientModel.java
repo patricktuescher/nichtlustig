@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class ClientModel {
 	
 	private int playerRollCounter = 0;
+	protected int cardCounter;
 	
 	cardChecker cc = new cardChecker();
 	
@@ -37,6 +38,7 @@ public class ClientModel {
 	public void startCardChecker(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
 		int summe = 0;
 		int w = 0;
+		cardCounter = 0;
 		
 		while(w<wuerfelAL.size()){
 			if(!wuerfelAL.get(w).isUsed()){
@@ -46,8 +48,20 @@ public class ClientModel {
 		}
 		
 		for(int x = 0;x<31;x++){
-			cardAL.get(x).check(wuerfelAL, summe);
-		}	
+			if(cardAL.get(x).check(wuerfelAL, summe)){
+				cardCounter++;
+			};
+		}
+		
+		if(cardCounter != 0){
+			for(int x = 0; x<31;x++){
+				if(cardAL.get(x).getType().equals(cardType.Tod.toString()))
+					cardAL.get(x).getImage().setOpacity(0.5);
+							}
+		}
+		
+
+		
 	}
 	
 	public void aktivateCards(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
@@ -62,8 +76,17 @@ public class ClientModel {
 		}
 		
 		for(int x = 0;x<31;x++){
-			if(cardAL.get(x).check(wuerfelAL, summe)){
+			if(cardCounter > 1){
+				if(cardAL.get(x).check(wuerfelAL, summe)){
+					if(cardAL.get(x).getType().equals(cardType.Tod.toString())){
+						cardAL.get(x).getImage().setOpacity(0.5);
+					}else{
+					cardAL.get(x).getImage().setDisable(false);
+					}
+				}
+			}else if(cardAL.get(x).check(wuerfelAL, summe)){
 				cardAL.get(x).getImage().setDisable(false);
+				
 			}
 		}	
 	}

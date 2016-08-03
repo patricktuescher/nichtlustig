@@ -100,7 +100,7 @@ public class Card implements Serializable{
 					}break;
 					
 			}
-		}else{		
+		}else{
 		for(int x = 0; x < this.getWürfel().size(); x++){
 			if(!würfelPL1.contains(this.getWürfel().get(x)) || würfelPL1.get(würfelPL1.indexOf(this.getWürfel().get(x))).isUsed()){
 				b = false;
@@ -114,16 +114,11 @@ public class Card implements Serializable{
 			b = false;
 		}
 		
-//		if(würfelPL1.get(0).getAktAugenzahl() == this.Augenzahl && this.status == Status.gewählt){
-//			b = false;
-//		}
 		if(b){
 			this.getImage().setOpacity(1);
-//			this.getImage().setDisable(false);
 			return true;
 		}else{
 			this.getImage().setOpacity(0.5);
-//			this.getImage().setDisable(true);
 			return false;
 		}
 	}
