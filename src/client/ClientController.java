@@ -366,6 +366,7 @@ public class ClientController {
 									view.cardAL.get(a).setStatus(Status.tod);
 									view.cardAL.get(a).getImage();
 									server.sendObject(new CardClick(view.cardAL.get(a)));
+									updatePunkte();
 								}
 							});
 						}
