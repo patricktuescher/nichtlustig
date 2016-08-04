@@ -357,6 +357,18 @@ public class ClientController {
 						view.cardAL.get(d).click(clientOwner);
 						server.sendObject(new CardClick(view.cardAL.get(d)));
 						model.checkCardsToChooseTod(view.cardAL);
+						for(int t = 0;t<31;t++){
+							final int a = t;
+							view.cardAL.get(t).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
+
+								@Override
+								public void handle(MouseEvent arg0){
+									view.cardAL.get(a).setStatus(Status.tod);
+									view.cardAL.get(a).getImage();
+									server.sendObject(new CardClick(view.cardAL.get(a)));
+								}
+							});
+						}
 						
 						view.b_fertigGame.setDisable(false);
 					}
