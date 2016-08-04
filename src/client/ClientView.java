@@ -11,9 +11,16 @@ package client;
 
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import javafx.beans.property.ReadOnlyIntegerWrapper;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -565,6 +572,98 @@ public class ClientView {
 	
 	public ArrayList<Würfel> getWürfelPL2(){
 		return this.WürfelPL2;
+	}
+	public void updateTable(){
+		centerPaneStatistik.getChildren().remove(table);
+		
+		ArrayList<String> scoreValues = new ArrayList<String>();
+		ArrayList<String> nameValues = new ArrayList<String>();
+		ArrayList<String> dateValues = new ArrayList<String>();
+            
+		
+		   BufferedReader br = null;
+		    try {
+		        br = new BufferedReader(new FileReader(new File("src/server/Highscore.txt")));
+		        
+		      
+		        String line = null;
+		        
+		        while((line = br.readLine()) != null) {
+		        	
+		            String[] parts = line.split(",");
+		            nameValues.add(parts[0]);
+		            scoreValues.add(parts[1]);
+		            dateValues.add(parts[2]);
+		     
+		           
+		     
+		        }
+		       
+		        
+
+		        
+		    } catch(FileNotFoundException e) {
+		        e.printStackTrace();
+		    } catch(IOException e) {
+		        e.printStackTrace();
+		    } finally {
+		        if(br != null) {
+		            try {
+		                br.close();
+		            } catch(IOException e) {
+		                e.printStackTrace();
+		            }
+		        }
+		    }
+		    
+			
+			
+			
+			
+            table = new TableView<>();
+            table.setEditable(true);
+            
+            for (int i = 0; i < scoreValues.size() && i < nameValues.size() &&  i < dateValues.size()  ; i++) {
+                table.getItems().add(i);
+            }
+            
+            userNameCol = new TableColumn<>(this.t.getString("TableColumn.UserNameCol")); 
+            userNameCol.setCellValueFactory(cellData -> {
+            	Integer rowIndex = cellData.getValue();
+            	return new ReadOnlyStringWrapper(nameValues.get(rowIndex));
+            
+            });
+            
+            scoreCol = new TableColumn<>(this.t.getString("TableColumn.Score")); 
+            scoreCol.setCellValueFactory(cellData -> {
+            	Integer rowIndex = cellData.getValue();
+            return new ReadOnlyStringWrapper(scoreValues.get(rowIndex));
+            
+            });
+            
+            dateCol = new TableColumn<>(this.t.getString("TableColumn.date")); 
+            dateCol.setCellValueFactory(cellData -> {
+            	Integer rowIndex = cellData.getValue();
+            	return new ReadOnlyStringWrapper(dateValues.get(rowIndex));
+            
+            });
+            
+            userNameCol.setMinWidth(200);
+            scoreCol.setMinWidth(200);
+            dateCol.setMinWidth(200);
+            table.getColumns().add(userNameCol);
+            table.getColumns().add(scoreCol);
+            table.getColumns().add(dateCol);
+            table.setMaxSize(600, 400);
+    	    table.setMinSize(600, 400);
+    	   centerPaneStatistik.getChildren().add(table);
+    	   
+    	   
+		    
+    	   sl.getLogger().info("TableView created");
+    	   sl.getLogger().info("added Data from Highscore file to TableView");
+		    
+		    		
 	}
 	
 	public void updateCards(){

@@ -64,6 +64,7 @@ public class ClientController {
 		this.view = view;
 		this.model = model;
 		sl = ServiceLocator.getServiceLocator();
+		t = sl.getServiceLocator().getTranslator();
 		ServerListener.controller = this;
 
 		
@@ -159,97 +160,8 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				
-				
-			view.primaryStage.setScene(view.sceneStatistik);
-			sl.getLogger().info("Change to Statistik Scene");
-			
-			
-		
-			ArrayList<Integer> scoreValues = new ArrayList<Integer>();
-			ArrayList<String> nameValues = new ArrayList<String>();
-			ArrayList<String> dateValues = new ArrayList<String>();
-	            
-			
-			   BufferedReader br = null;
-			    try {
-			        br = new BufferedReader(new FileReader(new File("src/server/Highscore.txt")));
-			        
-			      
-			        String line = null;
-			        
-			        while((line = br.readLine()) != null) {
-			        	
-			            String[] parts = line.split(",");
-			            nameValues.add(parts[0]);
-			            scoreValues.add(Integer.parseInt(parts[1]));
-			            dateValues.add(parts[2]);
-			     
-			           
-			     
-			        }
-			       
-			        
-
-			        
-			    } catch(FileNotFoundException e) {
-			        e.printStackTrace();
-			    } catch(IOException e) {
-			        e.printStackTrace();
-			    } finally {
-			        if(br != null) {
-			            try {
-			                br.close();
-			            } catch(IOException e) {
-			                e.printStackTrace();
-			            }
-			        }
-			    }
-			    
-				
-				
-				
-				
-	            table = new TableView<>();
-	            table.setEditable(true);
-	            
-	            for (int i = 0; i < scoreValues.size() && i < nameValues.size() &&  i < dateValues.size()  ; i++) {
-	                table.getItems().add(i);
-	            }
-	            
-	            nameCol = new TableColumn<>("Username"); 
-	            nameCol.setCellValueFactory(cellData -> {
-	            	Integer rowIndex = cellData.getValue();
-	            	return new ReadOnlyStringWrapper(nameValues.get(rowIndex));
-	            
-	            });
-	            
-	            scoreCol = new TableColumn<>("Score"); 
-	            scoreCol.setCellValueFactory(cellData -> {
-	            	Integer rowIndex = cellData.getValue();
-	            	return new ReadOnlyIntegerWrapper(scoreValues.get(rowIndex));
-	            
-	            });
-	            
-	            dateCol = new TableColumn<>("Date"); 
-	            dateCol.setCellValueFactory(cellData -> {
-	            	Integer rowIndex = cellData.getValue();
-	            	return new ReadOnlyStringWrapper(dateValues.get(rowIndex));
-	            
-	            });
-	            
-	            nameCol.setMinWidth(200);
-	            scoreCol.setMinWidth(200);
-	            dateCol.setMinWidth(200);
-	            table.getColumns().add(nameCol);
-	            table.getColumns().add(scoreCol);
-	            table.getColumns().add(dateCol);
-	            table.setMaxSize(600, 400);
-	    	    table.setMinSize(600, 400);
-	    	   view. centerPaneStatistik.getChildren().add(table);
-			    
-	    	   sl.getLogger().info("TableView created");
-	    	   sl.getLogger().info("added Data from Highscore file to TableView");
+				view.primaryStage.setScene(view.sceneStatistik);
+				view.updateTable();
 			    
 			    
 			}		
@@ -885,12 +797,6 @@ public class ClientController {
 			view.b_backStatistik.setText(view.t.getString("Button.Back"));
 			view.b_rules.setText(view.t.getString("Button.Rules"));
 			view.b_statistic.setText(view.t.getString("Button.Stats"));
-//			nameCol.setText(t.getString("TableColumn.UserNameCol"));
-			view.userNameCol.setText(view.t.getString("TableColumn.UserNameCol"));
-//			scoreCol.setText(t.getString("TableColumn.Score"));
-			view.scoreCol.setText(view.t.getString("TableColumn.Score"));
-//			dateCol.setText(t.getString("TableColumn.date"));
-			view.dateCol.setText(view.t.getString("TableColumn.date"));
 			view.b_würfeln.setText(view.t.getString("Button.roll"));
 			view.b_sendchat.setText(view.t.getString("Button.send"));
 			view.chatInputWindow.setText(view.t.getString("TextField.click"));
