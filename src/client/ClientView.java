@@ -575,7 +575,6 @@ public class ClientView {
 	}
 	public void updateTable(ArrayList<String> scoreValues, ArrayList<String> nameValues, ArrayList <String> dateValues){
 		centerPaneStatistik.getChildren().remove(table);
-		    		
 			
             table = new TableView<>();
             table.setEditable(true);
@@ -593,7 +592,7 @@ public class ClientView {
             
             scoreCol = new TableColumn<>(this.t.getString("TableColumn.Score")); 
             scoreCol.setCellValueFactory(cellData -> {
-            	Integer rowIndex = cellData.getValue();
+            Integer rowIndex = cellData.getValue();
             return new ReadOnlyStringWrapper(scoreValues.get(rowIndex));
             
             });
@@ -614,7 +613,6 @@ public class ClientView {
             table.setMaxSize(600, 400);
     	    table.setMinSize(600, 400);
     	   centerPaneStatistik.getChildren().add(table);
-    	   
     	   
 		    
     	   sl.getLogger().info("TableView created");
