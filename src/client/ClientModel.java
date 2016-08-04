@@ -111,15 +111,34 @@ public class ClientModel {
 	}
 
 	
-	public boolean checkLemmingCards(ArrayList<Card> cardAL){
+	public boolean checkCardsToChooseTod(ArrayList<Card> cardAL){
 		int countLemming = 0;
+		int countOther = 0;
 		for(int x = 0;  x<31; x++){
-			if(cardAL.get(x).getOwner().equals(ClientController.clientOwner) && cardAL.get(x).getStatus().equals(Status.gewertet.toString()) && cardAL.get(x).getType().equals(cardType.Lemming.toString())){
+			if(cardAL.get(x).getOwner() == null){
+			
+			}else if(cardAL.get(x).getOwner().equals(ClientController.clientOwner) && cardAL.get(x).getStatus().equals(Status.gewertet) && cardAL.get(x).getType().equals(cardType.Lemming.toString())){
 			countLemming++;
+			cardAL.get(x).getImage().setDisable(false);
+			cardAL.get(x).getImage().setOpacity(1);
 			}
-			}
+		}
+			
 		
 		if(countLemming== 0){
+			for(int y = 0; y<31; y++){
+				if(cardAL.get(y).getOwner() == null){
+				}else if(cardAL.get(y).getOwner().equals(ClientController.clientOwner) && cardAL.get(y).getStatus().equals(Status.gewertet) && (cardAL.get(y).getType().equals(cardType.Prof.toString()) || cardAL.get(y).getType().equals(cardType.Rieb.toString()) || cardAL.get(y).getType().equals(cardType.Yeti.toString()) )){
+					countOther++;
+					cardAL.get(y).getImage().setDisable(false);
+					cardAL.get(y).getImage().setOpacity(1);
+				}
+			}
+		}
+			
+		
+		
+		if(countLemming == 0 && countOther == 0){
 			return false;
 		}else{
 			return true;

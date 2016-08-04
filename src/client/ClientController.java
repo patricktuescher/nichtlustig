@@ -356,6 +356,8 @@ public class ClientController {
 					public void handle(MouseEvent arg0){
 						view.cardAL.get(d).click(clientOwner);
 						server.sendObject(new CardClick(view.cardAL.get(d)));
+						model.checkCardsToChooseTod(view.cardAL);
+						
 						view.b_fertigGame.setDisable(false);
 					}
 					});
@@ -762,7 +764,7 @@ public class ClientController {
 			
 			}
 		}
-		if(countFreeCards <= 20){
+		if(countFreeCards <= 5){
 			return false;
 		}else{
 			return true;
