@@ -637,7 +637,7 @@ public class ClientController {
 			view.b_würfeln.setDisable(true);
 			bewerteCards();
 			updatePunkte();
-			model.aktivateCards(view.cardAL, getWürfel());
+			model.aktivateCards(view.cardAL, getWürfel(), clientOwner);
 			
 		}
 	}

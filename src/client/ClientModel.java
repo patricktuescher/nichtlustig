@@ -64,7 +64,7 @@ public class ClientModel {
 		
 	}
 	
-	public void aktivateCards(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
+	public void aktivateCards(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
 		int summe = 0;
 		int w = 0;
 		
@@ -76,7 +76,7 @@ public class ClientModel {
 		}
 		
 		for(int x = 0;x<31;x++){
-			if(cardCounter > 0){
+			if(cardCounter > 1){
 				if(cardAL.get(x).check(wuerfelAL, summe)){
 					if(cardAL.get(x).getType().equals(cardType.Tod.toString())){
 						cardAL.get(x).getImage().setOpacity(0.5);
@@ -91,7 +91,7 @@ public class ClientModel {
 		}
 		
 		if(cardCounter == 0){
-			chooseTodCard(cardAL, wuerfelAL);
+			checkTodCardWürfel(cardAL, wuerfelAL, acc);
 		}
 		
 	}
@@ -127,13 +127,21 @@ public class ClientModel {
 	
 	
 	
-	public boolean checkTodCardWürfel(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
+	public boolean checkTodCardWürfel(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
 		boolean availableTodCardWürfel = false;
 		for(int x = 0; x<31; x++){
-			if(wuerfelAL.get(0).getAktAugenzahl() == cardAL.get(x).getAugenzahl() && cardAL.get(x).getType().equals(cardType.Tod.toString()) && !cardAL.get(x).getOwner().equals(ClientController.clientOwner)){
+			if(wuerfelAL.get(0).getAktAugenzahl() == cardAL.get(x).getAugenzahl() && cardAL.get(x).getType().equals(cardType.Tod.toString()) && cardAL.get(x).getOwner().equals(null)){
+				
 				availableTodCardWürfel = true;
 				cardAL.get(x).getImage().setDisable(false);
 				cardAL.get(x).getImage().setOpacity(1);				
+			
+			}else if(wuerfelAL.get(0).getAktAugenzahl() == cardAL.get(x).getAugenzahl() && cardAL.get(x).getType().equals(cardType.Tod.toString()) && !cardAL.get(x).getOwner().equals(acc)){
+				
+				availableTodCardWürfel = true;
+				cardAL.get(x).getImage().setDisable(false);
+				cardAL.get(x).getImage().setOpacity(1);				
+			
 			}
 			
 		}
@@ -156,14 +164,14 @@ public class ClientModel {
 	
 	
 	
-	public void chooseTodCard(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
-		if(checkTodCardWürfel(cardAL, wuerfelAL)){
-			checkTodCardWürfel(cardAL, wuerfelAL);
+	public void chooseTodCard(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
+		if(checkTodCardWürfel(cardAL, wuerfelAL, acc)){
+			checkTodCardWürfel(cardAL, wuerfelAL, acc);
 		}else if(checkAvailableTodCards(cardAL)){
 			checkAvailableTodCards(cardAL);
 		}else{
 			for(int x = 0; x<31; x++){
-				if(cardAL.get(x).getType().equals(cardType.Tod.toString()) && cardAL.get(x).getOwner().equals(ClientController.clientOwner) && cardAL.get(x).getOwner().equals(null)){
+				if(cardAL.get(x).getType().equals(cardType.Tod.toString()) && (!cardAL.get(x).getOwner().equals(ClientController.clientOwner) || cardAL.get(x).getOwner().equals(null))){
 					cardAL.get(x).getImage().setDisable(false);
 					cardAL.get(x).getImage().setOpacity(1);
 				}
