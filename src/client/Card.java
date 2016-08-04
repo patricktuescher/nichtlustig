@@ -140,11 +140,16 @@ public class Card implements Serializable{
 		if(status == Status.gewertet){
 			pfad = pfad + "_gewertet";
 		}
+		if(status == Status.tod){
+			pfad = pfad + "_tod";
+		}
 		this.image.setImage(new Image("images/" + pfad + ".png"));
 		this.image.setFitHeight(this.cardHeight);
 		this.image.setFitWidth(this.cardWidth);
 		return image;
 	}
+	
+	
 	
 	public Status getStatus() {
 		return status;
