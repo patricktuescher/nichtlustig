@@ -76,7 +76,7 @@ public class ClientModel {
 		}
 		
 		for(int x = 0;x<31;x++){
-			if(cardCounter > 1){
+			if(cardCounter > 0){
 				if(cardAL.get(x).check(wuerfelAL, summe)){
 					if(cardAL.get(x).getType().equals(cardType.Tod.toString())){
 						cardAL.get(x).getImage().setOpacity(0.5);
@@ -88,7 +88,12 @@ public class ClientModel {
 				cardAL.get(x).getImage().setDisable(false);
 				
 			}
-		}	
+		}
+		
+		if(cardCounter == 0){
+			chooseTodCard(cardAL, wuerfelAL);
+		}
+		
 	}
 	
 	
@@ -117,6 +122,58 @@ public class ClientModel {
 		}else{
 			return true;
 		}
+		
+	}
+	
+	
+	
+	public boolean checkTodCardWürfel(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
+		boolean availableTodCardWürfel = false;
+		for(int x = 0; x<31; x++){
+			if(wuerfelAL.get(0).getAktAugenzahl() == cardAL.get(x).getAugenzahl() && cardAL.get(x).getType().equals(cardType.Tod.toString()) && !cardAL.get(x).getOwner().equals(ClientController.clientOwner)){
+				availableTodCardWürfel = true;
+				cardAL.get(x).getImage().setDisable(false);
+				cardAL.get(x).getImage().setOpacity(1);				
+			}
+			
+		}
+		return availableTodCardWürfel;
+	}
+	
+	
+	
+	public boolean checkAvailableTodCards(ArrayList<Card> cardAL){
+		boolean availableTodCard = false;
+		for(int x = 0; x<31; x++){
+			if(cardAL.get(x).getType().equals(cardType.Tod.toString()) && cardAL.get(x).getOwner().equals(null)){
+				availableTodCard = true;
+				cardAL.get(x).getImage().setDisable(false);
+				cardAL.get(x).getImage().setOpacity(1);
+			}
+		}
+		return availableTodCard;
+	}
+	
+	
+	
+	public void chooseTodCard(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
+		if(checkTodCardWürfel(cardAL, wuerfelAL)){
+			checkTodCardWürfel(cardAL, wuerfelAL);
+		}else if(checkAvailableTodCards(cardAL)){
+			checkAvailableTodCards(cardAL);
+		}else{
+			for(int x = 0; x<31; x++){
+				if(cardAL.get(x).getType().equals(cardType.Tod.toString()) && cardAL.get(x).getOwner().equals(ClientController.clientOwner) && cardAL.get(x).getOwner().equals(null)){
+					cardAL.get(x).getImage().setDisable(false);
+					cardAL.get(x).getImage().setOpacity(1);
+				}
+			}
+		}
+	
+	
+	
+	
+	
 		
 	}
 	
