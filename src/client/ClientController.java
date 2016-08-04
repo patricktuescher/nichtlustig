@@ -348,13 +348,13 @@ public class ClientController {
 			});	
 			
 			}else{
-				view.cardAL.get(x).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
-					
-					@Override
-					public void handle(MouseEvent arg0){
-						view.cardAL.get(d).setOwner(clientOwner);
-					}
-					});
+//				view.cardAL.get(x).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
+//					
+//					@Override
+//					public void handle(MouseEvent arg0){
+//						view.cardAL.get(d).setOwner(clientOwner);
+//					}
+//					});
 			}
 		}
 		
@@ -652,6 +652,9 @@ public class ClientController {
 	
 	public void bewerteCards(){
 		sl.getLogger().info("Bewertung gestartet");
+		if(view.getWürfelPL1().get(0).getAktAugenzahl() == 6){
+		//keine Bewertung wenn Pudel des Todes gewürfelt wurde
+		}
 		for(int x = 0; x < view.cardAL.size(); x++){
 			if(view.cardAL.get(x).getType().equals(cardType.Tod)){				
 			}else if(view.cardAL.get(x).getAugenzahl() == view.getWürfelPL1().get(0).getAktAugenzahl() && view.cardAL.get(x).getStatus().equals(Status.gewählt)){
