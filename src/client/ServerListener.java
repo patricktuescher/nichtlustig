@@ -33,6 +33,7 @@ import message.GameAvailableMessage;
 import message.GameComplete;
 import message.GameFinished;
 import message.GameQuit;
+import message.HighscoreUpdate;
 import message.NewGameChatMessage;
 import message.PointUpdate;
 import message.Registration;
@@ -190,6 +191,11 @@ public boolean connect() {
 							   }
 							});
 						logger.info("Logout successful");
+						
+					}
+					if(obj instanceof HighscoreUpdate){
+						HighscoreUpdate hu = (HighscoreUpdate) obj;
+						controller.updateTable(hu);
 						
 					}
 					if(obj instanceof NewGameChatMessage){

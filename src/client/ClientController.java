@@ -41,6 +41,7 @@ import message.ClientTurn;
 import message.GameComplete;
 import message.GameFinished;
 import message.GameQuit;
+import message.HighscoreUpdate;
 import message.PointUpdate;
 import message.WürfelRoll;
 import message.initiateNewGame;
@@ -157,8 +158,8 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				view.primaryStage.setScene(view.sceneStatistik);
-				view.updateTable();
+				server.sendObject(new HighscoreUpdate());
+				
 			    
 			    
 			}		
@@ -805,5 +806,16 @@ public class ClientController {
 			view.b_languageChange.setText(view.t.getString("Button.languageChange"));
 
 				}
+	 public void updateTable(HighscoreUpdate hu){
+		 Platform.runLater(new Runnable(){
+				@Override
+				public void run(){
+					view.updateTable(hu.getScoreValues(), hu.getNameValues(), hu.getDateValues());
+					view.primaryStage.setScene(view.sceneStatistik);
+				}
+			});
+		 
+		 
+	 }
 	 
 }

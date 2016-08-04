@@ -573,52 +573,9 @@ public class ClientView {
 	public ArrayList<Würfel> getWürfelPL2(){
 		return this.WürfelPL2;
 	}
-	public void updateTable(){
+	public void updateTable(ArrayList<String> scoreValues, ArrayList<String> nameValues, ArrayList <String> dateValues){
 		centerPaneStatistik.getChildren().remove(table);
-		
-		ArrayList<String> scoreValues = new ArrayList<String>();
-		ArrayList<String> nameValues = new ArrayList<String>();
-		ArrayList<String> dateValues = new ArrayList<String>();
-            
-		
-		   BufferedReader br = null;
-		    try {
-		        br = new BufferedReader(new FileReader(new File("src/server/Highscore.txt")));
-		        
-		      
-		        String line = null;
-		        
-		        while((line = br.readLine()) != null) {
-		        	
-		            String[] parts = line.split(",");
-		            nameValues.add(parts[0]);
-		            scoreValues.add(parts[1]);
-		            dateValues.add(parts[2]);
-		     
-		           
-		     
-		        }
-		       
-		        
-
-		        
-		    } catch(FileNotFoundException e) {
-		        e.printStackTrace();
-		    } catch(IOException e) {
-		        e.printStackTrace();
-		    } finally {
-		        if(br != null) {
-		            try {
-		                br.close();
-		            } catch(IOException e) {
-		                e.printStackTrace();
-		            }
-		        }
-		    }
-		    
-			
-			
-			
+		    		
 			
             table = new TableView<>();
             table.setEditable(true);

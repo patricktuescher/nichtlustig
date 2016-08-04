@@ -28,6 +28,7 @@ import message.GameAvailableMessage;
 import message.GameComplete;
 import message.GameFinished;
 import message.GameQuit;
+import message.HighscoreUpdate;
 import message.NewGameChatMessage;
 import message.PointUpdate;
 import message.Registration;
@@ -98,6 +99,9 @@ public class ClientConnection extends Thread {
 					ClientLogout logout = (ClientLogout) obj;
 					this.Player = null;
 					this.sendObject(new ClientLogoutSuccess(true));
+				}
+				if(obj instanceof HighscoreUpdate){
+					this.sendObject(Highscore.getHighscoreUpdate());
 				}
 				if(obj instanceof ChatMessage){
 					ChatMessage msg = (ChatMessage) obj;
