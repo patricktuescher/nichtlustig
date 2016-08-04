@@ -92,6 +92,22 @@ public class ClientModel {
 	}
 	
 	
+	public void aktivateGewerteteCardsForTod(ArrayList<Card> cardAL, Account acc){
+		int anzGewLemming = 0;
+		for(int x = 0;  x<31; x++){
+			if(cardAL.get(x).getOwner().equals(acc) && cardAL.get(x).getStatus().equals(Status.gewertet.toString()) && cardAL.get(x).getType().equals(cardType.Lemming.toString())){
+				anzGewLemming++;
+			}
+			
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
 
 	
 
