@@ -92,16 +92,31 @@ public class ClientModel {
 	}
 	
 	
-	public void aktivateGewerteteCardsForTod(ArrayList<Card> cardAL, Account acc){
-		int anzGewLemming = 0;
+	public void aktivateGewerteteCards(ArrayList<Card> cardAL, cardType cType){
 		for(int x = 0;  x<31; x++){
-			if(cardAL.get(x).getOwner().equals(acc) && cardAL.get(x).getStatus().equals(Status.gewertet.toString()) && cardAL.get(x).getType().equals(cardType.Lemming.toString())){
-				anzGewLemming++;
+			if(cardAL.get(x).getOwner().equals(ClientController.clientOwner) && cardAL.get(x).getStatus().equals(Status.gewertet.toString()) && cardAL.get(x).getType().equals(cType.toString())){
+				cardAL.get(x).getImage().setDisable(false);
+				cardAL.get(x).getImage().setOpacity(1);
 			}
 			
 		}
 		
+	}
+
+	
+	public boolean checkLemmingCards(ArrayList<Card> cardAL){
+		int countLemming = 0;
+		for(int x = 0;  x<31; x++){
+			if(cardAL.get(x).getOwner().equals(ClientController.clientOwner) && cardAL.get(x).getStatus().equals(Status.gewertet.toString()) && cardAL.get(x).getType().equals(cardType.Lemming.toString())){
+			countLemming++;
+			}
+			}
 		
+		if(countLemming== 0){
+			return false;
+		}else{
+			return true;
+		}
 		
 	}
 	
