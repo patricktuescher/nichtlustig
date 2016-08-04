@@ -351,13 +351,13 @@ public class ClientController {
 			});	
 			
 			}else{
-				view.cardAL.get(x).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
-					
-					@Override
-					public void handle(MouseEvent arg0){
-						view.cardAL.get(d).setOwner(clientOwner);
-					}
-					});
+//				view.cardAL.get(x).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
+//					
+//					@Override
+//					public void handle(MouseEvent arg0){
+//						view.cardAL.get(d).setOwner(clientOwner);
+//					}
+//					});
 			}
 		}
 		
