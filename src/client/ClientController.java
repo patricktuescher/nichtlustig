@@ -77,9 +77,7 @@ public class ClientController {
 					@Override
 					public void handle(ActionEvent arg0) {
 						if(view.t.getCurrentLocaleString().equals("en")) {
-			            	   //view.t = new Translator("de");
 			            	   sl.getServiceLocator().setTranslator(new Translator("de"));
-			            	   sl.getLogger().info("Language changed to de");
 			            	   view.turnPL1.setImage(view.turn1_de);
 			            	   view.turnPL2.setImage(view.turn2_de);
 			      			}
@@ -89,7 +87,6 @@ public class ClientController {
 			     			sl.getServiceLocator().setTranslator(new Translator("en"));
 							view.turnPL1.setImage(view.turn1);
 							view.turnPL2.setImage(view.turn2);
-			               sl.getLogger().info("Language changed to en");
 			     			}
 	
 								updateView();
