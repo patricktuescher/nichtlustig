@@ -30,6 +30,7 @@ public class Card implements Serializable{
 	private transient Logger logger = ServiceLocator.getServiceLocator().getLogger();
 	private Account owner;
 	private String pfad;
+	private Card cardTod;
 
 	/**
 	 * The constructor creates a card
@@ -42,6 +43,7 @@ public class Card implements Serializable{
 		this.Augenzahl = Augenzahl;
 		this.status = Status.frei;
 		this.owner = null;
+		this.cardTod = null;
 		logger.fine(this.type.name()+ " Card has been created. Number of card is: " + this.Augenzahl);
 		setWürfel();
 	}
@@ -165,6 +167,14 @@ public class Card implements Serializable{
 	
 	public void setOwner(Account owner){
 		this.owner= owner;
+	}
+	
+	public Card getcardTod(){
+		return cardTod;
+	}
+	
+	public void setcardTod(Card cardTod){
+		this.cardTod = cardTod;
 	}
 
 	public String getType(){

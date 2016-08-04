@@ -355,6 +355,7 @@ public class ClientController {
 					@Override
 					public void handle(MouseEvent arg0){
 						view.cardAL.get(d).click(clientOwner);
+						model.removeCardTod(view.cardAL, view.cardAL.get(d));
 						server.sendObject(new CardClick(view.cardAL.get(d)));
 						model.checkCardsToChooseTod(view.cardAL);
 						for(int t = 0;t<31;t++){
@@ -364,6 +365,7 @@ public class ClientController {
 								@Override
 								public void handle(MouseEvent arg0){
 									view.cardAL.get(a).setStatus(Status.tod);
+									view.cardAL.get(a).setcardTod(view.cardAL.get(d));
 									view.cardAL.get(a).getImage();
 									server.sendObject(new CardClick(view.cardAL.get(a)));
 									updatePunkte();
@@ -656,6 +658,7 @@ public class ClientController {
 			view.b_würfeln.setDisable(true);
 			bewerteCards();
 			updatePunkte();
+			model.startCardChecker(view.cardAL, getWürfel());
 			model.aktivateCards(view.cardAL, getWürfel(), clientOwner);
 
 		}
