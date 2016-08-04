@@ -345,6 +345,7 @@ public class ClientController {
 					}
 					model.startCardChecker(view.cardAL, view.WürfelPL1);
 					server.sendObject(new CardClick(view.cardAL.get(d)));
+					view.b_fertigGame.setDisable(false);
 				}
 			});	
 			
@@ -355,6 +356,7 @@ public class ClientController {
 					public void handle(MouseEvent arg0){
 						view.cardAL.get(d).click(clientOwner);
 						server.sendObject(new CardClick(view.cardAL.get(d)));
+						view.b_fertigGame.setDisable(false);
 					}
 					});
 			}
@@ -622,6 +624,7 @@ public class ClientController {
 		model.resetPlayerRoll();
 		setUpDie();
 		view.b_würfeln.setDisable(false);
+		view.b_fertigGame.setDisable(true);
 	}
 
 	
@@ -632,7 +635,7 @@ public class ClientController {
 		}else if(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(getWürfel())){
 			setWürfelDisabled(false);
 			view.b_würfeln.setDisable(false);
-			view.b_fertigGame.setDisable(false);
+			view.b_fertigGame.setDisable(true);
 		}else{
 			selectAllWürfel();
 			view.b_würfeln.setDisable(true);
