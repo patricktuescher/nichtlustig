@@ -349,13 +349,14 @@ public class ClientController {
 			});	
 			
 			}else{
-//				view.cardAL.get(x).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
-//					
-//					@Override
-//					public void handle(MouseEvent arg0){
-//						view.cardAL.get(d).setOwner(clientOwner);
-//					}
-//					});
+				view.cardAL.get(x).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
+					
+					@Override
+					public void handle(MouseEvent arg0){
+						view.cardAL.get(d).click(clientOwner);
+						server.sendObject(new CardClick(view.cardAL.get(d)));
+					}
+					});
 			}
 		}
 		
@@ -638,7 +639,7 @@ public class ClientController {
 			bewerteCards();
 			updatePunkte();
 			model.aktivateCards(view.cardAL, getWürfel(), clientOwner);
-			
+
 		}
 	}
 	
@@ -657,7 +658,8 @@ public class ClientController {
 		//keine Bewertung wenn Pudel des Todes gewürfelt wurde
 		}
 		for(int x = 0; x < view.cardAL.size(); x++){
-			if(view.cardAL.get(x).getType().equals(cardType.Tod)){				
+			if(view.cardAL.get(x).getType().equals(cardType.Tod.toString())){
+				
 			}else if(view.cardAL.get(x).getAugenzahl() == view.getWürfelPL1().get(0).getAktAugenzahl() && view.cardAL.get(x).getStatus().equals(Status.gewählt)){
 					view.cardAL.get(x).setStatus(Status.gewertet);
 					sl.getLogger().info(view.cardAL.get(x).toString() + "hat jetzt den Status:" + view.cardAL.get(x).getStatus());
