@@ -21,6 +21,8 @@ public class Game {
 	ArrayList<Würfel> würfelPL2;
 	int AugenzahlPunktePL1 = 0;
 	int AugenzahlPunktePL2 = 0;
+	boolean PL1finished = false;
+	boolean PL2finished = false;
 	Logger logger = ServiceLocator.getServiceLocator().getLogger();
 	
 	public Game(){
@@ -93,6 +95,17 @@ public class Game {
 			return this.PL1;
 		else
 			return this.PL2;
+	}
+	public void setGameFinished(Account acc){
+		if(PL1.equals(acc))
+			PL1finished = true;
+		if(PL2.equals(acc))
+			PL2finished = true;
+	}
+	public boolean bothPlayersFinished(){
+		if(PL1finished && PL2finished)
+			return true;
+		else return false;
 	}
 
 }

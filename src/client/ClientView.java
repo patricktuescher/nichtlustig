@@ -52,7 +52,7 @@ public class ClientView {
 	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame, b_backLoginFailed, b_languageChange, b_gameLobby;
 	protected Label labelPL1, labelPL2, loginFailed, lb_username, lb_password, lb_chooseLanguage, labelFinished;
 	protected TableView<Integer> table;
-	protected TableColumn<Integer,String> userNameCol, scoreCol, dateCol;
+	protected TableColumn<Integer,String> rankCol, userNameCol, scoreCol, dateCol;
 	protected GameAvailableImage gai;
 	protected PasswordField pf_password;
 	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln, sceneLoginFailed, sceneGameFinished;
@@ -575,13 +575,44 @@ public class ClientView {
 	}
 	public void updateTable(ArrayList<String> scoreValues, ArrayList<String> nameValues, ArrayList <String> dateValues){
 		centerPaneStatistik.getChildren().remove(table);
+		ArrayList<String> rank = new ArrayList<String>();
+		//Self-made bubble sort by Burri
+		for(int y = 0; y < scoreValues.size(); y++){
+			for(int x = 0; x < scoreValues.size()-1;x++){
+				if(Integer.parseInt(scoreValues.get(x)) < Integer.parseInt(scoreValues.get(x+1))){
+					String score1 = scoreValues.get(x);
+					String score2 = scoreValues.get(x+1);
+					String name1 = nameValues.get(x);
+					String name2 = nameValues.get(x+1);
+					String date1 = dateValues.get(x);
+					String date2 = dateValues.get(x+1);
+					
+					scoreValues.set(x, score2);
+					scoreValues.set(x+1, score1);
+					nameValues.set(x, name2);
+					nameValues.set(x+1, name1);
+					dateValues.set(x, date2);
+					dateValues.set(x+1, date1);
+				}
+			}
+		}
+		for(int x = 1; x < scoreValues.size()+1;x++){
+			rank.add(x+"");
+		}
 			
             table = new TableView<>();
-            table.setEditable(true);
+            table.setEditable(false);
             
             for (int i = 0; i < scoreValues.size() && i < nameValues.size() &&  i < dateValues.size()  ; i++) {
                 table.getItems().add(i);
             }
+            
+            rankCol = new TableColumn<>("Rang"); 
+            rankCol.setCellValueFactory(cellData -> {
+            	Integer rowIndex = cellData.getValue();
+            	return new ReadOnlyStringWrapper(rank.get(rowIndex));
+            });
+            
             
             userNameCol = new TableColumn<>(this.t.getString("TableColumn.UserNameCol")); 
             userNameCol.setCellValueFactory(cellData -> {
@@ -603,10 +634,15 @@ public class ClientView {
             	return new ReadOnlyStringWrapper(dateValues.get(rowIndex));
             
             });
-            
+            rankCol.setSortable(false);
+            userNameCol.setSortable(false);
+            scoreCol.setSortable(false);
+            dateCol.setSortable(false);
+            rankCol.setMinWidth(60);
             userNameCol.setMinWidth(200);
             scoreCol.setMinWidth(200);
-            dateCol.setMinWidth(200);
+            dateCol.setMinWidth(140);
+            table.getColumns().add(rankCol);
             table.getColumns().add(userNameCol);
             table.getColumns().add(scoreCol);
             table.getColumns().add(dateCol);

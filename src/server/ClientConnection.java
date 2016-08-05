@@ -35,6 +35,7 @@ import message.Registration;
 import message.WürfelRoll;
 import message.initiateNewGame;
 import message.newAccountMessage;
+import message.newScore;
 
 public class ClientConnection extends Thread {
 
@@ -103,6 +104,10 @@ public class ClientConnection extends Thread {
 				if(obj instanceof HighscoreUpdate){
 					this.sendObject(Highscore.getHighscoreUpdate());
 				}
+				if(obj instanceof newScore){
+					newScore ns = (newScore) obj;
+					Highscore.writeScore(ns.getScore(), this.Player);
+				}
 				if(obj instanceof ChatMessage){
 					ChatMessage msg = (ChatMessage) obj;
 					String s = this.getClientName()+ ": ";
@@ -144,7 +149,10 @@ public class ClientConnection extends Thread {
 				}
 				
 				if(obj instanceof GameFinished){
-					model.broadcast((GameFinished) obj);
+					model.getGame().setGameFinished(Player);
+					//if(model.getGame().bothPlayersFinished()){
+						model.broadcast((GameFinished) obj);
+				//	}
 				}
 				
 				if(obj instanceof GameQuit){

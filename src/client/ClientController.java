@@ -46,6 +46,7 @@ import message.PointUpdate;
 import message.WürfelRoll;
 import message.initiateNewGame;
 import message.newAccountMessage;
+import message.newScore;
 import tools.Translator;
 
 public class ClientController {
@@ -433,7 +434,13 @@ public class ClientController {
 						if(checkGameContinue()){
 						server.sendObject(new ClientTurn(false));
 						}else{
-						server.sendObject(new GameFinished());
+					//		if(!profCard()){
+							server.sendObject(new GameFinished());
+					//		}
+					//		else{
+					//			bewerteProfCard();
+				//				server.sendObject(new GameFinished());
+				//			}
 						}
 						}
 				});
@@ -785,7 +792,7 @@ public class ClientController {
 			
 			}
 		}
-		if(countFreeCards <= 5){
+		if(countFreeCards <= 20){
 			return false;
 		}else{
 			return true;
@@ -794,6 +801,7 @@ public class ClientController {
 	}
 	
 	public void checkWinner(){
+		server.sendObject(new newScore(view.scorePL1));
 		if(view.scorePL1 > view.scorePL2){
 			view.labelFinished.setText(view.t.getString("Text.winner"));
 		}else{
@@ -912,6 +920,24 @@ public class ClientController {
 			});
 		 
 		 
+	 }
+	 private boolean profCard(){
+		 boolean b = false;
+		 for(int x = 0; x < view.cardAL.size(); x++){
+			 if(view.cardAL.get(x).getOwner() != null && view.cardAL.get(x).getType().equals("Prof") && view.cardAL.get(x).getOwner().equals(clientOwner)){
+				 b = true;
+			 }
+		 }
+		 return b;
+	 }
+	 private void bewerteProfCard(){
+		 int würfel = 0;
+		 for(int x = 0; x < view.cardAL.size(); x++){
+			 if(view.cardAL.get(x).getOwner() != null && view.cardAL.get(x).getType().equals("Prof") && view.cardAL.get(x).getOwner().equals(clientOwner)){
+				 würfel++;
+			 }
+		 }
+		 System.out.println("Profkarten: " + würfel);
 	 }
 	 
 }
