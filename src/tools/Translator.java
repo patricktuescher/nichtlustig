@@ -3,7 +3,7 @@
 	 * All rights reserved.
 	 * 
 	 * @function 
-	 * @author 
+	 * @author Kevin Trottmann
 	 */
 
 package tools;

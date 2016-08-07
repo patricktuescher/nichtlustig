@@ -89,6 +89,7 @@ public class ClientView {
 	ArrayList <Würfel> WürfelPL2;
 	Würfel cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2;
 	
+	//@author Kevin Trottmann
 	//Chat
 	protected int port = 1201;
 	protected BufferedReader streamIn;
@@ -117,7 +118,8 @@ public class ClientView {
 		
 		
 		
-/*----------------------------------------- Login Fenster -----------------------------------------*/ 
+/*----------------------------------------- Login Fenster -----------------------------------------*/
+		//@author Kevin Trottmann
 		
 		//InnerPane Login
 		GridPane innerPaneLogin = new GridPane();
@@ -154,7 +156,7 @@ public class ClientView {
 		pf_password.setPromptText(t.getString("Label.Password"));
 		
 
-		//language Chnage Button (German / Englisch)
+		//language Change Button (German / Englisch)
 		b_languageChange = new Button(t.getString("Button.languageChange"));
 		innerPaneLogin.add(b_languageChange,2,7);
 		b_languageChange.setPrefSize(210, 40);
@@ -252,6 +254,7 @@ public class ClientView {
 		sceneLobby.getStylesheets().add("ClientStylesheet");
 		
 /*----------------------------------------- Statistik Fenster -----------------------------------------*/ 
+		//@author Kevin Trottmann
 		
 		//TopPane Statistik
 		BorderPane topPaneStatistik = new BorderPane();

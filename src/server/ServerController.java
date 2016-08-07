@@ -102,6 +102,8 @@ public class ServerController {
         });
     }
     
+    
+  //@author Kevin Trottmann
     public void updateView(){
 		view.languageChange.setText(view.t.getString("Button.languageChange"));
 		view.ConnectServer.setText(view.t.getString("Button.ConnectServer"));

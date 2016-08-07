@@ -3,7 +3,7 @@
 	 * All rights reserved.
 	 * 
 	 * @function 
-	 * @author 
+	 * @author Kevin Trottmann
 	 */
 
 package server;
@@ -92,6 +92,7 @@ public class ServerView {
 		DisconnectServer.setId("ServerButtons");
 		DisconnectServer.setPrefWidth(500);
 		
+		//@author Kevin Trottmann
 		//Language Change Button German / Englisch
 		languageChange = new Button (t.getString("Button.languageChange"));
 		languageChange.setId("ServerButtons");

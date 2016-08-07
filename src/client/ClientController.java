@@ -213,7 +213,7 @@ public class ClientController {
 			
 		
 /*----------------------------------------- Statistik FENSTER -----------------------------------------*/ 
-		
+		//@author Kevin Trottmann		
 		
 		// EventHandler ZurückButton - StatistikScene
 		view.b_backStatistik.setOnAction(new EventHandler<ActionEvent>(){
@@ -555,6 +555,7 @@ public class ClientController {
 		view.b_spielErstellen.setVisible(true);
 	}
 	
+	//@author Kevin Trottmann
 	public void getAlert(){
    	Alert alert = new Alert(AlertType.ERROR);
 	alert.setTitle(t.getString("Text.AlertLogintitel"));
@@ -565,6 +566,7 @@ public class ClientController {
 	this.setLoginScene();
 	}
 	
+	//@author Kevin Trottmann
 	public void getRegAlert(){
 	   	Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(t.getString("Text.AlertRegtitel"));
@@ -574,7 +576,7 @@ public class ClientController {
 		alert.showAndWait();
 		this.setLoginScene();
 		}
-	
+	//@author Kevin Trottmann
 	public void getRegFailedAlert(){
 	   	Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(t.getString("Text.AlertRegfailtitel"));
@@ -887,7 +889,7 @@ public class ClientController {
 	}
 	}
 	
-	
+	//@author Kevin Trottmann
 	 public void updateView(){
 		 	view.t = sl.getTranslator();
 			view.b_register.setText(view.t.getString("Button.Register"));
