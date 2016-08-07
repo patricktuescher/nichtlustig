@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import com.sun.security.ntlm.Client;
 
@@ -25,6 +26,7 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
@@ -892,6 +894,12 @@ public class ClientController {
 	//@author Kevin Trottmann
 	 public void updateView(){
 		 	view.t = sl.getTranslator();
+		 	if(t.getCurrentLocale().equals(new Locale("de"))){
+		 		view.topPaneStatistik.setStyle("-fx-background-image: url(images/DE_StatistikHintergrund.png);");
+		 	}
+		 	else{
+		 		view.topPaneStatistik.setStyle("-fx-background-image: url(images/EN_StatistikHintergrund.png);");
+		 	}
 			view.b_register.setText(view.t.getString("Button.Register"));
 			view.b_login.setText(view.t.getString("Button.Login"));
 			view.b_quitGame.setText(view.t.getString("Button.QuitGame"));

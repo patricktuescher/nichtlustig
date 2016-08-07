@@ -17,7 +17,7 @@
 }
 
 #topPaneStatistik{
-	-fx-background-image: url(images/DE_StatistikHintergrund.png);
+	-fx-background-image: url(images/EN_StatistikHintergrund.png);
 }
 
 #topPaneRules{

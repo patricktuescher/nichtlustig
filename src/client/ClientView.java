@@ -63,6 +63,7 @@ public class ClientView {
 	protected ImageView turnPL1, turnPL2;
 	protected Image turn1, turn2, turn1_de, turn2_de;
 	protected HBox centerPaneStatistik ;
+	protected BorderPane topPaneStatistik;
 	
 	//Height and Width of the cards
 	final int cardheight = 90;
@@ -257,7 +258,7 @@ public class ClientView {
 		//@author Kevin Trottmann
 		
 		//TopPane Statistik
-		BorderPane topPaneStatistik = new BorderPane();
+		topPaneStatistik = new BorderPane();
 		topPaneStatistik.setId("topPaneStatistik"); //ID for CSS
 		
 		//HBox Statistik
