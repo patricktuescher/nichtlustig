@@ -528,7 +528,7 @@ public class ClientView {
 		
 		//TopPane GameFinished
 		BorderPane topPaneGameFinished = new BorderPane();
-		topPaneGameFinished.setId("topPaneGame");
+		topPaneGameFinished.setId("gameOver");
 		
 		//Button GameLobby
 		b_gameLobby = new Button (t.getString("Button.backLobby"));

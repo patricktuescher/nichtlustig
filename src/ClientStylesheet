@@ -3,6 +3,10 @@
 				-fx-background-image: url(images/loginHintergrund.png);		
 }
 
+#gameOver{
+	-fx-background-image: url(images/gameOver.png);
+}
+
 
 #topPaneLogin{
 	-fx-background-image: url(images/loginHintergrund.png);
