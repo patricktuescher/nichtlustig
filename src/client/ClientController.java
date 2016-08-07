@@ -921,6 +921,7 @@ public class ClientController {
 		 
 		 
 	 }
+	 
 	 private boolean profCard(){
 		 boolean b = false;
 		 for(int x = 0; x < view.cardAL.size(); x++){
@@ -930,6 +931,7 @@ public class ClientController {
 		 }
 		 return b;
 	 }
+	 
 	 private void bewerteProfCard(){
 		 int würfel = 0;
 		 for(int x = 0; x < view.cardAL.size(); x++){
