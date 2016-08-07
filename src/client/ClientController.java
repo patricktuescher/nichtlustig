@@ -721,6 +721,7 @@ public class ClientController {
 				case "Yeti": 	yetiPL1++;
 				continue;
 				case "Dino":	view.scorePL1 += view.cardAL.get(x).getAugenzahl();
+				continue;
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 			}else if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
@@ -732,6 +733,8 @@ public class ClientController {
 				case "Lemming": view.scorePL2 += 4;
 				continue;
 				case "Yeti": 	yetiPL2++;
+				continue;
+				case "Dino":	view.scorePL2 += view.cardAL.get(x).getAugenzahl();
 				continue;
 				}
 			}
