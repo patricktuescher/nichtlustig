@@ -1073,7 +1073,7 @@ public class ClientController {
 			view.b_quitGame.setText(view.t.getString("Button.QuitGame"));
 			view.lb_username.setText(view.t.getString("Label.UserName"));
 			view.lb_password.setText(view.t.getString("Label.Password"));
-			view.lb_chooseLanguage.setText(view.t.getString("Label.Language"));
+			//view.lb_chooseLanguage.setText(view.t.getString("Label.Language"));
 			view.b_spielErstellen.setText(view.t.getString("Button.newGame"));
 			view.b_backStatistik.setText(view.t.getString("Button.Stats"));
 			view.b_spielBeitreten.setText(view.t.getString("Button.JoinGame"));
