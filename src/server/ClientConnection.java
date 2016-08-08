@@ -146,6 +146,7 @@ public class ClientConnection extends Thread {
 				
 				if(obj instanceof CardTod){
 					CardTod tod = (CardTod) obj;
+					System.out.println("CardTod erhalten und weitergeleitet.");
 					model.sendToOtherClients(tod, this);
 				}
 				

@@ -382,6 +382,7 @@ public class ClientController {
 									view.cardAL.get(a).setcardTod(view.cardAL.get(d));
 									view.cardAL.get(a).getImage();
 									server.sendObject(new CardTod(view.cardAL.get(a)));
+									System.out.println("CardTod gesendet");
 									updatePunkte();
 									disableCards();
 									view.b_fertigGame.setDisable(false);
@@ -860,7 +861,7 @@ public class ClientController {
 			
 			}
 		}
-		if(countFreeCards <= 18){
+		if(countFreeCards <= 5){
 			return false;
 		}else{
 			return true;
@@ -940,8 +941,10 @@ public class ClientController {
 									view.cardAL.get(a).setStatus(Status.tod);
 									view.cardAL.get(a).setcardTod(view.cardAL.get(d));
 									view.cardAL.get(a).getImage();
-									server.sendObject(new CardClick(view.cardAL.get(a)));
+									server.sendObject(new CardTod(view.cardAL.get(a)));
+									System.out.println("CardTod gesendet");
 									updatePunkte();
+									disableCards();
 									view.b_fertigGame.setDisable(false);
 								}
 							});

@@ -336,6 +336,7 @@ public boolean connect() {
 					
 					if(obj instanceof CardTod){
 						CardTod tod = (CardTod) obj;
+						System.out.println("cardTod erhalten");
 						Platform.runLater(new Runnable(){
 							@Override
 							public void run(){
