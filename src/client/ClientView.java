@@ -531,7 +531,7 @@ public class ClientView {
 /*----------------------------------------- GameFinished Fenster -----------------------------------------*/
 		
 		//TopPane GameFinished
-		BorderPane topPaneGameFinished = new BorderPane();
+		topPaneGameFinished = new BorderPane();
 		topPaneGameFinished.setId("gameOver");
 		
 		//Button GameLobby
