@@ -72,6 +72,10 @@ public class Card implements Serializable{
 		return this.würfel;
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public boolean check(ArrayList<Würfel> wuerfeltoTest, int summe){
 		boolean b = true;
 		ArrayList<Würfel> würfelPL1 = new ArrayList<Würfel>();

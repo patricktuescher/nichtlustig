@@ -691,7 +691,10 @@ public class ClientController {
 		view.b_fertigGame.setDisable(true);
 	}
 
-	
+	/**
+	 * @author Nicola Burri & Patrick Tüscher
+	 * 
+	 */
 	public void checkTurn(){
 		if(model.getPlayerRollCounter() == 0){
 			setWürfelDisabled(true);
@@ -711,6 +714,10 @@ public class ClientController {
 		}
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void changeCardsToGewählt(){
 		for(int x = 0; x< view.cardAL.size();x++){
 			if(view.cardAL.get(x).getStatus().equals(Status.neugewählt)){
@@ -719,7 +726,10 @@ public class ClientController {
 		}
 	}
 	
-	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void bewerteCards(){
 		sl.getLogger().info("Bewertung gestartet");
 		if(view.getWürfelPL1().get(0).getAktAugenzahl() == 6){
@@ -738,6 +748,10 @@ public class ClientController {
 		}
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void updatePunkte(){
 		view.scorePL1 = 0;
 		view.scorePL2 = 0;
@@ -824,6 +838,10 @@ public class ClientController {
 		
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void updatePunkteFromOtherClient(int points1, int points2){
 		view.scorePL1 = points1;
 		view.scorePL2 = points2;
@@ -852,6 +870,10 @@ public class ClientController {
 		}
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public boolean checkGameContinue(){
 		int countFreeCards = 0;
 		for(int x = 0; x<view.cardAL.size(); x++){
@@ -869,6 +891,10 @@ public class ClientController {
 		
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void checkWinner(){
 		server.sendObject(new newScore(view.scorePL1));
 		if(view.scorePL1 > view.scorePL2){
@@ -881,12 +907,20 @@ public class ClientController {
 		setGameFinishedScene();
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void playerQuit(){
 		view.scorePL1 = 0;
 		view.scorePL2 = 10;
 		server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void resetCardHandler(){
 		for(int x = 0;x<31;x++){	
 		final int d = x;
@@ -1005,6 +1039,10 @@ public class ClientController {
 		 return b;
 	 }
 	 
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */	 
 	 public void bewerteProfCard(){
 		 int würfel = 0;
 
@@ -1040,7 +1078,10 @@ public class ClientController {
 
 	 }
 
-	 
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	 public void würfelProf(int würfel){
 		 int bestWürfel = 0;
 		 if(model.getPlayerRollCounter()>0){
@@ -1061,6 +1102,10 @@ public class ClientController {
 	 }
 	 }
 	 
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	 public void resetWürfelButton(){
 			view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
 				
