@@ -970,9 +970,8 @@ public class ClientController {
 					view.topPaneGameFinished.setCenter(view.drawIV);
 					view.topPaneGameFinished.setTop(view.labelPL1);
 		}
-			
-		setGameFinishedScene();
 		}
+		setGameFinishedScene();
 	}
 	
 	/**
