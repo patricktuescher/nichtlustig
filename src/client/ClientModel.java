@@ -204,7 +204,7 @@ public class ClientModel {
 		for(int x = 0; x<31; x++){
 			if(cardAL.get(x).getcardTod() == null){
 				
-			}else if(cardAL.get(x).getcardTod().equals(cardTod)){
+			}else if(cardAL.get(x).getcardTod().getAugenzahl() == cardTod.getAugenzahl()){
 				cardAL.get(x).setcardTod(null);
 				cardAL.get(x).setStatus(Status.gewertet);
 				cardAL.get(x).getImage();
