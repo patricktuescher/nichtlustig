@@ -127,7 +127,7 @@ public class ClientView {
 		innerPaneLogin.setGridLinesVisible(false);
 		innerPaneLogin.setHgap(10);
 		innerPaneLogin.setVgap(10);
-		innerPaneLogin.setPadding(new Insets(200,200,0,280));
+		innerPaneLogin.setPadding(new Insets(200,200,0,480));
 		
 		//Label Username
 		lb_username = new Label(t.getString("Label.UserName")+ ": ");
@@ -139,10 +139,10 @@ public class ClientView {
 		innerPaneLogin.add(lb_password, 2, 4);
 		lb_password.setId("lb-password");
 		
-		//label choose language
+		/*//label choose language
 		lb_chooseLanguage = new Label(t.getString("Label.Language")+": ");
 		innerPaneLogin.add(lb_chooseLanguage, 2, 6);
-		lb_chooseLanguage.setId("lb-password");
+		lb_chooseLanguage.setId("lb-password");*/
 		
 		//Textbox Username
 		tf_username = new TextField();
@@ -159,27 +159,27 @@ public class ClientView {
 
 		//language Change Button (German / Englisch)
 		b_languageChange = new Button(t.getString("Button.languageChange"));
-		innerPaneLogin.add(b_languageChange,2,7);
+		innerPaneLogin.add(b_languageChange,2,20);
 		b_languageChange.setPrefSize(210, 40);
 		b_languageChange.setId("b-login");
 		
 		
 		//Button Login
 		b_login = new Button(t.getString("Button.Login"));
-		innerPaneLogin.add(b_login, 1, 25);
-		b_login.setPrefSize(210, 70);
+		innerPaneLogin.add(b_login, 2, 21);
+		b_login.setPrefSize(210, 40);
 		b_login.setId("b-login");
 		
 		//Button Register
 		b_register = new Button(t.getString("Button.Register"));
-		innerPaneLogin.add(b_register, 2, 25);
-		b_register.setPrefSize(210, 70);
+		innerPaneLogin.add(b_register, 2, 22);
+		b_register.setPrefSize(210, 40);
 		b_register.setId("b-login");
 		
 		//Button Quit game
 		b_quitGame = new Button(t.getString("Button.QuitGame"));
-		innerPaneLogin.add(b_quitGame, 3, 25);
-		b_quitGame.setPrefSize(210,70);
+		innerPaneLogin.add(b_quitGame, 2, 23);
+		b_quitGame.setPrefSize(210,40);
 		b_quitGame.setId("b-login");
 		
 		//Scene Login
