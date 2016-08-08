@@ -82,13 +82,13 @@ public class ClientController {
 					public void handle(ActionEvent arg0) {
 						if(view.t.getCurrentLocaleString().equals("en")) {
 			            	   sl.getServiceLocator().setTranslator(new Translator("de"));
+			            	   view.topPaneStatistik.setStyle("-fx-background-image: url(images/DE_StatistikHintergrund.png);");
 			            	   view.turnPL1.setImage(view.turn1_de);
 			            	   view.turnPL2.setImage(view.turn2_de);
 			      			}
 			     			else{
-			 
-			       			//view.t = new Translator("en");
 			     			sl.getServiceLocator().setTranslator(new Translator("en"));
+			     			view.topPaneStatistik.setStyle("-fx-background-image: url(images/EN_StatistikHintergrund.png);");
 							view.turnPL1.setImage(view.turn1);
 							view.turnPL2.setImage(view.turn2);
 			     			}
@@ -899,13 +899,7 @@ public class ClientController {
 	//@author Kevin Trottmann
 	 public void updateView(){
 		 	view.t = sl.getTranslator();
-		 	if(t.getCurrentLocale().equals(new Locale("de"))){
-		 		view.topPaneStatistik.setStyle("-fx-background-image: url(images/DE_StatistikHintergrund.png);");
-		 	}
-		 	else{
-		 		view.topPaneStatistik.setStyle("-fx-background-image: url(images/EN_StatistikHintergrund.png);");
-		 	}
-			view.b_register.setText(view.t.getString("Button.Register"));
+		 	view.b_register.setText(view.t.getString("Button.Register"));
 			view.b_login.setText(view.t.getString("Button.Login"));
 			view.b_quitGame.setText(view.t.getString("Button.QuitGame"));
 			view.lb_username.setText(view.t.getString("Label.UserName"));
