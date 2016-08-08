@@ -10,10 +10,13 @@ package client;
 
 import java.util.ArrayList;
 
+import message.CardGewertet;
+
 public class ClientModel {
 	
 	private int playerRollCounter = 0;
 	protected int cardCounter;
+	protected ServerListener server;
 	
 	cardChecker cc = new cardChecker();
 	
@@ -182,6 +185,7 @@ public class ClientModel {
 			}else if(cardAL.get(x).getcardTod().equals(cardTod)){
 				cardAL.get(x).setcardTod(null);
 				cardAL.get(x).setStatus(Status.gewertet);
+				server.sendObject(new CardGewertet(cardAL.get(x)));
 			}
 		}
 	}
