@@ -446,6 +446,7 @@ public class ClientController {
 						if(checkGameContinue()){
 						server.sendObject(new ClientTurn(false));
 						}else{
+							server.sendObject(new GameFinished());
 							if(!profCard()){
 							server.sendObject(new GameFinished());
 							}
@@ -983,7 +984,7 @@ public class ClientController {
 		 
 	 }
 	 
-	 private boolean profCard(){
+	 public boolean profCard(){
 		 boolean b = false;
 		 for(int x = 0; x < view.cardAL.size(); x++){
 			 if(view.cardAL.get(x).getOwner() != null && view.cardAL.get(x).getType().equals("Prof") && view.cardAL.get(x).getOwner().equals(clientOwner)){
@@ -993,7 +994,7 @@ public class ClientController {
 		 return b;
 	 }
 	 
-	 private void bewerteProfCard(){
+	 public void bewerteProfCard(){
 		 int würfel = 0;
 		 int bestWürfel = 0;
 		 for(int x = 0; x < view.cardAL.size(); x++){

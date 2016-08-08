@@ -32,6 +32,7 @@ import message.GameQuit;
 import message.HighscoreUpdate;
 import message.NewGameChatMessage;
 import message.PointUpdate;
+import message.ProfWertung;
 import message.Registration;
 import message.WürfelRoll;
 import message.initiateNewGame;
@@ -156,10 +157,12 @@ public class ClientConnection extends Thread {
 				
 				if(obj instanceof GameFinished){
 					model.getGame().setGameFinished(Player);
+					model.sendToOtherClients(new ProfWertung(), this);
 					if(model.getGame().bothPlayersFinished()){
 						model.broadcast((GameFinished) obj);
 					}
 				}
+				
 				
 				if(obj instanceof GameQuit){
 					model.broadcast((GameQuit) obj);

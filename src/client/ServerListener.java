@@ -37,6 +37,7 @@ import message.GameQuit;
 import message.HighscoreUpdate;
 import message.NewGameChatMessage;
 import message.PointUpdate;
+import message.ProfWertung;
 import message.Registration;
 import message.WürfelRoll;
 
@@ -295,6 +296,16 @@ public boolean connect() {
 								controller.setUpGame();
 							}
 						});
+					}
+					
+					if(obj instanceof ProfWertung){
+						if(!controller.profCard()){
+						sendObject(new GameFinished());
+						}
+						else{
+							controller.bewerteProfCard();
+
+						}
 					}
 					
 					if(obj instanceof GameQuit){
