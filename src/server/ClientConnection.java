@@ -17,6 +17,7 @@ import java.net.SocketException;
 import client.Account;
 import message.CardClick;
 import message.CardGewertet;
+import message.CardTod;
 import message.ChatMessage;
 import message.ClientLogin;
 import message.ClientLoginSuccess;
@@ -140,6 +141,11 @@ public class ClientConnection extends Thread {
 				if(obj instanceof CardGewertet){
 					CardGewertet gewertet = (CardGewertet) obj;
 					model.sendToOtherClients(gewertet, this);
+				}
+				
+				if(obj instanceof CardTod){
+					CardTod tod = (CardTod) obj;
+					model.sendToOtherClients(tod, this);
 				}
 				
 				if(obj instanceof GameComplete){

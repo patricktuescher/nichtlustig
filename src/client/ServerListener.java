@@ -21,6 +21,7 @@ import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 import javafx.application.Platform;
 import message.CardClick;
 import message.CardGewertet;
+import message.CardTod;
 import message.ChatMessage;
 import message.ClientLogin;
 import javafx.scene.control.Alert;
@@ -312,6 +313,16 @@ public boolean connect() {
 							@Override
 							public void run(){
 								controller.opponentWertetCard(gewertet.getCard());
+							}
+						});
+					}
+					
+					if(obj instanceof CardTod){
+						CardTod tod = (CardTod) obj;
+						Platform.runLater(new Runnable(){
+							@Override
+							public void run(){
+								controller.opponentTodCard(tod.getCard());
 							}
 						});
 					}

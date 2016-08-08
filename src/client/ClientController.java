@@ -378,7 +378,9 @@ public class ClientController {
 									view.cardAL.get(a).getImage();
 									server.sendObject(new CardClick(view.cardAL.get(a)));
 									updatePunkte();
+									disableCards();
 									view.b_fertigGame.setDisable(false);
+									
 								}
 							});
 						}
@@ -444,9 +446,7 @@ public class ClientController {
 							}
 							else{
 								bewerteProfCard();
-								if(bewerteProfCard()){
-								server.sendObject(new GameFinished());
-								}
+
 							}
 						}
 						}
@@ -516,6 +516,16 @@ public class ClientController {
 		for(int x = 0; x < view.cardAL.size();x++){
 			if(view.cardAL.get(x).equals(card)){
 				view.cardAL.get(x).setStatus(Status.gewertet);
+				view.cardAL.get(x).getImage();
+				break;
+			}
+		}
+	}
+	
+	public void opponentTodCard(Card card){
+		for(int x = 0; x < view.cardAL.size();x++){
+			if(view.cardAL.get(x).equals(card)){
+				view.cardAL.get(x).setStatus(Status.tod);
 				view.cardAL.get(x).getImage();
 				break;
 			}
@@ -947,10 +957,9 @@ public class ClientController {
 		 return b;
 	 }
 	 
-	 private boolean bewerteProfCard(){
+	 private void bewerteProfCard(){
 		 int würfel = 0;
 		 int bestWürfel = 0;
-		 boolean finish = false;
 		 for(int x = 0; x < view.cardAL.size(); x++){
 			 if(view.cardAL.get(x).getOwner() != null && view.cardAL.get(x).getType().equals("Prof") && view.cardAL.get(x).getOwner().equals(clientOwner) && view.cardAL.get(x).getStatus().equals(Status.gewertet)){
 				 würfel++;
@@ -962,9 +971,11 @@ public class ClientController {
 		 }
 
 		 view.b_würfeln.setDisable(false);
+		 
+		 while(model.getPlayerRollCounter()== 0){
 		 if(model.getPlayerRollCounter()>0){
 			 view.b_würfeln.setDisable(true);
-		 }
+		 
 		 
 		 for(int x = 0; x < würfel; x++){
 			 if(view.WürfelPL1.get(x).getAktAugenzahl()> bestWürfel){
@@ -976,8 +987,9 @@ public class ClientController {
 		 view.scorePL1 += würfel*bestWürfel;
 		 view.labelPL1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
-		 finish = true;
-		 return finish;
+		 server.sendObject(new GameFinished());
+	 }
+	 }
 	 }
 	 
 }
