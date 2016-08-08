@@ -432,7 +432,7 @@ public class ClientController {
 		
 				
 /*----------------------------------------- EventHandler Fertig Button -----------------------------------------*/ 
-				
+			
 				view.b_fertigGame.setOnAction(new EventHandler<ActionEvent>(){
 					
 					

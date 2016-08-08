@@ -38,6 +38,10 @@ public class ClientModel {
 		return b;
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void startCardChecker(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
 		int summe = 0;
 		int w = 0;
@@ -67,6 +71,10 @@ public class ClientModel {
 		
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void aktivateCards(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
 		int summe = 0;
 		int w = 0;
@@ -101,7 +109,10 @@ public class ClientModel {
 		};
 	}
 	
-	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void aktivateGewerteteCards(ArrayList<Card> cardAL, cardType cType){
 		for(int x = 0;  x<31; x++){
 			if(cardAL.get(x).getOwner().equals(ClientController.clientOwner) && cardAL.get(x).getStatus().equals(Status.gewertet.toString()) && cardAL.get(x).getType().equals(cType.toString())){
@@ -113,7 +124,10 @@ public class ClientModel {
 		
 	}
 
-	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public boolean checkCardsToChooseTod(ArrayList<Card> cardAL){
 		int countLemming = 0;
 		int countOther = 0;
@@ -150,7 +164,10 @@ public class ClientModel {
 	}
 	
 	
-	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public boolean checkTodCardWürfel(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
 		boolean availableTodCardWürfel = false;
 		for(int x = 0; x<31; x++){
@@ -179,6 +196,10 @@ public class ClientModel {
 	}
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void removeCardTod(ArrayList<Card> cardAL, Card cardTod){
 		for(int x = 0; x<31; x++){
 			if(cardAL.get(x).getcardTod() == null){
@@ -191,7 +212,10 @@ public class ClientModel {
 	}
 	
 	
-	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public boolean checkAvailableTodCards(ArrayList<Card> cardAL){
 		boolean availableTodCard = false;
 		for(int x = 0; x<31; x++){
@@ -205,7 +229,10 @@ public class ClientModel {
 	}
 	
 	
-	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void chooseTodCard(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
 		if(checkTodCardWürfel(cardAL, wuerfelAL, acc)){
 			checkTodCardWürfel(cardAL, wuerfelAL, acc);
