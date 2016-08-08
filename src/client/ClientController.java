@@ -559,6 +559,7 @@ public class ClientController {
 	
 	//@author Kevin Trottmann
 	public void getAlert(){
+	t = sl.getServiceLocator().getTranslator();
    	Alert alert = new Alert(AlertType.ERROR);
 	alert.setTitle(t.getString("Text.AlertLogintitel"));
 	alert.setHeaderText(t.getString("Text.AlertLogintext"));
@@ -570,6 +571,7 @@ public class ClientController {
 	
 	//@author Kevin Trottmann
 	public void getRegAlert(){
+		t = sl.getServiceLocator().getTranslator();
 	   	Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(t.getString("Text.AlertRegtitel"));
 		alert.setHeaderText(t.getString("Text.AlertRegtext"));
@@ -580,6 +582,7 @@ public class ClientController {
 		}
 	//@author Kevin Trottmann
 	public void getRegFailedAlert(){
+		t = sl.getServiceLocator().getTranslator();
 	   	Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(t.getString("Text.AlertRegfailtitel"));
 		alert.setHeaderText(t.getString("Text.AlertRegfailtext"));

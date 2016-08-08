@@ -32,6 +32,9 @@ public class AccountRegister {
 		this.acc = acc;
 		boolean b = true;
 		ArrayList <Account>accList = ClientLoginChecker.getAccountList();
+		if(acc.getAccName().length() < 3 || acc.getPassword().length() < 3){
+			return false;
+		}
 		for(int x = 0; x < accList.size(); x++){
 			if(accList.get(x).getAccName().equals(acc.getAccName())){
 				b = false;
