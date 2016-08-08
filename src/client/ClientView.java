@@ -611,7 +611,7 @@ public class ClientView {
                 table.getItems().add(i);
             }
             
-            rankCol = new TableColumn<>("Rang"); 
+            rankCol = new TableColumn<>(t.getString("TableColumn.Rank")); 
             rankCol.setCellValueFactory(cellData -> {
             	Integer rowIndex = cellData.getValue();
             	return new ReadOnlyStringWrapper(rank.get(rowIndex));
