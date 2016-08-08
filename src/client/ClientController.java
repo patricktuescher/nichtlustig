@@ -1011,11 +1011,18 @@ public class ClientController {
 			 }
 		 }
 		 
-//		 for(int x = 0; x < würfel; x++){
-//			 view.WürfelPL1.get(x).getImageView().setDisable(false);
-//		 }
+
 		 final int würfelFinal = würfel;
 		 view.b_würfeln.setDisable(false);
+		 view.turnPL2.setVisible(false);
+		 view.turnPL1.setVisible(true);
+		 Image profWerten = new Image("images/profValue.png");
+		 Image profWerten_de= new Image("images/profWerten.png");
+		 if(view.t.getCurrentLocaleString().equals("de")){
+			 view.turnPL1.setImage(profWerten_de);
+		 }else{
+			 view.turnPL1.setImage(profWerten);
+		 }
 			view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
 
 				@Override
@@ -1027,25 +1034,9 @@ public class ClientController {
 					}
 			});
 		 
-//		 while(model.getPlayerRollCounter()== 0){
-//		 if(model.getPlayerRollCounter()>0){
-//			 view.b_würfeln.setDisable(true);
-//		 
-//		 
-//		 for(int x = 0; x < würfel; x++){
-//			 if(view.WürfelPL1.get(x).getAktAugenzahl()> bestWürfel){
-//				 bestWürfel = view.WürfelPL1.get(x).getAktAugenzahl();
-//			 }
-//
-//		 }
-//		 resetWürfelButton();
-//		 view.scorePL1 += würfel*bestWürfel;
-//		 view.labelPL1.setText(""+view.scorePL1);
-//		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
-//		 server.sendObject(new GameFinished());
-//	 }
+
 	 }
-//	 }
+
 	 
 	 public void würfelProf(int würfel){
 		 int bestWürfel = 0;
