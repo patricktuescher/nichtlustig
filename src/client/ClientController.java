@@ -777,13 +777,13 @@ public class ClientController {
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL1 += 1;
 				continue;
-				case "Prof":	view.scorePL1 += 0;
+				case "Prof":	view.scorePL1 += 1;
 				continue;
-				case "Lemming": view.scorePL1 += 0;
+				case "Lemming": view.scorePL1 += 1;
 				continue;
 				case "Yeti": 	view.scorePL1 += 1;
 				continue;
-				case "Dino":	view.scorePL1 += 0;
+				case "Dino":	view.scorePL1 += 1;
 				continue;
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
@@ -806,13 +806,13 @@ public class ClientController {
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL2 += 1;
 				continue;
-				case "Prof":	view.scorePL2 += 0;
+				case "Prof":	view.scorePL2 += 1;
 				continue;
-				case "Lemming": view.scorePL2 += 0;
+				case "Lemming": view.scorePL2 += 1;
 				continue;
 				case "Yeti": 	view.scorePL2 += 1;
 				continue;
-				case "Dino":	view.scorePL2 += 0;
+				case "Dino":	view.scorePL2 += 1;
 				continue;
 				}
 			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
