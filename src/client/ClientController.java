@@ -444,7 +444,7 @@ public class ClientController {
 						resetCardHandler();
 						System.out.println(getWürfel());
 						disableCards();
-						changeCardsToGewählt();
+//						changeCardsToGewählt();
 						if(checkGameContinue()){
 							updatePunkte();	
 							server.sendObject(new ClientTurn(false));
@@ -815,7 +815,6 @@ public class ClientController {
 				case "Dino":	view.scorePL1 += view.cardAL.get(x).getAugenzahl();
 				continue;
 				}
-				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 			}
 			
 			if(view.cardAL.get(x).getStatus().equals(Status.gewählt) && view.cardAL.get(x).getOwner().equals(clientOwner)){
@@ -831,7 +830,6 @@ public class ClientController {
 				case "Dino":	view.scorePL1 += 1;
 				continue;
 				}
-				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 			}
 			
 			if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && view.cardAL.get(x).getOwner().equals(clientOwner)){
@@ -873,7 +871,7 @@ public class ClientController {
 				view.scorePL2 -= 1;
 				continue;
 			}
-
+			sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 		}
 		if(yetiPL1 == 1){
 			view.scorePL1 += 1;

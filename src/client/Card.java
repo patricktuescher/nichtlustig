@@ -211,7 +211,7 @@ public class Card implements Serializable{
 	public void click(Account acc){
 		this.owner = acc;
 		if(this.status == Status.frei || this.status == Status.gewählt){
-			this.status = Status.neugewählt;
+			this.status = Status.gewählt;
 		}
 		
 			InnerShadow innerShadow = new InnerShadow(20, Color.web("489dff"));
