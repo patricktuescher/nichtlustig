@@ -775,7 +775,7 @@ public class ClientController {
 		sl.getLogger().info("Bewertung gestartet");
 		if(view.getWürfelPL1().get(0).getAktAugenzahl() == 6){
 		//keine Bewertung wenn Pudel des Todes gewürfelt wurde
-		}
+		}else{
 		for(int x = 0; x < view.cardAL.size(); x++){
 			if(view.cardAL.get(x).getType().equals(cardType.Tod.toString())){
 				
@@ -787,6 +787,7 @@ public class ClientController {
 								
 			}
 		}
+	}
 	}
 	
 	/**
