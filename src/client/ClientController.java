@@ -107,7 +107,7 @@ public class ClientController {
 				clientOwner = new Account(view.tf_username.getText(), view.pf_password.getText());
 				server.connect(clientOwner);
 				sl.getLogger().info("Change to Lobby Scene");
-				
+				view.pf_password.setText("");
 
 			}
 		});
@@ -124,6 +124,8 @@ public class ClientController {
 			server = ServerListener.getServerListener();
 			server.connect();
 			server.sendObject(new newAccountMessage(new Account(view.tf_username.getText(), view.pf_password.getText())));
+			view.tf_username.setText("");
+			view.pf_password.setText("");
 			//server.disconnect();
 			}		
 		});
@@ -559,7 +561,7 @@ public class ClientController {
 	
 	//@author Kevin Trottmann
 	public void getAlert(){
-	t = sl.getServiceLocator().getTranslator();
+	t = sl.getServiceLocator().getTranslator(); //für Kevin: sonst wird nicht die richtige Sprache ausgegeben
    	Alert alert = new Alert(AlertType.ERROR);
 	alert.setTitle(t.getString("Text.AlertLogintitel"));
 	alert.setHeaderText(t.getString("Text.AlertLogintext"));
@@ -570,7 +572,7 @@ public class ClientController {
 	}
 	
 	//@author Kevin Trottmann
-	public void getRegAlert(){
+	public void getRegAlert(){ 
 		t = sl.getServiceLocator().getTranslator();
 	   	Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(t.getString("Text.AlertRegtitel"));
