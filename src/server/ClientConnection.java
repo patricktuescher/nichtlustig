@@ -157,9 +157,10 @@ public class ClientConnection extends Thread {
 				
 				if(obj instanceof GameFinished){
 					model.getGame().setGameFinished(Player);
-					model.sendToOtherClients(new ProfWertung(), this);
 					if(model.getGame().bothPlayersFinished()){
 						model.broadcast((GameFinished) obj);
+					}else{
+						model.sendToOtherClients(new ProfWertung(), this);
 					}
 				}
 				

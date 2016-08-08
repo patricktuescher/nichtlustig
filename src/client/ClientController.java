@@ -447,7 +447,6 @@ public class ClientController {
 							updatePunkte();	
 							server.sendObject(new ClientTurn(false));
 						}else{
-							server.sendObject(new GameFinished());
 							if(!profCard()){
 							server.sendObject(new GameFinished());
 							}
