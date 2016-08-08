@@ -878,6 +878,8 @@ public class ClientController {
 		
 		view.labelPL1.setText(""+view.scorePL1);
 		view.labelPL2.setText(""+view.scorePL2);
+		view.finalScore1.setText("You scored"+view.scorePL1+" points");
+		view.finalScore2.setText("You scored"+view.labelPL2+ "points");
 		server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 		
 	}
@@ -986,6 +988,8 @@ public class ClientController {
 	public void playerQuit(){
 		view.scorePL1 = 0;
 		view.scorePL2 = 10;
+		view.finalScore1.setText("You scored"+view.scorePL1+" points");
+		view.finalScore2.setText("You scored"+view.labelPL2+ "points");
 		server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 	}
 	
@@ -1198,6 +1202,7 @@ public class ClientController {
 		 view.scorePL1 += (würfel*bestWürfel);
 		 view.scorePL1 -= würfel;
 		 view.labelPL1.setText(""+view.scorePL1);
+		 view.finalScore1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 		 view.b_fertigGame.setDisable(false);
 //		 server.sendObject(new GameFinished());
