@@ -1111,6 +1111,7 @@ public class ClientController {
 		 view.b_würfeln.setDisable(false);
 		 view.turnPL2.setVisible(false);
 		 view.turnPL1.setVisible(true);
+		 view.b_fertigGame.setDisable(true);
 		 Image profWerten = new Image("images/profValue.png");
 		 Image profWerten_de= new Image("images/profWerten.png");
 		 if(view.t.getCurrentLocaleString().equals("de")){
@@ -1172,6 +1173,7 @@ public class ClientController {
 		 view.scorePL1 += würfel*bestWürfel;
 		 view.labelPL1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
+		 view.b_fertigGame.setDisable(false);
 //		 server.sendObject(new GameFinished());
 	 }
 	 }
