@@ -362,7 +362,7 @@ public class ClientController {
 					@Override
 					public void handle(MouseEvent arg0){
 						view.cardAL.get(d).click(clientOwner);
-						removeCardTod(view.cardAL.get(d));
+						model.removeCardTod(view.cardAL, view.cardAL.get(d));
 						model.checkCardsToChooseTod(view.cardAL);
 						if(!model.checkCardsToChooseTod(view.cardAL)){
 							view.cardAL.get(d).setStatus(Status.todungesetzt);
@@ -549,6 +549,7 @@ public class ClientController {
 	public void opponentTodCard(Card card){
 		for(int x = 0; x < view.cardAL.size();x++){
 			if(view.cardAL.get(x).equals(card)){
+				view.cardAL.get(x).setcardTod(card.getcardTod());
 				view.cardAL.get(x).setStatus(Status.tod);
 				view.cardAL.get(x).getImage();
 				break;
@@ -827,7 +828,7 @@ public class ClientController {
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && view.cardAL.get(x).getOwner().equals(clientOwner)){
-				view.scorePL1 += -1;
+				view.scorePL1 -= 1;
 			}else if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL2 += 2;
@@ -855,7 +856,7 @@ public class ClientController {
 				continue;
 				}
 			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
-				view.scorePL2 += -1;
+				view.scorePL2 -= 1;
 			}
 
 		}
@@ -1191,7 +1192,7 @@ public class ClientController {
 		 resetWürfelButton();
 		 updatePunkte();
 		 view.scorePL1 += (würfel*bestWürfel);
-		 view.scorePL1 += -würfel;
+		 view.scorePL1 -= würfel;
 		 view.labelPL1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 		 view.b_fertigGame.setDisable(false);

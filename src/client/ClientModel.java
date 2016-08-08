@@ -10,6 +10,7 @@ package client;
 
 import java.util.ArrayList;
 
+import javafx.application.Platform;
 import message.CardGewertet;
 
 public class ClientModel {
@@ -205,9 +206,16 @@ public class ClientModel {
 			if(cardAL.get(x).getcardTod() == null){
 				
 			}else if(cardAL.get(x).getcardTod().getAugenzahl() == cardTod.getAugenzahl()){
-				cardAL.get(x).setcardTod(null);
-				cardAL.get(x).setStatus(Status.gewertet);
-				cardAL.get(x).getImage();
+				final int y = x;
+				Platform.runLater(new Runnable(){
+					@Override
+					public void run(){
+						cardAL.get(y).setcardTod(null);
+						cardAL.get(y).setStatus(Status.gewertet);
+						cardAL.get(y).getImage();	
+					}
+				});
+
 				server.sendObject(new CardGewertet(cardAL.get(x)));
 			}
 		}
