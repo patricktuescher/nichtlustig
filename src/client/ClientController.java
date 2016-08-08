@@ -854,7 +854,7 @@ public class ClientController {
 			
 			}
 		}
-		if(countFreeCards <= 18){
+		if(countFreeCards <= 22){
 			return false;
 		}else{
 			return true;
@@ -1005,11 +1005,20 @@ public class ClientController {
 			 }
 		 }
 		 
-		 for(int x = 0; x < würfel; x++){
-			 view.WürfelPL1.get(x).getImageView().setDisable(false);
-		 }
+//		 for(int x = 0; x < würfel; x++){
+//			 view.WürfelPL1.get(x).getImageView().setDisable(false);
+//		 }
 
 		 view.b_würfeln.setDisable(false);
+			view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
+				
+				@Override
+				public void handle(ActionEvent arg0) {
+					würfeln();
+					model.incrementPlayerRoll();
+					System.out.println(getWürfel());
+					}
+			});
 		 
 		 while(model.getPlayerRollCounter()== 0){
 		 if(model.getPlayerRollCounter()>0){
@@ -1022,7 +1031,7 @@ public class ClientController {
 			 }
 
 		 }
-		 
+		 resetWürfelButton();
 		 view.scorePL1 += würfel*bestWürfel;
 		 view.labelPL1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
@@ -1030,5 +1039,20 @@ public class ClientController {
 	 }
 	 }
 	 }
+	 
+	 public void resetWürfelButton(){
+			view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
+				
+				@Override
+				public void handle(ActionEvent arg0) {
+					würfeln();
+					model.incrementPlayerRoll();
+					System.out.println(getWürfel());
+					model.startCardChecker(view.cardAL, getWürfel());
+					checkTurn();
+					}
+			});
+	 }
+	 
 	 
 }
