@@ -362,7 +362,7 @@ public class ClientController {
 					@Override
 					public void handle(MouseEvent arg0){
 						view.cardAL.get(d).click(clientOwner);
-						model.removeCardTod(view.cardAL, view.cardAL.get(d));
+						removeCardTod(view.cardAL.get(d));
 						model.checkCardsToChooseTod(view.cardAL);
 						if(!model.checkCardsToChooseTod(view.cardAL)){
 							view.cardAL.get(d).setStatus(Status.todungesetzt);
@@ -1232,6 +1232,23 @@ public class ClientController {
 					}
 			});
 	 }
+	 
+		/**
+		 * @author Patrick Tüscher
+		 * 
+		 */
+		public void removeCardTod(Card cardTod){
+			for(int x = 0; x<31; x++){
+				if(view.cardAL.get(x).getcardTod() == null){
+					
+				}else if(view.cardAL.get(x).getcardTod().getAugenzahl() == cardTod.getAugenzahl()){
+					view.cardAL.get(x).setcardTod(null);
+					view.cardAL.get(x).setStatus(Status.gewertet);
+					view.cardAL.get(x).getImage();
+					server.sendObject(new CardGewertet(view.cardAL.get(x)));
+				}
+			}
+		}
 	 
 	 
 }
