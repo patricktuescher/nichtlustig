@@ -815,7 +815,9 @@ public class ClientController {
 				continue;
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
-			}else if(view.cardAL.get(x).getStatus().equals(Status.gewählt) && view.cardAL.get(x).getOwner().equals(clientOwner)){
+			}
+			
+			if(view.cardAL.get(x).getStatus().equals(Status.gewählt) && view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL1 += 1;
 				continue;
@@ -829,10 +831,14 @@ public class ClientController {
 				continue;
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
-			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && view.cardAL.get(x).getOwner().equals(clientOwner)){
+			}
+			
+			if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && view.cardAL.get(x).getOwner().equals(clientOwner)){
 				view.scorePL1 -= 1;
 				continue;
-			}else if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
+			}
+			
+			if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL2 += 2;
 				continue;
@@ -845,7 +851,9 @@ public class ClientController {
 				case "Dino":	view.scorePL2 += view.cardAL.get(x).getAugenzahl();
 				continue;
 				}
-			}else if(view.cardAL.get(x).getStatus().equals(Status.gewählt) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
+			}
+			
+			if(view.cardAL.get(x).getStatus().equals(Status.gewählt) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL2 += 1;
 				continue;
@@ -858,7 +866,9 @@ public class ClientController {
 				case "Dino":	view.scorePL2 += 1;
 				continue;
 				}
-			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
+			}
+			
+			if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
 				view.scorePL2 -= 1;
 				continue;
 			}
