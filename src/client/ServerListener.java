@@ -37,6 +37,7 @@ import message.GameQuit;
 import message.HighscoreUpdate;
 import message.NewGameChatMessage;
 import message.PointUpdate;
+import message.ProfWertung;
 import message.Registration;
 import message.WürfelRoll;
 
@@ -297,6 +298,22 @@ public boolean connect() {
 						});
 					}
 					
+					if(obj instanceof ProfWertung){
+						if(!controller.profCard()){
+						sendObject(new GameFinished());
+						}
+						else{
+							Platform.runLater(new Runnable(){
+								@Override
+								public void run(){
+									controller.bewerteProfCard();
+								}
+							});
+	
+
+						}
+					}
+					
 					if(obj instanceof GameQuit){
 						Platform.runLater(new Runnable(){
 							@Override
@@ -319,6 +336,7 @@ public boolean connect() {
 					
 					if(obj instanceof CardTod){
 						CardTod tod = (CardTod) obj;
+						System.out.println("cardTod erhalten");
 						Platform.runLater(new Runnable(){
 							@Override
 							public void run(){

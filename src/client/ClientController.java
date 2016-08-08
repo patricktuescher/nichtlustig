@@ -366,8 +366,12 @@ public class ClientController {
 						server.sendObject(new CardClick(view.cardAL.get(d)));
 						model.checkCardsToChooseTod(view.cardAL);
 						if(!model.checkCardsToChooseTod(view.cardAL)){
+							view.cardAL.get(d).setStatus(Status.todungesetzt);
 							view.b_fertigGame.setDisable(false);
+						}else{
+							view.cardAL.get(d).setStatus(Status.todgesetzt);
 						}
+						
 						for(int t = 0;t<31;t++){
 							final int a = t;
 							view.cardAL.get(t).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
@@ -377,7 +381,8 @@ public class ClientController {
 									view.cardAL.get(a).setStatus(Status.tod);
 									view.cardAL.get(a).setcardTod(view.cardAL.get(d));
 									view.cardAL.get(a).getImage();
-									server.sendObject(new CardTod(view.cardAL.get(d)));
+
+									server.sendObject(new CardTod(view.cardAL.get(a)));
 									updatePunkte();
 									disableCards();
 									view.b_fertigGame.setDisable(false);
@@ -440,13 +445,20 @@ public class ClientController {
 						disableCards();
 						changeCardsToGewählt();
 						if(checkGameContinue()){
-						server.sendObject(new ClientTurn(false));
+							updatePunkte();	
+							server.sendObject(new ClientTurn(false));
 						}else{
 							if(!profCard()){
 							server.sendObject(new GameFinished());
 							}
 							else{
-								bewerteProfCard();
+								Platform.runLater(new Runnable(){
+									@Override
+									public void run(){
+										bewerteProfCard();
+									}
+								});
+
 
 							}
 						}
@@ -747,6 +759,22 @@ public class ClientController {
 				continue;
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
+			}else if(view.cardAL.get(x).getStatus().equals(Status.gewählt) && view.cardAL.get(x).getOwner().equals(clientOwner)){
+				switch(view.cardAL.get(x).getType()){
+				case "Rieb": 	view.scorePL1 += 1;
+				continue;
+				case "Prof":	view.scorePL1 += 0;
+				continue;
+				case "Lemming": view.scorePL1 += 0;
+				continue;
+				case "Yeti": 	view.scorePL1 += 1;
+				continue;
+				case "Dino":	view.scorePL1 += 0;
+				continue;
+				}
+				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
+			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && view.cardAL.get(x).getOwner().equals(clientOwner)){
+				view.scorePL1 += -1;
 			}else if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL2 += 2;
@@ -760,6 +788,21 @@ public class ClientController {
 				case "Dino":	view.scorePL2 += view.cardAL.get(x).getAugenzahl();
 				continue;
 				}
+			}else if(view.cardAL.get(x).getStatus().equals(Status.gewählt) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
+				switch(view.cardAL.get(x).getType()){
+				case "Rieb": 	view.scorePL2 += 1;
+				continue;
+				case "Prof":	view.scorePL2 += 0;
+				continue;
+				case "Lemming": view.scorePL2 += 0;
+				continue;
+				case "Yeti": 	view.scorePL2 += 1;
+				continue;
+				case "Dino":	view.scorePL2 += 0;
+				continue;
+				}
+			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
+				view.scorePL2 += -1;
 			}
 
 		}
@@ -830,8 +873,10 @@ public class ClientController {
 		server.sendObject(new newScore(view.scorePL1));
 		if(view.scorePL1 > view.scorePL2){
 			view.labelFinished.setText(view.t.getString("Text.winner"));
-		}else{
+		}else if(view.scorePL1 < view.scorePL2){
 			view.labelFinished.setText(view.t.getString("Text.loser"));
+		}else{
+			view.labelFinished.setText(view.t.getString("Text.draw"));
 		}
 		setGameFinishedScene();
 	}
@@ -896,8 +941,10 @@ public class ClientController {
 									view.cardAL.get(a).setStatus(Status.tod);
 									view.cardAL.get(a).setcardTod(view.cardAL.get(d));
 									view.cardAL.get(a).getImage();
-									server.sendObject(new CardClick(view.cardAL.get(a)));
+									server.sendObject(new CardTod(view.cardAL.get(a)));
+									System.out.println("CardTod gesendet");
 									updatePunkte();
+									disableCards();
 									view.b_fertigGame.setDisable(false);
 								}
 							});
@@ -948,32 +995,54 @@ public class ClientController {
 		 
 	 }
 	 
-	 private boolean profCard(){
+	 public boolean profCard(){
 		 boolean b = false;
 		 for(int x = 0; x < view.cardAL.size(); x++){
-			 if(view.cardAL.get(x).getOwner() != null && view.cardAL.get(x).getType().equals("Prof") && view.cardAL.get(x).getOwner().equals(clientOwner)){
+			 if(view.cardAL.get(x).getOwner() != null && view.cardAL.get(x).getType().equals("Prof") && view.cardAL.get(x).getOwner().equals(clientOwner) && view.cardAL.get(x).getStatus().equals(Status.gewertet)){
 				 b = true;
 			 }
 		 }
 		 return b;
 	 }
 	 
-	 private void bewerteProfCard(){
+	 public void bewerteProfCard(){
 		 int würfel = 0;
-		 int bestWürfel = 0;
+
 		 for(int x = 0; x < view.cardAL.size(); x++){
 			 if(view.cardAL.get(x).getOwner() != null && view.cardAL.get(x).getType().equals("Prof") && view.cardAL.get(x).getOwner().equals(clientOwner) && view.cardAL.get(x).getStatus().equals(Status.gewertet)){
 				 würfel++;
 			 }
 		 }
 		 
-		 for(int x = 0; x < würfel; x++){
-			 view.WürfelPL1.get(x).getImageView().setDisable(false);
-		 }
 
+		 final int würfelFinal = würfel;
 		 view.b_würfeln.setDisable(false);
+		 view.turnPL2.setVisible(false);
+		 view.turnPL1.setVisible(true);
+		 Image profWerten = new Image("images/profValue.png");
+		 Image profWerten_de= new Image("images/profWerten.png");
+		 if(view.t.getCurrentLocaleString().equals("de")){
+			 view.turnPL1.setImage(profWerten_de);
+		 }else{
+			 view.turnPL1.setImage(profWerten);
+		 }
+			view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
+
+				@Override
+				public void handle(ActionEvent arg0) {
+					würfeln();
+					model.incrementPlayerRoll();
+					System.out.println(getWürfel());
+					würfelProf(würfelFinal);
+					}
+			});
 		 
-		 while(model.getPlayerRollCounter()== 0){
+
+	 }
+
+	 
+	 public void würfelProf(int würfel){
+		 int bestWürfel = 0;
 		 if(model.getPlayerRollCounter()>0){
 			 view.b_würfeln.setDisable(true);
 		 
@@ -984,13 +1053,27 @@ public class ClientController {
 			 }
 
 		 }
-		 
+		 resetWürfelButton();
 		 view.scorePL1 += würfel*bestWürfel;
 		 view.labelPL1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 		 server.sendObject(new GameFinished());
 	 }
 	 }
+	 
+	 public void resetWürfelButton(){
+			view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
+				
+				@Override
+				public void handle(ActionEvent arg0) {
+					würfeln();
+					model.incrementPlayerRoll();
+					System.out.println(getWürfel());
+					model.startCardChecker(view.cardAL, getWürfel());
+					checkTurn();
+					}
+			});
 	 }
+	 
 	 
 }
