@@ -1170,7 +1170,9 @@ public class ClientController {
 
 		 }
 		 resetWürfelButton();
-		 view.scorePL1 += würfel*bestWürfel;
+		 updatePunkte();
+		 view.scorePL1 += (würfel*bestWürfel);
+		 view.scorePL1 += -würfel;
 		 view.labelPL1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 		 view.b_fertigGame.setDisable(false);
