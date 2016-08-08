@@ -1137,6 +1137,17 @@ public class ClientController {
 					würfelProf(würfelFinal);
 					}
 			});
+			
+			view.b_fertigGame.setOnAction(new EventHandler<ActionEvent>(){
+				
+				
+				//@Override
+				public void handle(ActionEvent arg0) {
+					server.sendObject(new GameFinished());
+					resetFertigButton();
+				}
+
+			});
 		 
 
 	 }
@@ -1161,7 +1172,7 @@ public class ClientController {
 		 view.scorePL1 += würfel*bestWürfel;
 		 view.labelPL1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
-		 server.sendObject(new GameFinished());
+//		 server.sendObject(new GameFinished());
 	 }
 	 }
 	 
@@ -1179,6 +1190,40 @@ public class ClientController {
 					System.out.println(getWürfel());
 					model.startCardChecker(view.cardAL, getWürfel());
 					checkTurn();
+					}
+			});
+	 }
+	 
+	 public void resetFertigButton(){
+			view.b_fertigGame.setOnAction(new EventHandler<ActionEvent>(){
+				
+				
+				//@Override
+				public void handle(ActionEvent arg0) {
+
+					model.resetPlayerRoll();
+					resetCardHandler();
+					System.out.println(getWürfel());
+					disableCards();
+					changeCardsToGewählt();
+					if(checkGameContinue()){
+						updatePunkte();	
+						server.sendObject(new ClientTurn(false));
+					}else{
+						if(!profCard()){
+						server.sendObject(new GameFinished());
+						}
+						else{
+							Platform.runLater(new Runnable(){
+								@Override
+								public void run(){
+									bewerteProfCard();
+								}
+							});
+
+
+						}
+					}
 					}
 			});
 	 }
