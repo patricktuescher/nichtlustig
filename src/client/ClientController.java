@@ -482,7 +482,7 @@ public class ClientController {
 	
 	
 	
-	
+
 	public void setLobbyScene(){
 		this.view.primaryStage.setScene(this.view.sceneLobby);
 	}
@@ -490,21 +490,29 @@ public class ClientController {
 	public void setGameFinishedScene(){
 		this.view.primaryStage.setScene(this.view.sceneGameFinished);
 	}
-	
+	/**
+	 * @author Nicola Burri
+	 */
 	public void setLoginFailedScene(){
 		this.view.primaryStage.setScene(this.view.sceneLoginFailed);
 		this.view.primaryStage.centerOnScreen();
 	}
-	
+	/**
+	 * @author Nicola Burri
+	 */
 	public void setLoginScene(){
 		this.view.primaryStage.setScene(this.view.sceneLogin);
 		this.view.tf_username.clear();
 	}
-	
+	/**
+	 * @author Nicola Burri
+	 */
 	public void addNewMessage(String s){
 		view.chatWindow.appendText(s+"\n");
 	}
-	
+	/**
+	 * @author Nicola Burri
+	 */
 	public void setOpponentDi(ArrayList<Würfel> würfel){
 		sl.getLogger().info("Opponents Die are being set");
 			
@@ -514,7 +522,9 @@ public class ClientController {
 		sl.getLogger().info("Opponent Die changed");
 	}
 	
-	
+	/**
+	 * @author Nicola Burri
+	 */
 	
 	public void opponentSelectCard(Card card){
 		for(int x = 0; x < view.cardAL.size();x++){
@@ -545,7 +555,6 @@ public class ClientController {
 		}
 	}
 	
-	
 	public void setOpClientTurn(){
 		model.resetPlayerRoll();
 		view.turnPL1.setVisible(false);
@@ -556,7 +565,9 @@ public class ClientController {
 	
 	}
 	
-	
+	/**
+	 * @author Nicola Burri
+	 */
 	public void setGameAvImageOnOff(boolean on){
 		if(on){
 			this.view.gai.setImageOn();
@@ -570,11 +581,17 @@ public class ClientController {
 		}
 		view.innerPaneLobby.add(view.gai.getImage(), 2, 7);
 	}
+	/**
+	 * @author Nicola Burri
+	 */
 	public void setAvailableLabel(String connectionName){
 		view.select_label.setText(connectionName + " " + view.t.getString("Text.isonline"));
 		view.innerPaneLobby.getChildren().remove(view.select_label);
 		view.innerPaneLobby.add(view.select_label, 2, 8);
 	}
+	/**
+	 * @author Nicola Burri
+	 */
 	public void setUpGame(){
 		setUpDie();
 		setUpCards();
@@ -585,7 +602,9 @@ public class ClientController {
 		view.b_spielErstellen.setVisible(true);
 	}
 	
-	//@author Kevin Trottmann
+	/**
+	 * @author Kevin Trottmann
+	 */
 	public void getAlert(){
 	t = sl.getServiceLocator().getTranslator(); //für Kevin: sonst wird nicht die richtige Sprache ausgegeben
    	Alert alert = new Alert(AlertType.ERROR);
@@ -597,7 +616,9 @@ public class ClientController {
 	this.setLoginScene();
 	}
 	
-	//@author Kevin Trottmann
+	/**
+	 * @author Kevin Trottmann
+	 */
 	public void getRegAlert(){ 
 		t = sl.getServiceLocator().getTranslator();
 	   	Alert alert = new Alert(AlertType.INFORMATION);
@@ -608,7 +629,9 @@ public class ClientController {
 		alert.showAndWait();
 		this.setLoginScene();
 		}
-	//@author Kevin Trottmann
+	/**
+	 * @author Kevin Trottmann
+	 */
 	public void getRegFailedAlert(){
 		t = sl.getServiceLocator().getTranslator();
 	   	Alert alert = new Alert(AlertType.INFORMATION);
@@ -621,7 +644,10 @@ public class ClientController {
 		}
 	
 
-	
+	 /**
+	  * @author Nicola Burri
+	  * 
+	  */
 	
 	public void setUpDie(){
 		Platform.runLater(new Runnable(){
@@ -636,7 +662,10 @@ public class ClientController {
 		});
 		
 	}
-	
+	 /**
+	  * @author Nicola Burri
+	  * 
+	  */
 	public void setUpCards(){
 		Platform.runLater(new Runnable(){
 			@Override
@@ -650,7 +679,10 @@ public class ClientController {
 			}	
 		});
 	}
-	
+	 /**
+	  * @author Nicola Burri
+	  * 
+	  */
 	public void setUpPoints(){
 		Platform.runLater(new Runnable(){
 			@Override
@@ -662,9 +694,11 @@ public class ClientController {
 			}
 		});
 	}
-	
+	 /**
+	  * @author Nicola Burri
+	  * 
+	  */
 	public void würfeln(){
-		sl.getLogger().info("Würfel-Methode aufgerufen");
 		for(int x = 0; x < this.getWürfel().size(); x++){
 			if(!this.getWürfel().get(x).isSelected()){
 
@@ -681,6 +715,10 @@ public class ClientController {
 		return view.getWürfelPL1();
 	}
 
+	 /**
+	  * @author Nicola Burri
+	  * 
+	  */
 
 	public void initiateTurn() {
 		view.turnPL1.setVisible(true);
@@ -848,20 +886,30 @@ public class ClientController {
 		view.labelPL1.setText(""+view.scorePL1);
 		view.labelPL2.setText(""+view.scorePL2);
 	}
-	
+	 /**
+	  * @author Nicola Burri
+	  * 
+	  */
 	
 	public void setWürfelDisabled(boolean disabled){
 		for(int x = 0; x < this.getWürfel().size(); x++){
 			this.getWürfel().get(x).getImageView().setDisable(disabled);
 		}
 	}
-	
+	 /**
+	  * @author Nicola Burri
+	  * 
+	  */
 	
 	public void selectAllWürfel(){
 		for(int x = 0; x < this.getWürfel().size(); x++){
 			this.getWürfel().get(x).click();
 		}
 	}
+	 /**
+	  * @author Nicola Burri
+	  * @param 
+	  */
 	
 	public void disableCards(){
 		for(int x = 0; x< view.cardAL.size(); x++){
@@ -991,7 +1039,9 @@ public class ClientController {
 	}
 	}
 	
-	//@author Kevin Trottmann
+	/**
+	 * @author Kevin Trottmann
+	 */
 	 public void updateView(){
 		 	view.t = sl.getTranslator();
 		 	view.b_register.setText(view.t.getString("Button.Register"));
@@ -1017,6 +1067,10 @@ public class ClientController {
 			view.b_languageChange.setText(view.t.getString("Button.languageChange"));
 
 				}
+	 /**
+	  * @author Nicola Burri
+	  * @param hu Highscore
+	  */
 	 public void updateTable(HighscoreUpdate hu){
 		 Platform.runLater(new Runnable(){
 				@Override
