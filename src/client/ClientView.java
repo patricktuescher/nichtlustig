@@ -572,7 +572,7 @@ public class ClientView {
 		//Hbox b_GameLobby
 		backHbox = new HBox();
 		backHbox.setAlignment(Pos.CENTER);
-		backHbox.setPadding(new Insets(0, 0, 15, 0));
+		backHbox.setPadding(new Insets(0, 0, 30, 0));
 		backHbox.getChildren().addAll(b_gameLobby);
 		topPaneGameFinished.setBottom(backHbox);
 		
