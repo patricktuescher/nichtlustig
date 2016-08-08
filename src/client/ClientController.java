@@ -366,8 +366,12 @@ public class ClientController {
 						server.sendObject(new CardClick(view.cardAL.get(d)));
 						model.checkCardsToChooseTod(view.cardAL);
 						if(!model.checkCardsToChooseTod(view.cardAL)){
+							view.cardAL.get(d).setStatus(Status.todungesetzt);
 							view.b_fertigGame.setDisable(false);
+						}else{
+							view.cardAL.get(d).setStatus(Status.todgesetzt);
 						}
+						
 						for(int t = 0;t<31;t++){
 							final int a = t;
 							view.cardAL.get(t).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
