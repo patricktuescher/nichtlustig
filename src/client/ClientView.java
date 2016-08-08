@@ -50,7 +50,7 @@ public class ClientView {
 	ClientModel model;
 	protected TextField tf_username;
 	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame, b_backLoginFailed, b_languageChange, b_gameLobby;
-	protected Label labelPL1, labelPL2, loginFailed, lb_username, lb_password, lb_chooseLanguage, labelFinished;
+	protected Label labelPL1, labelPL2, loginFailed, lb_username, lb_password, lb_chooseLanguage, labelFinished, finalScore1, finalScore2;
 	protected TableView<Integer> table;
 	protected TableColumn<Integer,String> rankCol, userNameCol, scoreCol, dateCol;
 	protected GameAvailableImage gai;
@@ -62,7 +62,7 @@ public class ClientView {
 	protected Rectangle rectangleSpace,rectangleSpace1, rectangleSpace2;
 	protected ImageView turnPL1, turnPL2, winnerIV, loserIV, drawIV;
 	protected Image turn1, turn2, turn1_de, turn2_de, winner, winner_de, loser, loser_de, draw, draw_de;
-	protected HBox centerPaneStatistik ;
+	protected HBox centerPaneStatistik, scoreHbox, backHbox;
 	protected BorderPane topPaneStatistik, topPaneGameFinished;
 	
 	//Height and Width of the cards
@@ -167,19 +167,19 @@ public class ClientView {
 		//Button Login
 		b_login = new Button(t.getString("Button.Login"));
 		innerPaneLogin.add(b_login, 1, 25);
-		b_login.setPrefSize(200, 70);
+		b_login.setPrefSize(210, 70);
 		b_login.setId("b-login");
 		
 		//Button Register
 		b_register = new Button(t.getString("Button.Register"));
 		innerPaneLogin.add(b_register, 2, 25);
-		b_register.setPrefSize(200, 70);
+		b_register.setPrefSize(210, 70);
 		b_register.setId("b-login");
 		
 		//Button Quit game
 		b_quitGame = new Button(t.getString("Button.QuitGame"));
 		innerPaneLogin.add(b_quitGame, 3, 25);
-		b_quitGame.setPrefSize(200,70);
+		b_quitGame.setPrefSize(210,70);
 		b_quitGame.setId("b-login");
 		
 		//Scene Login
@@ -537,7 +537,7 @@ public class ClientView {
 		//Button GameLobby
 		b_gameLobby = new Button (t.getString("Button.backLobby"));
 		b_gameLobby.setPrefSize(220, 70);
-		topPaneGameFinished.setBottom(b_gameLobby);
+		b_gameLobby.setAlignment(Pos.CENTER);
 		b_gameLobby.setId("b-login");
 		
 		//ImageView winner
@@ -554,6 +554,28 @@ public class ClientView {
 		drawIV = new ImageView();
 		draw = new Image("images/draw.png");
 		draw_de = new Image("images/unentschieden.png");
+		
+		//Hbox score & ImageView winner/loser
+		scoreHbox = new HBox();
+		scoreHbox.setAlignment(Pos.CENTER);
+		scoreHbox.setSpacing(5);
+		topPaneGameFinished.setCenter(scoreHbox);
+		
+		//Label finishedScene ScorePL1
+		finalScore1 = new Label("you scored "+scorePL1+" points");
+		finalScore1.setId("lb-labelscore");
+		
+		//Label finishedScene ScorePL2
+		finalScore2 = new Label("you scored "+scorePL2+" points");
+		finalScore2.setId("lb-labelscore");
+		
+		//Hbox b_GameLobby
+		backHbox = new HBox();
+		backHbox.setAlignment(Pos.CENTER);
+		backHbox.setPadding(new Insets(0, 0, 15, 0));
+		backHbox.getChildren().addAll(b_gameLobby);
+		topPaneGameFinished.setBottom(backHbox);
+		
 	
 		
 		//Scene GameFinished

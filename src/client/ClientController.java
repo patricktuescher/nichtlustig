@@ -952,23 +952,24 @@ public class ClientController {
 			view.winnerIV.setImage(view.winner_de);}
 			else{
 				view.winnerIV.setImage(view.winner);}
-				view.topPaneGameFinished.setCenter(view.winnerIV);
-				view.topPaneGameFinished.setTop(view.labelPL1);
+				view.scoreHbox.getChildren().addAll(view.winnerIV);
+				view.scoreHbox.getChildren().addAll(view.finalScore1);
+				
 				
 		}else if(view.scorePL1 < view.scorePL2){
 			if(view.t.getCurrentLocaleString().equals("de")){
 				view.loserIV.setImage(view.loser_de);}
 				else{
 					view.loserIV.setImage(view.loser);}
-					view.topPaneGameFinished.setCenter(view.loserIV);
-					view.topPaneGameFinished.setTop(view.labelPL2);
+			view.scoreHbox.getChildren().addAll(view.loserIV);
+			view.scoreHbox.getChildren().addAll(view.finalScore2);
 		}else{
 			if(view.t.getCurrentLocaleString().equals("de")){
 				view.drawIV.setImage(view.draw_de);}
 				else{
 					view.drawIV.setImage(view.draw);
-					view.topPaneGameFinished.setCenter(view.drawIV);
-					view.topPaneGameFinished.setTop(view.labelPL1);
+					view.scoreHbox.getChildren().addAll(view.drawIV);
+					view.scoreHbox.getChildren().addAll(view.finalScore1);
 		}
 		}
 		setGameFinishedScene();
