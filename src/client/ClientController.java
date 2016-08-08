@@ -444,7 +444,8 @@ public class ClientController {
 						disableCards();
 						changeCardsToGewählt();
 						if(checkGameContinue()){
-						server.sendObject(new ClientTurn(false));
+							updatePunkte();	
+							server.sendObject(new ClientTurn(false));
 						}else{
 							server.sendObject(new GameFinished());
 							if(!profCard()){
@@ -767,7 +768,7 @@ public class ClientController {
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && view.cardAL.get(x).getOwner().equals(clientOwner)){
-				view.scorePL1 -= 1;
+				view.scorePL1 += -1;
 			}else if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL2 += 2;
@@ -781,7 +782,7 @@ public class ClientController {
 				case "Dino":	view.scorePL2 += view.cardAL.get(x).getAugenzahl();
 				continue;
 				}
-			}else if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
+			}else if(view.cardAL.get(x).getStatus().equals(Status.gewählt) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL2 += 1;
 				continue;
@@ -795,7 +796,7 @@ public class ClientController {
 				continue;
 				}
 			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
-				view.scorePL2 -= 1;
+				view.scorePL2 += -1;
 			}
 
 		}
