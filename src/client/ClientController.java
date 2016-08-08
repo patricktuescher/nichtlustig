@@ -37,6 +37,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.StageStyle;
 import message.CardClick;
 import message.CardGewertet;
+import message.CardTod;
 import message.ChatMessage;
 import message.ClientLogout;
 import message.ClientTurn;
@@ -376,7 +377,7 @@ public class ClientController {
 									view.cardAL.get(a).setStatus(Status.tod);
 									view.cardAL.get(a).setcardTod(view.cardAL.get(d));
 									view.cardAL.get(a).getImage();
-									server.sendObject(new CardClick(view.cardAL.get(a)));
+									server.sendObject(new CardTod(view.cardAL.get(a)));
 									updatePunkte();
 									disableCards();
 									view.b_fertigGame.setDisable(false);
