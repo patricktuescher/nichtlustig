@@ -322,6 +322,7 @@ public boolean connect() {
 						Platform.runLater(new Runnable(){
 							@Override
 							public void run(){
+								System.out.println("hier tot");
 								controller.opponentTodCard(tod.getCard());
 							}
 						});
