@@ -130,12 +130,12 @@ public class ClientView {
 		innerPaneLogin.setPadding(new Insets(200,200,0,480));
 		
 		//Label Username
-		lb_username = new Label(t.getString("Label.UserName")+ ": ");
+		lb_username = new Label(t.getString("Label.UserName"));
 		innerPaneLogin.add(lb_username, 2, 1);
 		lb_username.setId("lb-username");
 		
 		//Label Password
-		lb_password = new Label(t.getString("Label.Password")+": ");
+		lb_password = new Label(t.getString("Label.Password"));
 		innerPaneLogin.add(lb_password, 2, 4);
 		lb_password.setId("lb-password");
 		
