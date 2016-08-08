@@ -829,6 +829,7 @@ public class ClientController {
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && view.cardAL.get(x).getOwner().equals(clientOwner)){
 				view.scorePL1 -= 1;
+				continue;
 			}else if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL2 += 2;
@@ -857,6 +858,7 @@ public class ClientController {
 				}
 			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
 				view.scorePL2 -= 1;
+				continue;
 			}
 
 		}
