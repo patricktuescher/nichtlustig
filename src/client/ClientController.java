@@ -63,6 +63,7 @@ public class ClientController {
 	protected TableColumn<Integer,String> nameCol, dateCol;
 	protected TableColumn<Integer,Number> scoreCol;
 
+
 	
 	public ClientController(ClientView view, ClientModel model){
 		this.view = view;
@@ -438,13 +439,15 @@ public class ClientController {
 						if(checkGameContinue()){
 						server.sendObject(new ClientTurn(false));
 						}else{
-					//		if(!profCard()){
+							if(!profCard()){
 							server.sendObject(new GameFinished());
-					//		}
-					//		else{
-					//			bewerteProfCard();
-				//				server.sendObject(new GameFinished());
-				//			}
+							}
+							else{
+								bewerteProfCard();
+								if(bewerteProfCard()){
+								server.sendObject(new GameFinished());
+								}
+							}
 						}
 						}
 				});
@@ -950,14 +953,37 @@ public class ClientController {
 		 return b;
 	 }
 	 
-	 private void bewerteProfCard(){
+	 private boolean bewerteProfCard(){
 		 int würfel = 0;
+		 int bestWürfel = 0;
+		 boolean finish = false;
 		 for(int x = 0; x < view.cardAL.size(); x++){
-			 if(view.cardAL.get(x).getOwner() != null && view.cardAL.get(x).getType().equals("Prof") && view.cardAL.get(x).getOwner().equals(clientOwner)){
+			 if(view.cardAL.get(x).getOwner() != null && view.cardAL.get(x).getType().equals("Prof") && view.cardAL.get(x).getOwner().equals(clientOwner) && view.cardAL.get(x).getStatus().equals(Status.gewertet)){
 				 würfel++;
 			 }
 		 }
-		 System.out.println("Profkarten: " + würfel);
+		 
+		 for(int x = 0; x < würfel; x++){
+			 view.WürfelPL1.get(x).getImageView().setDisable(false);
+		 }
+
+		 view.b_würfeln.setDisable(false);
+		 if(model.getPlayerRollCounter()>0){
+			 view.b_würfeln.setDisable(true);
+		 }
+		 
+		 for(int x = 0; x < würfel; x++){
+			 if(view.WürfelPL1.get(x).getAktAugenzahl()> bestWürfel){
+				 bestWürfel = view.WürfelPL1.get(x).getAktAugenzahl();
+			 }
+
+		 }
+		 
+		 view.scorePL1 += würfel*bestWürfel;
+		 view.labelPL1.setText(""+view.scorePL1);
+		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
+		 finish = true;
+		 return finish;
 	 }
 	 
 }
