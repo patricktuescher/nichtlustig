@@ -599,6 +599,7 @@ public class ClientController {
 		setUpDie();
 		setUpCards();
 		setUpPoints();
+		view.scoreHbox.getChildren().clear();
 		view.chatWindow.clear();
 		setGameAvImageOnOff(false);
 		view.select_label.setText(null);
@@ -888,8 +889,6 @@ public class ClientController {
 		
 		view.labelPL1.setText(""+view.scorePL1);
 		view.labelPL2.setText(""+view.scorePL2);
-		view.finalScore1.setText("You scored"+view.scorePL1+" points");
-		view.finalScore2.setText("You scored"+view.labelPL2+ "points");
 		server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 		
 	}
@@ -963,22 +962,26 @@ public class ClientController {
 	 */
 	public void checkWinner(){
 		server.sendObject(new newScore(view.scorePL1));
+		view.finalScore1.setText("You scored"+view.scorePL1+" points");
 		if(view.scorePL1 > view.scorePL2){
 			if(view.t.getCurrentLocaleString().equals("de")){
-			view.winnerIV.setImage(view.winner_de);}
-			else{
-				view.winnerIV.setImage(view.winner);}
-				view.scoreHbox.getChildren().addAll(view.winnerIV);
-				view.scoreHbox.getChildren().addAll(view.finalScore1);
+			view.winnerIV.setImage(view.winner_de);
+			}else{
+				view.winnerIV.setImage(view.winner);
+			}
 				
+			view.scoreHbox.getChildren().addAll(view.winnerIV);
+			view.scoreHbox.getChildren().addAll(view.finalScore1);
+			
 				
 		}else if(view.scorePL1 < view.scorePL2){
 			if(view.t.getCurrentLocaleString().equals("de")){
-				view.loserIV.setImage(view.loser_de);}
-				else{
-					view.loserIV.setImage(view.loser);}
+				view.loserIV.setImage(view.loser_de);
+				}else{
+					view.loserIV.setImage(view.loser);
+					}
 			view.scoreHbox.getChildren().addAll(view.loserIV);
-			view.scoreHbox.getChildren().addAll(view.finalScore2);
+			view.scoreHbox.getChildren().addAll(view.finalScore1);
 		}else{
 			if(view.t.getCurrentLocaleString().equals("de")){
 				view.drawIV.setImage(view.draw_de);}
@@ -998,8 +1001,6 @@ public class ClientController {
 	public void playerQuit(){
 		view.scorePL1 = 0;
 		view.scorePL2 = 10;
-		view.finalScore1.setText("You scored"+view.scorePL1+" points");
-		view.finalScore2.setText("You scored"+view.labelPL2+ "points");
 		server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 	}
 	
@@ -1212,7 +1213,6 @@ public class ClientController {
 		 view.scorePL1 += (würfel*bestWürfel);
 		 view.scorePL1 -= würfel;
 		 view.labelPL1.setText(""+view.scorePL1);
-		 view.finalScore1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 		 view.b_fertigGame.setDisable(false);
 //		 server.sendObject(new GameFinished());
