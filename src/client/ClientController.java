@@ -1004,7 +1004,7 @@ public class ClientController {
 	 
 	 public void bewerteProfCard(){
 		 int würfel = 0;
-		 int bestWürfel = 0;
+
 		 for(int x = 0; x < view.cardAL.size(); x++){
 			 if(view.cardAL.get(x).getOwner() != null && view.cardAL.get(x).getType().equals("Prof") && view.cardAL.get(x).getOwner().equals(clientOwner) && view.cardAL.get(x).getStatus().equals(Status.gewertet)){
 				 würfel++;
@@ -1014,19 +1014,41 @@ public class ClientController {
 //		 for(int x = 0; x < würfel; x++){
 //			 view.WürfelPL1.get(x).getImageView().setDisable(false);
 //		 }
-
+		 final int würfelFinal = würfel;
 		 view.b_würfeln.setDisable(false);
 			view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
-				
+
 				@Override
 				public void handle(ActionEvent arg0) {
 					würfeln();
 					model.incrementPlayerRoll();
 					System.out.println(getWürfel());
+					würfelProf(würfelFinal);
 					}
 			});
 		 
-		 while(model.getPlayerRollCounter()== 0){
+//		 while(model.getPlayerRollCounter()== 0){
+//		 if(model.getPlayerRollCounter()>0){
+//			 view.b_würfeln.setDisable(true);
+//		 
+//		 
+//		 for(int x = 0; x < würfel; x++){
+//			 if(view.WürfelPL1.get(x).getAktAugenzahl()> bestWürfel){
+//				 bestWürfel = view.WürfelPL1.get(x).getAktAugenzahl();
+//			 }
+//
+//		 }
+//		 resetWürfelButton();
+//		 view.scorePL1 += würfel*bestWürfel;
+//		 view.labelPL1.setText(""+view.scorePL1);
+//		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
+//		 server.sendObject(new GameFinished());
+//	 }
+	 }
+//	 }
+	 
+	 public void würfelProf(int würfel){
+		 int bestWürfel = 0;
 		 if(model.getPlayerRollCounter()>0){
 			 view.b_würfeln.setDisable(true);
 		 
@@ -1042,7 +1064,6 @@ public class ClientController {
 		 view.labelPL1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 		 server.sendObject(new GameFinished());
-	 }
 	 }
 	 }
 	 
