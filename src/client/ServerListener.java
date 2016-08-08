@@ -303,7 +303,13 @@ public boolean connect() {
 						sendObject(new GameFinished());
 						}
 						else{
-							controller.bewerteProfCard();
+							Platform.runLater(new Runnable(){
+								@Override
+								public void run(){
+									controller.bewerteProfCard();
+								}
+							});
+	
 
 						}
 					}

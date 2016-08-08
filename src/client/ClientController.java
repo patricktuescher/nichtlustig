@@ -451,7 +451,13 @@ public class ClientController {
 							server.sendObject(new GameFinished());
 							}
 							else{
-								bewerteProfCard();
+								Platform.runLater(new Runnable(){
+									@Override
+									public void run(){
+										bewerteProfCard();
+									}
+								});
+
 
 							}
 						}
