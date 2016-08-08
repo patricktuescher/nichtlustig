@@ -854,7 +854,7 @@ public class ClientController {
 			
 			}
 		}
-		if(countFreeCards <= 25){
+		if(countFreeCards <= 18){
 			return false;
 		}else{
 			return true;
