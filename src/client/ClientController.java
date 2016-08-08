@@ -362,7 +362,7 @@ public class ClientController {
 					@Override
 					public void handle(MouseEvent arg0){
 						view.cardAL.get(d).click(clientOwner);
-						removeCardTod(view.cardAL.get(d));
+						model.removeCardTod(view.cardAL, view.cardAL.get(d));
 						model.checkCardsToChooseTod(view.cardAL);
 						if(!model.checkCardsToChooseTod(view.cardAL)){
 							view.cardAL.get(d).setStatus(Status.todungesetzt);
@@ -549,6 +549,7 @@ public class ClientController {
 	public void opponentTodCard(Card card){
 		for(int x = 0; x < view.cardAL.size();x++){
 			if(view.cardAL.get(x).equals(card)){
+				view.cardAL.get(x).setcardTod(card.getcardTod());
 				view.cardAL.get(x).setStatus(Status.tod);
 				view.cardAL.get(x).getImage();
 				break;
