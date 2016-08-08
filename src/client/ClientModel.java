@@ -203,6 +203,7 @@ public class ClientModel {
 	public void removeCardTod(ArrayList<Card> cardAL, Card cardTod){
 		for(int x = 0; x<31; x++){
 			if(cardAL.get(x).getcardTod() == null){
+				
 			}else if(cardAL.get(x).getcardTod().equals(cardTod)){
 				cardAL.get(x).setcardTod(null);
 				cardAL.get(x).setStatus(Status.gewertet);

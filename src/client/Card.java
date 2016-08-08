@@ -190,7 +190,7 @@ public class Card implements Serializable{
 	}
 	
 	public boolean equals(Card otherCard){
-		if(this.Augenzahl == otherCard.getAugenzahl() && this.getType().equals(otherCard.getType())){
+		if(this.Augenzahl == otherCard.getAugenzahl() && this.getType().equals(otherCard.getType().toString())){
 			return true;
 		}
 		else return false;
