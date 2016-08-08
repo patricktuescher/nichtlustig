@@ -531,7 +531,7 @@ public class ClientController {
 		for(int x = 0; x < view.cardAL.size();x++){
 			if(view.cardAL.get(x).equals(card)){
 				view.cardAL.get(x).clickOther(card.getOwner());
-				view.cardAL.get(x).setOwner(card.getOwner());
+				view.cardAL.get(x).setStatus(card.getStatus());
 				break;
 			}
 		}
