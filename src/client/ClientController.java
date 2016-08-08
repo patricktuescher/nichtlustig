@@ -866,8 +866,10 @@ public class ClientController {
 		server.sendObject(new newScore(view.scorePL1));
 		if(view.scorePL1 > view.scorePL2){
 			view.labelFinished.setText(view.t.getString("Text.winner"));
-		}else{
+		}else if(view.scorePL1 < view.scorePL2){
 			view.labelFinished.setText(view.t.getString("Text.loser"));
+		}else{
+			view.labelFinished.setText(view.t.getString("Text.draw"));
 		}
 		setGameFinishedScene();
 	}
