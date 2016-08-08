@@ -941,19 +941,37 @@ public class ClientController {
 	}
 	
 	/**
-	 * @author Patrick Tüscher
+	 * @author Patrick Tüscher / Marco Kunz
 	 * 
 	 */
 	public void checkWinner(){
 		server.sendObject(new newScore(view.scorePL1));
 		if(view.scorePL1 > view.scorePL2){
-			view.labelFinished.setText(view.t.getString("Text.winner"));
+			if(view.t.getCurrentLocaleString().equals("de")){
+			view.winnerIV.setImage(view.winner_de);}
+			else{
+				view.winnerIV.setImage(view.winner);}
+				view.topPaneGameFinished.setCenter(view.winnerIV);
+				view.topPaneGameFinished.setTop(view.labelPL1);
+				
 		}else if(view.scorePL1 < view.scorePL2){
-			view.labelFinished.setText(view.t.getString("Text.loser"));
+			if(view.t.getCurrentLocaleString().equals("de")){
+				view.loserIV.setImage(view.loser_de);}
+				else{
+					view.loserIV.setImage(view.loser);}
+					view.topPaneGameFinished.setCenter(view.loserIV);
+					view.topPaneGameFinished.setTop(view.labelPL2);
 		}else{
-			view.labelFinished.setText(view.t.getString("Text.draw"));
+			if(view.t.getCurrentLocaleString().equals("de")){
+				view.drawIV.setImage(view.draw_de);}
+				else{
+					view.drawIV.setImage(view.draw);
+					view.topPaneGameFinished.setCenter(view.drawIV);
+					view.topPaneGameFinished.setTop(view.labelPL1);
 		}
+			
 		setGameFinishedScene();
+		}
 	}
 	
 	/**

@@ -60,10 +60,10 @@ public class ClientView {
 	protected Translator t;
 	protected int scorePL1, scorePL2;
 	protected Rectangle rectangleSpace,rectangleSpace1, rectangleSpace2;
-	protected ImageView turnPL1, turnPL2;
-	protected Image turn1, turn2, turn1_de, turn2_de;
+	protected ImageView turnPL1, turnPL2, winnerIV, loserIV, drawIV;
+	protected Image turn1, turn2, turn1_de, turn2_de, winner, winner_de, loser, loser_de, draw, draw_de;
 	protected HBox centerPaneStatistik ;
-	protected BorderPane topPaneStatistik;
+	protected BorderPane topPaneStatistik, topPaneGameFinished;
 	
 	//Height and Width of the cards
 	final int cardheight = 90;
@@ -540,13 +540,22 @@ public class ClientView {
 		topPaneGameFinished.setBottom(b_gameLobby);
 		b_gameLobby.setId("b-login");
 		
-		//Label Winner
-		labelFinished = new Label();
-		labelFinished.setId("label");
-		labelFinished.setPrefSize(200, 20);
-		labelFinished.setAlignment(Pos.CENTER);
-		topPaneGameFinished.setCenter(labelFinished);
-				
+		//ImageView winner
+		winnerIV = new ImageView();
+		winner = new Image("images/winner.png");
+		winner_de = new Image("images/sieger.png");
+		
+		//ImageView loser
+		loserIV = new ImageView();
+		loser = new Image("images/loser.png");
+		loser_de = new Image("images/verlierer.png");
+	
+		//ImageView draw
+		drawIV = new ImageView();
+		draw = new Image("images/draw.png");
+		draw_de = new Image("images/unentschieden.png");
+	
+		
 		//Scene GameFinished
 		sceneGameFinished = new Scene(topPaneGameFinished, 1200, 800);
 		sceneGameFinished.getStylesheets().add("ClientStylesheet");
