@@ -828,7 +828,7 @@ public class ClientController {
 				}
 				sl.getLogger().info("Punkte könnten berechnet werden für:" + view.cardAL.get(x).toString());
 			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && view.cardAL.get(x).getOwner().equals(clientOwner)){
-				view.scorePL1 += -1;
+				view.scorePL1 -= 1;
 			}else if(view.cardAL.get(x).getStatus().equals(Status.gewertet) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL2 += 2;
@@ -856,7 +856,7 @@ public class ClientController {
 				continue;
 				}
 			}else if(view.cardAL.get(x).getStatus().equals(Status.todungesetzt) && !view.cardAL.get(x).getOwner().equals(clientOwner)){
-				view.scorePL2 += -1;
+				view.scorePL2 -= 1;
 			}
 
 		}
@@ -1174,7 +1174,7 @@ public class ClientController {
 		 resetWürfelButton();
 		 updatePunkte();
 		 view.scorePL1 += (würfel*bestWürfel);
-		 view.scorePL1 += -würfel;
+		 view.scorePL1 -= würfel;
 		 view.labelPL1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 		 view.b_fertigGame.setDisable(false);
