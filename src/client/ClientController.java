@@ -363,7 +363,6 @@ public class ClientController {
 					public void handle(MouseEvent arg0){
 						view.cardAL.get(d).click(clientOwner);
 						model.removeCardTod(view.cardAL, view.cardAL.get(d));
-						server.sendObject(new CardClick(view.cardAL.get(d)));
 						model.checkCardsToChooseTod(view.cardAL);
 						if(!model.checkCardsToChooseTod(view.cardAL)){
 							view.cardAL.get(d).setStatus(Status.todungesetzt);
@@ -371,6 +370,8 @@ public class ClientController {
 						}else{
 							view.cardAL.get(d).setStatus(Status.todgesetzt);
 						}
+						
+						server.sendObject(new CardClick(view.cardAL.get(d)));
 						
 						for(int t = 0;t<31;t++){
 							final int a = t;
@@ -801,7 +802,7 @@ public class ClientController {
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL1 += 2;
 				continue;
-				case "Prof":	view.scorePL1 += 0;
+				case "Prof":	view.scorePL1 += 1;
 				continue;
 				case "Lemming": view.scorePL1 += 4;
 				continue;
@@ -831,7 +832,7 @@ public class ClientController {
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL2 += 2;
 				continue;
-				case "Prof":	view.scorePL2 += 0;
+				case "Prof":	view.scorePL2 += 1;
 				continue;
 				case "Lemming": view.scorePL2 += 4;
 				continue;

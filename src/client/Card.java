@@ -190,7 +190,7 @@ public class Card implements Serializable{
 	}
 	
 	public boolean equals(Card otherCard){
-		if(this.Augenzahl == otherCard.getAugenzahl() && this.getType().equals(otherCard.getType())){
+		if(this.Augenzahl == otherCard.getAugenzahl() && this.getType().equals(otherCard.getType().toString())){
 			return true;
 		}
 		else return false;
@@ -212,6 +212,8 @@ public class Card implements Serializable{
 		this.owner = acc;
 		if(this.status == Status.frei || this.status == Status.gewählt){
 			this.status = Status.neugewählt;
+		}
+		
 			InnerShadow innerShadow = new InnerShadow(20, Color.web("489dff"));
 			innerShadow.setOffsetX(2);
 			innerShadow.setOffsetY(2);
@@ -219,20 +221,22 @@ public class Card implements Serializable{
 			this.getImage().setEffect(innerShadow);
 			this.getImage().setId("shadow");
 			logger.info(this + " is chosen. Needed die are: " + würfel.toString());
-		}
+		
 	}
 	
 	public void clickOther(Account acc){
 		this.owner = acc;
 		if(this.status == Status.frei || this.status == Status.gewählt){
 		this.status = Status.gewählt;
+		}
+		
 		InnerShadow innerShadow = new InnerShadow(20, Color.GREEN);
 		innerShadow.setOffsetX(2);
 		innerShadow.setOffsetY(2);
 		innerShadow.setChoke(0.5);	
 		this.getImage().setEffect(innerShadow);
 		this.getImage().setId("shadow");
-		}		
+				
 	}
 
 }
