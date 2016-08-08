@@ -818,7 +818,7 @@ public class ClientController {
 			
 			}
 		}
-		if(countFreeCards <= 5){
+		if(countFreeCards <= 25){
 			return false;
 		}else{
 			return true;
@@ -860,7 +860,7 @@ public class ClientController {
 								view.WürfelPL1.get(view.WürfelPL1.lastIndexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
 								view.WürfelPL1.get(view.WürfelPL1.lastIndexOf(view.cardAL.get(d).getWürfel().get(y))).click();
 							}
-							System.out.println(view.cardAL.get(d).getWürfel().get(y) + "is used");
+							
 						}
 					}
 					if(view.cardAL.get(d).getType().equals("Dino")){
