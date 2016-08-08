@@ -883,7 +883,7 @@ public class ClientController {
 			
 			}
 		}
-		if(countFreeCards <= 5){
+		if(countFreeCards <= 20){
 			return false;
 		}else{
 			return true;
@@ -1064,6 +1064,15 @@ public class ClientController {
 		 }else{
 			 view.turnPL1.setImage(profWerten);
 		 }
+		 
+		 for(int x = 0; x < view.WürfelPL1.size(); x++){
+			 if(x < würfel){
+				 view.WürfelPL1.get(x).getImageView().setOpacity(1);
+			 }else{
+				 view.WürfelPL1.get(x).getImageView().setOpacity(0);
+			 }
+		 }
+		 
 			view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
 
 				@Override
