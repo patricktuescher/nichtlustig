@@ -154,13 +154,15 @@ public class ClientModel {
 			}
 		}
 			
-		
+
 		
 		if(countLemming == 0 && countOther == 0){
 			return false;
 		}else{
 			return true;
 		}
+		
+		
 		
 	}
 	
@@ -217,6 +219,7 @@ public class ClientModel {
 				});
 
 				server.sendObject(new CardGewertet(cardAL.get(x)));
+				break;
 			}
 		}
 	}
