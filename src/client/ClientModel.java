@@ -206,6 +206,7 @@ public class ClientModel {
 			}else if(cardAL.get(x).getcardTod().equals(cardTod)){
 				cardAL.get(x).setcardTod(null);
 				cardAL.get(x).setStatus(Status.gewertet);
+				cardAL.get(x).getImage();
 				server.sendObject(new CardGewertet(cardAL.get(x)));
 			}
 		}

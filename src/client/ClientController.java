@@ -801,7 +801,7 @@ public class ClientController {
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL1 += 2;
 				continue;
-				case "Prof":	view.scorePL1 += 0;
+				case "Prof":	view.scorePL1 += 1;
 				continue;
 				case "Lemming": view.scorePL1 += 4;
 				continue;
@@ -831,7 +831,7 @@ public class ClientController {
 				switch(view.cardAL.get(x).getType()){
 				case "Rieb": 	view.scorePL2 += 2;
 				continue;
-				case "Prof":	view.scorePL2 += 0;
+				case "Prof":	view.scorePL2 += 1;
 				continue;
 				case "Lemming": view.scorePL2 += 4;
 				continue;
