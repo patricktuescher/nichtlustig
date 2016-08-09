@@ -3,7 +3,7 @@
 	 * All rights reserved.
 	 * 
 	 * @function 
-	 * @author Kevin Trottmann
+	 * @author Kevin Trottmann / Marco Kunz
 	 */
 
 package server;

@@ -33,6 +33,7 @@ public class ServerController {
     
         
     //EventHandler - register ourselves to listen for button clicks
+      //@author Marco Kunz / Nicola Burri
         
         view.ConnectServer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -53,6 +54,7 @@ public class ServerController {
         
         
      // EventHandler Disconnect Server - LoginScene
+      //@author Marco Kunz / Nicola Burri
         
         view.DisconnectServer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -72,6 +74,8 @@ public class ServerController {
             }
         });
         
+       // EventHandler animation finish
+        	//@author Marco Kunz
         view.pt.setOnFinished(new EventHandler<ActionEvent>(){
         	   @Override
                public void handle(ActionEvent event) {

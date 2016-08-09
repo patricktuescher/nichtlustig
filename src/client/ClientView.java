@@ -120,7 +120,7 @@ public class ClientView {
 		
 		
 /*----------------------------------------- Login Fenster -----------------------------------------*/
-		//@author Kevin Trottmann
+		//@author Kevin Trottmann / Marco Kunz
 		
 		//InnerPane Login
 		GridPane innerPaneLogin = new GridPane();
@@ -203,6 +203,7 @@ public class ClientView {
 		sceneLogin.getStylesheets().add("ClientStylesheet");
 		
 /*----------------------------------------- Lobby Fenster -----------------------------------------*/ 
+		//@author Marco Kunz
 		
 		//TopPane Lobby
 		BorderPane topPaneLobby = new BorderPane();
@@ -271,7 +272,7 @@ public class ClientView {
 		sceneLobby.getStylesheets().add("ClientStylesheet");
 		
 /*----------------------------------------- Statistik Fenster -----------------------------------------*/ 
-		//@author Kevin Trottmann
+		//@author Kevin Trottmann / Marco Kunz
 		
 		//TopPane Statistik
 		topPaneStatistik = new BorderPane();
@@ -301,6 +302,7 @@ public class ClientView {
 		
 		
 /*----------------------------------------- Regeln Fenster -----------------------------------------*/ 
+		//@author Marco Kunz
 		
 		//BorderPane Regeln
 		BorderPane topPaneRegeln = new BorderPane();
@@ -323,7 +325,7 @@ public class ClientView {
 		bottomPaneRegeln.getChildren().add(b_backRegeln);
 		b_backRegeln.setId("b-login");
 		
-		//Regeln image[] //// image position in reglen array to be defined; currently set to 0 for testing
+		//Regeln image[] 
 		regeln = new Image[6];
 		for(int i = 1; i<7; i++)
 		{
@@ -354,6 +356,7 @@ public class ClientView {
 		sceneRegeln.getStylesheets().add("ClientStylesheet");
 		
 /*----------------------------------------- Game Fenster -----------------------------------------*/ 
+		//@author Marco Kunz
 		
 		//TopPane Game
 		topPaneGame = new BorderPane();
@@ -447,6 +450,7 @@ public class ClientView {
 		updateCards();
 		
 /*----------------------------------------- Cubes Player 1  -----------------------------------------*/ 
+		//@author Marco Kunz
 		
 		WürfelPL1  = new ArrayList<Würfel>();
 		
@@ -486,6 +490,7 @@ public class ClientView {
 		bottomPaneGameCube.getChildren().addAll(turnPL1, b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_fertigGame,labelPL1);
 		
 /*----------------------------------------- Cubes Player 2 -----------------------------------------*/ 
+		//@author Marco Kunz
 		
 		WürfelPL2  = new ArrayList<Würfel>();
 		
@@ -545,6 +550,7 @@ public class ClientView {
 		bottomPaneGameChat.getChildren().addAll(chatWindow, ChatInput);
 
 /*----------------------------------------- GameFinished Fenster -----------------------------------------*/
+		//@author Marco Kunz
 		
 		//TopPane GameFinished
 		topPaneGameFinished = new BorderPane();
