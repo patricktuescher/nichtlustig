@@ -156,28 +156,44 @@ public class ClientView {
 		pf_password.setId("pf-login");
 		pf_password.setPromptText(t.getString("Label.Password"));
 		
+		//languageButtonIcon
+		Image languageButtonIcon = new Image("images/languageButtonIcon.png");
+		ImageView languageIV = new ImageView(languageButtonIcon);
 
 		//language Change Button (German / Englisch)
-		b_languageChange = new Button(t.getString("Button.languageChange"));
+		b_languageChange = new Button(t.getString("Button.languageChange"),languageIV);
 		innerPaneLogin.add(b_languageChange,2,20);
 		b_languageChange.setPrefSize(210, 40);
 		b_languageChange.setId("b-login");
 		
 		
+		//loginButtonIcon
+		Image loginButtonIcon = new Image("images/loginButtonIcon.png");
+		ImageView loginIV = new ImageView(loginButtonIcon);
+		
+		
 		//Button Login
-		b_login = new Button(t.getString("Button.Login"));
+		b_login = new Button(t.getString("Button.Login"),loginIV);
 		innerPaneLogin.add(b_login, 2, 21);
 		b_login.setPrefSize(210, 40);
 		b_login.setId("b-login");
 		
+		//registerButtonIcon
+		Image registerButtonIcon = new Image("images/registerButtonIcon.png");
+		ImageView registerIV = new ImageView(registerButtonIcon);
+		
 		//Button Register
-		b_register = new Button(t.getString("Button.Register"));
+		b_register = new Button(t.getString("Button.Register"),registerIV);
 		innerPaneLogin.add(b_register, 2, 22);
 		b_register.setPrefSize(210, 40);
 		b_register.setId("b-login");
 		
+		//exitButtonIcon
+		Image exitButtonIcon = new Image("images/exitButtonIcon.png");
+		ImageView exitIV = new ImageView(exitButtonIcon);
+		
 		//Button Quit game
-		b_quitGame = new Button(t.getString("Button.QuitGame"));
+		b_quitGame = new Button(t.getString("Button.QuitGame"),exitIV);
 		innerPaneLogin.add(b_quitGame, 2, 23);
 		b_quitGame.setPrefSize(210,40);
 		b_quitGame.setId("b-login");
