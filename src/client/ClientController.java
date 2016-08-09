@@ -496,11 +496,18 @@ public class ClientController {
 	
 	
 	
-
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void setLobbyScene(){
 		this.view.primaryStage.setScene(this.view.sceneLobby);
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void setGameFinishedScene(){
 		this.view.primaryStage.setScene(this.view.sceneGameFinished);
 	}
@@ -550,6 +557,10 @@ public class ClientController {
 		}
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void opponentWertetCard(Card card){
 		for(int x = 0; x < view.cardAL.size();x++){
 			if(view.cardAL.get(x).equals(card)){
@@ -561,6 +572,10 @@ public class ClientController {
 		}
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void opponentTodCard(Card card){
 		for(int x = 0; x < view.cardAL.size();x++){
 			if(view.cardAL.get(x).equals(card)){
@@ -572,6 +587,10 @@ public class ClientController {
 		}
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public void setOpClientTurn(){
 		model.resetPlayerRoll();
 		view.turnPL1.setVisible(false);
@@ -615,6 +634,7 @@ public class ClientController {
 		setUpPoints();
 		view.scoreHbox.getChildren().clear();
 		view.chatWindow.clear();
+		setupLabel();
 		setGameAvImageOnOff(false);
 		view.select_label.setText(null);
 		view.b_spielErstellen.setVisible(true);
@@ -729,6 +749,10 @@ public class ClientController {
 	
 	}
 	
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	public ArrayList<Würfel> getWürfel(){
 		return view.getWürfelPL1();
 	}
@@ -1153,6 +1177,10 @@ public class ClientController {
 		 
 	 }
 	 
+	/**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	 public boolean profCard(){
 		 boolean b = false;
 		 for(int x = 0; x < view.cardAL.size(); x++){
@@ -1268,6 +1296,10 @@ public class ClientController {
 			});
 	 }
 	 
+	 /**
+	 * @author Patrick Tüscher
+	 * 
+	 */
 	 public void resetFertigButton(){
 			view.b_fertigGame.setOnAction(new EventHandler<ActionEvent>(){
 				
@@ -1326,6 +1358,22 @@ public class ClientController {
 
 			
 		}
+		
+		/**
+		 * @author Patrick Tüscher
+		 * 
+		 */
+		public void setupLabel(){
+			 if(view.t.getCurrentLocaleString().equals("de")){
+				 view.turnPL1.setImage(view.turn1_de);
+				 view.turnPL2.setImage(view.turn2_de);
+			 }else{
+				 view.turnPL1.setImage(view.turn1);
+				 view.turnPL2.setImage(view.turn2);
+			 }
+		}
+		
+		
 	 
 	 
 }

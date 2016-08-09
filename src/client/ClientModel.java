@@ -230,7 +230,7 @@ public class ClientModel {
 			checkAvailableTodCards(cardAL);
 			}else{
 				for(int x = 0; x<31; x++){
-					if(cardAL.get(x).getType().equals(cardType.Tod.toString())){
+					if(cardAL.get(x).getType().equals(cardType.Tod.toString()) && cardAL.get(x).getOwner() == null && !cardAL.get(x).getOwner().equals(acc)){
 						cardAL.get(x).getImage().setDisable(false);
 						cardAL.get(x).getImage().setOpacity(1);
 					}
