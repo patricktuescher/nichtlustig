@@ -327,82 +327,89 @@ public class ClientController {
 /*----------------------------------------- EventHandler Chosen  Cards -----------------------------------------*/ 
 			
 			if(!view.cardAL.get(x).getType().equals(cardType.Tod.toString())){
-			view.cardAL.get(x).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
-				
-				@Override
-				public void handle(MouseEvent arg0){
-					view.cardAL.get(d).click(clientOwner);
-					view.cardAL.get(d).setOwner(clientOwner);
-					for(int y = 0; y < view.cardAL.get(d).getWürfel().size(); y++){
-						if(view.WürfelPL1.contains(view.cardAL.get(d).getWürfel().get(y))){
-							view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
-							view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).click();
-							if(view.cardAL.get(d).getWürfel().size() == 2){
-								view.WürfelPL1.get(view.WürfelPL1.lastIndexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
-								view.WürfelPL1.get(view.WürfelPL1.lastIndexOf(view.cardAL.get(d).getWürfel().get(y))).click();
-							}
-							System.out.println(view.cardAL.get(d).getWürfel().get(y) + "is used");
-						}
-					}
-					if(view.cardAL.get(d).getType().equals("Dino")){
-						for(int y = 1; y < view.WürfelPL1.size(); y++){
-						view.WürfelPL1.get(y).setUsed(true);
-						view.WürfelPL1.get(y).click();
-						}
-					}
-					model.startCardChecker(view.cardAL, view.WürfelPL1);
-					server.sendObject(new CardClick(view.cardAL.get(d)));
-					view.b_fertigGame.setDisable(false);
-				}
-			});	
-			
-			}else{
 				view.cardAL.get(x).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
 					
 					@Override
 					public void handle(MouseEvent arg0){
-						view.cardAL.get(d).setStatus(Status.todungesetzt);
 						view.cardAL.get(d).click(clientOwner);
-						model.removeCardTod(view.cardAL, view.cardAL.get(d));
-						model.checkCardsToChooseTod(view.cardAL);
-						
-						if(!model.checkCardsToChooseTod(view.cardAL)){
-							view.b_fertigGame.setDisable(false);
-						}
-						
-						server.sendObject(new CardClick(view.cardAL.get(d)));
-						
-		
-						
-						for(int t = 0;t<31;t++){
-							final int a = t;
-							view.cardAL.get(t).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
-
-								@Override
-								public void handle(MouseEvent arg0){
-									view.cardAL.get(d).setStatus(Status.todgesetzt);
-									server.sendObject(new CardClick(view.cardAL.get(d)));
-									view.cardAL.get(a).setStatus(Status.tod);
-									view.cardAL.get(a).setcardTod(view.cardAL.get(d));
-									view.cardAL.get(a).getImage();
-
-									
-									server.sendObject(new CardTod(view.cardAL.get(a)));
-									updatePunkte();
-									disableCards();
-									view.b_fertigGame.setDisable(false);
-									
+						view.cardAL.get(d).setOwner(clientOwner);
+						for(int y = 0; y < view.cardAL.get(d).getWürfel().size(); y++){
+							if(view.WürfelPL1.contains(view.cardAL.get(d).getWürfel().get(y))){
+								view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
+								view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).click();
+								if(view.cardAL.get(d).getWürfel().size() == 2){
+									view.WürfelPL1.get(view.WürfelPL1.lastIndexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
+									view.WürfelPL1.get(view.WürfelPL1.lastIndexOf(view.cardAL.get(d).getWürfel().get(y))).click();
 								}
-							});
+								System.out.println(view.cardAL.get(d).getWürfel().get(y) + "is used");
+							}
 						}
+						if(view.cardAL.get(d).getType().equals("Dino")){
+							for(int y = 1; y < view.WürfelPL1.size(); y++){
+							view.WürfelPL1.get(y).setUsed(true);
+							view.WürfelPL1.get(y).click();
+							}
+						}
+						model.startCardChecker(view.cardAL, view.WürfelPL1);
+						server.sendObject(new CardClick(view.cardAL.get(d)));
+						view.b_fertigGame.setDisable(false);
+					}
+				});	
+				
+				}else{
+					view.cardAL.get(x).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
+						
+						@Override
+						public void handle(MouseEvent arg0){
+							if(view.cardAL.get(d).getStatus().equals(Status.todgesetzt)){
+								model.removeCardTod(view.cardAL.get(d).getcardTod());
+								server.sendObject(new CardGewertet(view.cardAL.get(d).getcardTod()));
+								view.cardAL.get(d).setcardTod(null);
+								
+							}
+							
+							view.cardAL.get(d).setStatus(Status.todungesetzt);
+							view.cardAL.get(d).click(clientOwner);
+
+
+							model.checkCardsToChooseTod(view.cardAL);
+							
+							if(!model.checkCardsToChooseTod(view.cardAL)){
+								view.b_fertigGame.setDisable(false);
+							}
+							
+							server.sendObject(new CardClick(view.cardAL.get(d)));
 							
 			
-					}
-		});		
-		}
-			
-			
-		}
+							
+							for(int t = 0;t<31;t++){
+								final int a = t;
+								view.cardAL.get(t).getImage().setOnMouseClicked(new EventHandler<MouseEvent>(){
+
+									@Override
+									public void handle(MouseEvent arg0){
+										view.cardAL.get(d).setStatus(Status.todgesetzt);
+										view.cardAL.get(d).setcardTod(view.cardAL.get(a));
+										server.sendObject(new CardClick(view.cardAL.get(d)));
+										view.cardAL.get(a).setStatus(Status.tod);
+										view.cardAL.get(a).setcardTod(view.cardAL.get(d));
+										view.cardAL.get(a).getImage();
+
+										
+										server.sendObject(new CardTod(view.cardAL.get(a)));
+										updatePunkte();
+										disableCards();
+										view.b_fertigGame.setDisable(false);
+										
+									}
+								});
+							}
+								
+				
+						}
+			});		
+			}
+				}
 		
 /*----------------------------------------- EventHandler Chosen Cubes -----------------------------------------*/ 
 		
@@ -550,6 +557,7 @@ public class ClientController {
 				view.cardAL.get(x).getImage();
 				break;
 			}
+
 		}
 	}
 	
@@ -1051,9 +1059,17 @@ public class ClientController {
 				
 				@Override
 				public void handle(MouseEvent arg0){
+					if(view.cardAL.get(d).getStatus().equals(Status.todgesetzt)){
+						model.removeCardTod(view.cardAL.get(d).getcardTod());
+						server.sendObject(new CardGewertet(view.cardAL.get(d).getcardTod()));
+						view.cardAL.get(d).setcardTod(null);
+						
+					}
+					
 					view.cardAL.get(d).setStatus(Status.todungesetzt);
 					view.cardAL.get(d).click(clientOwner);
-					model.removeCardTod(view.cardAL, view.cardAL.get(d));
+
+
 					model.checkCardsToChooseTod(view.cardAL);
 					
 					if(!model.checkCardsToChooseTod(view.cardAL)){
@@ -1071,6 +1087,7 @@ public class ClientController {
 							@Override
 							public void handle(MouseEvent arg0){
 								view.cardAL.get(d).setStatus(Status.todgesetzt);
+								view.cardAL.get(d).setcardTod(view.cardAL.get(a));
 								server.sendObject(new CardClick(view.cardAL.get(d)));
 								view.cardAL.get(a).setStatus(Status.tod);
 								view.cardAL.get(a).setcardTod(view.cardAL.get(d));

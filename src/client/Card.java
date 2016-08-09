@@ -192,8 +192,9 @@ public class Card implements Serializable{
 	public boolean equals(Card otherCard){
 		if(this.Augenzahl == otherCard.getAugenzahl() && this.getType().equals(otherCard.getType())){
 			return true;
+		}else{
+			return false;
 		}
-		else return false;
 	}
 	
 	public void zoomCard(){
