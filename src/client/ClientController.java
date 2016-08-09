@@ -1197,7 +1197,6 @@ public class ClientController {
 	 */	 
 	 public void bewerteProfCard(){
 		 int würfel = 0;
-		 setUpDie();
 		 for(int x = 0; x < view.cardAL.size(); x++){
 			 if(view.cardAL.get(x).getOwner() != null && view.cardAL.get(x).getType().equals("Prof") && view.cardAL.get(x).getOwner().equals(clientOwner) && view.cardAL.get(x).getStatus().equals(Status.gewertet)){
 				 würfel++;
@@ -1221,6 +1220,7 @@ public class ClientController {
 		 for(int x = 0; x < view.WürfelPL1.size(); x++){
 			 if(x < würfel){
 				 view.WürfelPL1.get(x).getImageView().setOpacity(1);
+				 view.WürfelPL1.get(x).resetWürfel();
 			 }else{
 				 view.WürfelPL1.get(x).getImageView().setOpacity(0);
 			 }
