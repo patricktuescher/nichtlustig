@@ -199,42 +199,7 @@ public class ClientModel {
 	}
 	}
 	
-	/**
-	 * @author Patrick Tüscher
-	 * 
-	 */
-	public void removeCardTod(Card cardTod){
-//		for(int x = 0; x<31; x++){
-//			if(cardAL.get(x).getcardTod() == null){
-//				
-//			}else if(cardAL.get(x).getcardTod().getAugenzahl() == cardTod.getAugenzahl()){
-//				final int y = x;
-		Platform.runLater(new Runnable() {
-		   @Override
-		   public void run() {
-		cardTod.setcardTod(null);
-		cardTod.setStatus(Status.gewertet);
-		cardTod.getImage();
-	   }
-	});
-		
-//						cardAL.get(y).setcardTod(null);
-//						cardAL.get(y).setStatus(Status.gewertet);
-//						cardAL.get(y).getImage();
-						
-//						Platform.runLater(new Runnable() {
-//							   @Override
-//							   public void run() {
-//						server.sendObject(new CardGewertet(cardAL.get(y)));
-//							   }
-//						});
-//				break;
-//			}
-//		}
 
-
-		
-	}
 	
 	
 	/**
