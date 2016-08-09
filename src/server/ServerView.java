@@ -9,7 +9,6 @@
 package server;
 
 import server.ServiceLocator;
-import javafx.animation.Animation;
 import javafx.animation.PathTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -23,9 +22,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.CubicCurveTo;
 import javafx.scene.shape.HLineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -80,6 +77,7 @@ public class ServerView {
 		pt = new PathTransition(Duration.millis(1000),path, pointsIMV);
 		pt.setCycleCount(2);
 		pt.setAutoReverse(true);
+		
 		
 		//serverImage 1 
 		serverImage = new  Image("images/server.png");

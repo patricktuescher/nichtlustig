@@ -41,10 +41,7 @@ public class ServerController {
                 	view.pointsIMV.setVisible(true);
                 	view.pt.play();
                 	model.startServer();
-                	view.serverIMV.setVisible(false);
-					view.serverIMVOn.setVisible(true);
-					view.serverIMV2.setVisible(false);
-					view.serverIMV2On.setVisible(true);
+                	
 					sl.getLogger().info("Start Server Connection");
                 	
 				} catch (Exception e) {
@@ -74,6 +71,30 @@ public class ServerController {
 				}
             }
         });
+        
+        view.pt.setOnFinished(new EventHandler<ActionEvent>(){
+        	   @Override
+               public void handle(ActionEvent event) {
+                   try {
+                   	view.pointsIMV.setVisible(false);
+                   	view.serverIMV.setVisible(false);
+					view.serverIMVOn.setVisible(true);
+					view.serverIMV2.setVisible(false);
+					view.serverIMV2On.setVisible(true);
+                   	
+                   	
+                   	
+   				} catch (Exception e) {
+   					// TODO Auto-generated catch block
+   					e.printStackTrace();
+   				}
+               }
+           });
+        
+        
+        
+        
+        
         
      // EventHandler QuitGameButton - LoginScene
         
