@@ -159,7 +159,7 @@ public class ServerView {
 		
 		//bottomPane
 		GridPane bottomPane = new GridPane();
-		bottomPane.setGridLinesVisible(true);
+		bottomPane.setGridLinesVisible(false);
 		bottomPane.setAlignment(Pos.TOP_CENTER);
 		bottomPane.setVgap(10);
 		bottomPane.add(languageChange,0,0);
