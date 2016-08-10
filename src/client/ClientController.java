@@ -1234,7 +1234,7 @@ public class ClientController {
 		 
 		 for(int x = 0; x < view.WürfelPL1.size(); x++){
 			 if(x == 0){
-				 
+			 view.WürfelPL1.get(x).getImageView().setOpacity(0);
 			 }else{
 			 
 			 if(x <= würfel){
