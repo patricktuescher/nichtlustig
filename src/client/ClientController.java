@@ -790,8 +790,21 @@ public class ClientController {
 			updatePunkte();
 			model.startCardChecker(view.cardAL, getWürfel());
 			model.aktivateCards(view.cardAL, getWürfel(), clientOwner);
+			if(allCardsNotAvailable()){
+				view.b_fertigGame.setDisable(false);
+				resetFertigButton();
+			}
+			
 
 		}
+	}
+	private boolean allCardsNotAvailable(){
+		boolean b = true;
+		for(int x = 0; x < 31; x++){
+			if(!view.cardAL.get(x).getImage().isDisable())
+				b = false;
+		}
+		return b;
 	}
 	
 	/**
@@ -999,7 +1012,7 @@ public class ClientController {
 	 */
 	public void checkWinner(){
 		server.sendObject(new newScore(view.scorePL1));
-		view.finalScore1.setText("You scored"+view.scorePL1+" points");
+		view.finalScore1.setText(view.t.getString("Text.score")+" "+view.scorePL1+" "+ view.t.getString("Text.points"));
 		if(view.scorePL1 > view.scorePL2){
 			if(view.t.getCurrentLocaleString().equals("de")){
 			view.winnerIV.setImage(view.winner_de);
@@ -1221,8 +1234,9 @@ public class ClientController {
 		 
 		 for(int x = 0; x < view.WürfelPL1.size(); x++){
 			 if(x < würfel){
-				 view.WürfelPL1.get(x).getImageView().setOpacity(1);
 				 view.WürfelPL1.get(x).resetWürfel();
+				 System.out.println(view.WürfelPL1.get(x));
+				 
 			 }else{
 				 view.WürfelPL1.get(x).getImageView().setOpacity(0);
 			 }
@@ -1271,12 +1285,11 @@ public class ClientController {
 		 }
 		 resetWürfelButton();
 		 updatePunkte();
-		 view.scorePL1 += (würfel*bestWürfel);
+		 view.scorePL1 += bestWürfel;
 		 view.scorePL1 -= würfel;
 		 view.labelPL1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 		 view.b_fertigGame.setDisable(false);
-//		 server.sendObject(new GameFinished());
 	 }
 	 }
 	 
