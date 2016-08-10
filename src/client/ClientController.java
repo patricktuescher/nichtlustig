@@ -790,7 +790,7 @@ public class ClientController {
 			updatePunkte();
 			model.startCardChecker(view.cardAL, getWürfel());
 			model.aktivateCards(view.cardAL, getWürfel(), clientOwner);
-			if(allCardsNotAvailable()){
+			if(model.chooseTodCard(view.cardAL, getWürfel(), clientOwner)){
 				view.b_fertigGame.setDisable(false);
 				resetFertigButton();
 			}
@@ -798,14 +798,8 @@ public class ClientController {
 
 		}
 	}
-	private boolean allCardsNotAvailable(){
-		boolean b = true;
-		for(int x = 0; x < 31; x++){
-			if(!view.cardAL.get(x).getImage().isDisable())
-				b = false;
-		}
-		return b;
-	}
+	
+
 	
 	/**
 	 * @author Patrick Tüscher

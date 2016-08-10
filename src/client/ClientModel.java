@@ -18,8 +18,7 @@ public class ClientModel {
 	private int playerRollCounter = 0;
 	protected int cardCounter;
 	protected ServerListener server;
-	
-	cardChecker cc = new cardChecker();
+
 	
 	public int getPlayerRollCounter(){
 		return this.playerRollCounter;
@@ -223,7 +222,9 @@ public class ClientModel {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	private void chooseTodCard(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
+	public boolean chooseTodCard(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
+		boolean chooseTodCard = true;
+		int countTod = 0;
 		if(checkTodCardWürfel(cardAL, wuerfelAL, acc)){
 			checkTodCardWürfel(cardAL, wuerfelAL, acc);
 		}else if(checkAvailableTodCards(cardAL)){
@@ -233,10 +234,16 @@ public class ClientModel {
 					if(cardAL.get(x).getType().equals(cardType.Tod.toString()) && cardAL.get(x).getOwner() == null && !cardAL.get(x).getOwner().equals(acc)){
 						cardAL.get(x).getImage().setDisable(false);
 						cardAL.get(x).getImage().setOpacity(1);
+						countTod++;
 					}
 					
 				}
+				if(countTod == 0){
+					chooseTodCard = false;
+				}
 			}
+		
+		return chooseTodCard;
 			
 	}
 	
