@@ -7,6 +7,10 @@
 	 */
 
 package server;
+import java.util.TimerTask;
+
+import javax.management.timer.Timer;
+
 import client.ServiceLocator;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -25,15 +29,20 @@ public class ServerController {
         this.view = view;
         sl = ServiceLocator.getServiceLocator();
         
+ 
+    
+        
     //EventHandler - register ourselves to listen for button clicks
+      //@author Marco Kunz / Nicola Burri
         
         view.ConnectServer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
+                	view.pointsIMV.setVisible(true);
+                	view.pt.play();
                 	model.startServer();
-                	view.conOfflineIMV.setVisible(false);
-					view.conOnlineIMV.setVisible(true);
+                	
 					sl.getLogger().info("Start Server Connection");
                 	
 				} catch (Exception e) {
@@ -45,13 +54,17 @@ public class ServerController {
         
         
      // EventHandler Disconnect Server - LoginScene
+      //@author Marco Kunz / Nicola Burri
         
         view.DisconnectServer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                	view.conOfflineIMV.setVisible(true);
-					view.conOnlineIMV.setVisible(false);
+                	view.pointsIMV.setVisible(false);
+                	view.serverIMV.setVisible(true);
+					view.serverIMVOn.setVisible(false);
+					view.serverIMV2.setVisible(true);
+					view.serverIMV2On.setVisible(false);
 					sl.getLogger().info("Stop Server Connection");
                 	
 				} catch (Exception e) {
@@ -60,6 +73,32 @@ public class ServerController {
 				}
             }
         });
+        
+       // EventHandler animation finish
+        	//@author Marco Kunz
+        view.pt.setOnFinished(new EventHandler<ActionEvent>(){
+        	   @Override
+               public void handle(ActionEvent event) {
+                   try {
+                   	view.pointsIMV.setVisible(false);
+                   	view.serverIMV.setVisible(false);
+					view.serverIMVOn.setVisible(true);
+					view.serverIMV2.setVisible(false);
+					view.serverIMV2On.setVisible(true);
+                   	
+                   	
+                   	
+   				} catch (Exception e) {
+   					// TODO Auto-generated catch block
+   					e.printStackTrace();
+   				}
+               }
+           });
+        
+        
+        
+        
+        
         
      // EventHandler QuitGameButton - LoginScene
         

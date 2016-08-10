@@ -120,7 +120,7 @@ public class ClientView {
 		
 		
 /*----------------------------------------- Login Fenster -----------------------------------------*/
-		//@author Kevin Trottmann
+		//@author Kevin Trottmann / Marco Kunz
 		
 		//InnerPane Login
 		GridPane innerPaneLogin = new GridPane();
@@ -156,28 +156,44 @@ public class ClientView {
 		pf_password.setId("pf-login");
 		pf_password.setPromptText(t.getString("Label.Password"));
 		
+		//languageButtonIcon
+		Image languageButtonIcon = new Image("images/languageButtonIcon.png");
+		ImageView languageIV = new ImageView(languageButtonIcon);
 
 		//language Change Button (German / Englisch)
-		b_languageChange = new Button(t.getString("Button.languageChange"));
+		b_languageChange = new Button(t.getString("Button.languageChange"),languageIV);
 		innerPaneLogin.add(b_languageChange,2,20);
 		b_languageChange.setPrefSize(210, 40);
 		b_languageChange.setId("b-login");
 		
 		
+		//loginButtonIcon
+		Image loginButtonIcon = new Image("images/loginButtonIcon.png");
+		ImageView loginIV = new ImageView(loginButtonIcon);
+		
+		
 		//Button Login
-		b_login = new Button(t.getString("Button.Login"));
+		b_login = new Button(t.getString("Button.Login"),loginIV);
 		innerPaneLogin.add(b_login, 2, 21);
 		b_login.setPrefSize(210, 40);
 		b_login.setId("b-login");
 		
+		//registerButtonIcon
+		Image registerButtonIcon = new Image("images/registerButtonIcon.png");
+		ImageView registerIV = new ImageView(registerButtonIcon);
+		
 		//Button Register
-		b_register = new Button(t.getString("Button.Register"));
+		b_register = new Button(t.getString("Button.Register"),registerIV);
 		innerPaneLogin.add(b_register, 2, 22);
 		b_register.setPrefSize(210, 40);
 		b_register.setId("b-login");
 		
+		//exitButtonIcon
+		Image exitButtonIcon = new Image("images/exitButtonIcon.png");
+		ImageView exitIV = new ImageView(exitButtonIcon);
+		
 		//Button Quit game
-		b_quitGame = new Button(t.getString("Button.QuitGame"));
+		b_quitGame = new Button(t.getString("Button.QuitGame"),exitIV);
 		innerPaneLogin.add(b_quitGame, 2, 23);
 		b_quitGame.setPrefSize(210,40);
 		b_quitGame.setId("b-login");
@@ -187,6 +203,7 @@ public class ClientView {
 		sceneLogin.getStylesheets().add("ClientStylesheet");
 		
 /*----------------------------------------- Lobby Fenster -----------------------------------------*/ 
+		//@author Marco Kunz
 		
 		//TopPane Lobby
 		BorderPane topPaneLobby = new BorderPane();
@@ -255,7 +272,7 @@ public class ClientView {
 		sceneLobby.getStylesheets().add("ClientStylesheet");
 		
 /*----------------------------------------- Statistik Fenster -----------------------------------------*/ 
-		//@author Kevin Trottmann
+		//@author Kevin Trottmann / Marco Kunz
 		
 		//TopPane Statistik
 		topPaneStatistik = new BorderPane();
@@ -285,6 +302,7 @@ public class ClientView {
 		
 		
 /*----------------------------------------- Regeln Fenster -----------------------------------------*/ 
+		//@author Marco Kunz
 		
 		//BorderPane Regeln
 		BorderPane topPaneRegeln = new BorderPane();
@@ -307,7 +325,7 @@ public class ClientView {
 		bottomPaneRegeln.getChildren().add(b_backRegeln);
 		b_backRegeln.setId("b-login");
 		
-		//Regeln image[] //// image position in reglen array to be defined; currently set to 0 for testing
+		//Regeln image[] 
 		regeln = new Image[6];
 		for(int i = 1; i<7; i++)
 		{
@@ -338,6 +356,7 @@ public class ClientView {
 		sceneRegeln.getStylesheets().add("ClientStylesheet");
 		
 /*----------------------------------------- Game Fenster -----------------------------------------*/ 
+		//@author Marco Kunz
 		
 		//TopPane Game
 		topPaneGame = new BorderPane();
@@ -431,6 +450,7 @@ public class ClientView {
 		updateCards();
 		
 /*----------------------------------------- Cubes Player 1  -----------------------------------------*/ 
+		//@author Marco Kunz
 		
 		WürfelPL1  = new ArrayList<Würfel>();
 		
@@ -470,6 +490,7 @@ public class ClientView {
 		bottomPaneGameCube.getChildren().addAll(turnPL1, b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_fertigGame,labelPL1);
 		
 /*----------------------------------------- Cubes Player 2 -----------------------------------------*/ 
+		//@author Marco Kunz
 		
 		WürfelPL2  = new ArrayList<Würfel>();
 		
@@ -529,6 +550,7 @@ public class ClientView {
 		bottomPaneGameChat.getChildren().addAll(chatWindow, ChatInput);
 
 /*----------------------------------------- GameFinished Fenster -----------------------------------------*/
+		//@author Marco Kunz
 		
 		//TopPane GameFinished
 		topPaneGameFinished = new BorderPane();

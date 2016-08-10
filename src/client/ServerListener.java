@@ -293,7 +293,7 @@ public boolean connect() {
 							@Override
 							public void run(){
 								controller.checkWinner();
-								controller.setUpGame();
+//								controller.setUpGame();
 							}
 						});
 					}
@@ -319,7 +319,7 @@ public boolean connect() {
 							@Override
 							public void run(){
 								controller.checkWinner();
-								controller.setUpGame();
+//								controller.setUpGame();
 							}
 						});
 					}

@@ -3,12 +3,14 @@
 	 * All rights reserved.
 	 * 
 	 * @function 
-	 * @author Kevin Trottmann
+	 * @author Kevin Trottmann / Marco Kunz
 	 */
 
 package server;
 
 import server.ServiceLocator;
+import javafx.animation.PathTransition;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,7 +22,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.HLineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import tools.Translator;
 
 public class ServerView {
@@ -29,11 +36,15 @@ public class ServerView {
 	protected ServerModel model;
 	protected Button exit, ConnectServer, DisconnectServer, languageChange;
 	protected Label onlineOffline;
-	protected ImageView serverIMV, serverIMV2, conOnlineIMV, conOfflineIMV;
+	protected ImageView serverIMV, serverIMV2, serverIMVOn, serverIMV2On, pointsIMV;
+	protected Image serverImage, serverImage2, serverImageOn, serverImage2On, points;
 	protected MenuItem MIclose, MIdeutsch, MIenglisch;
 	protected GridPane upperPane;
 	protected Translator t;
 	protected ServiceLocator sl;
+	protected PathTransition pt;
+	protected Circle circle;
+	protected HBox middleBox;
 	
 	public ServerView(Stage primaryStage, ServerModel model){
 		this.primaryStage = primaryStage;
@@ -52,70 +63,103 @@ public class ServerView {
 		//boxForBar.getChildren().add(bar);
 		topPane.setTop(boxForBar);
 		
-		//Online-Offline-Label
-		onlineOffline = new Label("Offline");
-		onlineOffline.setId("offline");
+		//points
+		points = new  Image("images/points.png");
+		pointsIMV = new ImageView();
+		pointsIMV.setImage(points);
+		pointsIMV.setVisible(false);
 		
-		//serverImage 1 Background
-		Image serverImage;
-		ImageView serverIMV;
+		//pathConnection
+		Path path = new Path();
+		path.getElements().addAll(new MoveTo(10,10), new HLineTo(200));
+		path.setFill(null);
+		path.setVisible(false);
+		pt = new PathTransition(Duration.millis(1000),path, pointsIMV);
+		pt.setCycleCount(2);
+		pt.setAutoReverse(true);
+		
+		
+		//serverImage 1 
 		serverImage = new  Image("images/server.png");
 		serverIMV = new ImageView();
 		serverIMV.setImage(serverImage);
+		serverIMV.setVisible(true);
 		
-		//serverImage 2 Background
-		Image serverImage2;
-		ImageView serverIMV2;
+		//serverImage 2 
 		serverImage2 = new  Image("images/server.png");
 		serverIMV2 = new ImageView();
 		serverIMV2.setImage(serverImage2);
+		serverIMV2.setVisible(true);
 		
-		//ConOnline
-		Image conOnline;
-		conOnline = new  Image("images/ConOnline.png");
-		conOnlineIMV = new ImageView();
-		conOnlineIMV.setImage(conOnline);
-		conOnlineIMV.setVisible(false);
+		//serverImage 1  ON
+		serverImageOn = new  Image("images/serverOn.png");
+		serverIMVOn = new ImageView();
+		serverIMVOn.setImage(serverImageOn);
+		serverIMVOn.setVisible(false);
 		
-		//ConOffline
-		Image conOffline;
-		conOffline = new  Image("images/ConOffline.png");
-		conOfflineIMV = new ImageView();
-		conOfflineIMV.setImage(conOffline);
-		conOfflineIMV.setVisible(true);
+		//serverImage 2  ON
+		serverImage2On = new  Image("images/serverOn.png");
+		serverIMV2On = new ImageView();
+		serverIMV2On.setImage(serverImage2On);
+		serverIMV2On.setVisible(false);
+		
+	
+		//connect- and disconncet ButtonIcon
+		Image connectButtonIcon = new Image("images/connectButtonIcon.png");
+		ImageView connectIV = new ImageView(connectButtonIcon);
+		Image disconnectButtonIcon = new Image("images/disconnectButtonIcon.png");
+		ImageView disconnectIV = new ImageView(disconnectButtonIcon);
 		
 		//Connect- and Disconnect Buttons
-		ConnectServer = new Button(t.getString("Button.ConnectServer"));
+		ConnectServer = new Button(t.getString("Button.ConnectServer"),connectIV);
 		ConnectServer.setId("ServerButtons");
 		ConnectServer.setPrefWidth(500);
-		DisconnectServer = new Button(t.getString("Button.DisconnectServer"));
+		DisconnectServer = new Button(t.getString("Button.DisconnectServer"),disconnectIV);
 		DisconnectServer.setId("ServerButtons");
 		DisconnectServer.setPrefWidth(500);
 		
+		//languageButtonIcon
+		Image languageButtonIcon = new Image("images/languageButtonIcon.png");
+		ImageView languageIV = new ImageView(languageButtonIcon);
+		
 		//@author Kevin Trottmann
 		//Language Change Button German / Englisch
-		languageChange = new Button (t.getString("Button.languageChange"));
+		languageChange = new Button (t.getString("Button.languageChange"),languageIV);
 		languageChange.setId("ServerButtons");
 		languageChange.setPrefWidth(500);
 		
+		//exitButtonIcon
+		Image exitButtonIcon = new Image("images/exitButtonIcon.png");
+		ImageView exitIV = new ImageView(exitButtonIcon);
+		
 		//Exit button
-		exit = new Button(t.getString("Button.exit"));
+		exit = new Button(t.getString("Button.exit"),exitIV);
 		exit.setId("ServerButtons");
 		exit.setPrefWidth(500);
 		
+		// HBox middleBox
+		middleBox = new HBox();
+		middleBox.getChildren().addAll(pointsIMV, path);
+		middleBox.setPadding(new Insets (35,70,0,0));
+	
+		
 		//upperPane
 		GridPane upperPane = new GridPane();
+		upperPane.setGridLinesVisible(false);
 		upperPane.setPrefHeight(500);
 		upperPane.setAlignment(Pos.CENTER);
 		upperPane.setVgap(10);
 		upperPane.setHgap(10);
-		upperPane.add(conOfflineIMV, 4, 20);
-		upperPane.add(conOnlineIMV, 4, 20);
-		upperPane.add(serverIMV, 3, 20);
-		upperPane.add(serverIMV2, 5, 20);
+		upperPane.setPadding(new Insets(200,0,0,0));
+		upperPane.add(serverIMV, 1, 1);
+		upperPane.add(serverIMV2, 3, 1);
+		upperPane.add(middleBox, 2, 1);
+		upperPane.add(serverIMVOn, 1, 1);
+		upperPane.add(serverIMV2On, 3, 1);
 		
 		//bottomPane
 		GridPane bottomPane = new GridPane();
+		bottomPane.setGridLinesVisible(false);
 		bottomPane.setAlignment(Pos.TOP_CENTER);
 		bottomPane.setVgap(10);
 		bottomPane.add(languageChange,0,0);

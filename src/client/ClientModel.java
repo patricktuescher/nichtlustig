@@ -154,13 +154,15 @@ public class ClientModel {
 			}
 		}
 			
-		
+
 		
 		if(countLemming == 0 && countOther == 0){
 			return false;
 		}else{
 			return true;
 		}
+		
+		
 		
 	}
 	
@@ -197,29 +199,7 @@ public class ClientModel {
 	}
 	}
 	
-	/**
-	 * @author Patrick Tüscher
-	 * 
-	 */
-	public void removeCardTod(ArrayList<Card> cardAL, Card cardTod){
-		for(int x = 0; x<31; x++){
-			if(cardAL.get(x).getcardTod() == null){
-				
-			}else if(cardAL.get(x).getcardTod().getAugenzahl() == cardTod.getAugenzahl()){
-				final int y = x;
-				Platform.runLater(new Runnable(){
-					@Override
-					public void run(){
-						cardAL.get(y).setcardTod(null);
-						cardAL.get(y).setStatus(Status.gewertet);
-						cardAL.get(y).getImage();	
-					}
-				});
 
-				server.sendObject(new CardGewertet(cardAL.get(x)));
-			}
-		}
-	}
 	
 	
 	/**
@@ -250,7 +230,7 @@ public class ClientModel {
 			checkAvailableTodCards(cardAL);
 			}else{
 				for(int x = 0; x<31; x++){
-					if(cardAL.get(x).getType().equals(cardType.Tod.toString())){
+					if(cardAL.get(x).getType().equals(cardType.Tod.toString()) && cardAL.get(x).getOwner() == null && !cardAL.get(x).getOwner().equals(acc)){
 						cardAL.get(x).getImage().setDisable(false);
 						cardAL.get(x).getImage().setOpacity(1);
 					}
