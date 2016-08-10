@@ -16,15 +16,15 @@ import client.ServiceLocator;
 import client.Würfel;
 
 public class Game {
-	Account PL1;
-	Account PL2;
-	ArrayList<Würfel> diesPL1;
-	ArrayList<Würfel> diesPL2;
-	int numberofeyesPointsPL1 = 0;
-	int numberofeyesPointsPL2 = 0;
-	boolean PL1finished = false;
-	boolean PL2finished = false;
-	Logger logger = ServiceLocator.getServiceLocator().getLogger();
+	protected Account PL1;
+	protected Account PL2;
+	protected ArrayList<Würfel> diesPL1;
+	protected ArrayList<Würfel> diesPL2;
+	protected int numberofeyesPointsPL1 = 0;
+	protected int numberofeyesPointsPL2 = 0;
+	protected boolean PL1finished = false;
+	protected boolean PL2finished = false;
+	private Logger logger = ServiceLocator.getServiceLocator().getLogger();
 	
 	public Game(){
 		
