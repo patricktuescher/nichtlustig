@@ -1235,7 +1235,9 @@ public class ClientController {
 		 for(int x = 0; x < view.WürfelPL1.size(); x++){
 			 if(x == 0){
 				 
-			 }else if(x <= würfel){
+			 }else{
+			 
+			 if(x <= würfel){
 				 view.WürfelPL1.get(x).resetWürfel();
 				 System.out.println(view.WürfelPL1.get(x));
 				 
@@ -1266,7 +1268,7 @@ public class ClientController {
 
 			});
 		 
-
+		 }
 	 }
 
 	/**
