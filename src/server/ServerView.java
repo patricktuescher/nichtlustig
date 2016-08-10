@@ -8,7 +8,6 @@
 
 package server;
 
-import server.ServiceLocator;
 import javafx.animation.PathTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

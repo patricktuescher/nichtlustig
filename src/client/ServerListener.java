@@ -9,26 +9,22 @@
 package client;
 
 import java.io.IOException;
-import tools.Translator;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
-
 import javafx.application.Platform;
 import message.CardClick;
-import message.CardValued;
 import message.CardDeath;
+import message.CardValued;
 import message.ChatMessage;
 import message.ClientLogin;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import message.ClientLoginSuccess;
 import message.ClientLogoutSuccess;
 import message.ClientTurn;
+import message.DieRoll;
 import message.EvaluateFirstPlayer;
 import message.GameAvailableMessage;
 import message.GameComplete;
@@ -39,7 +35,7 @@ import message.NewGameChatMessage;
 import message.PointUpdate;
 import message.ProfEvaluation;
 import message.Registration;
-import message.DieRoll;
+import tools.Translator;
 
 public class ServerListener extends Thread {
 	protected ServiceLocator sl = ServiceLocator.getServiceLocator();

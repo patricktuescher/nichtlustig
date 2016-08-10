@@ -7,10 +7,6 @@
 	 */
 
 package server;
-import java.util.TimerTask;
-
-import javax.management.timer.Timer;
-
 import client.ServiceLocator;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

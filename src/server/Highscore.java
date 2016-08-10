@@ -11,14 +11,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 import client.Account;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import message.HighscoreUpdate;
 
 public class Highscore {
