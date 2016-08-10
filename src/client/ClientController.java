@@ -1257,6 +1257,7 @@ public class ClientController {
 				
 				//@Override
 				public void handle(ActionEvent arg0) {
+					view.b_fertigGame.setDisable(true);
 					server.sendObject(new GameFinished());
 					resetFertigButton();
 				}
