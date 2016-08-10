@@ -1037,7 +1037,9 @@ public class ClientController {
 	 */
 	public void playerQuit(){
 		view.scorePL1 = 0;
-		view.scorePL2 = 10;
+		if(view.scorePL2<4){
+			view.scorePL2 = 3;
+		}
 		server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
 	}
 	
