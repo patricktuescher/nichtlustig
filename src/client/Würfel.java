@@ -137,14 +137,6 @@ public class Würfel implements Serializable {
 		this.selected = false;
 		this.image.setOpacity(1);
 	}
-	public void resetWürfel(Farbe farbe){
-		this.farbe = farbe;
-		this.image = getImageView();
-		this.image.setStyle("");
-		this.used = false;
-		this.selected = false;
-		this.image.setOpacity(1);
-	}
 	
 	public String toString(){
 		return "Würfel "+ this.aktAugenzahl + " "+this.getFarbe();
