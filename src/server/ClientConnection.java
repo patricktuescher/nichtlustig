@@ -16,8 +16,8 @@ import java.net.Socket;
 import java.net.SocketException;
 import client.Account;
 import message.CardClick;
-import message.CardGewertet;
-import message.CardTod;
+import message.CardValued;
+import message.CardDeath;
 import message.ChatMessage;
 import message.ClientLogin;
 import message.ClientLoginSuccess;
@@ -32,9 +32,9 @@ import message.GameQuit;
 import message.HighscoreUpdate;
 import message.NewGameChatMessage;
 import message.PointUpdate;
-import message.ProfWertung;
+import message.ProfEvaluation;
 import message.Registration;
-import message.WürfelRoll;
+import message.DieRoll;
 import message.initiateNewGame;
 import message.newAccountMessage;
 import message.newScore;
@@ -116,8 +116,8 @@ public class ClientConnection extends Thread {
 					s = s + msg.getMessage();
 					model.broadcast(new ChatMessage(s));
 				}
-				if(obj instanceof WürfelRoll){
-					WürfelRoll wf = (WürfelRoll) obj;
+				if(obj instanceof DieRoll){
+					DieRoll wf = (DieRoll) obj;
 					model.sendToOtherClients(wf, this);
 				}
 				if(obj instanceof ClientTurn){
@@ -139,13 +139,13 @@ public class ClientConnection extends Thread {
 					model.sendToOtherClients(new PointUpdate(point.getPoints2(), point.getPoints1()), this);
 				}
 				
-				if(obj instanceof CardGewertet){
-					CardGewertet gewertet = (CardGewertet) obj;
+				if(obj instanceof CardValued){
+					CardValued gewertet = (CardValued) obj;
 					model.sendToOtherClients(gewertet, this);
 				}
 				
-				if(obj instanceof CardTod){
-					CardTod tod = (CardTod) obj;
+				if(obj instanceof CardDeath){
+					CardDeath tod = (CardDeath) obj;
 					System.out.println("CardTod erhalten und weitergeleitet.");
 					model.sendToOtherClients(tod, this);
 				}
@@ -161,7 +161,7 @@ public class ClientConnection extends Thread {
 					if(model.getGame().bothPlayersFinished()){
 						model.broadcast((GameFinished) obj);
 					}else{
-						model.sendToOtherClients(new ProfWertung(), this);
+						model.sendToOtherClients(new ProfEvaluation(), this);
 					}
 				}
 				
@@ -172,8 +172,8 @@ public class ClientConnection extends Thread {
 			
 				if(obj instanceof EvaluateFirstPlayer){
 					EvaluateFirstPlayer efp = (EvaluateFirstPlayer) obj;
-					model.getGame().setWürfel(efp.getWürfel(), this.Player);
-					if(model.getGame().würfelComplete()){
+					model.getGame().setDies(efp.getWürfel(), this.Player);
+					if(model.getGame().diesComplete()){
 						Account firstPlayer;
 						try {
 							firstPlayer = model.getGame().firstPlayer();

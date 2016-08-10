@@ -21,16 +21,16 @@ public class Card implements Serializable{
 	
 	private static final long serialVersionUID = 9093800489872546795L;
 	private cardType type = cardType.Dino;
-	private int Augenzahl;
+	private int numberofeyes;
 	private transient ImageView image;
 	private Status status;
-	private ArrayList <Würfel> würfel;
+	private ArrayList <Würfel> dies;
 	private final int cardHeight = 90;
 	private final int cardWidth = 90;
 	private transient Logger logger = ServiceLocator.getServiceLocator().getLogger();
 	private Account owner;
 	private String pfad;
-	private Card cardTod;
+	private Card cardDeath;
 
 	/**
 	 * The constructor creates a card
@@ -40,36 +40,36 @@ public class Card implements Serializable{
 	
 	public Card(cardType type, int Augenzahl){
 		this.type = type;
-		this.Augenzahl = Augenzahl;
+		this.numberofeyes = Augenzahl;
 		this.status = Status.frei;
 		this.owner = null;
-		this.cardTod = null;
-		logger.fine(this.type.name()+ " Card has been created. Number of card is: " + this.Augenzahl);
-		setWürfel();
+		this.cardDeath = null;
+		logger.fine(this.type.name()+ " Card has been created. Number of card is: " + this.numberofeyes);
+		setDie();
 	}
 	
 	/**
 	 * sets the corresponding die to the card, which will be needed to select the card. 
 	 */
 	
-	private void setWürfel(){
-		this.würfel = new ArrayList<Würfel>();
+	private void setDie(){
+		this.dies = new ArrayList<Würfel>();
 		switch(this.getType()){
-		case "Tod": 	würfel.add(new Würfel(this.Augenzahl, Farbe.Pink));
+		case "Tod": 	dies.add(new Würfel(this.numberofeyes, Farbe.Pink));
 						break;
-		case "Rieb": 	würfel.addAll(Arrays.asList(new Würfel(this.Augenzahl, Farbe.Schwarz), new Würfel(this.Augenzahl, Farbe.Schwarz)));
+		case "Rieb": 	dies.addAll(Arrays.asList(new Würfel(this.numberofeyes, Farbe.Schwarz), new Würfel(this.numberofeyes, Farbe.Schwarz)));
 						break;
-		case "Prof":	würfel.addAll(Arrays.asList(new Würfel(this.Augenzahl, Farbe.Schwarz), new Würfel(this.Augenzahl, Farbe.Weiss), new Würfel(this.Augenzahl, Farbe.Rot)));
+		case "Prof":	dies.addAll(Arrays.asList(new Würfel(this.numberofeyes, Farbe.Schwarz), new Würfel(this.numberofeyes, Farbe.Weiss), new Würfel(this.numberofeyes, Farbe.Rot)));
 						break;
-		case "Lemming": würfel.addAll(Arrays.asList(new Würfel(this.Augenzahl, Farbe.Weiss), new Würfel(this.Augenzahl, Farbe.Weiss)));
+		case "Lemming": dies.addAll(Arrays.asList(new Würfel(this.numberofeyes, Farbe.Weiss), new Würfel(this.numberofeyes, Farbe.Weiss)));
 						break;
-		case "Yeti": 	würfel.addAll(Arrays.asList(new Würfel(this.Augenzahl, Farbe.Rot), new Würfel(this.Augenzahl, Farbe.Rot)));
+		case "Yeti": 	dies.addAll(Arrays.asList(new Würfel(this.numberofeyes, Farbe.Rot), new Würfel(this.numberofeyes, Farbe.Rot)));
 						break;
 		}
 	}
 	
-	public ArrayList<Würfel> getWürfel(){
-		return this.würfel;
+	public ArrayList<Würfel> getDie(){
+		return this.dies;
 	}
 	
 	/**
@@ -80,10 +80,10 @@ public class Card implements Serializable{
 		boolean b = true;
 		ArrayList<Würfel> würfelPL1 = new ArrayList<Würfel>();
 		würfelPL1.addAll(wuerfeltoTest);
-		int auswahl = this.getAugenzahl();
+		int auswahl = this.getNumberofeyes();
 		if(this.getStatus()== Status.frei || this.getStatus() == Status.gewählt && !this.getOwner().equals(ClientController.clientOwner)){
 		if(this.getType().equals(cardType.Dino.toString())){
-			summe = summe - würfelPL1.get(0).getAktAugenzahl();
+			summe = summe - würfelPL1.get(0).getCurrentNumberofeyes();
 			switch(auswahl){
 			case 1:	if(summe != 24){
 					b = false;
@@ -107,13 +107,13 @@ public class Card implements Serializable{
 					
 			}
 		}else{
-		for(int x = 0; x < this.getWürfel().size(); x++){
-			if(!würfelPL1.contains(this.getWürfel().get(x)) || würfelPL1.get(würfelPL1.indexOf(this.getWürfel().get(x))).isUsed()){
+		for(int x = 0; x < this.getDie().size(); x++){
+			if(!würfelPL1.contains(this.getDie().get(x)) || würfelPL1.get(würfelPL1.indexOf(this.getDie().get(x))).isUsed()){
 				b = false;
 				break;
 			}
 			else
-				würfelPL1.remove(this.getWürfel().get(x));
+				würfelPL1.remove(this.getDie().get(x));
 			}
 		}
 		}else{
@@ -132,8 +132,8 @@ public class Card implements Serializable{
 	
 
 
-	public int getAugenzahl() {
-		return Augenzahl;
+	public int getNumberofeyes() {
+		return numberofeyes;
 	}
 
 
@@ -142,7 +142,7 @@ public class Card implements Serializable{
 		this.image = new ImageView();
 		}
 		pfad = new String("Karte_");
-		pfad = pfad + (this.type.name() + "_" + this.Augenzahl);
+		pfad = pfad + (this.type.name() + "_" + this.numberofeyes);
 		if(status == Status.gewertet){
 			pfad = pfad + "_gewertet";
 		}
@@ -173,12 +173,12 @@ public class Card implements Serializable{
 		this.owner= owner;
 	}
 	
-	public Card getcardTod(){
-		return cardTod;
+	public Card getcardDeath(){
+		return cardDeath;
 	}
 	
-	public void setcardTod(Card cardTod){
-		this.cardTod = cardTod;
+	public void setcardDeath(Card cardDeath){
+		this.cardDeath = cardDeath;
 	}
 
 	public String getType(){
@@ -186,12 +186,12 @@ public class Card implements Serializable{
 	}
 	
 	public String toString(){
-		return this.getType() + " Nr: " + this.Augenzahl + " Status: " + this.status;
+		return this.getType() + " Nr: " + this.numberofeyes + " Status: " + this.status;
 	}
 	
 	public boolean equals(Card otherCard){
 		if(otherCard != null){
-		if(this.Augenzahl == otherCard.getAugenzahl() && this.getType().equals(otherCard.getType())){
+		if(this.numberofeyes == otherCard.getNumberofeyes() && this.getType().equals(otherCard.getType())){
 			return true;
 		}else{
 			return false;
@@ -225,7 +225,7 @@ public class Card implements Serializable{
 			innerShadow.setChoke(0.5);	
 			this.getImage().setEffect(innerShadow);
 			this.getImage().setId("shadow");
-			logger.info(this + " is chosen. Needed die are: " + würfel.toString());
+			logger.info(this + " is chosen. Needed die are: " + dies.toString());
 		
 	}
 	

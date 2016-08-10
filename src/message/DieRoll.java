@@ -13,12 +13,12 @@ import java.util.ArrayList;
 
 import client.Würfel;
 
-public class WürfelRoll implements Serializable {
+public class DieRoll implements Serializable {
 	
 	private static final long serialVersionUID = -8993725853828317933L;
 	private ArrayList<Würfel> würfel;
 	
-	public WürfelRoll(ArrayList<Würfel> würfel){
+	public DieRoll(ArrayList<Würfel> würfel){
 		this.würfel = würfel;
 	}
 	

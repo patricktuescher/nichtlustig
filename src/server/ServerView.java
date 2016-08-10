@@ -38,7 +38,7 @@ public class ServerView {
 	protected Label onlineOffline;
 	protected ImageView serverIMV, serverIMV2, serverIMVOn, serverIMV2On, pointsIMV;
 	protected Image serverImage, serverImage2, serverImageOn, serverImage2On, points;
-	protected MenuItem MIclose, MIdeutsch, MIenglisch;
+	protected MenuItem MIclose, MIgerman, MIenglisch;
 	protected GridPane upperPane;
 	protected Translator t;
 	protected ServiceLocator sl;

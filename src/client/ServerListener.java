@@ -20,8 +20,8 @@ import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 import javafx.application.Platform;
 import message.CardClick;
-import message.CardGewertet;
-import message.CardTod;
+import message.CardValued;
+import message.CardDeath;
 import message.ChatMessage;
 import message.ClientLogin;
 import javafx.scene.control.Alert;
@@ -37,9 +37,9 @@ import message.GameQuit;
 import message.HighscoreUpdate;
 import message.NewGameChatMessage;
 import message.PointUpdate;
-import message.ProfWertung;
+import message.ProfEvaluation;
 import message.Registration;
-import message.WürfelRoll;
+import message.DieRoll;
 
 public class ServerListener extends Thread {
 	protected ServiceLocator sl = ServiceLocator.getServiceLocator();
@@ -213,8 +213,8 @@ public boolean connect() {
 					}
 		
 					
-					if(obj instanceof WürfelRoll){
-						WürfelRoll ws = (WürfelRoll) obj;
+					if(obj instanceof DieRoll){
+						DieRoll ws = (DieRoll) obj;
 						ArrayList<Würfel> würfel = ws.getWürfel();
 						Platform.runLater(new Runnable() {
 							   @Override
@@ -275,7 +275,7 @@ public boolean connect() {
 					}
 					if(obj instanceof GameComplete){
 						controller.setUpGame();
-						this.sendObject(new EvaluateFirstPlayer(controller.getWürfel()));
+						this.sendObject(new EvaluateFirstPlayer(controller.getDies()));
 					}
 					
 					if(obj instanceof PointUpdate){
@@ -283,7 +283,7 @@ public boolean connect() {
 						Platform.runLater(new Runnable(){
 							@Override
 							public void run(){
-								controller.updatePunkteFromOtherClient(points.getPoints1(), points.getPoints2());
+								controller.updatePointsFromOtherClient(points.getPoints1(), points.getPoints2());
 							}
 						});
 					}
@@ -298,7 +298,7 @@ public boolean connect() {
 						});
 					}
 					
-					if(obj instanceof ProfWertung){
+					if(obj instanceof ProfEvaluation){
 						if(!controller.profCard()){
 						sendObject(new GameFinished());
 						}
@@ -306,7 +306,7 @@ public boolean connect() {
 							Platform.runLater(new Runnable(){
 								@Override
 								public void run(){
-									controller.bewerteProfCard();
+									controller.valueProfCard();
 								}
 							});
 	
@@ -324,24 +324,24 @@ public boolean connect() {
 						});
 					}
 					
-					if(obj instanceof CardGewertet){
-						CardGewertet gewertet = (CardGewertet) obj;
+					if(obj instanceof CardValued){
+						CardValued gewertet = (CardValued) obj;
 						Platform.runLater(new Runnable(){
 							@Override
 							public void run(){
-								controller.opponentWertetCard(gewertet.getCard());
+								controller.opponentValueCard(gewertet.getCard());
 							}
 						});
 					}
 					
-					if(obj instanceof CardTod){
-						CardTod tod = (CardTod) obj;
+					if(obj instanceof CardDeath){
+						CardDeath tod = (CardDeath) obj;
 						System.out.println("cardTod erhalten");
 						Platform.runLater(new Runnable(){
 							@Override
 							public void run(){
 								System.out.println("hier tot");
-								controller.opponentTodCard(tod.getCard());
+								controller.opponentDeathCard(tod.getCard());
 							}
 						});
 					}

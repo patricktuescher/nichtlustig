@@ -10,15 +10,12 @@ package client;
 
 import java.util.ArrayList;
 
-import javafx.application.Platform;
-import message.CardGewertet;
-
 public class ClientModel {
 	
 	private int playerRollCounter = 0;
 	protected int cardCounter;
 	protected ServerListener server;
-	protected int countTod;
+	protected int countDeath;
 
 	
 	public int getPlayerRollCounter(){
@@ -30,10 +27,10 @@ public class ClientModel {
 	public void resetPlayerRoll(){
 		playerRollCounter = 0;
 	}
-	public boolean allWürfelSelected(ArrayList<Würfel> würfel){
+	public boolean allDiesSelected(ArrayList<Würfel> dies){
 		boolean b = true;
-		for(int x = 0; x < würfel.size(); x++){
-			if(!würfel.get(x).isSelected())
+		for(int x = 0; x < dies.size(); x++){
+			if(!dies.get(x).isSelected())
 				return false;
 		}
 		return b;
@@ -43,20 +40,20 @@ public class ClientModel {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public void startCardChecker(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL){
+	public void startCardChecker(ArrayList<Card> cardAL, ArrayList<Würfel> diesAL){
 		int summe = 0;
 		int w = 0;
 		cardCounter = 0;
 		
-		while(w<wuerfelAL.size()){
-			if(!wuerfelAL.get(w).isUsed()){
-			summe = summe + wuerfelAL.get(w).getAktAugenzahl();
+		while(w<diesAL.size()){
+			if(!diesAL.get(w).isUsed()){
+			summe = summe + diesAL.get(w).getCurrentNumberofeyes();
 			}
 			w++;
 		}
 		
 		for(int x = 0;x<31;x++){
-			if(cardAL.get(x).check(wuerfelAL, summe)){
+			if(cardAL.get(x).check(diesAL, summe)){
 				cardCounter++;
 			};
 		}
@@ -76,28 +73,28 @@ public class ClientModel {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public void aktivateCards(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
+	public void activateCards(ArrayList<Card> cardAL, ArrayList<Würfel> diesAL, Account acc){
 		int summe = 0;
 		int w = 0;
 
 		
-		while(w<wuerfelAL.size()){
-			if(!wuerfelAL.get(w).isUsed()){
-			summe = summe + wuerfelAL.get(w).getAktAugenzahl();
+		while(w<diesAL.size()){
+			if(!diesAL.get(w).isUsed()){
+			summe = summe + diesAL.get(w).getCurrentNumberofeyes();
 			}
 			w++;
 		}
 		
 		for(int x = 0;x<31;x++){
 			if(cardCounter > 1){
-				if(cardAL.get(x).check(wuerfelAL, summe)){
+				if(cardAL.get(x).check(diesAL, summe)){
 					if(cardAL.get(x).getType().equals(cardType.Tod.toString())){
 						cardAL.get(x).getImage().setOpacity(0.5);
 					}else{
 					cardAL.get(x).getImage().setDisable(false);
 					}
 				}
-			}else if(cardAL.get(x).check(wuerfelAL, summe)){
+			}else if(cardAL.get(x).check(diesAL, summe)){
 				cardAL.get(x).getImage().setDisable(false);
 				
 			}
@@ -105,7 +102,7 @@ public class ClientModel {
 		
 		if(cardCounter == 0){
 	
-			chooseTodCard(cardAL, wuerfelAL, acc);
+			chooseDeathCard(cardAL, diesAL, acc);
 			
 		};
 	}
@@ -114,7 +111,7 @@ public class ClientModel {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public void aktivateGewerteteCards(ArrayList<Card> cardAL, cardType cType){
+	public void activateValuedCards(ArrayList<Card> cardAL, cardType cType){
 		for(int x = 0;  x<31; x++){
 			if(cardAL.get(x).getOwner().equals(ClientController.clientOwner) && cardAL.get(x).getStatus().equals(Status.gewertet.toString()) && cardAL.get(x).getType().equals(cType.toString())){
 				cardAL.get(x).getImage().setDisable(false);
@@ -129,7 +126,7 @@ public class ClientModel {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public boolean checkCardsToChooseTod(ArrayList<Card> cardAL){
+	public boolean checkCardsToChooseDeath(ArrayList<Card> cardAL){
 		int countLemming = 0;
 		int countOther = 0;
 		for(int x = 0;  x<31; x++){
@@ -171,19 +168,19 @@ public class ClientModel {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public boolean checkTodCardWürfel(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
-		boolean availableTodCardWürfel = false;
+	public boolean checkDeathCardDies(ArrayList<Card> cardAL, ArrayList<Würfel> diesAL, Account acc){
+		boolean availableDeathCardDies = false;
 		for(int x = 0; x<31; x++){
-			if(wuerfelAL.get(0).getAktAugenzahl() == cardAL.get(x).getAugenzahl() && cardAL.get(x).getType().equals(cardType.Tod.toString()) && cardAL.get(x).getOwner() == null){
+			if(diesAL.get(0).getCurrentNumberofeyes() == cardAL.get(x).getNumberofeyes() && cardAL.get(x).getType().equals(cardType.Tod.toString()) && cardAL.get(x).getOwner() == null){
 				
-				availableTodCardWürfel = true;
+				availableDeathCardDies = true;
 				cardAL.get(x).getImage().setDisable(false);
 				cardAL.get(x).getImage().setOpacity(1);
 				break;
 			
-			}else if(wuerfelAL.get(0).getAktAugenzahl() == cardAL.get(x).getAugenzahl() && cardAL.get(x).getType().equals(cardType.Tod.toString()) && !cardAL.get(x).getOwner().equals(acc)){
+			}else if(diesAL.get(0).getCurrentNumberofeyes() == cardAL.get(x).getNumberofeyes() && cardAL.get(x).getType().equals(cardType.Tod.toString()) && !cardAL.get(x).getOwner().equals(acc)){
 				
-				availableTodCardWürfel = true;
+				availableDeathCardDies = true;
 				cardAL.get(x).getImage().setDisable(false);
 				cardAL.get(x).getImage().setOpacity(1);
 				break;
@@ -192,7 +189,7 @@ public class ClientModel {
 			
 		}
 		
-		if(availableTodCardWürfel){
+		if(availableDeathCardDies){
 			return true;
 		}else{
 		return false;
@@ -206,7 +203,7 @@ public class ClientModel {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public boolean checkAvailableTodCards(ArrayList<Card> cardAL){
+	public boolean checkAvailableDeathCards(ArrayList<Card> cardAL){
 		boolean availableTodCard = false;
 		for(int x = 0; x<31; x++){
 			if(cardAL.get(x).getType().equals(cardType.Tod.toString()) && cardAL.get(x).getOwner() == null){
@@ -223,18 +220,18 @@ public class ClientModel {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public void chooseTodCard(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
-		countTod = 0;
-		if(checkTodCardWürfel(cardAL, wuerfelAL, acc)){
-			checkTodCardWürfel(cardAL, wuerfelAL, acc);
-		}else if(checkAvailableTodCards(cardAL)){
-			checkAvailableTodCards(cardAL);
+	public void chooseDeathCard(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
+		countDeath = 0;
+		if(checkDeathCardDies(cardAL, wuerfelAL, acc)){
+			checkDeathCardDies(cardAL, wuerfelAL, acc);
+		}else if(checkAvailableDeathCards(cardAL)){
+			checkAvailableDeathCards(cardAL);
 			}else{
 				for(int x = 0; x<31; x++){
 					if(cardAL.get(x).getType().equals(cardType.Tod.toString()) && !cardAL.get(x).getOwner().equals(acc)){
 						cardAL.get(x).getImage().setDisable(false);
 						cardAL.get(x).getImage().setOpacity(1);
-						countTod++;
+						countDeath++;
 					}
 					
 				}

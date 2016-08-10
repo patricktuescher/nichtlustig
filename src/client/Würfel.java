@@ -57,13 +57,13 @@ public class Würfel implements Serializable {
 	/**
 	 * @return color of the die
 	 */
-	public Farbe getFarbe(){
+	public Farbe getColor(){
 		return this.farbe;
 	}
 	
 	public boolean equals(Object obj){
 		Würfel other = (Würfel)obj;
-		if(this.getAktAugenzahl() == other.getAktAugenzahl() && this.getFarbe().equals(other.getFarbe())){
+		if(this.getCurrentNumberofeyes() == other.getCurrentNumberofeyes() && this.getColor().equals(other.getColor())){
 			return true;
 		}
 		else return false;
@@ -85,11 +85,11 @@ public class Würfel implements Serializable {
 	/**
 	 * @return current number of die (1-6)
 	 */
-	public int getAktAugenzahl(){
+	public int getCurrentNumberofeyes(){
 		return this.aktAugenzahl;
 	}
 	
-	public void setAktAugenzahl(int Augenzahl){
+	public void setCurrentNumberofeyes(int Augenzahl){
 		this.aktAugenzahl = Augenzahl;
 		image.setImage(new Image("images/" + this.farbe.name()+"_Würfel_"+aktAugenzahl+".png"));
 		this.image.setStyle("");
@@ -139,7 +139,7 @@ public class Würfel implements Serializable {
 	}
 	
 	public String toString(){
-		return "Würfel "+ this.aktAugenzahl + " "+this.getFarbe();
+		return "Würfel "+ this.aktAugenzahl + " "+this.getColor();
 	}
 	
 	public void setUsed(boolean used){
@@ -149,7 +149,7 @@ public class Würfel implements Serializable {
 	public boolean isUsed(){
 		return this.used;
 	}
-	public void setFarbe(Farbe newFarbe){
+	public void setColor(Farbe newFarbe){
 		this.farbe = newFarbe;
 	}
 

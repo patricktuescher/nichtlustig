@@ -17,10 +17,10 @@ import client.Würfel;
 public class Game {
 	Account PL1;
 	Account PL2;
-	ArrayList<Würfel> würfelPL1;
-	ArrayList<Würfel> würfelPL2;
-	int AugenzahlPunktePL1 = 0;
-	int AugenzahlPunktePL2 = 0;
+	ArrayList<Würfel> diesPL1;
+	ArrayList<Würfel> diesPL2;
+	int numberofeyesPointsPL1 = 0;
+	int numberofeyesPointsPL2 = 0;
 	boolean PL1finished = false;
 	boolean PL2finished = false;
 	Logger logger = ServiceLocator.getServiceLocator().getLogger();
@@ -61,14 +61,14 @@ public class Game {
 	 * @param Player corresponding account
 	 */
 	
-	public void setWürfel(ArrayList<Würfel> würfel, Account Player){
+	public void setDies(ArrayList<Würfel> würfel, Account Player){
 		if(this.PL1.getAccName().equals(Player.getAccName())){
-			this.würfelPL1 = würfel;
+			this.diesPL1 = würfel;
 		}
-		else this.würfelPL2 = würfel;
+		else this.diesPL2 = würfel;
 	}
-	public boolean würfelComplete(){
-		if(würfelPL1 != null && würfelPL2 != null){
+	public boolean diesComplete(){
+		if(diesPL1 != null && diesPL2 != null){
 			return true;
 		}
 		else return false;
@@ -81,17 +81,17 @@ public class Game {
 	 */
 	
 	public Account firstPlayer() throws Exception{
-		AugenzahlPunktePL1 = 0;
-		AugenzahlPunktePL2 = 0;
+		numberofeyesPointsPL1 = 0;
+		numberofeyesPointsPL2 = 0;
 		
-		for(int x = 0; x < würfelPL1.size();x++){
-			AugenzahlPunktePL1 += würfelPL1.get(x).getAktAugenzahl();
-			AugenzahlPunktePL2 += würfelPL2.get(x).getAktAugenzahl();
+		for(int x = 0; x < diesPL1.size();x++){
+			numberofeyesPointsPL1 += diesPL1.get(x).getCurrentNumberofeyes();
+			numberofeyesPointsPL2 += diesPL2.get(x).getCurrentNumberofeyes();
 		}
-		if(AugenzahlPunktePL1 == AugenzahlPunktePL2){
+		if(numberofeyesPointsPL1 == numberofeyesPointsPL2){
 			throw new Exception();
 		}
-		if(AugenzahlPunktePL1 > AugenzahlPunktePL2)
+		if(numberofeyesPointsPL1 > numberofeyesPointsPL2)
 			return this.PL1;
 		else
 			return this.PL2;

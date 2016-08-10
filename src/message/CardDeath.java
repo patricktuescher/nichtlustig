@@ -4,16 +4,18 @@ import java.io.Serializable;
 
 import client.Card;
 
-public class CardGewertet implements Serializable {
+public class CardDeath implements Serializable{
 
-	private static final long serialVersionUID = 8284540237795620590L;
+	private static final long serialVersionUID = -8670921119168441657L;
 	private Card card;
 	
-	public CardGewertet(Card card){
+	public CardDeath(Card card){
 		this.card = card;
 	}
 	
 	public Card getCard(){
 		return card;
 	}
+	
+
 }

@@ -49,13 +49,13 @@ public class ClientView {
 	Stage primaryStage;
 	ClientModel model;
 	protected TextField tf_username;
-	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_spielErstellen, b_spielBeitreten, b_backStatistik, b_backRegeln,b_nextImage, b_previousImage, b_backGame, b_würfeln, b_sendchat, b_fertigGame, b_backLoginFailed, b_languageChange, b_gameLobby;
+	protected Button b_login, b_register,b_quitGame, b_backLobby ,b_statistic, b_rules, b_gameCreate, b_gameJoin, b_backStatistic, b_backRules,b_nextImage, b_previousImage, b_backGame, b_roll, b_sendchat, b_finishGame, b_backLoginFailed, b_languageChange, b_gameLobby;
 	protected Label labelPL1, labelPL2, loginFailed, lb_username, lb_password, lb_chooseLanguage, labelFinished, finalScore1, finalScore2;
 	protected TableView<Integer> table;
 	protected TableColumn<Integer,String> rankCol, userNameCol, scoreCol, dateCol;
 	protected GameAvailableImage gai;
 	protected PasswordField pf_password;
-	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistik, sceneRegeln, sceneLoginFailed, sceneGameFinished;
+	protected Scene sceneLobby, sceneLogin, sceneGame, sceneStatistic, sceneRules, sceneLoginFailed, sceneGameFinished;
 	protected ServiceLocator sl;
 	protected Translator t;
 	protected int scorePL1, scorePL2;
@@ -82,12 +82,12 @@ public class ClientView {
 	
 
 	//Cubes PL1
-	ArrayList <Würfel> WürfelPL1;
+	ArrayList <Würfel> diesPL1;
 	Würfel cubeViewPink,cubeViewWhite1, cubeViewWhite2, cubeViewBlack1, cubeViewBlack2, cubeViewRed1, cubeViewRed2;
 	
 	//Cubes PL2
 	HBox innertopPaneGame;
-	ArrayList <Würfel> WürfelPL2;
+	ArrayList <Würfel> diesPL2;
 	Würfel cubeViewPinkPL2, cubeViewWhite1PL2, cubeViewWhite2PL2, cubeViewBlack1PL2, cubeViewBlack2PL2, cubeViewRed1PL2, cubeViewRed2PL2;
 	
 	//@author Kevin Trottmann
@@ -100,8 +100,8 @@ public class ClientView {
 	
 	
 	//Rules
-	ImageView regelnView;
-	protected Image[] regeln;
+	ImageView rulesView;
+	protected Image[] rules;
 	protected static  int currentRuleImage = 0;
 
 	//Height and Width of cubes
@@ -220,10 +220,10 @@ public class ClientView {
 		
 		
 		//Button Spiel erstellen 
-		b_spielErstellen = new Button(t.getString("Button.newGame"));
-		b_spielErstellen.setPrefSize(200, 70);
-		innerPaneLobby.add(b_spielErstellen, 1, 2);
-		b_spielErstellen.setId("b-login");
+		b_gameCreate = new Button(t.getString("Button.newGame"));
+		b_gameCreate.setPrefSize(200, 70);
+		innerPaneLobby.add(b_gameCreate, 1, 2);
+		b_gameCreate.setId("b-login");
 		
 		
 		//Button Statistik
@@ -241,10 +241,10 @@ public class ClientView {
 		
 		
 		//Button Spiel beitreten 
-		b_spielBeitreten = new Button(t.getString("Button.JoinGame"));
-		b_spielBeitreten.setPrefSize(200,70);
-		innerPaneLobby.add(b_spielBeitreten, 2, 9);
-		b_spielBeitreten.setId("b-login");
+		b_gameJoin = new Button(t.getString("Button.JoinGame"));
+		b_gameJoin.setPrefSize(200,70);
+		innerPaneLobby.add(b_gameJoin, 2, 9);
+		b_gameJoin.setId("b-login");
 		
 		
 		//Button Zurück
@@ -291,14 +291,14 @@ public class ClientView {
 		topPaneStatistik.setBottom(bottomPaneStatistik);
 		
 		//Button Zurück
-		b_backStatistik = new Button(t.getString("Button.Back"));
-		bottomPaneStatistik.getChildren().add(b_backStatistik);
-		b_backStatistik.setPrefSize(200, 70);
-		b_backStatistik.setId("b-login");
+		b_backStatistic = new Button(t.getString("Button.Back"));
+		bottomPaneStatistik.getChildren().add(b_backStatistic);
+		b_backStatistic.setPrefSize(200, 70);
+		b_backStatistic.setId("b-login");
 				
 		//Scene Lobby
-		sceneStatistik = new Scene(topPaneStatistik, 1200, 800);
-		sceneStatistik.getStylesheets().add("ClientStylesheet");
+		sceneStatistic = new Scene(topPaneStatistik, 1200, 800);
+		sceneStatistic.getStylesheets().add("ClientStylesheet");
 		
 		
 /*----------------------------------------- Regeln Fenster -----------------------------------------*/ 
@@ -320,22 +320,22 @@ public class ClientView {
 		topPaneRegeln.setBottom(bottomPaneRegeln);
 		
 		//Button Zurück
-		b_backRegeln = new Button(t.getString("Button.Back"));
-		b_backRegeln.setPrefSize(200, 70);
-		bottomPaneRegeln.getChildren().add(b_backRegeln);
-		b_backRegeln.setId("b-login");
+		b_backRules = new Button(t.getString("Button.Back"));
+		b_backRules.setPrefSize(200, 70);
+		bottomPaneRegeln.getChildren().add(b_backRules);
+		b_backRules.setId("b-login");
 		
 		//Regeln image[] 
-		regeln = new Image[6];
+		rules = new Image[6];
 		for(int i = 1; i<7; i++)
 		{
-		regeln[i-1] = new Image("images/nicht_lustig_Regeln_"+i+".jpg");
+		rules[i-1] = new Image("images/nicht_lustig_Regeln_"+i+".jpg");
 		}
-		regelnView = new ImageView();
-		regelnView.setImage(regeln[currentRuleImage]);
+		rulesView = new ImageView();
+		rulesView.setImage(rules[currentRuleImage]);
 		innerPaneRegeln.setAlignment(Pos.CENTER);
-		regelnView.setFitHeight(600);
-		regelnView.setFitWidth(600);
+		rulesView.setFitHeight(600);
+		rulesView.setFitWidth(600);
 
 		// Button next
 		b_nextImage = new Button(">");
@@ -348,12 +348,12 @@ public class ClientView {
 		b_previousImage.setId("b-login");
 		
 		// added nodes to inner pane Regeln
-		innerPaneRegeln.getChildren().addAll(b_previousImage, regelnView,b_nextImage);
+		innerPaneRegeln.getChildren().addAll(b_previousImage, rulesView,b_nextImage);
 		innerPaneRegeln.setSpacing(10);
 				
 		//Scene Regeln
-		sceneRegeln = new Scene(topPaneRegeln, 1200, 800);
-		sceneRegeln.getStylesheets().add("ClientStylesheet");
+		sceneRules = new Scene(topPaneRegeln, 1200, 800);
+		sceneRules.getStylesheets().add("ClientStylesheet");
 		
 /*----------------------------------------- Game Fenster -----------------------------------------*/ 
 		//@author Marco Kunz
@@ -397,9 +397,9 @@ public class ClientView {
 		b_backGame.setId("b-sendchat");
 		
 		//Button Fertig
-		b_fertigGame = new Button(t.getString("Button.Fertig"));
-		b_fertigGame.setMinSize(120, 50);
-		b_fertigGame.setId("b-login");
+		b_finishGame = new Button(t.getString("Button.Fertig"));
+		b_finishGame.setMinSize(120, 50);
+		b_finishGame.setId("b-login");
 		
 		// Space (between send & back button)
 		rectangleSpace = new Rectangle(95,50);
@@ -452,34 +452,34 @@ public class ClientView {
 /*----------------------------------------- Cubes Player 1  -----------------------------------------*/ 
 		//@author Marco Kunz
 		
-		WürfelPL1  = new ArrayList<Würfel>();
+		diesPL1  = new ArrayList<Würfel>();
 		
 		// Cubes pink
 		cubeViewPink = new Würfel(Farbe.Pink);
-		WürfelPL1.add(cubeViewPink);
+		diesPL1.add(cubeViewPink);
 	
 		// Cubes white
 		cubeViewWhite1 = new Würfel(Farbe.Weiss);
 		cubeViewWhite2 = new Würfel(Farbe.Weiss);
-		WürfelPL1.add(cubeViewWhite1);
-		WürfelPL1.add(cubeViewWhite2);
+		diesPL1.add(cubeViewWhite1);
+		diesPL1.add(cubeViewWhite2);
 
 		// Cubes black1
 		cubeViewBlack1 = new Würfel(Farbe.Schwarz);
 		cubeViewBlack2 = new Würfel(Farbe.Schwarz);
-		WürfelPL1.add(cubeViewBlack1);
-		WürfelPL1.add(cubeViewBlack2);
+		diesPL1.add(cubeViewBlack1);
+		diesPL1.add(cubeViewBlack2);
 		
 		//Cubes red1
 		cubeViewRed1 = new Würfel(Farbe.Rot);
 		cubeViewRed2 = new Würfel(Farbe.Rot);
-		WürfelPL1.add(cubeViewRed1);
-		WürfelPL1.add(cubeViewRed2);
+		diesPL1.add(cubeViewRed1);
+		diesPL1.add(cubeViewRed2);
 		
 		//Button würfeln
-		b_würfeln = new Button(t.getString("Button.roll"));
-		b_würfeln.setMinSize(100, 50);
-		b_würfeln.setId("b-login");
+		b_roll = new Button(t.getString("Button.roll"));
+		b_roll.setMinSize(100, 50);
+		b_roll.setId("b-login");
 		
 		// space (between done botton & score label)
 		rectangleSpace1 = new Rectangle(70,50);
@@ -487,34 +487,34 @@ public class ClientView {
 		
 		
 		//added nodes to BottomPane
-		bottomPaneGameCube.getChildren().addAll(turnPL1, b_würfeln,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_fertigGame,labelPL1);
+		bottomPaneGameCube.getChildren().addAll(turnPL1, b_roll,cubeViewPink.getImageView(),cubeViewWhite1.getImageView(),cubeViewWhite2.getImageView(),cubeViewBlack1.getImageView(),cubeViewBlack2.getImageView(),cubeViewRed1.getImageView(),cubeViewRed2.getImageView(),b_finishGame,labelPL1);
 		
 /*----------------------------------------- Cubes Player 2 -----------------------------------------*/ 
 		//@author Marco Kunz
 		
-		WürfelPL2  = new ArrayList<Würfel>();
+		diesPL2  = new ArrayList<Würfel>();
 		
 		// Cubes pink PL2
 		cubeViewPinkPL2 = new Würfel(Farbe.Pink);
-		WürfelPL2.add(cubeViewPinkPL2);
+		diesPL2.add(cubeViewPinkPL2);
 		
 		// Cubes white PL2
 		cubeViewWhite1PL2 = new Würfel(Farbe.Weiss);
 		cubeViewWhite2PL2 = new Würfel(Farbe.Weiss);
-		WürfelPL2.add(cubeViewWhite1PL2);
-		WürfelPL2.add(cubeViewWhite2PL2);
+		diesPL2.add(cubeViewWhite1PL2);
+		diesPL2.add(cubeViewWhite2PL2);
 		
 		// Cubes black PL2
 		cubeViewBlack1PL2 = new Würfel(Farbe.Schwarz);
 		cubeViewBlack2PL2 = new Würfel(Farbe.Schwarz);
-		WürfelPL2.add(cubeViewBlack1PL2);
-		WürfelPL2.add(cubeViewBlack2PL2);
+		diesPL2.add(cubeViewBlack1PL2);
+		diesPL2.add(cubeViewBlack2PL2);
 		
 		//Cubes red PL2
 		cubeViewRed1PL2 = new Würfel(Farbe.Rot);
 		cubeViewRed2PL2 = new Würfel(Farbe.Rot);
-		WürfelPL2.add(cubeViewRed1PL2);
-		WürfelPL2.add(cubeViewRed2PL2);
+		diesPL2.add(cubeViewRed1PL2);
+		diesPL2.add(cubeViewRed2PL2);
 		
 		// space (between dice and score label on "opponent's" side)
 		rectangleSpace2 = new Rectangle(220,50);
@@ -623,12 +623,12 @@ public class ClientView {
 		return "ClientView";
 	}
 	
-	public ArrayList<Würfel> getWürfelPL1(){
-		return this.WürfelPL1;
+	public ArrayList<Würfel> getDiesPL1(){
+		return this.diesPL1;
 	}
 	
-	public ArrayList<Würfel> getWürfelPL2(){
-		return this.WürfelPL2;
+	public ArrayList<Würfel> getDiesPL2(){
+		return this.diesPL2;
 	}
 	public void updateTable(ArrayList<String> scoreValues, ArrayList<String> nameValues, ArrayList <String> dateValues){
 		centerPaneStatistik.getChildren().remove(table);

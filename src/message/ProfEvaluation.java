@@ -2,7 +2,7 @@ package message;
 
 import java.io.Serializable;
 
-public class ProfWertung implements Serializable {
+public class ProfEvaluation implements Serializable {
 
 	/**
 	 * 

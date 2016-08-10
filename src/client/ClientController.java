@@ -8,36 +8,21 @@
 
 package client;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-
-import com.sun.security.ntlm.Client;
 
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyIntegerWrapper;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.StageStyle;
 import message.CardClick;
-import message.CardGewertet;
-import message.CardTod;
+import message.CardValued;
+import message.CardDeath;
 import message.ChatMessage;
 import message.ClientLogout;
 import message.ClientTurn;
@@ -46,7 +31,7 @@ import message.GameFinished;
 import message.GameQuit;
 import message.HighscoreUpdate;
 import message.PointUpdate;
-import message.WürfelRoll;
+import message.DieRoll;
 import message.initiateNewGame;
 import message.newAccountMessage;
 import message.newScore;
@@ -184,14 +169,14 @@ public class ClientController {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-			view.primaryStage.setScene(view.sceneRegeln);
+			view.primaryStage.setScene(view.sceneRules);
 			sl.getLogger().info("Change to Regeln Scene");
 			}		
 		});
 				
 		
 		// EventHandler SpielErstellenButton - LobbyScene !!!!! to be difined
-		view.b_spielErstellen.setOnAction(new EventHandler<ActionEvent>(){
+		view.b_gameCreate.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent arg0) {
@@ -206,7 +191,7 @@ public class ClientController {
 				
 		
 		// EventHandler SpielBeitretenButton - LobbyScene !!!!! to be difined
-		view.b_spielBeitreten.setOnAction(new EventHandler<ActionEvent>(){
+		view.b_gameJoin.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent arg0) {
@@ -222,7 +207,7 @@ public class ClientController {
 		//@author Kevin Trottmann		
 		
 		// EventHandler ZurückButton - StatistikScene
-		view.b_backStatistik.setOnAction(new EventHandler<ActionEvent>(){
+		view.b_backStatistic.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent arg0) {
@@ -237,7 +222,7 @@ public class ClientController {
 		
 		
 		// EventHandler ZurückButton - RegelnScene
-		view.b_backRegeln.setOnAction(new EventHandler<ActionEvent>(){
+		view.b_backRules.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent arg0) {
@@ -252,8 +237,8 @@ public class ClientController {
 					@Override
 					public void handle(ActionEvent arg0) 
 					{
-					if (ClientView.currentRuleImage <view.regeln.length-1){
-					view.regelnView.setImage(view.regeln[ClientView.currentRuleImage+1]);
+					if (ClientView.currentRuleImage <view.rules.length-1){
+					view.rulesView.setImage(view.rules[ClientView.currentRuleImage+1]);
 					ClientView.currentRuleImage++;
 					sl.getLogger().info("Change RuleImage Plus");
 					}
@@ -268,7 +253,7 @@ public class ClientController {
 					public void handle(ActionEvent arg0) 
 					{
 					if (ClientView.currentRuleImage >0){
-					view.regelnView.setImage(view.regeln[ClientView.currentRuleImage-1]);
+					view.rulesView.setImage(view.rules[ClientView.currentRuleImage-1]);
 					ClientView.currentRuleImage--;
 					sl.getLogger().info("Change RuleImage Minus");
 					}
@@ -293,14 +278,14 @@ public class ClientController {
 
 /*----------------------------------------- EventHandler Würfel -----------------------------------------*/ 
 
-		view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
+		view.b_roll.setOnAction(new EventHandler<ActionEvent>(){
 		
 			@Override
 			public void handle(ActionEvent arg0) {
-				würfeln();
+				roll();
 				model.incrementPlayerRoll();
-				System.out.println(getWürfel());
-				model.startCardChecker(view.cardAL, getWürfel());
+				System.out.println(getDies());
+				model.startCardChecker(view.cardAL, getDies());
 				checkTurn();
 				}
 		});
@@ -333,26 +318,26 @@ public class ClientController {
 					public void handle(MouseEvent arg0){
 						view.cardAL.get(d).click(clientOwner);
 						view.cardAL.get(d).setOwner(clientOwner);
-						for(int y = 0; y < view.cardAL.get(d).getWürfel().size(); y++){
-							if(view.WürfelPL1.contains(view.cardAL.get(d).getWürfel().get(y))){
-								view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
-								view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).click();
-								if(view.cardAL.get(d).getWürfel().size() == 2){
-									view.WürfelPL1.get(view.WürfelPL1.lastIndexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
-									view.WürfelPL1.get(view.WürfelPL1.lastIndexOf(view.cardAL.get(d).getWürfel().get(y))).click();
+						for(int y = 0; y < view.cardAL.get(d).getDie().size(); y++){
+							if(view.diesPL1.contains(view.cardAL.get(d).getDie().get(y))){
+								view.diesPL1.get(view.diesPL1.indexOf(view.cardAL.get(d).getDie().get(y))).setUsed(true);
+								view.diesPL1.get(view.diesPL1.indexOf(view.cardAL.get(d).getDie().get(y))).click();
+								if(view.cardAL.get(d).getDie().size() == 2){
+									view.diesPL1.get(view.diesPL1.lastIndexOf(view.cardAL.get(d).getDie().get(y))).setUsed(true);
+									view.diesPL1.get(view.diesPL1.lastIndexOf(view.cardAL.get(d).getDie().get(y))).click();
 								}
-								System.out.println(view.cardAL.get(d).getWürfel().get(y) + "is used");
+								System.out.println(view.cardAL.get(d).getDie().get(y) + "is used");
 							}
 						}
 						if(view.cardAL.get(d).getType().equals("Dino")){
-							for(int y = 1; y < view.WürfelPL1.size(); y++){
-							view.WürfelPL1.get(y).setUsed(true);
-							view.WürfelPL1.get(y).click();
+							for(int y = 1; y < view.diesPL1.size(); y++){
+							view.diesPL1.get(y).setUsed(true);
+							view.diesPL1.get(y).click();
 							}
 						}
-						model.startCardChecker(view.cardAL, view.WürfelPL1);
+						model.startCardChecker(view.cardAL, view.diesPL1);
 						server.sendObject(new CardClick(view.cardAL.get(d)));
-						view.b_fertigGame.setDisable(false);
+						view.b_finishGame.setDisable(false);
 					}
 				});	
 				
@@ -362,7 +347,7 @@ public class ClientController {
 						@Override
 						public void handle(MouseEvent arg0){
 							if(view.cardAL.get(d).getStatus().equals(Status.todgesetzt)){
-								removeCardTod(view.cardAL, view.cardAL.get(d));
+								removeCardDeath(view.cardAL, view.cardAL.get(d));
 								
 
 								
@@ -373,10 +358,10 @@ public class ClientController {
 
 
 
-							model.checkCardsToChooseTod(view.cardAL);
+							model.checkCardsToChooseDeath(view.cardAL);
 							
-							if(!model.checkCardsToChooseTod(view.cardAL)){
-								view.b_fertigGame.setDisable(false);
+							if(!model.checkCardsToChooseDeath(view.cardAL)){
+								view.b_finishGame.setDisable(false);
 							}
 							
 							server.sendObject(new CardClick(view.cardAL.get(d)));
@@ -392,14 +377,14 @@ public class ClientController {
 										view.cardAL.get(d).setStatus(Status.todgesetzt);
 										server.sendObject(new CardClick(view.cardAL.get(d)));
 										view.cardAL.get(a).setStatus(Status.tod);
-										view.cardAL.get(a).setcardTod(view.cardAL.get(d));
+										view.cardAL.get(a).setcardDeath(view.cardAL.get(d));
 										view.cardAL.get(a).getImage();
 
 										
-										server.sendObject(new CardTod(view.cardAL.get(a)));
-										updatePunkte();
+										server.sendObject(new CardDeath(view.cardAL.get(a)));
+										updatePoints();
 										disableCards();
-										view.b_fertigGame.setDisable(false);
+										view.b_finishGame.setDisable(false);
 										
 									}
 								});
@@ -413,13 +398,13 @@ public class ClientController {
 		
 /*----------------------------------------- EventHandler Chosen Cubes -----------------------------------------*/ 
 		
-		for(int i = 0; i < this.getWürfel().size();i++){
+		for(int i = 0; i < this.getDies().size();i++){
 			final int d = i;
-			this.getWürfel().get(i).getImageView().setOnMouseClicked(new EventHandler<MouseEvent>(){
+			this.getDies().get(i).getImageView().setOnMouseClicked(new EventHandler<MouseEvent>(){
 
 				@Override
 				public void handle(MouseEvent event) {
-					getWürfel().get(d).click();
+					getDies().get(d).click();
 					
 					
 				}
@@ -447,7 +432,7 @@ public class ClientController {
 				
 /*----------------------------------------- EventHandler Fertig Button -----------------------------------------*/ 
 			
-				view.b_fertigGame.setOnAction(new EventHandler<ActionEvent>(){
+				view.b_finishGame.setOnAction(new EventHandler<ActionEvent>(){
 					
 					
 					//@Override
@@ -455,11 +440,11 @@ public class ClientController {
 
 						model.resetPlayerRoll();
 						resetCardHandler();
-						System.out.println(getWürfel());
+						System.out.println(getDies());
 						disableCards();
 //						changeCardsToGewählt();
 						if(checkGameContinue()){
-							updatePunkte();	
+							updatePoints();	
 							server.sendObject(new ClientTurn(false));
 						}else{
 							if(!profCard()){
@@ -469,7 +454,7 @@ public class ClientController {
 								Platform.runLater(new Runnable(){
 									@Override
 									public void run(){
-										bewerteProfCard();
+										valueProfCard();
 									}
 								});
 
@@ -534,11 +519,11 @@ public class ClientController {
 	/**
 	 * @author Nicola Burri
 	 */
-	public void setOpponentDi(ArrayList<Würfel> würfel){
+	public void setOpponentDi(ArrayList<Würfel> dies){
 		sl.getLogger().info("Opponents Die are being set");
 			
-		for(int x = 0;x<view.WürfelPL2.size();x++){
-			view.WürfelPL2.get(x).setAktAugenzahl(würfel.get(x).getAktAugenzahl());
+		for(int x = 0;x<view.diesPL2.size();x++){
+			view.diesPL2.get(x).setCurrentNumberofeyes(dies.get(x).getCurrentNumberofeyes());
 	}
 		sl.getLogger().info("Opponent Die changed");
 	}
@@ -561,7 +546,7 @@ public class ClientController {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public void opponentWertetCard(Card card){
+	public void opponentValueCard(Card card){
 		for(int x = 0; x < view.cardAL.size();x++){
 			if(view.cardAL.get(x).equals(card)){
 				view.cardAL.get(x).setStatus(Status.gewertet);
@@ -576,10 +561,10 @@ public class ClientController {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public void opponentTodCard(Card card){
+	public void opponentDeathCard(Card card){
 		for(int x = 0; x < view.cardAL.size();x++){
 			if(view.cardAL.get(x).equals(card)){
-				view.cardAL.get(x).setcardTod(card.getcardTod());
+				view.cardAL.get(x).setcardDeath(card.getcardDeath());
 				view.cardAL.get(x).setStatus(Status.tod);
 				view.cardAL.get(x).getImage();
 				break;
@@ -595,8 +580,8 @@ public class ClientController {
 		model.resetPlayerRoll();
 		view.turnPL1.setVisible(false);
 		view.turnPL2.setVisible(true);
-		view.b_würfeln.setDisable(true);
-		view.b_fertigGame.setDisable(true);
+		view.b_roll.setDisable(true);
+		view.b_finishGame.setDisable(true);
 			
 	
 	}
@@ -607,12 +592,12 @@ public class ClientController {
 	public void setGameAvImageOnOff(boolean on){
 		if(on){
 			this.view.gai.setImageOn();
-			this.view.b_spielErstellen.setDisable(true);
-			this.view.b_spielBeitreten.setDisable(false);
+			this.view.b_gameCreate.setDisable(true);
+			this.view.b_gameJoin.setDisable(false);
 		}
 		else{
-			this.view.b_spielErstellen.setDisable(false);
-			this.view.b_spielBeitreten.setDisable(true);
+			this.view.b_gameCreate.setDisable(false);
+			this.view.b_gameJoin.setDisable(true);
 			this.view.gai.setImageOff();
 		}
 		view.innerPaneLobby.add(view.gai.getImage(), 2, 7);
@@ -637,7 +622,7 @@ public class ClientController {
 		setupLabel();
 		setGameAvImageOnOff(false);
 		view.select_label.setText(null);
-		view.b_spielErstellen.setVisible(true);
+		view.b_gameCreate.setVisible(true);
 	}
 	
 	/**
@@ -691,11 +676,11 @@ public class ClientController {
 		Platform.runLater(new Runnable(){
 			@Override
 			public void run(){
-				for(int x = 0; x < getWürfel().size(); x++){
-					getWürfel().get(x).resetWürfel();
+				for(int x = 0; x < getDies().size(); x++){
+					getDies().get(x).resetWürfel();
 					
 					}
-				setWürfelDisabled(true);
+				setDiesDisabled(true);
 			}
 		});
 		
@@ -736,16 +721,16 @@ public class ClientController {
 	  * @author Nicola Burri
 	  * 
 	  */
-	public void würfeln(){
-		for(int x = 0; x < this.getWürfel().size(); x++){
-			if(!this.getWürfel().get(x).isSelected()){
+	public void roll(){
+		for(int x = 0; x < this.getDies().size(); x++){
+			if(!this.getDies().get(x).isSelected()){
 
-			this.getWürfel().get(x).roll();
+			this.getDies().get(x).roll();
 			}
 			
 			}
 		
-		server.sendObject(new WürfelRoll(this.getWürfel()));
+		server.sendObject(new DieRoll(this.getDies()));
 	
 	}
 	
@@ -753,8 +738,8 @@ public class ClientController {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public ArrayList<Würfel> getWürfel(){
-		return view.getWürfelPL1();
+	public ArrayList<Würfel> getDies(){
+		return view.getDiesPL1();
 	}
 
 	 /**
@@ -767,8 +752,8 @@ public class ClientController {
 		view.turnPL2.setVisible(false);
 		model.resetPlayerRoll();
 		setUpDie();
-		view.b_würfeln.setDisable(false);
-		view.b_fertigGame.setDisable(true);
+		view.b_roll.setDisable(false);
+		view.b_finishGame.setDisable(true);
 	}
 
 	/**
@@ -777,22 +762,22 @@ public class ClientController {
 	 */
 	public void checkTurn(){
 		if(model.getPlayerRollCounter() == 0){
-			setWürfelDisabled(true);
-			view.b_fertigGame.setDisable(true);
-		}else if(model.getPlayerRollCounter() < 3 && !model.allWürfelSelected(getWürfel())){
-			setWürfelDisabled(false);
-			view.b_würfeln.setDisable(false);
-			view.b_fertigGame.setDisable(true);
+			setDiesDisabled(true);
+			view.b_finishGame.setDisable(true);
+		}else if(model.getPlayerRollCounter() < 3 && !model.allDiesSelected(getDies())){
+			setDiesDisabled(false);
+			view.b_roll.setDisable(false);
+			view.b_finishGame.setDisable(true);
 		}else{
-			selectAllWürfel();
-			view.b_würfeln.setDisable(true);
-			bewerteCards();
-			updatePunkte();
-			model.startCardChecker(view.cardAL, getWürfel());
-			model.aktivateCards(view.cardAL, getWürfel(), clientOwner);
-			if(model.countTod == 0){
-				view.b_fertigGame.setDisable(false);
-				resetFertigButton();
+			selectAllDies();
+			view.b_roll.setDisable(true);
+			valueCards();
+			updatePoints();
+			model.startCardChecker(view.cardAL, getDies());
+			model.activateCards(view.cardAL, getDies(), clientOwner);
+			if(model.countDeath == 0){
+				view.b_finishGame.setDisable(false);
+				resetFinishButton();
 			}
 			
 
@@ -805,7 +790,7 @@ public class ClientController {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public void changeCardsToGewählt(){
+	public void changeCardsToElected(){
 		for(int x = 0; x< view.cardAL.size();x++){
 			if(view.cardAL.get(x).getStatus().equals(Status.neugewählt)){
 				view.cardAL.get(x).setStatus(Status.gewählt);
@@ -817,19 +802,19 @@ public class ClientController {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public void bewerteCards(){
+	public void valueCards(){
 		sl.getLogger().info("Bewertung gestartet");
-		if(view.getWürfelPL1().get(0).getAktAugenzahl() == 6){
+		if(view.getDiesPL1().get(0).getCurrentNumberofeyes() == 6){
 		//keine Bewertung wenn Pudel des Todes gewürfelt wurde
 		}else{
 		for(int x = 0; x < view.cardAL.size(); x++){
 			if(!view.cardAL.get(x).getType().equals(cardType.Tod.toString())){
 				
-			if(view.cardAL.get(x).getAugenzahl() == view.getWürfelPL1().get(0).getAktAugenzahl() && view.cardAL.get(x).getStatus().equals(Status.gewählt)){
+			if(view.cardAL.get(x).getNumberofeyes() == view.getDiesPL1().get(0).getCurrentNumberofeyes() && view.cardAL.get(x).getStatus().equals(Status.gewählt)){
 					view.cardAL.get(x).setStatus(Status.gewertet);
 					sl.getLogger().info(view.cardAL.get(x).toString() + "hat jetzt den Status:" + view.cardAL.get(x).getStatus());
 					view.cardAL.get(x).getImage();
-					server.sendObject(new CardGewertet(view.cardAL.get(x)));
+					server.sendObject(new CardValued(view.cardAL.get(x)));
 			}					
 			}
 			sl.getLogger().info(view.cardAL.get(x).toString());
@@ -841,7 +826,7 @@ public class ClientController {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public void updatePunkte(){
+	public void updatePoints(){
 		view.scorePL1 = 0;
 		view.scorePL2 = 0;
 		int yetiPL1 = 0;
@@ -858,7 +843,7 @@ public class ClientController {
 				continue;
 				case "Yeti": 	yetiPL1++;
 				continue;
-				case "Dino":	view.scorePL1 += view.cardAL.get(x).getAugenzahl();
+				case "Dino":	view.scorePL1 += view.cardAL.get(x).getNumberofeyes();
 				continue;
 				}
 			}
@@ -893,7 +878,7 @@ public class ClientController {
 				continue;
 				case "Yeti": 	yetiPL2++;
 				continue;
-				case "Dino":	view.scorePL2 += view.cardAL.get(x).getAugenzahl();
+				case "Dino":	view.scorePL2 += view.cardAL.get(x).getNumberofeyes();
 				continue;
 				}
 			}
@@ -941,7 +926,7 @@ public class ClientController {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public void updatePunkteFromOtherClient(int points1, int points2){
+	public void updatePointsFromOtherClient(int points1, int points2){
 		view.scorePL1 = points1;
 		view.scorePL2 = points2;
 		view.labelPL1.setText(""+view.scorePL1);
@@ -952,9 +937,9 @@ public class ClientController {
 	  * 
 	  */
 	
-	public void setWürfelDisabled(boolean disabled){
-		for(int x = 0; x < this.getWürfel().size(); x++){
-			this.getWürfel().get(x).getImageView().setDisable(disabled);
+	public void setDiesDisabled(boolean disabled){
+		for(int x = 0; x < this.getDies().size(); x++){
+			this.getDies().get(x).getImageView().setDisable(disabled);
 		}
 	}
 	 /**
@@ -962,9 +947,9 @@ public class ClientController {
 	  * 
 	  */
 	
-	public void selectAllWürfel(){
-		for(int x = 0; x < this.getWürfel().size(); x++){
-			this.getWürfel().get(x).click();
+	public void selectAllDies(){
+		for(int x = 0; x < this.getDies().size(); x++){
+			this.getDies().get(x).click();
 		}
 	}
 	 /**
@@ -1064,26 +1049,26 @@ public class ClientController {
 				public void handle(MouseEvent arg0){
 					view.cardAL.get(d).click(clientOwner);
 					view.cardAL.get(d).setOwner(clientOwner);
-					for(int y = 0; y < view.cardAL.get(d).getWürfel().size(); y++){
-						if(view.WürfelPL1.contains(view.cardAL.get(d).getWürfel().get(y))){
-							view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
-							view.WürfelPL1.get(view.WürfelPL1.indexOf(view.cardAL.get(d).getWürfel().get(y))).click();
-							if(view.cardAL.get(d).getWürfel().size() == 2){
-								view.WürfelPL1.get(view.WürfelPL1.lastIndexOf(view.cardAL.get(d).getWürfel().get(y))).setUsed(true);
-								view.WürfelPL1.get(view.WürfelPL1.lastIndexOf(view.cardAL.get(d).getWürfel().get(y))).click();
+					for(int y = 0; y < view.cardAL.get(d).getDie().size(); y++){
+						if(view.diesPL1.contains(view.cardAL.get(d).getDie().get(y))){
+							view.diesPL1.get(view.diesPL1.indexOf(view.cardAL.get(d).getDie().get(y))).setUsed(true);
+							view.diesPL1.get(view.diesPL1.indexOf(view.cardAL.get(d).getDie().get(y))).click();
+							if(view.cardAL.get(d).getDie().size() == 2){
+								view.diesPL1.get(view.diesPL1.lastIndexOf(view.cardAL.get(d).getDie().get(y))).setUsed(true);
+								view.diesPL1.get(view.diesPL1.lastIndexOf(view.cardAL.get(d).getDie().get(y))).click();
 							}
-							System.out.println(view.cardAL.get(d).getWürfel().get(y) + "is used");
+							System.out.println(view.cardAL.get(d).getDie().get(y) + "is used");
 						}
 					}
 					if(view.cardAL.get(d).getType().equals("Dino")){
-						for(int y = 1; y < view.WürfelPL1.size(); y++){
-						view.WürfelPL1.get(y).setUsed(true);
-						view.WürfelPL1.get(y).click();
+						for(int y = 1; y < view.diesPL1.size(); y++){
+						view.diesPL1.get(y).setUsed(true);
+						view.diesPL1.get(y).click();
 						}
 					}
-					model.startCardChecker(view.cardAL, view.WürfelPL1);
+					model.startCardChecker(view.cardAL, view.diesPL1);
 					server.sendObject(new CardClick(view.cardAL.get(d)));
-					view.b_fertigGame.setDisable(false);
+					view.b_finishGame.setDisable(false);
 				}
 			});	
 			
@@ -1093,7 +1078,7 @@ public class ClientController {
 					@Override
 					public void handle(MouseEvent arg0){
 						if(view.cardAL.get(d).getStatus().equals(Status.todgesetzt)){
-							removeCardTod(view.cardAL, view.cardAL.get(d));
+							removeCardDeath(view.cardAL, view.cardAL.get(d));
 
 
 							
@@ -1103,10 +1088,10 @@ public class ClientController {
 						view.cardAL.get(d).click(clientOwner);
 
 
-						model.checkCardsToChooseTod(view.cardAL);
+						model.checkCardsToChooseDeath(view.cardAL);
 						
-						if(!model.checkCardsToChooseTod(view.cardAL)){
-							view.b_fertigGame.setDisable(false);
+						if(!model.checkCardsToChooseDeath(view.cardAL)){
+							view.b_finishGame.setDisable(false);
 						}
 						
 						server.sendObject(new CardClick(view.cardAL.get(d)));
@@ -1122,14 +1107,14 @@ public class ClientController {
 									view.cardAL.get(d).setStatus(Status.todgesetzt);
 									server.sendObject(new CardClick(view.cardAL.get(d)));
 									view.cardAL.get(a).setStatus(Status.tod);
-									view.cardAL.get(a).setcardTod(view.cardAL.get(d));
+									view.cardAL.get(a).setcardDeath(view.cardAL.get(d));
 									view.cardAL.get(a).getImage();
 
 									
-									server.sendObject(new CardTod(view.cardAL.get(a)));
-									updatePunkte();
+									server.sendObject(new CardDeath(view.cardAL.get(a)));
+									updatePoints();
 									disableCards();
-									view.b_fertigGame.setDisable(false);
+									view.b_finishGame.setDisable(false);
 									
 								}
 							});
@@ -1153,19 +1138,19 @@ public class ClientController {
 			view.lb_username.setText(view.t.getString("Label.UserName"));
 			view.lb_password.setText(view.t.getString("Label.Password"));
 			//view.lb_chooseLanguage.setText(view.t.getString("Label.Language"));
-			view.b_spielErstellen.setText(view.t.getString("Button.newGame"));
-			view.b_backStatistik.setText(view.t.getString("Button.Stats"));
-			view.b_spielBeitreten.setText(view.t.getString("Button.JoinGame"));
+			view.b_gameCreate.setText(view.t.getString("Button.newGame"));
+			view.b_backStatistic.setText(view.t.getString("Button.Stats"));
+			view.b_gameJoin.setText(view.t.getString("Button.JoinGame"));
 			view.b_backLobby.setText(view.t.getString("Button.Logout"));
 			view.b_backGame.setText(view.t.getString("Button.Aufgeben"));
-			view.b_backRegeln.setText(view.t.getString("Button.Back"));
-			view.b_backStatistik.setText(view.t.getString("Button.Back"));
+			view.b_backRules.setText(view.t.getString("Button.Back"));
+			view.b_backStatistic.setText(view.t.getString("Button.Back"));
 			view.b_rules.setText(view.t.getString("Button.Rules"));
 			view.b_statistic.setText(view.t.getString("Button.Stats"));
-			view.b_würfeln.setText(view.t.getString("Button.roll"));
+			view.b_roll.setText(view.t.getString("Button.roll"));
 			view.b_sendchat.setText(view.t.getString("Button.send"));
 			view.chatInputWindow.setText(view.t.getString("TextField.click"));
-			view.b_fertigGame.setText(view.t.getString("Button.Fertig"));
+			view.b_finishGame.setText(view.t.getString("Button.Fertig"));
 			view.primaryStage.setTitle(view.t.getString("Stage.title"));
 			view.b_languageChange.setText(view.t.getString("Button.languageChange"));
 
@@ -1179,7 +1164,7 @@ public class ClientController {
 				@Override
 				public void run(){
 					view.updateTable(hu.getScoreValues(), hu.getNameValues(), hu.getDateValues());
-					view.primaryStage.setScene(view.sceneStatistik);
+					view.primaryStage.setScene(view.sceneStatistic);
 				}
 			});
 		 
@@ -1204,7 +1189,7 @@ public class ClientController {
 	 * @author Patrick Tüscher
 	 * 
 	 */	 
-	 public void bewerteProfCard(){
+	 public void valueProfCard(){
 		 model.resetPlayerRoll();
 		 int würfel = 0;
 		 for(int x = 0; x < view.cardAL.size(); x++){
@@ -1215,10 +1200,10 @@ public class ClientController {
 		 
 
 		 final int würfelFinal = würfel;
-		 view.b_würfeln.setDisable(false);
+		 view.b_roll.setDisable(false);
 		 view.turnPL2.setVisible(false);
 		 view.turnPL1.setVisible(true);
-		 view.b_fertigGame.setDisable(true);
+		 view.b_finishGame.setDisable(true);
 		 Image profWerten = new Image("images/profValue.png");
 		 Image profWerten_de= new Image("images/profWerten.png");
 		 if(view.t.getCurrentLocaleString().equals("de")){
@@ -1227,39 +1212,39 @@ public class ClientController {
 			 view.turnPL1.setImage(profWerten);
 		 }
 		 
-		 for(int x = 0; x < view.WürfelPL1.size(); x++){
+		 for(int x = 0; x < view.diesPL1.size(); x++){
 			 if(x == 0){
-			 view.WürfelPL1.get(x).getImageView().setOpacity(0);
+			 view.diesPL1.get(x).getImageView().setOpacity(0);
 			 }else{
 			 
 			 if(x <= würfel){
-				 view.WürfelPL1.get(x).resetWürfel();
-				 System.out.println(view.WürfelPL1.get(x));
+				 view.diesPL1.get(x).resetWürfel();
+				 System.out.println(view.diesPL1.get(x));
 				 
 			 }else{
-				 view.WürfelPL1.get(x).getImageView().setOpacity(0);
+				 view.diesPL1.get(x).getImageView().setOpacity(0);
 			 }
 		 }
 		 
-			view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
+			view.b_roll.setOnAction(new EventHandler<ActionEvent>(){
 
 				@Override
 				public void handle(ActionEvent arg0) {
-					würfeln();
+					roll();
 					model.incrementPlayerRoll();
-					System.out.println(getWürfel());
+					System.out.println(getDies());
 					würfelProf(würfelFinal);
 					}
 			});
 			
-			view.b_fertigGame.setOnAction(new EventHandler<ActionEvent>(){
+			view.b_finishGame.setOnAction(new EventHandler<ActionEvent>(){
 				
 				
 				//@Override
 				public void handle(ActionEvent arg0) {
-					view.b_fertigGame.setDisable(true);
+					view.b_finishGame.setDisable(true);
 					server.sendObject(new GameFinished());
-					resetFertigButton();
+					resetFinishButton();
 				}
 
 			});
@@ -1274,22 +1259,22 @@ public class ClientController {
 	 public void würfelProf(int würfel){
 		 int bestWürfel = 0;
 		 if(model.getPlayerRollCounter()>0){
-			 view.b_würfeln.setDisable(true);
+			 view.b_roll.setDisable(true);
 		 
 		 
 		 for(int x = 0; x < würfel; x++){
-			 if(view.WürfelPL1.get(x+1).getAktAugenzahl()> bestWürfel){
-				 bestWürfel = view.WürfelPL1.get(x).getAktAugenzahl();
+			 if(view.diesPL1.get(x+1).getCurrentNumberofeyes()> bestWürfel){
+				 bestWürfel = view.diesPL1.get(x).getCurrentNumberofeyes();
 			 }
 
 		 }
-		 resetWürfelButton();
-		 updatePunkte();
+		 resetDieButton();
+		 updatePoints();
 		 view.scorePL1 += bestWürfel;
 		 view.scorePL1 -= würfel;
 		 view.labelPL1.setText(""+view.scorePL1);
 		 server.sendObject(new PointUpdate(view.scorePL1, view.scorePL2));
-		 view.b_fertigGame.setDisable(false);
+		 view.b_finishGame.setDisable(false);
 	 }
 	 }
 	 
@@ -1297,15 +1282,15 @@ public class ClientController {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	 public void resetWürfelButton(){
-			view.b_würfeln.setOnAction(new EventHandler<ActionEvent>(){
+	 public void resetDieButton(){
+			view.b_roll.setOnAction(new EventHandler<ActionEvent>(){
 				
 				@Override
 				public void handle(ActionEvent arg0) {
-					würfeln();
+					roll();
 					model.incrementPlayerRoll();
-					System.out.println(getWürfel());
-					model.startCardChecker(view.cardAL, getWürfel());
+					System.out.println(getDies());
+					model.startCardChecker(view.cardAL, getDies());
 					checkTurn();
 					}
 			});
@@ -1315,8 +1300,8 @@ public class ClientController {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	 public void resetFertigButton(){
-			view.b_fertigGame.setOnAction(new EventHandler<ActionEvent>(){
+	 public void resetFinishButton(){
+			view.b_finishGame.setOnAction(new EventHandler<ActionEvent>(){
 				
 				
 				//@Override
@@ -1324,11 +1309,11 @@ public class ClientController {
 
 					model.resetPlayerRoll();
 					resetCardHandler();
-					System.out.println(getWürfel());
+					System.out.println(getDies());
 					disableCards();
-					changeCardsToGewählt();
+					changeCardsToElected();
 					if(checkGameContinue()){
-						updatePunkte();	
+						updatePoints();	
 						server.sendObject(new ClientTurn(false));
 					}else{
 						if(!profCard()){
@@ -1338,7 +1323,7 @@ public class ClientController {
 							Platform.runLater(new Runnable(){
 								@Override
 								public void run(){
-									bewerteProfCard();
+									valueProfCard();
 								}
 							});
 
@@ -1353,18 +1338,18 @@ public class ClientController {
 		 * @author Patrick Tüscher
 		 * 
 		 */
-		public void removeCardTod(ArrayList<Card> cardAL, Card cardTod){
+		public void removeCardDeath(ArrayList<Card> cardAL, Card cardTod){
 			for(int x = 0; x<31; x++){
-				if(cardAL.get(x).getcardTod() == null){
+				if(cardAL.get(x).getcardDeath() == null){
 					
-				}else if(cardAL.get(x).getcardTod().equals(cardTod)){
+				}else if(cardAL.get(x).getcardDeath().equals(cardTod)){
 
 			
-							cardAL.get(x).setcardTod(null);
+							cardAL.get(x).setcardDeath(null);
 							cardAL.get(x).setStatus(Status.gewertet);
 							cardAL.get(x).getImage();
 
-							server.sendObject(new CardGewertet(view.cardAL.get(x)));
+							server.sendObject(new CardValued(view.cardAL.get(x)));
 
 					break;
 				}
