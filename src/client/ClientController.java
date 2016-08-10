@@ -790,7 +790,7 @@ public class ClientController {
 			updatePunkte();
 			model.startCardChecker(view.cardAL, getWürfel());
 			model.aktivateCards(view.cardAL, getWürfel(), clientOwner);
-			if(model.chooseTodCard(view.cardAL, getWürfel(), clientOwner)){
+			if(model.countTod == 0){
 				view.b_fertigGame.setDisable(false);
 				resetFertigButton();
 			}

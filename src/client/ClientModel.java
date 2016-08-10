@@ -18,6 +18,7 @@ public class ClientModel {
 	private int playerRollCounter = 0;
 	protected int cardCounter;
 	protected ServerListener server;
+	protected int countTod;
 
 	
 	public int getPlayerRollCounter(){
@@ -222,9 +223,8 @@ public class ClientModel {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public boolean chooseTodCard(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
-		boolean chooseTodCard = true;
-		int countTod = 0;
+	public void chooseTodCard(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
+		countTod = 0;
 		if(checkTodCardWürfel(cardAL, wuerfelAL, acc)){
 			checkTodCardWürfel(cardAL, wuerfelAL, acc);
 		}else if(checkAvailableTodCards(cardAL)){
@@ -238,13 +238,10 @@ public class ClientModel {
 					}
 					
 				}
-				if(countTod == 0){
-					chooseTodCard = false;
-				}
+
 			}
 		
-		return chooseTodCard;
-			
+					
 	}
 	
 	
