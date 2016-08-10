@@ -223,7 +223,7 @@ public class ClientModel {
 	 * @author Patrick Tüscher
 	 * 
 	 */
-	public void chooseTodCard(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
+	private void chooseTodCard(ArrayList<Card> cardAL, ArrayList<Würfel> wuerfelAL, Account acc){
 		if(checkTodCardWürfel(cardAL, wuerfelAL, acc)){
 			checkTodCardWürfel(cardAL, wuerfelAL, acc);
 		}else if(checkAvailableTodCards(cardAL)){
