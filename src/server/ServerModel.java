@@ -52,6 +52,12 @@ public class ServerModel {
 			}
 		}
 	}
+	
+	/**
+	 * @author Nicola Burri
+	 * @param obj
+	 * @param current
+	 */
 	public void sendToOtherClients(Object obj, ClientConnection current){
 		synchronized (clientList) {
 			for (ClientConnection client : clientList) {
@@ -61,6 +67,11 @@ public class ServerModel {
 			}
 		}
 	}
+	/**
+	 * @author Nicola Burri
+	 * @param obj
+	 * @param current
+	 */
 	public ClientConnection getOtherClient(ClientConnection current){
 		synchronized (clientList) {
 			for (ClientConnection client : clientList) {
