@@ -1,10 +1,14 @@
 /**
-	 * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
-	 * All rights reserved.
-	 * 
-	 * @function 
-	 * @author Kevin Trottmann
-	 */
+ * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code
+ * is licensed under the terms of the BSD 3-clause license (see the file
+ * license.txt).
+ * 
+ * @function The singleton instance of this class provide central storage for resources
+ * used by the program. It also defines application-global constants, such as
+ * the application name.
+ * 
+ * @author Brad Richards
+ */
 
 package tools;
 
