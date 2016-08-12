@@ -15,7 +15,6 @@ package server;
 import java.util.Locale;
 import java.util.logging.Logger;
 
-import tools.Configuration;
 import tools.Translator;
 
 public class ServiceLocator {
@@ -30,7 +29,6 @@ public class ServiceLocator {
 
     // Resources
     private Logger logger;
-    private Configuration configuration;
     private Translator translator;
 
     /**
@@ -74,13 +72,6 @@ public class ServiceLocator {
         this.logger = logger;
     }
 
-    public Configuration getConfiguration() {
-        return configuration;
-    }
-
-    public void setConfiguration(Configuration configuration) {
-        this.configuration = configuration;
-    }
 
     public Locale[] getLocales() {
         return locales;
