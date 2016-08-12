@@ -17,9 +17,23 @@ import java.util.logging.Logger;
 import client.Account;
 import message.HighscoreUpdate;
 
+/**
+ * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
+ * All rights reserved.
+ * 
+ * @function This class handles Highscore functions
+ * @author Nicola Burri
+ */
+
 public class Highscore {
+
 	private BufferedReader br;
 	private static Logger logger = ServiceLocator.getServiceLocator().getLogger();
+	
+/**
+ * 
+ * @return HighscoreUpdate (ArrayLists) for the Highscore table
+ */
 	
 	public static HighscoreUpdate getHighscoreUpdate(){
 		   BufferedReader br = null;
@@ -63,6 +77,11 @@ public class Highscore {
            return new HighscoreUpdate(scoreValues, nameValues, dateValues);
            
 	}
+	/**
+	 * this method writes a new score into the database
+	 * @param score new Score
+	 * @param player Player
+	 */
 	public static synchronized void writeScore(int score, Account player){
 		HighscoreUpdate hu = getHighscoreUpdate();
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
