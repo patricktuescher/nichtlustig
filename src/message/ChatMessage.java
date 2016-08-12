@@ -8,6 +8,11 @@
 
 package message;
 
+/**
+ * Copyright 2016, University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Manipake Kuntroburtüs.
+ * All rights reserved.
+ * 
+ */
 import java.io.Serializable;
 
 public class ChatMessage implements Serializable{

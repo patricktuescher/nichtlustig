@@ -8,9 +8,11 @@
 
 package message;
 
+
 import java.io.Serializable;
 
 import client.Account;
+
 
 public class ClientLogin implements Serializable {
 	

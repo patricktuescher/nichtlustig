@@ -23,7 +23,7 @@ public class AccountRegister {
 	protected Logger logger = ServiceLocator.getServiceLocator().getLogger();
 	
 	/**
-	 * Checks, if there is already an account registred with the same name
+	 * Checks, if there is already an account registred with the same name and if the registration information is correct
 	 * @param acc Account
 	 * @return if already exists == true; if doesn't exist == false
 	 */
@@ -44,9 +44,12 @@ public class AccountRegister {
 		
 		return b;
 	}
+	/**
+	 * Writes new account (without checking it first)
+	 * @param acc
+	 */
 	public void writeNewAccount(Account acc){
 		this.acc = acc;
-//		if(check()){
 			try {
 				PrintWriter pw = new PrintWriter(new FileOutputStream(new File("src/server/AccountDB.txt"),true));
 				pw.print("," + acc.getAccName() + "," + acc.getPassword());
@@ -57,6 +60,5 @@ public class AccountRegister {
 				e.printStackTrace();
 			}
 		}
-//	}
 	
 }

@@ -3,7 +3,7 @@
 	 * All rights reserved.
 	 * 
 	 * @function This class is used to define the different types of cards used in the nichtLustig application.
-	 * @author 
+	 * @author Nicola Burri
 	 */
 
 package client;

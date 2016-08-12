@@ -3,7 +3,7 @@
 	 * All rights reserved.
 	 * 
 	 * @function This class represents an Account which is used to log in to the nichtLustig application.
-	 * @author 
+	 * @author Nicola Burri
 	 */
 
 package client;

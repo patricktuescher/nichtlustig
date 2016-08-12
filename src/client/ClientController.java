@@ -3,7 +3,7 @@
 	 * All rights reserved.
 	 * 
 	 * @function  The clientController class  acts on both model and view. It controls the data flow into model object and updates the view whenever data changes.
-	 * @author 
+	 * @author Manipake Kontroburtüs
 	 */
 
 package client;

@@ -3,7 +3,7 @@
 	 * All rights reserved.
 	 * 
 	 * @function This class is used to set the image according to whether a user already started a game or not.
-	 * @author 
+	 * @author Nicola Burri / Kevin Trottmann
 	 */
 
 package client;

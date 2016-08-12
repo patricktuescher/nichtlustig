@@ -622,6 +622,12 @@ public class ClientView {
 	public ArrayList<Würfel> getDiesPL2(){
 		return this.diesPL2;
 	}
+	/**
+	 * @author Nicola Burri
+	 * @param scoreValues
+	 * @param nameValues
+	 * @param dateValues
+	 */
 	public void updateTable(ArrayList<String> scoreValues, ArrayList<String> nameValues, ArrayList <String> dateValues){
 		centerPaneStatistik.getChildren().remove(table);
 		ArrayList<String> rank = new ArrayList<String>();

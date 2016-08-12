@@ -3,7 +3,7 @@
 	 * All rights reserved.
 	 * 
 	 * @function This class is used to define the status of the cards used in the nichtLustig application.
-	 * @author 
+	 * @author Nicola Burri / Patrick Tüscher 
 	 */
 
 package client;
